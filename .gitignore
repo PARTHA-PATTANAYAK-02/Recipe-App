@@ -10,8 +10,12 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-env
 *.local
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -20,6 +24,7 @@ env
 .DS_Store
 *.suo
 *.ntvs*
+*.njsproj
 *.njsproj
 *.sln
 *.sw?
