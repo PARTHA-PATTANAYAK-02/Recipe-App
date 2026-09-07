@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+
+/* =========================================================
+   LOADING CONTAINER
+   ========================================================= */
+
+.loadingContainer {
+    width: 100%;
+    min-height: 300px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 50px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(244, 201, 93, 0.1),
+            transparent 30%);
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+   ========================================================= */
+
+.ambientGlow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(85, 123, 69, 0.08),
+            rgba(229, 138, 67, 0.04),
+            transparent 70%);
+
+    filter: blur(8px);
+
+    animation:
+        ambientPulse 3s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LOADER WRAPPER
+   ========================================================= */
+
+.loaderWrapper {
+    width: 74px;
+    height: 74px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        wrapperFloat 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MAIN LOADER
+   ========================================================= */
+
+.loader {
+    width: 48px;
+    height: 48px;
+
+    position: absolute;
+
+    border: 4px solid #e9eee5;
+
+    border-top-color: #557b45;
+    border-right-color: #e58a43;
+
+    border-radius: 50%;
+
+    animation:
+        spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+
+    box-shadow:
+        0 5px 18px rgba(85, 123, 69, 0.08);
+}
+
+
+/* =========================================================
+   OUTER RING
+   ========================================================= */
+
+.loaderRing {
+    width: 70px;
+    height: 70px;
+
+    position: absolute;
+
+    border: 1px solid transparent;
+
+    border-top-color: rgba(229, 138, 67, 0.5);
+    border-left-color: rgba(85, 123, 69, 0.22);
+
+    border-radius: 50%;
+
+    animation:
+        ringSpin 2.8s linear infinite;
+}
+
+
+/* =========================================================
+   CENTER DOT
+   ========================================================= */
+
+.loaderDot {
+    width: 7px;
+    height: 7px;
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg,
+            #557b45,
+            #e58a43);
+
+    box-shadow:
+        0 0 10px rgba(229, 138, 67, 0.35);
+
+    animation:
+        dotPulse 1.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.loadingText {
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #45433d;
+
+    letter-spacing: -0.15px;
+
+    animation:
+        textPulse 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.dots {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #557b45;
+
+    opacity: 0.3;
+
+    animation:
+        dotBounce 1.4s ease-in-out infinite;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    background: #d89a42;
+
+    animation-delay: 0.18s;
+}
+
+.dot:nth-child(3) {
+    background: #e58a43;
+
+    animation-delay: 0.36s;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes ringSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+
+@keyframes wrapperFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+@keyframes ambientPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 0.9;
+
+        transform: scale(1.1);
+    }
+}
+
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(0.75);
+
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes dotBounce {
+
+    0%,
+    70%,
+    100% {
+        transform: translateY(0) scale(0.65);
+
+        opacity: 0.3;
+    }
+
+    35% {
+        transform: translateY(-4px) scale(1);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+    .loadingContainer {
+        min-height: 260px;
+
+        padding: 40px 15px;
+    }
+
+    .loaderWrapper {
+        width: 65px;
+        height: 65px;
+    }
+
+    .loader {
+        width: 43px;
+        height: 43px;
+    }
+
+    .loaderRing {
+        width: 62px;
+        height: 62px;
+    }
+
+    .loadingText {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ambientGlow,
+    .loaderWrapper,
+    .loader,
+    .loaderRing,
+    .loaderDot,
+    .loadingText,
+    .dot {
+        animation: none;
+    }
+}

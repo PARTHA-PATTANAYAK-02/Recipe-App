@@ -1,0 +1,1423 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+
+/* =========================================================
+   SEARCH BOX
+   ========================================================= */
+
+.searchBox {
+    width: 100%;
+    min-height: 255px;
+
+    position: relative;
+    z-index: 1000;
+
+    /*
+        Prevent horizontal scrollbar from animated elements
+        while keeping suggestion dropdown visible vertically.
+    */
+    overflow-x: clip;
+    overflow-y: visible;
+
+    border: 1px solid #e7e3d8;
+    border-radius: 24px;
+
+    padding: 30px 30px 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    isolation: isolate;
+
+    background:
+        linear-gradient(135deg,
+            #fffdf8 0%,
+            #f7f8f1 48%,
+            #fffaf2 100%);
+
+    transition:
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
+}
+
+
+/* =========================================================
+   AMBIENT FLOATING LIGHT
+   ========================================================= */
+
+.searchBox::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    top: -75px;
+    left: 7%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(244, 201, 93, 0.42) 0%,
+            rgba(244, 201, 93, 0.16) 42%,
+            transparent 72%);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    filter: blur(4px);
+
+    animation:
+        floatingYellow 7s ease-in-out infinite;
+}
+
+
+.searchBox::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: 7%;
+    bottom: -105px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(85, 123, 69, 0.28) 0%,
+            rgba(85, 123, 69, 0.12) 42%,
+            transparent 73%);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    filter: blur(5px);
+
+    animation:
+        floatingGreen 8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FOCUS — BACKGROUND REACTION
+   ========================================================= */
+
+.searchBox:has(.searchFocused) {
+    border-color: rgba(85, 123, 69, 0.25);
+
+    background:
+        linear-gradient(135deg,
+            #fffef9 0%,
+            #f4f8ef 45%,
+            #fff8ee 100%);
+
+    box-shadow:
+        inset 0 0 60px rgba(85, 123, 69, 0.035),
+        0 10px 30px rgba(62, 58, 48, 0.05);
+}
+
+
+.searchBox:has(.searchFocused)::before {
+    animation:
+        focusedYellow 3.5s ease-in-out infinite;
+}
+
+
+.searchBox:has(.searchFocused)::after {
+    animation:
+        focusedGreen 3.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   DECORATIVE CIRCLES
+   ========================================================= */
+
+.decorCircleOne,
+.decorCircleTwo {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    transition:
+        transform 0.6s ease,
+        border-color 0.5s ease,
+        opacity 0.5s ease;
+}
+
+
+.decorCircleOne {
+    width: 120px;
+    height: 120px;
+
+    top: 15px;
+    left: 20px;
+
+    border: 1px solid rgba(85, 123, 69, 0.13);
+
+    animation:
+        circleFloatOne 6s ease-in-out infinite;
+}
+
+
+.decorCircleTwo {
+    width: 150px;
+    height: 150px;
+
+    right: 20px;
+    bottom: 10px;
+
+    border: 1px solid rgba(229, 138, 67, 0.14);
+
+    animation:
+        circleFloatTwo 7s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FOCUS DECOR REACTION
+   ========================================================= */
+
+.searchBox:has(.searchFocused) .decorCircleOne {
+    transform: scale(1.12);
+
+    border-color: rgba(85, 123, 69, 0.24);
+
+    animation:
+        circleFocusOne 3s ease-in-out infinite;
+}
+
+
+.searchBox:has(.searchFocused) .decorCircleTwo {
+    transform: scale(1.10);
+
+    border-color: rgba(229, 138, 67, 0.24);
+
+    animation:
+        circleFocusTwo 3.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    z-index: 10;
+
+    animation: contentAppear 0.65s ease both;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 7px;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #557b45;
+
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.searchBox:has(.searchFocused) .eyebrow {
+    color: #3f6034;
+
+    transform: translateY(-2px);
+}
+
+
+.eyebrowDot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #e58a43;
+
+    box-shadow:
+        0 0 0 4px rgba(229, 138, 67, 0.10),
+        0 0 10px rgba(229, 138, 67, 0.20);
+
+    animation:
+        dotPulse 2.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MAIN MESSAGE
+   ========================================================= */
+
+.message {
+    margin: 0 0 20px;
+
+    color: #24231f;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(25px, 3vw, 38px);
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    text-align: center;
+
+    letter-spacing: -0.6px;
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s ease,
+        text-shadow 0.4s ease;
+}
+
+
+.searchBox:has(.searchFocused) .message {
+    color: #2e4328;
+
+    transform: translateY(-2px);
+
+    text-shadow:
+        0 4px 18px rgba(85, 123, 69, 0.10);
+}
+
+
+/* =========================================================
+   SEARCH AREA
+   ========================================================= */
+
+.searchArea {
+    width: min(760px, 90%);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 1002;
+}
+
+
+/* =========================================================
+   SEARCH BAR
+   ========================================================= */
+
+.search {
+    width: 100%;
+
+    min-height: 68px;
+
+    padding: 7px 8px 7px 12px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    position: relative;
+
+    background:
+        linear-gradient(135deg,
+            #ffffff,
+            #fcfdf9);
+
+    border: 1px solid #ddd9ce;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(62, 58, 48, 0.07),
+        0 2px 5px rgba(62, 58, 48, 0.04);
+
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.45s ease,
+        transform 0.35s ease,
+        background 0.4s ease;
+}
+
+
+/* =========================================================
+   SEARCH BAR HOVER
+   ========================================================= */
+
+.search:hover {
+    border-color: #cfcabf;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 30px rgba(62, 58, 48, 0.09),
+        0 3px 8px rgba(62, 58, 48, 0.04);
+}
+
+
+/* =========================================================
+   FOCUS SEARCH BAR
+   ========================================================= */
+
+.searchFocused {
+    border-color: rgba(85, 123, 69, 0.62);
+
+    background:
+        linear-gradient(135deg,
+            #ffffff,
+            #fbfff8);
+
+    transform:
+        translateY(-3px) scale(1.005);
+
+    box-shadow:
+        0 17px 38px rgba(62, 58, 48, 0.11),
+        0 7px 18px rgba(85, 123, 69, 0.11),
+        0 0 0 4px rgba(85, 123, 69, 0.075),
+        0 0 25px rgba(85, 123, 69, 0.11);
+
+    animation:
+        searchBreath 2.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FOCUS LIGHT SWEEP
+   ========================================================= */
+
+.searchFocused::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -35%;
+
+    width: 22%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(244, 201, 93, 0.18),
+            rgba(255, 255, 255, 0.50),
+            transparent);
+
+    transform: skewX(-18deg);
+
+    pointer-events: none;
+
+    animation:
+        focusSweep 3.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FOCUS OUTER RING
+   ========================================================= */
+
+.searchFocused::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -6px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(85, 123, 69, 0.16);
+
+    pointer-events: none;
+
+    animation:
+        focusRing 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SEARCH ICON
+   ========================================================= */
+
+.iconWrapper {
+    width: 44px;
+    height: 44px;
+
+    min-width: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(145deg,
+            #f1f5ed,
+            #e8f0e2);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.searchFocused .iconWrapper {
+    background:
+        linear-gradient(145deg,
+            #e8f1e1,
+            #dcebd6);
+
+    transform:
+        rotate(-7deg) scale(1.08);
+
+    box-shadow:
+        0 6px 16px rgba(85, 123, 69, 0.14),
+        0 0 0 5px rgba(85, 123, 69, 0.045);
+
+    animation:
+        iconPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   INPUT AREA
+   ========================================================= */
+
+.inputWrapper {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.inputLabel {
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #9a968b;
+
+    margin-bottom: 2px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.searchFocused .inputLabel {
+    color: #557b45;
+}
+
+
+.search input {
+    width: 100%;
+
+    height: 27px;
+
+    padding: 0;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #24231f;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+
+.search input::placeholder {
+    color: #aaa69b;
+
+    font-weight: 400;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+
+.search input:focus::placeholder {
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+.clearButton {
+    width: 30px;
+    height: 30px;
+
+    min-width: 30px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1efe8;
+
+    color: #858176;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 5;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.clearButton:hover {
+    background: #ebe8df;
+
+    color: #3f3d37;
+
+    transform: rotate(90deg);
+
+    box-shadow:
+        0 4px 10px rgba(62, 58, 48, 0.08);
+}
+
+
+.clearButton:active {
+    transform:
+        rotate(90deg) scale(0.9);
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+   ========================================================= */
+
+.searchButton {
+    height: 52px;
+
+    min-width: 125px;
+
+    padding: 0 17px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg,
+            #5d844c,
+            #557b45);
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 14px rgba(85, 123, 69, 0.20);
+
+    transition:
+        background 0.3s ease,
+        transform 0.25s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.searchButton::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 75%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.22),
+            transparent);
+
+    transform: skewX(-18deg);
+}
+
+
+.searchButton:hover:not(:disabled)::before {
+    animation:
+        buttonShine 0.8s ease;
+}
+
+
+.searchButton:hover:not(:disabled) {
+    background:
+        linear-gradient(135deg,
+            #3f6034,
+            #4d713f);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 22px rgba(85, 123, 69, 0.28);
+}
+
+
+.searchButton:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+
+.searchButton:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+.arrow {
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.searchButton:hover:not(:disabled) .arrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   SUGGESTION WRAPPER
+   ========================================================= */
+
+.suggestionWrapper {
+    width: 100%;
+    position: absolute;
+    top: calc(100% - 4px);
+    left: -4px;
+    z-index: 99999;
+}
+
+
+/* =========================================================
+   SEARCH HINT
+   ========================================================= */
+
+.searchHint {
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: #99958a;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.searchBox:has(.searchFocused) .searchHint {
+    color: #7f8878;
+
+    transform: translateY(2px);
+}
+
+
+.searchHint span {
+    min-width: 17px;
+
+    height: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #dedad0;
+
+    border-radius: 5px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    color: #79756b;
+
+    font-size: 10px;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.searchBox:has(.searchFocused) .searchHint span {
+    border-color: rgba(85, 123, 69, 0.20);
+
+    background: #f4f8f0;
+}
+
+
+.searchHint i {
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #d2cec3;
+
+    margin: 0 3px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+
+/* Background yellow orb */
+
+@keyframes floatingYellow {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            translate(45px, 25px) scale(1.12);
+
+        opacity: 0.9;
+    }
+}
+
+
+/* Background green orb */
+
+@keyframes floatingGreen {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+
+        opacity: 0.6;
+    }
+
+    50% {
+        transform:
+            translate(-40px, -25px) scale(1.14);
+
+        opacity: 0.88;
+    }
+}
+
+
+/* Stronger movement on focus */
+
+@keyframes focusedYellow {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            translate(60px, 35px) scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes focusedGreen {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+
+        opacity: 0.62;
+    }
+
+    50% {
+        transform:
+            translate(-60px, -35px) scale(1.22);
+
+        opacity: 1;
+    }
+}
+
+
+/* Decorative circle movement */
+
+@keyframes circleFloatOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(8px, 7px);
+    }
+}
+
+
+@keyframes circleFloatTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(-9px, -8px);
+    }
+}
+
+
+@keyframes circleFocusOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform:
+            translate(8px, -5px) scale(1.14);
+    }
+}
+
+
+@keyframes circleFocusTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-8px, 5px) scale(1.12);
+    }
+}
+
+
+/* Search bar breathing */
+
+@keyframes searchBreath {
+
+    0%,
+    100% {
+        box-shadow:
+            0 17px 38px rgba(62, 58, 48, 0.11),
+            0 7px 18px rgba(85, 123, 69, 0.10),
+            0 0 0 4px rgba(85, 123, 69, 0.07),
+            0 0 25px rgba(85, 123, 69, 0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 19px 42px rgba(62, 58, 48, 0.12),
+            0 8px 22px rgba(85, 123, 69, 0.14),
+            0 0 0 5px rgba(85, 123, 69, 0.09),
+            0 0 34px rgba(85, 123, 69, 0.14);
+    }
+}
+
+
+/* Search focus outer ring */
+
+@keyframes focusRing {
+    0% {
+        opacity: 0.25;
+
+        transform:
+            scale(0.99);
+    }
+
+    50% {
+        opacity: 0.75;
+
+        transform:
+            scale(1.012);
+    }
+
+    100% {
+        opacity: 0.25;
+
+        transform:
+            scale(0.99);
+    }
+}
+
+
+/* Icon breathing */
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform:
+            rotate(-7deg) scale(1.05);
+    }
+
+    50% {
+        transform:
+            rotate(-3deg) scale(1.10);
+    }
+}
+
+
+/* Light sweep across focused input */
+
+@keyframes focusSweep {
+    0% {
+        left: -35%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    55% {
+        left: 120%;
+        opacity: 0.8;
+    }
+
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
+}
+
+
+/* Button shine */
+
+@keyframes buttonShine {
+    0% {
+        left: -120%;
+    }
+
+    100% {
+        left: 140%;
+    }
+}
+
+
+/* Initial content */
+
+@keyframes contentAppear {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* Orange dot */
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0 0 4px rgba(229, 138, 67, 0.08),
+            0 0 9px rgba(229, 138, 67, 0.18);
+    }
+
+    50% {
+        transform: scale(1.3);
+
+        box-shadow:
+            0 0 0 6px rgba(229, 138, 67, 0.12),
+            0 0 15px rgba(229, 138, 67, 0.30);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .searchBox {
+        min-height: 245px;
+
+        padding: 27px 20px 23px;
+
+        border-radius: 20px;
+    }
+
+
+    .content {
+        max-width: 100%;
+    }
+
+
+    .searchArea {
+        width: 94%;
+    }
+
+
+    .message {
+        margin-bottom: 18px;
+    }
+
+
+    .searchHint {
+        display: none;
+    }
+
+
+    .decorCircleOne {
+        width: 90px;
+        height: 90px;
+
+        top: 12px;
+        left: 10px;
+    }
+
+
+    .decorCircleTwo {
+        width: 110px;
+        height: 110px;
+
+        bottom: 8px;
+        right: 10px;
+    }
+
+
+    .searchBox::before {
+        width: 135px;
+        height: 135px;
+    }
+
+
+    .searchBox::after {
+        width: 150px;
+        height: 150px;
+    }
+
+
+    .suggestionWrapper {
+        top: calc(100% + 12px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+    .searchBox {
+        min-height: 220px;
+
+        padding: 23px 13px 20px;
+
+        border-radius: 17px;
+    }
+
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .message {
+        font-size: 25px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .searchArea {
+        width: 100%;
+    }
+
+
+    .search {
+        min-height: 62px;
+
+        padding: 6px 7px 6px 9px;
+
+        gap: 7px;
+
+        border-radius: 16px;
+    }
+
+
+    .searchFocused {
+        transform:
+            translateY(-2px) scale(1.003);
+    }
+
+
+    .searchFocused::after {
+        inset: -5px;
+
+        border-radius: 20px;
+    }
+
+
+    .iconWrapper {
+        width: 39px;
+        height: 39px;
+
+        min-width: 39px;
+
+        border-radius: 11px;
+    }
+
+
+    .inputLabel {
+        display: none;
+    }
+
+
+    .search input {
+        font-size: 14px;
+
+        height: 35px;
+    }
+
+
+    .clearButton {
+        width: 27px;
+        height: 27px;
+
+        min-width: 27px;
+    }
+
+
+    .searchButton {
+        min-width: 88px;
+
+        height: 48px;
+
+        padding: 0 11px;
+
+        gap: 5px;
+
+        border-radius: 12px;
+
+        font-size: 12px;
+    }
+
+
+    .arrow {
+        font-size: 16px;
+    }
+
+
+    .decorCircleOne {
+        width: 70px;
+        height: 70px;
+
+        top: 10px;
+        left: 5px;
+    }
+
+
+    .decorCircleTwo {
+        width: 85px;
+        height: 85px;
+
+        bottom: 5px;
+        right: 5px;
+    }
+
+
+    .searchBox::before {
+        width: 110px;
+        height: 110px;
+
+        top: -50px;
+        left: 5%;
+    }
+
+
+    .searchBox::after {
+        width: 120px;
+        height: 120px;
+
+        right: 4%;
+        bottom: -60px;
+    }
+
+
+    .suggestionWrapper {
+        top: calc(100% + 2px);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .searchBox::before,
+    .searchBox::after,
+    .decorCircleOne,
+    .decorCircleTwo,
+    .eyebrowDot,
+    .content,
+    .searchFocused,
+    .searchFocused::before,
+    .searchFocused::after,
+    .searchFocused .iconWrapper {
+        animation: none;
+    }
+
+
+    .search,
+    .iconWrapper,
+    .searchButton,
+    .clearButton,
+    .searchHint,
+    .message,
+    .eyebrow {
+        transition: none;
+    }
+}

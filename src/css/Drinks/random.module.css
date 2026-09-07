@@ -1,0 +1,1098 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+/* =========================
+   PAGE
+========================= */
+
+.randomPage {
+    position: relative;
+    min-height: calc(100vh - 80px);
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 8% 15%,
+            rgba(220, 165, 91, 0.12),
+            transparent 28%),
+        radial-gradient(circle at 92% 75%,
+            rgba(239, 182, 115, 0.1),
+            transparent 30%),
+        #faf9f6;
+
+    color: #25221f;
+    border-radius: 10px;
+    border: 0.5px solid rgba(255, 217, 0, 0.436);
+
+    font-family: "DM Sans", sans-serif;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.backgroundGlow,
+.backgroundGlowTwo {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(100px);
+
+    opacity: 0.22;
+}
+
+.backgroundGlow {
+    top: 0;
+    left: -230px;
+
+    background: #e7c28e;
+
+    animation: floatGlow 9s ease-in-out infinite;
+}
+
+.backgroundGlowTwo {
+    right: -230px;
+    bottom: 0;
+
+    background: #edc99e;
+
+    animation: floatGlow 11s ease-in-out infinite reverse;
+}
+
+@keyframes floatGlow {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-35px) scale(1.08);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1320px;
+
+    margin: 0 auto 48px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 45px;
+
+    animation: heroReveal 0.8s ease both;
+}
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heading {
+    max-width: 720px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 17px;
+
+    color: #b17b42;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.heading h1 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(46px, 5vw, 76px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 600;
+
+    color: #282522;
+}
+
+.heading h1 span {
+    display: block;
+
+    background: linear-gradient(110deg,
+            #f4a051,
+            #d39a5c,
+            #9d6635);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.heading p {
+    max-width: 610px;
+
+    margin: 23px 0 0;
+
+    color: #817b75;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.refreshButton,
+.bottomRefresh {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    border: 1px solid rgba(72, 58, 44, 0.12);
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    backdrop-filter: blur(14px);
+
+    color: #39332d;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.refreshButton {
+    padding: 15px 21px;
+
+    white-space: nowrap;
+}
+
+.refreshButton:hover,
+.bottomRefresh:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(181, 126, 66, 0.35);
+
+    background: #fff;
+
+    box-shadow:
+        0 15px 35px rgba(80, 59, 37, 0.12);
+}
+
+.refreshButton:active,
+.bottomRefresh:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.refreshIcon {
+    display: inline-block;
+
+    color: #b77c42;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    transition: transform 0.6s ease;
+}
+
+.refreshButton:hover .refreshIcon {
+    transform: rotate(180deg);
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.drinkCard {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1320px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 0.95fr 1.05fr;
+
+    grid-template-rows: auto auto;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(66, 53, 41, 0.1);
+
+    border-radius: 32px;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(78, 60, 42, 0.1),
+        0 4px 15px rgba(78, 60, 42, 0.04);
+
+    animation: cardReveal 0.9s 0.15s ease both;
+}
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   IMAGE SECTION
+========================= */
+
+.imageSection {
+    position: relative;
+
+    min-height: 680px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(218, 165, 96, 0.17),
+            transparent 52%),
+        linear-gradient(145deg,
+            #f7f2e9,
+            #eee8dc);
+}
+
+.imageGlow {
+    position: absolute;
+
+    width: 460px;
+    height: 460px;
+
+    border-radius: 50%;
+
+    background: rgba(207, 145, 72, 0.18);
+
+    filter: blur(65px);
+
+    animation: imageGlow 4s ease-in-out infinite;
+}
+
+@keyframes imageGlow {
+
+    0%,
+    100% {
+        transform: scale(0.92);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+.imageRing {
+    position: absolute;
+
+    width: 570px;
+    height: 570px;
+
+    border: 1px solid rgba(164, 119, 73, 0.16);
+
+    border-radius: 50%;
+
+    animation: spin 20s linear infinite;
+}
+
+.imageRing::before,
+.imageRing::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #bd8650;
+
+    box-shadow: 0 0 16px rgba(189, 134, 80, 0.55);
+}
+
+.imageRing::before {
+    top: 24px;
+    left: 50%;
+}
+
+.imageRing::after {
+    right: 40px;
+    bottom: 65px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   BIG IMAGE
+========================= */
+
+.imageWrapper {
+    position: relative;
+    z-index: 2;
+
+    width: min(82%, 500px);
+
+    aspect-ratio: 1;
+
+    padding: 14px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.5));
+
+    box-shadow:
+        0 35px 75px rgba(80, 57, 34, 0.2),
+        0 0 80px rgba(211, 157, 91, 0.13);
+
+    animation: imageReveal 1s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.7) rotate(-8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.drinkImage {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    filter: saturate(0.96) contrast(1.02);
+
+    transition:
+        transform 0.7s ease,
+        filter 0.7s ease;
+}
+
+.imageWrapper:hover .drinkImage {
+    transform: scale(1.045);
+
+    filter: saturate(1.08) contrast(1.04);
+}
+
+/* =========================
+   FLOATING BADGE
+========================= */
+
+.floatingBadge {
+    position: absolute;
+
+    z-index: 4;
+
+    right: 9%;
+    bottom: 95px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 15px;
+
+    border: 1px solid rgba(72, 54, 37, 0.1);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(15px);
+
+    color: #62594f;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    box-shadow:
+        0 12px 28px rgba(72, 54, 37, 0.12);
+
+    animation: badgeFloat 4s ease-in-out infinite;
+}
+
+.floatingBadge span {
+    color: #bb8148;
+}
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.contentSection {
+    padding: 55px 55px 48px;
+
+    min-width: 0;
+}
+
+.metaRow {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-bottom: 27px;
+}
+
+.metaPill {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border: 1px solid rgba(70, 55, 40, 0.1);
+
+    border-radius: 8px;
+
+    background: #faf8f4;
+
+    color: #81776d;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+.metaPill span {
+    color: #b57c43;
+
+    font-size: 8px;
+}
+
+.smallLabel,
+.sectionLabel {
+    display: block;
+
+    color: #a1876d;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+}
+
+.titleBlock h2 {
+    margin: 8px 0 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 4vw, 64px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    font-weight: 600;
+
+    color: #292521;
+}
+
+.alternateName {
+    margin: 12px 0 0;
+
+    color: #9a9189;
+
+    font-size: 13px;
+
+    font-style: italic;
+}
+
+/* =========================
+   QUICK INFO
+========================= */
+
+.quickInfo {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 34px;
+}
+
+.infoCard {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+
+    padding: 14px;
+
+    border: 1px solid rgba(70, 55, 40, 0.08);
+
+    border-radius: 13px;
+
+    background: #fcfbf8;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.infoCard:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(79, 59, 38, 0.08);
+}
+
+.infoIcon {
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #f3e7d8;
+
+    color: #ae7540;
+
+    font-size: 11px;
+}
+
+.infoCard div:last-child {
+    min-width: 0;
+}
+
+.infoCard span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #a49b92;
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.infoCard strong {
+    display: block;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #504940;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    height: 1px;
+
+    margin: 31px 0;
+
+    background: linear-gradient(90deg,
+            rgba(90, 68, 46, 0.14),
+            transparent);
+}
+
+/* =========================
+   INGREDIENTS
+========================= */
+
+.sectionHeader {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.sectionHeader h3,
+.instructionsHeader h3 {
+    margin: 5px 0 0;
+
+    color: #403a34;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+.ingredientCount {
+    color: #a49b92;
+
+    font-size: 10px;
+}
+
+.ingredientsList {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 0 25px;
+
+    margin-top: 18px;
+}
+
+.ingredient {
+    display: grid;
+
+    grid-template-columns: 27px minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(74, 57, 41, 0.07);
+
+    transition: padding-left 0.25s ease;
+}
+
+.ingredient:hover {
+    padding-left: 5px;
+}
+
+.ingredientNumber {
+    color: #b7a89a;
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+.ingredientName {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #615950;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+.measure {
+    color: #b37a45;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    font-weight: 600;
+}
+
+/* =========================
+   INSTRUCTIONS
+========================= */
+
+.instructionsSection {
+    grid-column: 1 / -1;
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 0.7fr 1.7fr auto;
+
+    align-items: center;
+    border-bottom-left-radius: 30px;
+    gap: 45px;
+
+    padding: 35px 55px;
+    border-top: 1px solid rgba(70, 55, 40, 0.09);
+    background:
+        linear-gradient(90deg,
+            rgba(247, 239, 228, 0.7),
+            rgba(255, 255, 255, 0.35));
+}
+
+.instructionsSection::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 180px;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+            #bd8550,
+            transparent);
+}
+
+.instructionContent {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+}
+
+.quoteMark {
+    flex-shrink: 0;
+
+    margin-top: -7px;
+
+    color: #d8b184;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+}
+
+.instructionsSection p {
+    margin: 0;
+
+    color: #756d65;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+.bottomRefresh {
+    padding: 12px 17px;
+
+    white-space: nowrap;
+}
+
+.bottomRefresh span {
+    display: inline-block;
+
+    color: #b77c42;
+
+    font-size: 18px;
+
+    transition: transform 0.5s ease;
+}
+
+.bottomRefresh:hover span {
+    transform: rotate(180deg);
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.errorWrapper {
+    min-height: 70vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+    background-color: transparent;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+    .randomPage {
+        padding: 55px 4% 70px;
+    }
+
+    .hero {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .refreshButton {
+        align-self: flex-start;
+    }
+
+    .drinkCard {
+        grid-template-columns: 1fr;
+    }
+
+    .imageSection {
+        min-height: 650px;
+    }
+
+    .imageWrapper {
+        width: min(70%, 500px);
+    }
+
+    .instructionsSection {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 35px 40px;
+    }
+
+    .bottomRefresh {
+        justify-self: start;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+    .randomPage {
+        padding: 35px 16px 55px;
+    }
+
+    .hero {
+        margin-bottom: 30px;
+
+        gap: 25px;
+    }
+
+    .heading h1 {
+        font-size: 44px;
+
+        letter-spacing: -2px;
+    }
+
+    .heading p {
+        font-size: 13px;
+    }
+
+    .refreshButton {
+        width: 100%;
+    }
+
+    .drinkCard {
+        border-radius: 23px;
+    }
+
+    .imageSection {
+        min-height: 470px;
+    }
+
+    .imageWrapper {
+        width: 83%;
+
+        max-width: 400px;
+    }
+
+    .imageRing {
+        width: 400px;
+        height: 400px;
+    }
+
+    .imageGlow {
+        width: 310px;
+        height: 310px;
+    }
+
+    .floatingBadge {
+        right: 7%;
+
+        bottom: 38px;
+    }
+
+    .contentSection {
+        padding: 35px 22px;
+    }
+
+    .titleBlock h2 {
+        font-size: 41px;
+    }
+
+    .quickInfo {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredientsList {
+        grid-template-columns: 1fr;
+    }
+
+    .instructionsSection {
+        padding: 30px 22px;
+    }
+
+    .instructionsSection p {
+        font-size: 11px;
+    }
+
+    .bottomRefresh {
+        width: 100%;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+    .heading h1 {
+        font-size: 37px;
+    }
+
+    .imageSection {
+        min-height: 400px;
+    }
+
+    .imageRing {
+        width: 330px;
+        height: 330px;
+    }
+
+    .titleBlock h2 {
+        font-size: 35px;
+    }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .backgroundGlow,
+    .backgroundGlowTwo,
+    .imageGlow,
+    .imageRing,
+    .imageWrapper,
+    .floatingBadge,
+    .hero,
+    .drinkCard {
+        animation: none;
+    }
+
+    .refreshButton,
+    .bottomRefresh,
+    .drinkImage,
+    .infoCard,
+    .ingredient {
+        transition: none;
+    }
+}

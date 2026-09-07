@@ -1,0 +1,1218 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+.detailsSection {
+    --background: #f8f6f0;
+    --surface: #ffffff;
+    --surface-soft: #f1efe7;
+
+    --text: #24231f;
+    --muted: #7d7a70;
+
+    --green: #557b45;
+    --green-dark: #3f6034;
+
+    --orange: #e58a43;
+    --yellow: #f4c95d;
+
+    --border: #e7e3d8;
+
+    min-height: 100vh;
+    width: 100%;
+    background: var(--background);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0 0;
+}
+
+
+/* =========================================
+   DECORATIONS
+========================================= */
+
+.decorCircleOne,
+.decorCircleTwo,
+.decorLeaf {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.decorCircleOne {
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(85, 123, 69, 0.08);
+    border-radius: 50%;
+    top: 100px;
+    left: -130px;
+    animation: rotateSlow 18s linear infinite;
+}
+
+.decorCircleTwo {
+    width: 340px;
+    height: 340px;
+    border: 1px solid rgba(229, 138, 67, 0.08);
+    border-radius: 50%;
+    right: -180px;
+    top: 500px;
+    animation: rotateSlowReverse 22s linear infinite;
+}
+
+.decorLeaf {
+    color: rgba(85, 123, 69, 0.12);
+    font-size: 90px;
+    right: 5%;
+    top: 220px;
+    animation: floatSymbol 5s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    width: min(1500px, 92%);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 55px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.breadcrumb b {
+    color: #c8c3b7;
+}
+
+.breadcrumb strong {
+    color: var(--green);
+}
+
+
+/* =========================================
+   RANDOM BUTTON
+========================================= */
+
+.randomButton {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 18px;
+    min-height: 64px;
+    padding: 9px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--text);
+    box-shadow: 0 10px 30px rgba(47, 45, 38, 0.06);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.randomButton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 35px rgba(47, 45, 38, 0.1);
+    border-color: rgba(85, 123, 69, 0.3);
+}
+
+.randomIcon {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: #eef3e9;
+    font-size: 19px;
+}
+
+.randomText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.randomText small {
+    color: var(--orange);
+    font-size: 8px;
+    letter-spacing: 1.4px;
+}
+
+.randomArrow {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 17px;
+    transition: transform 0.3s ease;
+}
+
+.randomButton:hover .randomArrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 85px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.imageSide {
+    animation:
+        imageEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+        imageFloat 6s ease-in-out 1s infinite;
+}
+
+.imageCard {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 15px;
+    overflow: hidden;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 25px 60px rgba(43, 40, 31, 0.1);
+    transition:
+        transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.5s ease;
+}
+
+.imageCard:hover {
+    transform: rotate(0deg) translateY(-12px) scale(1.015);
+    box-shadow: 0 35px 75px rgba(43, 40, 31, 0.15);
+}
+
+.drinkImage {
+    width: 100%;
+    height: 570px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+    transition:
+        transform 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 0.6s ease;
+}
+
+.imageCard:hover .drinkImage {
+    transform: scale(1.08);
+    filter: saturate(1.1) contrast(1.03);
+}
+
+.imageBadge {
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(10px);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    color: var(--green-dark);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    animation: badgePop 0.8s 0.4s both;
+}
+
+.imageBadge span {
+    color: var(--orange);
+}
+
+.imageShine {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: -80%;
+    width: 45%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.28),
+            transparent);
+    transform: skewX(-18deg);
+    animation: shine 5s ease-in-out 1.5s infinite;
+}
+
+.imageBottom {
+    position: absolute;
+    z-index: 5;
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.imageBottom span {
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.imageCaption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding-left: 10px;
+}
+
+.captionLine {
+    width: 35px;
+    height: 1px;
+    background: var(--orange);
+}
+
+.imageCaption p {
+    margin: 0;
+    color: var(--muted);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.contentSide {
+    animation: contentEntrance 0.9s 0.25s both;
+}
+
+.categoryRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.category,
+.iba,
+.alcohol {
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.category {
+    background: #eef3e9;
+    color: var(--green-dark);
+}
+
+.iba {
+    background: #fff0e4;
+    color: #b8662b;
+}
+
+.alcohol {
+    background: #f2eee5;
+    color: #777064;
+}
+
+.title {
+    margin: 0;
+    max-width: 850px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 6vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+    font-weight: 600;
+}
+
+.title span {
+    color: var(--orange);
+}
+
+.alternate {
+    margin: 15px 0 0;
+    color: var(--muted);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 17px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0;
+}
+
+.tags span {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.intro {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 25px 0 30px;
+}
+
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.infoCard {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.infoCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(47, 45, 38, 0.07);
+}
+
+.infoIcon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: #f3f0e7;
+    font-size: 19px;
+}
+
+.infoCard div:last-child {
+    min-width: 0;
+}
+
+.infoCard span {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.infoCard strong {
+    display: block;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+
+/* =====================================================
+   RECIPE AREA
+   IMPORTANT:
+   INGREDIENTS + PREPARATION ARE NOW VERTICAL
+===================================================== */
+
+.recipeArea {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 75px;
+}
+
+
+/* =========================================
+   COMMON CARD
+========================================= */
+
+.ingredientsCard,
+.preparationCard {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 48px 52px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 45px rgba(47, 45, 38, 0.045);
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.sectionHeader {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sectionEyebrow {
+    display: block;
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.sectionHeader h2 {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+}
+
+.itemCount {
+    flex-shrink: 0;
+    background: #f0eee6;
+    color: var(--muted);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.stepIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fbf1e7;
+    color: var(--orange);
+    font-size: 19px;
+}
+
+
+/* =========================================
+   INGREDIENTS
+========================================= */
+
+.ingredientsList {
+    display: grid;
+
+    /*
+    Few ingredients -> still looks clean.
+    Many ingredients -> 2 columns.
+  */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 55px;
+    margin-top: 5px;
+}
+
+.ingredient {
+    min-height: 82px;
+    display: grid;
+    grid-template-columns: 48px 12px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+    transition:
+        transform 0.3s ease,
+        padding 0.3s ease;
+}
+
+.ingredient:hover {
+    transform: translateX(5px);
+}
+
+.ingredientNumber {
+    color: #b9b5aa;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ingredientDot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 5px rgba(85, 123, 69, 0.08);
+}
+
+.ingredientDetails {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ingredientDetails strong {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.ingredientDetails span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.ingredient>.ingredientDetails+* {
+    justify-self: end;
+}
+
+
+/*
+   Measure is inside ingredientDetails in JSX,
+   so make the measure visually stronger.
+*/
+.ingredientDetails span {
+    color: var(--green);
+    font-weight: 700;
+}
+
+
+/* =========================================
+   PREPARATION
+========================================= */
+
+.preparationCard {
+    animation: preparationEntrance 0.9s 0.15s both;
+}
+
+.stepsList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 32px;
+}
+
+.instructionStep {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    gap: 28px;
+    min-height: 105px;
+    padding: 15px 28px;
+    background: var(--surface-soft);
+    border-radius: 24px;
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.instructionStep:hover {
+    transform: translateX(6px);
+    background: #eeece4;
+    box-shadow: 0 12px 28px rgba(47, 45, 38, 0.06);
+}
+
+.stepNumber {
+    width: 64px;
+    height: 64px;
+    border-radius: 19px;
+    display: grid;
+    place-items: center;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(85, 123, 69, 0.18);
+}
+
+.instructionStep p {
+    margin: 0;
+    color: #747168;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   SERVING TIP
+========================================= */
+
+.tipBox {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 25px;
+    padding: 20px 22px;
+    background: #fff7e8;
+    border: 1px solid #f1dfb8;
+    border-radius: 18px;
+}
+
+.tipIcon {
+    font-size: 22px;
+}
+
+.tipBox strong {
+    display: block;
+    color: #735b2f;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.tipBox p {
+    margin: 0;
+    color: #887758;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   EXTRA INFO
+========================================= */
+
+.extraInfo,
+.languageInfo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 48px 52px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 45px rgba(47, 45, 38, 0.045);
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 5px;
+}
+
+.detailItem {
+    min-height: 100px;
+    padding: 24px 22px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+.detailItem:nth-child(4n) {
+    border-right: none;
+}
+
+.detailItem span {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+
+.detailItem strong {
+    display: block;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.detailItem a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.detailItem a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   LANGUAGES
+========================================= */
+
+.languageGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.languageCard {
+    padding: 22px;
+    background: var(--surface-soft);
+    border-radius: 19px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.languageCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(47, 45, 38, 0.06);
+}
+
+.languageTop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.languageTop span {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    background: var(--green);
+    color: white;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.languageTop strong {
+    font-size: 13px;
+}
+
+.languageCard p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BOTTOM BANNER
+========================================= */
+
+.bottomBanner {
+    position: relative;
+    overflow: hidden;
+    margin-top: 75px;
+    padding: 55px 60px;
+    border-radius: 28px;
+    background: #e9efe2;
+    border: 1px solid #dce5d2;
+}
+
+.bottomBanner::after {
+    content: "✦";
+    position: absolute;
+    right: 70px;
+    top: 30px;
+    font-size: 110px;
+    color: rgba(85, 123, 69, 0.08);
+    animation: floatSymbol 5s ease-in-out infinite;
+}
+
+.bottomBanner span {
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.bottomBanner h2 {
+    max-width: 650px;
+    margin: 10px 0 0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(35px, 4vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.bottomBanner em {
+    color: var(--green);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 0 35px;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes imageEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(35px) rotate(-5deg) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1.5deg) scale(1);
+    }
+}
+
+@keyframes imageFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(-0.5deg);
+    }
+}
+
+@keyframes shine {
+
+    0%,
+    20% {
+        left: -80%;
+    }
+
+    45% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+}
+
+@keyframes badgePop {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes contentEntrance {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes preparationEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatSymbol {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
+}
+
+@keyframes rotateSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateSlowReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .imageSide {
+        max-width: 700px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .contentSide {
+        max-width: 850px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .detailGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .detailItem:nth-child(4n) {
+        border-right: 1px solid var(--border);
+    }
+
+    .detailItem:nth-child(2n) {
+        border-right: none;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .detailsSection {
+        padding-top: 20px;
+    }
+
+    .container {
+        width: min(94%, 1500px);
+    }
+
+    .topBar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .breadcrumb {
+        flex-wrap: wrap;
+        line-height: 1.7;
+    }
+
+    .randomButton {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .hero {
+        margin-bottom: 65px;
+        gap: 40px;
+    }
+
+    .drinkImage {
+        height: 430px;
+    }
+
+    .title {
+        font-size: 52px;
+        letter-spacing: -2px;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredientsCard,
+    .preparationCard,
+    .extraInfo,
+    .languageInfo {
+        padding: 32px 24px;
+        border-radius: 23px;
+    }
+
+    .sectionHeader {
+        align-items: flex-start;
+    }
+
+    .sectionHeader h2 {
+        font-size: 36px;
+    }
+
+    /*
+    On mobile, ingredient columns become one column.
+  */
+    .ingredientsList {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredient {
+        grid-template-columns: 38px 10px 1fr;
+        gap: 10px;
+        min-height: 72px;
+    }
+
+    .ingredientDetails span {
+        grid-column: 3;
+    }
+
+    .instructionStep {
+        grid-template-columns: 52px 1fr;
+        gap: 18px;
+        padding: 14px 17px;
+        min-height: 90px;
+        border-radius: 19px;
+    }
+
+    .stepNumber {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+    }
+
+    .instructionStep p {
+        font-size: 13px;
+    }
+
+    .detailGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .detailItem,
+    .detailItem:nth-child(2n),
+    .detailItem:nth-child(4n) {
+        border-right: none;
+    }
+
+    .languageGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .bottomBanner {
+        padding: 40px 28px;
+    }
+
+    .bottomBanner::after {
+        right: 15px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 450px) {
+    .drinkImage {
+        height: 360px;
+    }
+
+    .imageBottom {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title {
+        font-size: 44px;
+    }
+
+    .sectionHeader h2 {
+        font-size: 31px;
+    }
+
+    .itemCount {
+        font-size: 8px;
+        padding: 8px 11px;
+    }
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

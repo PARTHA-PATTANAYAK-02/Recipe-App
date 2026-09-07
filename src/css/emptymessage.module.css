@@ -1,0 +1,617 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.emptyContainer {
+    width: 100%;
+    min-height: 60vh;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 3rem 2rem;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 25% 30%,
+            rgba(244, 201, 93, 0.09),
+            transparent 25%),
+        radial-gradient(circle at 75% 70%,
+            rgba(229, 138, 67, 0.07),
+            transparent 28%);
+}
+
+
+/* =========================================================
+   DECORATIVE CIRCLES
+   ========================================================= */
+
+.decor {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0.7;
+}
+
+.decorOne {
+    width: 210px;
+    height: 210px;
+
+    top: 8%;
+    left: 5%;
+
+    border: 1px solid rgba(85, 123, 69, 0.09);
+
+    animation:
+        floatOne 7s ease-in-out infinite;
+}
+
+.decorTwo {
+    width: 260px;
+    height: 260px;
+
+    bottom: -5%;
+    right: 3%;
+
+    border: 1px solid rgba(229, 138, 67, 0.09);
+
+    animation:
+        floatTwo 8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.emptyCard {
+    width: 100%;
+    max-width: 500px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    position: relative;
+
+    padding: 3.2rem 3rem 2.7rem;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(253, 251, 246, 0.98));
+
+    border: 1px solid #e5e0d5;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 60px rgba(55, 50, 42, 0.08),
+        0 8px 20px rgba(55, 50, 42, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    overflow: hidden;
+
+    animation:
+        cardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
+
+.cardGlow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(244, 201, 93, 0.2),
+            rgba(229, 138, 67, 0.05),
+            transparent 70%);
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+    animation:
+        cardGlow 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   EMOJI
+   ========================================================= */
+
+.emojiWrapper {
+    width: 96px;
+    height: 96px;
+
+    margin: 0 auto 1.2rem;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emptyEmoji {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 3;
+
+    font-size: 3.2rem;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(145deg,
+            #fffaf0,
+            #f5f8ef);
+
+    border: 1px solid #e8e2d5;
+
+    box-shadow:
+        0 10px 25px rgba(55, 50, 42, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    animation:
+        emojiFloat 3.5s ease-in-out infinite;
+
+    transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+}
+
+
+/* Rotating ring */
+
+.emojiRing {
+    position: absolute;
+
+    width: 88px;
+    height: 88px;
+
+    border-radius: 27px;
+
+    border: 1px solid transparent;
+
+    border-top-color: rgba(85, 123, 69, 0.35);
+    border-right-color: rgba(229, 138, 67, 0.35);
+
+    animation:
+        ringRotate 7s linear infinite;
+}
+
+.emptyCard:hover .emptyEmoji {
+    transform:
+        scale(1.08) rotate(-3deg);
+
+    box-shadow:
+        0 14px 30px rgba(85, 123, 69, 0.13),
+        0 0 25px rgba(244, 201, 93, 0.12);
+}
+
+.emptyCard:hover .emojiRing {
+    animation-duration: 2.5s;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.smallLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 9px;
+
+    color: #a09b90;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+}
+
+.smallLabel span {
+    width: 18px;
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            #d8d2c5);
+}
+
+.smallLabel span:last-child {
+    background:
+        linear-gradient(90deg,
+            #d8d2c5,
+            transparent);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.emptyCard h3 {
+    margin: 0 0 9px;
+
+    color: #292823;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 1.65rem;
+
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.emptyCard p {
+    max-width: 370px;
+
+    margin: 0 auto;
+
+    color: #8a867c;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   BOTTOM ACCENT
+   ========================================================= */
+
+.bottomAccent {
+    margin: 20px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+}
+
+.bottomAccent span {
+    width: 22px;
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            #cbd5c5);
+}
+
+.bottomAccent span:last-child {
+    background:
+        linear-gradient(90deg,
+            #e5cda9,
+            transparent);
+}
+
+.bottomAccent i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg,
+            #557b45,
+            #e58a43);
+
+    box-shadow:
+        0 0 8px rgba(229, 138, 67, 0.25);
+
+    animation:
+        accentPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   EMOJI ANIMATION
+   ========================================================= */
+
+@keyframes emojiFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* =========================================================
+   RING ANIMATION
+   ========================================================= */
+
+@keyframes ringRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+@keyframes cardGlow {
+
+    0%,
+    100% {
+        opacity: 0.45;
+
+        transform:
+            translateX(-50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 0.8;
+
+        transform:
+            translateX(-50%) scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   DECORATION
+   ========================================================= */
+
+@keyframes floatOne {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translate(12px, -10px) rotate(5deg);
+    }
+}
+
+@keyframes floatTwo {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translate(-12px, 10px) rotate(-5deg);
+    }
+}
+
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+@keyframes accentPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.4);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .emptyContainer {
+        min-height: 55vh;
+
+        padding: 2.5rem 1.5rem;
+    }
+
+    .emptyCard {
+        max-width: 460px;
+
+        padding: 2.8rem 2rem 2.4rem;
+
+        border-radius: 24px;
+    }
+
+    .decorOne {
+        width: 160px;
+        height: 160px;
+
+        left: -40px;
+    }
+
+    .decorTwo {
+        width: 190px;
+        height: 190px;
+
+        right: -50px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+    .emptyContainer {
+        min-height: 50vh;
+
+        padding: 2rem 1rem;
+    }
+
+    .emptyCard {
+        padding: 2.5rem 1.4rem 2.2rem;
+
+        border-radius: 21px;
+    }
+
+    .emojiWrapper {
+        width: 84px;
+        height: 84px;
+
+        margin-bottom: 1rem;
+    }
+
+    .emptyEmoji {
+        width: 64px;
+        height: 64px;
+
+        font-size: 2.8rem;
+
+        border-radius: 20px;
+    }
+
+    .emojiRing {
+        width: 78px;
+        height: 78px;
+
+        border-radius: 23px;
+    }
+
+    .smallLabel {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .emptyCard h3 {
+        font-size: 1.4rem;
+    }
+
+    .emptyCard p {
+        font-size: 12px;
+
+        line-height: 1.6;
+    }
+
+    .decorOne {
+        width: 120px;
+        height: 120px;
+
+        left: -55px;
+    }
+
+    .decorTwo {
+        width: 140px;
+        height: 140px;
+
+        right: -60px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .decorOne,
+    .decorTwo,
+    .emptyCard,
+    .cardGlow,
+    .emptyEmoji,
+    .emojiRing,
+    .bottomAccent i {
+        animation: none;
+    }
+}

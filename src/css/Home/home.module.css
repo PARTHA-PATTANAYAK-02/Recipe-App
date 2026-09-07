@@ -1,0 +1,1564 @@
+/* =========================================
+   HOME
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.home {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    border: 0.5px solid rgb(170, 192, 177);
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 8% 15%,
+            rgba(34, 197, 94, 0.10),
+            transparent 27%),
+        radial-gradient(circle at 92% 45%,
+            rgba(22, 163, 74, 0.055),
+            transparent 28%),
+        #f8f7f2;
+
+    color: #18181b;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.backgroundOrb {
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: 380px;
+    left: -300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(74, 222, 128, 0.12),
+            transparent 68%);
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+.backgroundOrbTwo {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: 950px;
+    right: -250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(22, 163, 74, 0.08),
+            transparent 70%);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width: 100%;
+    max-width: 1380px;
+
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 2;
+
+    padding: 20px 0;
+
+    animation:
+        heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heroTop {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid rgba(29, 29, 36, 0.347);
+}
+
+.heroKicker {
+    display: flex;
+
+    align-items: center;
+
+    color: #15803d;
+
+    font-size: 0.60rem;
+
+    font-weight: 850;
+
+    letter-spacing: 2px;
+}
+
+.heroKicker span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #16a34a;
+
+    box-shadow:
+        0 0 0 5px rgba(34, 197, 94, 0.11);
+}
+
+.heroIndex {
+    color: #a1a1aa;
+
+    font-size: 0.56rem;
+
+    font-weight: 750;
+
+    letter-spacing: 1.4px;
+}
+
+
+/* =========================================
+   HERO MAIN
+========================================= */
+
+.heroMain {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr) minmax(280px, 0.85fr);
+
+    align-items: end;
+
+    gap: 28px;
+}
+
+
+/* =========================================
+   HERO TITLE
+========================================= */
+
+.heroTitle {
+    width: 100%;
+
+    margin: 0 0 14px;
+
+    font-family:
+        Inter,
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: clamp(4.4rem, 7.2vw, 7.2rem);
+
+    line-height: 0.84;
+
+    letter-spacing: -6px;
+
+    font-weight: 750;
+
+    color: #171719;
+}
+
+.heroTitle .something {
+    display: inline-block;
+
+    white-space: nowrap;
+
+    font-family:
+        Inter,
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-style: normal;
+
+    font-weight: 750;
+
+    letter-spacing: -6px;
+
+    background:
+        linear-gradient(110deg,
+            #171719 10%,
+            #303934 52%,
+            #15803d 100%);
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+}
+
+.heroTitle .delicious {
+    display: inline-block;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-style: italic;
+
+    font-weight: 500;
+
+    letter-spacing: -5px;
+    padding-bottom: 20px;
+
+    background:
+        linear-gradient(100deg,
+            #166534 0%,
+            #16a34a 48%,
+            #4ade80 100%);
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+}
+
+.heroTitle i {
+    color: #16a34a;
+
+    font-family: Georgia, serif;
+
+    font-style: normal;
+
+    letter-spacing: -3px;
+}
+
+
+/* =========================================
+   HERO SIDE
+========================================= */
+
+.heroSide {
+    max-width: 350px;
+
+    padding-bottom: 5px;
+}
+
+.heroSide p {
+    margin: 0 0 20px;
+
+    color: #71717a;
+
+    font-size: 0.88rem;
+
+    line-height: 1.8;
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* =========================================
+   REFRESH BUTTON
+========================================= */
+
+.refreshButton {
+    min-width: 165px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 13px 19px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(135deg,
+            #18181b,
+            #27272a);
+
+    color: #ffffff;
+
+    font-size: 0.74rem;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 25px rgba(24, 24, 27, 0.14);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.refreshButton:hover {
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(135deg,
+            #15803d,
+            #16a34a);
+
+    box-shadow:
+        0 18px 32px rgba(22, 163, 74, 0.2);
+}
+
+.refreshButton:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.refreshButton:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   HERO LINE
+========================================= */
+
+.heroLine {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #262629;
+
+    font-size: 0.54rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.heroLine div {
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(24, 24, 27, 0.15),
+            transparent);
+}
+
+
+/* =========================================
+   RECIPE CARD
+========================================= */
+
+.recipeCard {
+    width: 100%;
+
+    max-width: 1380px;
+
+    min-height: 560px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    /* Image slightly smaller, details wider */
+    grid-template-columns: 0.9fr 1.1fr;
+
+    position: relative;
+
+    z-index: 3;
+
+    overflow: visible;
+
+    border-radius: 32px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(24, 24, 27, 0.10);
+
+    box-shadow:
+        0 35px 85px rgba(24, 24, 27, 0.09),
+        0 10px 30px rgba(24, 24, 27, 0.04);
+
+    animation:
+        recipeIn 0.9s 0.1s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes recipeIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.imageWrapper {
+    min-height: 560px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 32px;
+
+    background: #d4d4d8;
+}
+
+.recipeImage {
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    /* transform: scale(1.015);
+
+    transition:
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); */
+}
+
+.recipeCard:hover .recipeImage {
+    transform: scale(1.055);
+}
+
+.imageOverlay {
+    position: absolute;
+
+    inset: 0;
+    scale: 1.2;
+
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.27),
+            transparent 35%,
+            rgba(0, 0, 0, 0.70));
+}
+
+.imageTop {
+    position: absolute;
+
+    top: 25px;
+
+    left: 27px;
+
+    right: 27px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 0.57rem;
+
+    font-weight: 850;
+
+    letter-spacing: 1.8px;
+}
+
+.imageTop span:first-child {
+    padding: 7px 11px;
+
+    border-radius: 100px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imageBottom {
+    position: absolute;
+
+    left: 29px;
+
+    right: 29px;
+
+    bottom: 27px;
+}
+
+.imageRecipeMeta {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 11px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.61rem;
+
+    font-weight: 750;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.imageRecipeMeta b {
+    color: #4ade80;
+    font-size: 20px;
+}
+
+.imageRecipeMeta span {
+    padding: 10px;
+    border-radius: 20px;
+    border: 0.5px solid rgb(175, 173, 173);
+    backdrop-filter: blur(15px);
+    background-color: rgba(90, 90, 90, 0.285);
+}
+
+.imageRecipeName {
+    max-width: 650px;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(2.3rem, 4vw, 4.2rem);
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    line-height: 0.95;
+
+    letter-spacing: -1.8px;
+}
+
+
+/* =========================================
+   RECIPE DETAILS
+========================================= */
+
+.recipeDetails {
+    position: relative;
+
+    padding: 45px 46px 42px;
+
+    background:
+        linear-gradient(145deg,
+            #ffffff 0%,
+            #fbfffb 65%,
+            #f1faf3 100%);
+
+    border-radius: 0 32px 32px 0;
+}
+
+.recipeNumber {
+    position: absolute;
+
+    top: 25px;
+
+    right: 31px;
+
+    color: rgba(22, 163, 74, 0.14);
+
+    font-size: 4.3rem;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+}
+
+
+/* =========================================
+   RECIPE HEADER
+========================================= */
+
+.recipeHeader {
+    padding-bottom: 27px;
+
+    border-bottom: 1px solid #e8ebe8;
+}
+
+.categoryLabel {
+    display: inline-flex;
+
+    padding: 6px 10px;
+
+    border-radius: 100px;
+
+    background:
+        linear-gradient(135deg,
+            #dcfce7,
+            #f0fdf4);
+
+    color: #15803d;
+
+    font-size: 0.59rem;
+
+    font-weight: 850;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+}
+
+.recipeHeader h2 {
+    max-width: 600px;
+
+    margin: 17px 0 12px;
+
+    font-family:
+        Inter,
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: clamp(2.35rem, 3.6vw, 3.7rem);
+
+    line-height: 0.91;
+
+    letter-spacing: -3.5px;
+
+    font-weight: 900;
+    padding-bottom: 10px;
+
+    background:
+        linear-gradient(100deg,
+            #333358 10%,
+            #303934 52%,
+            #15803d 100%);
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+}
+
+.recipeHeader p {
+    margin: 0;
+
+    color: #9a9a9f;
+
+    font-size: 0.76rem;
+}
+
+.recipeHeader p strong {
+    color: #52525b;
+}
+
+
+/* =========================================
+   INGREDIENTS
+========================================= */
+
+.ingredientsSection {
+    margin-top: 27px;
+}
+
+.sectionHeading {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.headingLeft {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+.sectionNumber {
+    color: #16a34a;
+
+    font-size: 0.66rem;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.headingMini {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #99999f;
+
+    font-size: 0.53rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.headingLeft h3 {
+    margin: 0;
+
+    color: #27272a;
+
+    font-size: 1.12rem;
+
+    line-height: 1;
+
+    font-weight: 850;
+
+    letter-spacing: -0.5px;
+}
+
+.count {
+    padding: 6px 10px;
+
+    border-radius: 100px;
+
+    background: #f4f4f5;
+
+    color: #71717a;
+
+    font-size: 0.58rem;
+
+    font-weight: 750;
+}
+
+.ingredientsGrid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    max-height: 245px;
+
+    overflow-y: auto;
+
+    padding-right: 4px;
+}
+
+.ingredientsGrid::-webkit-scrollbar {
+    width: 3px;
+}
+
+.ingredientsGrid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ingredientsGrid::-webkit-scrollbar-thumb {
+    background: #bbf7d0;
+
+    border-radius: 20px;
+}
+
+.ingredient {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #e5e9e5;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    opacity: 0;
+
+    animation:
+        ingredientIn 0.4s calc(0.5s + var(--ingredient-index) * 0.035s) forwards cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+@keyframes ingredientIn {
+    from {
+        opacity: 0;
+
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.ingredient:hover {
+    transform: translateY(-2px);
+
+    border-color: #86efac;
+
+    background: #f0fdf4;
+
+    box-shadow:
+        0 8px 18px rgba(22, 163, 74, 0.09);
+}
+
+.ingredientDot {
+    width: 5px;
+
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+.ingredientName {
+    min-width: 0;
+
+    flex: 1;
+
+    color: #36363c;
+
+    font-size: 0.77rem;
+
+    font-weight: 700;
+
+    white-space: normal;
+
+    overflow: visible;
+
+    text-overflow: clip;
+
+    line-height: 1.25;
+}
+
+.measure {
+    flex-shrink: 1;
+
+    max-width: 48%;
+
+    color: #8f8f96;
+
+    font-size: 0.66rem;
+
+    font-weight: 650;
+
+    white-space: normal;
+
+    text-align: right;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================
+   INSTRUCTIONS
+========================================= */
+
+.instructionsCard {
+    width: 100%;
+
+    max-width: 1380px;
+
+    margin: 32px auto 0;
+
+    padding: 48px 52px;
+
+    position: relative;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(24, 24, 27, 0.09);
+
+    border-radius: 32px;
+
+    background:
+        radial-gradient(circle at 90% 10%,
+            rgba(34, 197, 94, 0.10),
+            transparent 25%),
+        #ffffff;
+
+    box-shadow:
+        0 30px 80px rgba(24, 24, 27, 0.065);
+
+    animation:
+        instructionsIn 0.8s 0.25s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes instructionsIn {
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   INSTRUCTION HEADER
+========================================= */
+
+.instructionsTop {
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid #e9e9ea;
+}
+
+.instructionsTitle {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 19px;
+}
+
+.bigNumber {
+    color: #16a34a;
+
+    font-size: 0.67rem;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.instructionsTitle h3 {
+    margin: 0;
+
+    color: #18181b;
+
+    font-family:
+        Inter,
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: clamp(1.9rem, 3.5vw, 3.1rem);
+
+    line-height: 0.9;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 900;
+}
+
+.instructionsTitle h3 span {
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    font-weight: 500;
+
+    color: #16a34a;
+}
+
+.instructionsTitle p {
+    max-width: 560px;
+
+    margin: 13px 0 0;
+
+    color: #a1a1aa;
+
+    font-size: 0.76rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   STEPS
+========================================= */
+
+.steps {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 60px;
+
+    padding-top: 10px;
+}
+
+.step {
+    display: grid;
+
+    grid-template-columns: 38px 1fr;
+
+    gap: 16px;
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid #eeeeef;
+
+    opacity: 0;
+
+    animation:
+        stepIn 0.45s calc(0.45s + var(--step-index) * 0.055s) forwards cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes stepIn {
+    from {
+        opacity: 0;
+
+        transform: translateY(9px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.stepNumber {
+    color: #16a34a;
+
+    font-size: 0.67rem;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.stepContent {
+    position: relative;
+
+    padding-right: 48px;
+}
+
+.stepLabel {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #a1a1aa;
+
+    font-size: 0.51rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.stepContent p {
+    margin: 0;
+
+    color: #52525b;
+
+    font-size: 0.81rem;
+
+    line-height: 1.78;
+
+    transition: color 0.25s ease;
+}
+
+.stepArrow {
+    position: absolute;
+
+    top: 50%;
+
+    right: 0;
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #e4e7e4;
+
+    border-radius: 10px;
+
+    background: #fafafa;
+
+    transform: translateY(-50%);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.step:hover .stepArrow {
+    transform:
+        translateY(-50%) translateX(5px);
+
+    border-color: #86efac;
+
+    background: #f0fdf4;
+
+    box-shadow:
+        0 7px 18px rgba(22, 163, 74, 0.12);
+}
+
+.step:hover .stepContent p {
+    color: #18181b;
+}
+
+
+/* =========================================
+   VIDEO / SOURCE
+========================================= */
+
+.actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 27px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e9e9ea;
+}
+
+.youtubeButton,
+.sourceButton {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.youtubeButton {
+    background: #18181b;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(24, 24, 27, 0.12);
+}
+
+.youtubeButton:hover {
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(135deg,
+            #15803d,
+            #16a34a);
+
+    box-shadow:
+        0 12px 25px rgba(22, 163, 74, 0.18);
+}
+
+.sourceButton {
+    border: 1px solid #e2e4e2;
+
+    background: #ffffff;
+
+    color: #52525b;
+}
+
+.sourceButton:hover {
+    transform: translateY(-3px);
+
+    border-color: #86efac;
+
+    color: #15803d;
+
+    background: #f0fdf4;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .home {
+        padding: 25px 4% 80px;
+    }
+
+    .heroMain {
+        grid-template-columns:
+            minmax(0, 1.15fr) minmax(250px, 0.85fr);
+    }
+
+    .heroTitle {
+        font-size: clamp(4rem, 8vw, 6.2rem);
+
+        letter-spacing: -5px;
+    }
+
+    .heroTitle .something {
+        letter-spacing: -5px;
+    }
+
+    .heroTitle .delicious {
+        letter-spacing: -4px;
+    }
+
+    .recipeCard {
+        grid-template-columns: 1fr;
+    }
+
+    .imageWrapper {
+        min-height: 500px;
+
+        border-radius: 32px 32px 0 0;
+    }
+
+    .recipeDetails {
+        border-radius: 0 0 32px 32px;
+    }
+
+    .recipeHeader h2 {
+        max-width: 700px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .home {
+        padding: 18px 16px 60px;
+    }
+
+    .hero {
+        padding: 20px 0 35px;
+    }
+
+    .heroTop {
+        padding-bottom: 16px;
+    }
+
+    .heroIndex {
+        display: none;
+    }
+
+    .heroMain {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 26px;
+
+        padding: 42px 0 32px;
+    }
+
+    .heroTitle {
+        font-size: clamp(3.8rem, 17vw, 5.5rem);
+
+        line-height: 0.82;
+
+        letter-spacing: -4.5px;
+
+        margin-bottom: 14px;
+    }
+
+    .heroTitle .something {
+        letter-spacing: -4.5px;
+    }
+
+    .heroTitle .delicious {
+        letter-spacing: -3.5px;
+    }
+
+    .heroSide {
+        width: 100%;
+
+        max-width: 500px;
+    }
+
+    .heroSide p {
+        font-size: 0.84rem;
+
+        margin-bottom: 19px;
+    }
+
+    .refreshButton {
+        width: 100%;
+    }
+
+    .recipeCard {
+        min-height: 0;
+
+        border-radius: 25px;
+    }
+
+    .imageWrapper {
+        min-height: 430px;
+
+        border-radius: 25px 25px 0 0;
+    }
+
+    .imageTop {
+        top: 20px;
+
+        left: 20px;
+
+        right: 20px;
+    }
+
+    .imageBottom {
+        left: 22px;
+
+        right: 22px;
+
+        bottom: 23px;
+    }
+
+    .imageRecipeName {
+        font-size: 2.65rem;
+
+        letter-spacing: -1.5px;
+    }
+
+    .recipeDetails {
+        padding: 38px 22px 27px;
+
+        border-radius: 0 0 25px 25px;
+    }
+
+    .recipeNumber {
+        top: 21px;
+
+        right: 21px;
+
+        font-size: 3.8rem;
+    }
+
+    .recipeHeader h2 {
+        font-size: 2.5rem;
+
+        letter-spacing: -2.5px;
+    }
+
+    .ingredientsGrid {
+        grid-template-columns: 1fr;
+
+        max-height: none;
+    }
+
+    .ingredientName {
+        font-size: 0.78rem;
+    }
+
+    .measure {
+        max-width: 42%;
+    }
+
+    .instructionsCard {
+        margin-top: 22px;
+
+        padding: 32px 20px;
+
+        border-radius: 25px;
+    }
+
+    .instructionsTitle {
+        gap: 13px;
+    }
+
+    .instructionsTitle h3 {
+        font-size: 1.95rem;
+
+        letter-spacing: -1.8px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+
+        column-gap: 0;
+    }
+
+    .step {
+        grid-template-columns: 30px 1fr;
+
+        gap: 13px;
+    }
+
+    .actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .youtubeButton,
+    .sourceButton {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .heroTitle {
+        font-size: 3.5rem;
+
+        letter-spacing: -4px;
+    }
+
+    .heroTitle .something {
+        letter-spacing: -4px;
+    }
+
+    .heroTitle .delicious {
+        letter-spacing: -3px;
+    }
+
+    .imageWrapper {
+        min-height: 390px;
+    }
+
+    .imageRecipeName {
+        font-size: 2.35rem;
+    }
+
+    .recipeHeader h2 {
+        font-size: 2.2rem;
+    }
+
+    .count {
+        display: none;
+    }
+
+    .measure {
+        max-width: 45%;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.errorContainer {
+    width: 100%;
+    min-height: 300px;
+
+    box-sizing: border-box;
+
+    padding: 30px 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(229, 138, 67, 0.06),
+            transparent 30%);
+}
+
+
+/* =========================================================
+   ERROR CARD
+   ========================================================= */
+
+.errorCard {
+    width: 100%;
+    max-width: 480px;
+
+    box-sizing: border-box;
+
+    padding: 36px 32px 28px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 17px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(145deg,
+            #ffffff,
+            #fdfbf7);
+
+    border: 1px solid #eadfd5;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 45px rgba(67, 55, 43, 0.08),
+        0 5px 15px rgba(67, 55, 43, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    overflow: hidden;
+
+    animation:
+        errorSlideIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+/* =========================================================
+   SOFT CARD GLOW
+   ========================================================= */
+
+.cardGlow {
+    width: 150px;
+    height: 150px;
+
+    position: absolute;
+
+    top: -100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(244, 201, 93, 0.18),
+            rgba(229, 138, 67, 0.04),
+            transparent 70%);
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+    animation:
+        glowPulse 3.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ERROR ICON
+   ========================================================= */
+
+.errorIcon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+
+    border-radius: 21px;
+
+    color: #c97743;
+
+    background:
+        linear-gradient(145deg,
+            #fff8ed,
+            #fdf2e7);
+
+    border: 1px solid #f0dfcf;
+
+    box-shadow:
+        0 8px 20px rgba(201, 119, 67, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+
+    animation:
+        iconAppear 0.5s ease 0.15s both;
+}
+
+.errorIcon svg {
+    animation:
+        errorShake 0.6s ease 0.45s;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.errorContent {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.errorLabel {
+    color: #c57b4b;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.7px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.errorTitle {
+    margin: 0;
+
+    color: #2d2b26;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 1.55rem;
+
+    font-weight: 600;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+.errorText {
+    max-width: 370px;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #89847a;
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 0;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    text-align: center;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   BOTTOM ACCENT
+   ========================================================= */
+
+.errorAccent {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.errorAccent span {
+    width: 22px;
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            #ddd3c7);
+}
+
+.errorAccent span:last-child {
+    background:
+        linear-gradient(90deg,
+            #ddd3c7,
+            transparent);
+}
+
+.errorAccent i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg,
+            #e58a43,
+            #f4c95d);
+
+    box-shadow:
+        0 0 9px rgba(229, 138, 67, 0.25);
+
+    animation:
+        accentPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes errorSlideIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+@keyframes iconAppear {
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.75) rotate(-8deg);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1) rotate(0);
+    }
+}
+
+
+@keyframes errorShake {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-7deg);
+    }
+
+    40% {
+        transform: rotate(7deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+}
+
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+
+        transform:
+            translateX(-50%) scale(0.9);
+    }
+
+    50% {
+        opacity: 0.8;
+
+        transform:
+            translateX(-50%) scale(1.1);
+    }
+}
+
+
+@keyframes accentPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.4);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.errorCard:hover {
+    box-shadow:
+        0 24px 55px rgba(67, 55, 43, 0.1),
+        0 8px 20px rgba(229, 138, 67, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+    .errorContainer {
+        min-height: 270px;
+
+        padding: 25px 14px;
+    }
+
+    .errorCard {
+        padding: 30px 20px 25px;
+
+        border-radius: 21px;
+    }
+
+    .errorIcon {
+        width: 62px;
+        height: 62px;
+
+        border-radius: 18px;
+    }
+
+    .errorIcon svg {
+        width: 38px;
+        height: 38px;
+    }
+
+    .errorTitle {
+        font-size: 1.35rem;
+    }
+
+    .errorText {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .errorCard,
+    .errorIcon,
+    .errorIcon svg,
+    .cardGlow,
+    .errorAccent i {
+        animation: none;
+    }
+}
