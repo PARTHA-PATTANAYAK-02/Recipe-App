@@ -11,6 +11,7 @@ import Home from "./components/Home/Home";
 import Drinksdetails from "./components/Drinks/Drinksdetails";
 import RandomPage from "./components/Drinks/RandomPage";
 import RandomRecipea from "./components/Recipes/RandomRecipea";
+import Favorite from "./components/Favorite";
 
 export default function App() {
   const [menu, setMenu] = useState(0);
@@ -23,9 +24,14 @@ export default function App() {
 
   const [drinkId, setDrinkId] = useState(null);
 
+  const [fromFavorites, setFromFavorites] = useState(false);
+
+  const [modalMeal, setModalMeal] = useState(null);
+
   const handleMenuChange = (index) => {
     setMenu(index);
     setQuery("");
+    setFromFavorites(false);
   };
 
   const handleRandomDrink = () => {
@@ -37,33 +43,73 @@ export default function App() {
   };
 
   const components = [
-    <Home />,
+    <Home
+      fromFavorites={fromFavorites}
+      setFromFavorites={setFromFavorites}
+      setMenu={setMenu}
+    />,
 
     foodId === null ? (
-      <RandomRecipea setFoodId={setFoodId} />
+      <RandomRecipea
+        setFoodId={setFoodId}
+        setFromFavorites={setFromFavorites}
+        setMenu={setMenu}
+      />
     ) : (
-      <RecipeaDetails foodId={foodId} handleRandomRecipe={handleRandomRecipe} />
+      <RecipeaDetails
+        foodId={foodId}
+        handleRandomRecipe={handleRandomRecipe}
+        fromFavorites={fromFavorites}
+        setFromFavorites={setFromFavorites}
+        setMenu={setMenu}
+      />
     ),
 
-    <Food query={query} foodSearchTrigger={foodSearchTrigger} />,
+    <Food
+      query={query}
+      foodSearchTrigger={foodSearchTrigger}
+      fromFavorites={fromFavorites}
+      setFromFavorites={setFromFavorites}
+      setMenu={setMenu}
+      modalMeal={modalMeal}
+      setModalMeal={setModalMeal}
+    />,
 
     <Ingredients
       query={query}
       ingredientSearchTrigger={ingredientSearchTrigger}
+      fromFavorites={fromFavorites}
     />,
 
     drinkId === null ? (
-      <RandomPage />
+      <RandomPage
+        fromFavorites={fromFavorites}
+        setFromFavorites={setFromFavorites}
+        setMenu={setMenu}
+      />
     ) : (
-      <Drinksdetails drinkId={drinkId} handleRandomDrink={handleRandomDrink} />
+      <Drinksdetails
+        drinkId={drinkId}
+        handleRandomDrink={handleRandomDrink}
+        fromFavorites={fromFavorites}
+        setFromFavorites={setFromFavorites}
+        setMenu={setMenu}
+      />
     ),
-  ];
 
+    <Favorite
+      setMenu={setMenu}
+      setFoodId={setFoodId}
+      setDrinkId={setDrinkId}
+      setFromFavorites={setFromFavorites}
+      setModalMeal={setModalMeal}
+    />,
+  ];
   return (
     <div className="main">
-      <Navbar setMenu={handleMenuChange} />
+      <Navbar setMenu={handleMenuChange} menuId={menu} />
 
-      {menu !== 0 && (
+      {menu !== 0 && menu !== 5 && (
         <Search
           query={query}
           setQuery={setQuery}

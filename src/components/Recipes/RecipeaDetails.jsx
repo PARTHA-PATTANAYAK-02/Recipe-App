@@ -5,6 +5,8 @@ import style from "../../css/Recipe/recipeadetails.module.css";
 import Loading from "../Loading";
 import ErrorComp from "../Error";
 import EmptyMessage from "../EmptyMessage";
+import FavoriteButton from "../FavoriteButton";
+import BackToFavorites from "../BackToFavorites";
 
 import {
   FaUtensils,
@@ -21,10 +23,27 @@ import {
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
+export default function RecipeaDetails({
+  foodId,
+  handleRandomRecipe,
+  fromFavorites,
+  setFromFavorites,
+  setMenu,
+}) {
   const [meal, setMeal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  const handleBackToFavorites = () => {
+    setFromFavorites(false);
+    setMenu(5);
+  };
 
   useEffect(() => {
     if (!foodId) {
@@ -104,6 +123,33 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
     dateModified,
   } = meal;
 
+  const isFavorite = favorites.some(
+    (item) => item.type === "recipe" && item.id === idMeal,
+  );
+
+  const addFavorite = () => {
+    const newFavorite = {
+      type: "recipe",
+      id: idMeal,
+      name: strMeal,
+      image: strMealThumb,
+    };
+
+    const updatedFavorites = [...favorites, newFavorite];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
+  const removeFavorite = () => {
+    const updatedFavorites = favorites.filter(
+      (item) => !(item.type === "recipe" && item.id === idMeal),
+    );
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
   const ingredients = [];
 
   for (let i = 1; i <= 20; i++) {
@@ -142,9 +188,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
       <div className={style.backgroundShapeTwo}></div>
 
       <div className={style.recipeContainer}>
-        {/* =================================================
-            DISCOVER RANDOM RECIPE BUTTON
-           ================================================= */}
+        {/* DISCOVER RANDOM RECIPE BUTTON */}
 
         <div className={style.discoverWrapper}>
           <button
@@ -162,9 +206,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           </button>
         </div>
 
-        {/* =================================================
-            HERO
-           ================================================= */}
+        {/* HERO */}
 
         <section className={style.heroSection}>
           <div className={style.heroImageArea}>
@@ -220,6 +262,15 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
               {strArea ? ` from ${strArea}` : ""}. Gather the ingredients,
               follow the steps, and make something worth sharing.
             </p>
+
+            <FavoriteButton
+              active={isFavorite}
+              onClick={isFavorite ? removeFavorite : addFavorite}
+            />
+
+            {fromFavorites && (
+              <BackToFavorites onClick={handleBackToFavorites} />
+            )}
 
             <div className={style.heroFacts}>
               {strCategory && (
@@ -278,9 +329,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           </div>
         </section>
 
-        {/* =================================================
-            RECIPE DETAILS
-           ================================================= */}
+        {/* RECIPE DETAILS */}
 
         <section className={style.overviewSection}>
           <div className={style.sectionHeading}>
@@ -288,7 +337,6 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
 
             <div>
               <span className={style.sectionEyebrow}>GET TO KNOW IT</span>
-
               <h2>Recipe details</h2>
             </div>
           </div>
@@ -357,9 +405,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           )}
         </section>
 
-        {/* =================================================
-            INGREDIENTS
-           ================================================= */}
+        {/* INGREDIENTS */}
 
         <section className={style.ingredientsSection}>
           <div className={style.sectionHeading}>
@@ -367,7 +413,6 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
 
             <div>
               <span className={style.sectionEyebrow}>GATHER FIRST</span>
-
               <h2>Everything you need</h2>
             </div>
 
@@ -394,7 +439,6 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
 
                   <div className={style.ingredientContent}>
                     <strong>{item.ingredient}</strong>
-
                     <span>{item.measure || "As needed"}</span>
                   </div>
 
@@ -405,15 +449,12 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           ) : (
             <div className={style.emptyIngredients}>
               <span>🥣</span>
-
               <p>Ingredient information is not available for this recipe.</p>
             </div>
           )}
         </section>
 
-        {/* =================================================
-            INSTRUCTIONS
-           ================================================= */}
+        {/* INSTRUCTIONS */}
 
         <section className={style.instructionsSection}>
           <div className={style.instructionsHeader}>
@@ -422,16 +463,13 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
 
               <div>
                 <span className={style.sectionEyebrow}>LET'S COOK</span>
-
                 <h2>How to make it</h2>
               </div>
             </div>
 
             <div className={style.instructionsMeta}>
               <span className={style.metaDot}></span>
-
               <strong>{instructions.length}</strong>
-
               <span>
                 {instructions.length === 1 ? "cooking step" : "cooking steps"}
               </span>
@@ -481,9 +519,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           ) : (
             <div className={style.emptyInstructions}>
               <span>👨‍🍳</span>
-
               <h3>Cooking instructions unavailable</h3>
-
               <p>We couldn't find step-by-step instructions for this recipe.</p>
             </div>
           )}
@@ -499,7 +535,6 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
 
                 <div>
                   <span>WANT TO SEE IT IN ACTION?</span>
-
                   <h3>Cook along with the recipe.</h3>
                 </div>
               </div>
@@ -517,9 +552,7 @@ export default function RecipeaDetails({ foodId, handleRandomRecipe }) {
           )}
         </section>
 
-        {/* =================================================
-            FINAL
-           ================================================= */}
+        {/* FINAL */}
 
         <section className={style.finalSection}>
           <div className={style.finalDecorOne}></div>

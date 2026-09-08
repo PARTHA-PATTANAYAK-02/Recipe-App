@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import style from "../../css/Home/home.module.css";
 import ErrorPage from "../Error";
 import Loading from "../Loading";
-
+import FavoriteButton from "../FavoriteButton";
+import BackToFavorites from "../BackToFavorites";
 import {
   RefreshCwIcon,
   CirclePlayIcon,
@@ -13,12 +14,21 @@ import {
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function Home() {
+export default function Home({ fromFavorites, setFromFavorites, setMenu }) {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+  const [isFavorite, setIsFavorite] = useState(false);
 
+  const handleBackToFavorites = () => {
+    setFromFavorites(false);
+    setMenu(5);
+  };
   const fetchRandomRecipe = async () => {
     try {
       setError(null);
@@ -50,6 +60,36 @@ export default function Home() {
     fetchRandomRecipe();
   }, []);
 
+  useEffect(() => {
+    if (!recipe) return;
+
+    const exists = favorites.some(
+      (item) => item.type === "recipe" && item.id === recipe.idMeal,
+    );
+
+    setIsFavorite(exists);
+  }, [recipe, favorites]);
+  const addFavorite = () => {
+    const newData = {
+      type: "recipe",
+      id: recipe.idMeal,
+      name: recipe.strMeal,
+      image: recipe.strMealThumb,
+    };
+    const updatedFavorites = [...favorites, newData];
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setIsFavorite(true);
+  };
+  const removeFavorite = () => {
+    const updatedFavorites = favorites.filter(
+      (item) => !(item.type === "recipe" && item.id === recipe.idMeal),
+    );
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setIsFavorite(false);
+  };
   const handleRefresh = () => {
     if (!isRefreshing) {
       fetchRandomRecipe();
@@ -166,6 +206,23 @@ export default function Home() {
               <p>
                 A recipe from <strong>{recipe.strArea}</strong> cuisine.
               </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "start",
+                  gap: "10px",
+                  marginTop: "10px",
+                }}
+              >
+                <FavoriteButton
+                  onClick={isFavorite ? removeFavorite : addFavorite}
+                  active={isFavorite}
+                />
+                {fromFavorites && (
+                  <BackToFavorites onClick={handleBackToFavorites} />
+                )}
+              </div>
             </header>
 
             {/* INGREDIENTS */}

@@ -1,9 +1,7 @@
-import { useState } from "react";
 import style from "../css/navbar.module.css";
 
-export default function Navbar({ setMenu }) {
-  const menu = ["Home", "Recipes", "Food", "Ingredients", "Drinks"];
-  const [active, setActive] = useState(0);
+export default function Navbar({ setMenu, menuId = 0 }) {
+  const menu = ["Home", "Recipes", "Food", "Ingredients", "Drinks", "Favorite"];
 
   return (
     <nav className={style.navbar}>
@@ -13,9 +11,7 @@ export default function Navbar({ setMenu }) {
       <div className={style.brand}>
         <div className={style.logoWrapper}>
           <span className={style.logoGlow}></span>
-
           <img className={style.logo} src="./logo.png" alt="Tastora" />
-
           <span className={style.logoRing}></span>
         </div>
 
@@ -29,24 +25,24 @@ export default function Navbar({ setMenu }) {
       <ul className={style.menu}>
         <span className={style.menuShine}></span>
 
-        {menu.map((val, index) => (
-          <li
-            key={val}
-            onClick={() => {
-              setActive(index);
-              setMenu(index);
-            }}
-            className={`${style.menuItem} ${
-              active === index ? style.active : ""
-            }`}
-          >
-            {active === index && <span className={style.activePill}></span>}
+        {menu.map((val, index) => {
+          // Check korchhi current item-ta active kina
+          const isActive = menuId === index;
 
-            <span className={style.menuText}>{val}</span>
+          return (
+            <li
+              key={val}
+              onClick={() => setMenu(index)}
+              className={`${style.menuItem} ${isActive ? style.active : ""}`}
+            >
+              {isActive && <span className={style.activePill}></span>}
 
-            {active === index && <span className={style.activeDot}></span>}
-          </li>
-        ))}
+              <span className={style.menuText}>{val}</span>
+
+              {isActive && <span className={style.activeDot}></span>}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

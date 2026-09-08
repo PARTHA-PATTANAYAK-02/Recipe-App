@@ -19,11 +19,18 @@ import {
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function Food({ query, foodSearchTrigger }) {
+export default function Food({
+  query,
+  foodSearchTrigger,
+  fromFavorites,
+  setFromFavorites,
+  setMenu,
+  modalMeal,
+  setModalMeal,
+}) {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [modalMeal, setModalMeal] = useState(null);
   const [visibleCount, setVisibleCount] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -125,7 +132,7 @@ export default function Food({ query, foodSearchTrigger }) {
   //     />
   //   );
   // }
-  if (!searchQuery && !meals.length) {
+  if (!searchQuery && !meals.length && !modalMeal) {
     return (
       <EmptyMessage
         msg1="Discover something delicious."
@@ -135,7 +142,7 @@ export default function Food({ query, foodSearchTrigger }) {
     );
   }
 
-  if (searchQuery && !meals.length) {
+  if (searchQuery && !meals.length && !modalMeal) {
     return (
       <EmptyMessage
         msg1="No food found."
@@ -390,7 +397,15 @@ export default function Food({ query, foodSearchTrigger }) {
           MODAL
       ================================================= */}
 
-      {modalMeal && <FoodModal data={modalMeal} onClose={closeMeal} />}
+      {modalMeal && (
+        <FoodModal
+          data={modalMeal}
+          onClose={closeMeal}
+          fromFavorites={fromFavorites}
+          setFromFavorites={setFromFavorites}
+          setMenu={setMenu}
+        />
+      )}
     </main>
   );
 }

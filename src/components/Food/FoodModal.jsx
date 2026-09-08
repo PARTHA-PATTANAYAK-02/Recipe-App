@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
+import { useEffect, useState } from "react";
 
 import style from "../../css/Food/modal.module.css";
-
+import FavoriteButton from "../FavoriteButton";
+import BackToFavorites from "../BackToFavorites";
 import {
   FaTimes,
   FaPlay,
@@ -14,7 +17,58 @@ import {
   FaTag,
 } from "react-icons/fa";
 
-export default function FoodModal({ data, onClose }) {
+export default function FoodModal({
+  data,
+  onClose,
+  fromFavorites,
+  setFromFavorites,
+  setMenu,
+}) {
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (!data) return;
+
+    const exists = favorites.some(
+      (item) => item.type === "food" && item.id === data.idMeal,
+    );
+
+    setIsFavorite(exists);
+  }, [data, favorites]);
+
+  const addFavorite = () => {
+    const newFavorite = {
+      type: "food",
+      id: data.idMeal,
+      name: data.strMeal,
+      image: data.strMealThumb,
+      data: data,
+    };
+
+    const updatedFavorites = [...favorites, newFavorite];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+  const removeFavorite = () => {
+    const updatedFavorites = favorites.filter(
+      (item) => !(item.type === "food" && item.id === data.idMeal),
+    );
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
+  const handleBackToFavorites = () => {
+    setFromFavorites(false);
+    setMenu(5);
+  };
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -179,6 +233,15 @@ export default function FoodModal({ data, onClose }) {
               ingredients below and follow the cooking steps to make it
               yourself.
             </p>
+
+            <FavoriteButton
+              active={isFavorite}
+              onClick={isFavorite ? removeFavorite : addFavorite}
+            />
+
+            {fromFavorites && (
+              <BackToFavorites onClick={handleBackToFavorites} />
+            )}
           </div>
 
           {/* =================================================

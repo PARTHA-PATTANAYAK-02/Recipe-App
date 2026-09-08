@@ -1,16 +1,64 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
 import style from "../../css/Drinks/random.module.css";
 import Loading from "../Loading";
 import ErrorPage from "../Error";
+import FavoriteButton from "../FavoriteButton";
+import BackToFavorites from "../BackToFavorites";
 import { useEffect, useState } from "react";
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
-export default function RandomPage() {
+export default function RandomPage({
+  fromFavorites,
+  setFromFavorites,
+  setMenu,
+}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+  const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    if (!data) return;
+
+    const exists = favorites.some(
+      (item) => item.type === "drink" && item.id === data.idDrink,
+    );
+
+    setIsFavorite(exists);
+  }, [data, favorites]);
+  const addFavorite = () => {
+    const newFavorite = {
+      type: "drink",
+      id: data.idDrink,
+      name: data.strDrink,
+      image: data.strDrinkThumb,
+      data: data,
+    };
+
+    const updatedFavorites = [...favorites, newFavorite];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+  const removeFavorite = () => {
+    const updatedFavorites = favorites.filter(
+      (item) => !(item.type === "drink" && item.id === data.idDrink),
+    );
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+  const handleBackToFavorites = () => {
+    setFromFavorites(false);
+    setMenu(5);
+  };
   useEffect(() => {
     async function fetchRandomDrink() {
       setLoading(true);
@@ -182,6 +230,15 @@ export default function RandomPage() {
               <p className={style.alternateName}>
                 Also known as {data.strDrinkAlternate}
               </p>
+            )}
+
+            <FavoriteButton
+              active={isFavorite}
+              onClick={isFavorite ? removeFavorite : addFavorite}
+            />
+
+            {fromFavorites && (
+              <BackToFavorites onClick={handleBackToFavorites} />
             )}
           </div>
 
