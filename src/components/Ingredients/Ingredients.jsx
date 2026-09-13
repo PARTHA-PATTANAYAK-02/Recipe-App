@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import EmptyMessage from "../EmptyMessage";
 import Loading from "../Loading";
 import Error from "../Error";
 import IngredientModal from "./IngredientModal";
 import style from "../../css/Ingredients/ingredients.module.css";
+import { ChevronDownIcon } from "@animateicons/react/lucide";
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 const IMAGE_URL = import.meta.env.VITE_MEAL_IMAGE_URL;
@@ -20,10 +21,15 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [sort, setSort] = useState("default");
+
+  const chevronRef = useRef(null);
+
   useEffect(() => {
     if (!query.trim()) {
       setData([]);
       setError("");
+      setSort("default");
       return;
     }
 
@@ -50,6 +56,7 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
 
         setData(filteredIngredients);
         setVisibleCount(12);
+        setSort("default");
       } catch (error) {
         setError(error.message);
         setData([]);
@@ -82,6 +89,19 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 12);
+  };
+
+  const handleSortChange = (event) => {
+    setSort(event.target.value);
+    setVisibleCount(12);
+  };
+
+  const handleSortMouseEnter = () => {
+    chevronRef.current?.startAnimation();
+  };
+
+  const handleSortMouseLeave = () => {
+    chevronRef.current?.stopAnimation();
   };
 
   const getImageUrl = (ingredientName) => {
@@ -120,8 +140,23 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
     );
   }
 
-  const visibleItems = data.slice(0, visibleCount);
-  const hasMore = visibleCount < data.length;
+  const sortedData = [...data].sort((a, b) => {
+    const ingredientA = a.strIngredient?.trim() || "";
+    const ingredientB = b.strIngredient?.trim() || "";
+
+    if (sort === "az") {
+      return ingredientA.localeCompare(ingredientB);
+    }
+
+    if (sort === "za") {
+      return ingredientB.localeCompare(ingredientA);
+    }
+
+    return 0;
+  });
+
+  const visibleItems = sortedData.slice(0, visibleCount);
+  const hasMore = visibleCount < sortedData.length;
 
   return (
     <div className={style.pageWrapper}>
@@ -164,10 +199,39 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
             </div>
 
             <div className={style.showingCount}>
-              Showing <strong>{Math.min(visibleCount, data.length)}</strong> of{" "}
-              {data.length}
+              Showing{" "}
+              <strong>{Math.min(visibleCount, sortedData.length)}</strong> of{" "}
+              {sortedData.length}
             </div>
           </div>
+
+          {/* SORT */}
+          {data.length > 0 && (
+            <div className={style.sortBar}>
+              <span className={style.sortLabel}>SORT</span>
+
+              <div
+                className={style.sortSelectWrapper}
+                onMouseEnter={handleSortMouseEnter}
+                onMouseLeave={handleSortMouseLeave}
+              >
+                <select
+                  value={sort}
+                  onChange={handleSortChange}
+                  className={style.sortSelect}
+                  aria-label="Sort ingredients"
+                >
+                  <option value="default">Default</option>
+                  <option value="az">A → Z</option>
+                  <option value="za">Z → A</option>
+                </select>
+
+                <span className={style.sortArrow} aria-hidden="true">
+                  <ChevronDownIcon ref={chevronRef} size={16} duration={0.7} />
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* GRID */}
           <div className={style.grid}>
@@ -250,7 +314,7 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
               >
                 <span>Load More Ingredients</span>
 
-                <small>{data.length - visibleCount} left</small>
+                <small>{sortedData.length - visibleCount} left</small>
 
                 <b>↓</b>
               </button>

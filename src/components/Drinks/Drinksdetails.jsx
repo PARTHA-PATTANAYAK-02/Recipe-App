@@ -6,6 +6,7 @@ import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import BackToFavorites from "../BackToFavorites";
+import MealPlannerButton from "../new/MealPlannerButton";
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
 export default function Drinksdetails({
@@ -287,6 +288,15 @@ export default function Drinksdetails({
             {fromFavorites && (
               <BackToFavorites onClick={handleBackToFavorites} />
             )}
+            <MealPlannerButton
+              meal={{
+                type: "drink",
+                id: data.idDrink,
+                name: data.strDrink,
+                image: data.strDrinkThumb,
+                data: data,
+              }}
+            />
             <div className={style.infoGrid}>
               <div className={style.infoCard}>
                 <div className={style.infoIcon}>🥂</div>

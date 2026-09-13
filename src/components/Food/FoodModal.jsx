@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import style from "../../css/Food/modal.module.css";
 import FavoriteButton from "../FavoriteButton";
 import BackToFavorites from "../BackToFavorites";
+import MealPlannerButton from "../new/MealPlannerButton";
 import {
   FaTimes,
   FaPlay,
@@ -242,6 +243,15 @@ export default function FoodModal({
             {fromFavorites && (
               <BackToFavorites onClick={handleBackToFavorites} />
             )}
+            <MealPlannerButton
+              meal={{
+                type: "food",
+                id: data.idMeal,
+                name: data.strMeal,
+                image: data.strMealThumb,
+                data: data,
+              }}
+            />
           </div>
 
           {/* =================================================

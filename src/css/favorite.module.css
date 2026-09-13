@@ -1101,3 +1101,238 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================================
+   FILTER NAVBAR
+   ========================================================= */
+
+.filterNav {
+    position: relative;
+    z-index: 10;
+
+    max-width: 1200px;
+    margin: 0 auto 34px;
+
+    display: flex;
+    justify-content: flex-start;
+
+    animation:
+        filterNavReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.filterNavInner {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 5px;
+
+    border: 1px solid #dfe7da;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 10px 28px rgba(55, 75, 45, 0.055),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(14px);
+}
+
+.filterButton {
+    position: relative;
+
+    min-height: 37px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 8px 15px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #7d8978;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.filterButton:hover {
+    color: #557845;
+
+    background: #f3f7ef;
+
+    border-color: #e1eadc;
+
+    transform: translateY(-1px);
+}
+
+.filterButton:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.filterIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    color: currentColor;
+
+    font-size: 11px;
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease,
+        color 0.25s ease;
+}
+
+.filterButton:hover .filterIcon {
+    transform: scale(1.12);
+}
+
+.activeFilter {
+    border-color: #557845;
+
+    background: #557845;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 15px rgba(85, 120, 69, 0.17);
+}
+
+.activeFilter:hover {
+    border-color: #557845;
+
+    background: #557845;
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(85, 120, 69, 0.2);
+}
+
+.activeFilter .filterIcon {
+    color: #f4c95d;
+}
+
+.activeFilter:hover .filterIcon {
+    transform: rotate(8deg) scale(1.1);
+}
+
+.filterButton:focus-visible {
+    outline: 3px solid rgba(85, 120, 69, 0.16);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   FILTER ANIMATION
+   ========================================================= */
+
+@keyframes filterNavReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   FILTER RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .filterNav {
+        width: 100%;
+        margin-bottom: 27px;
+
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .filterNav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filterNavInner {
+        flex-shrink: 0;
+        max-width: 100%;
+
+        padding: 4px;
+
+        border-radius: 13px;
+    }
+
+    .filterButton {
+        min-height: 35px;
+
+        padding: 7px 12px;
+
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .filterNav {
+        margin-bottom: 24px;
+    }
+
+    .filterButton {
+        gap: 5px;
+        padding: 7px 10px;
+        font-size: 9px;
+    }
+
+    .filterIcon {
+        width: 14px;
+        height: 14px;
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .filterNav {
+        animation: none;
+    }
+
+    .filterButton,
+    .filterIcon {
+        transition: none;
+    }
+}

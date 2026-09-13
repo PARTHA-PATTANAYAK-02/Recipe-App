@@ -7,7 +7,7 @@ import ErrorComp from "../Error";
 import EmptyMessage from "../EmptyMessage";
 import FavoriteButton from "../FavoriteButton";
 import BackToFavorites from "../BackToFavorites";
-
+import MealPlannerButton from "../new/MealPlannerButton";
 import {
   FaUtensils,
   FaGlobeAmericas,
@@ -271,6 +271,14 @@ export default function RecipeaDetails({
             {fromFavorites && (
               <BackToFavorites onClick={handleBackToFavorites} />
             )}
+            <MealPlannerButton
+              meal={{
+                type: "recipe",
+                id: idMeal,
+                name: strMeal,
+                image: strMealThumb,
+              }}
+            />
 
             <div className={style.heroFacts}>
               {strCategory && (

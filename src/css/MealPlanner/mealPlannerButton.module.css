@@ -1,0 +1,1839 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap");
+
+
+/* =========================================================
+   PLANNER BUTTON
+========================================================= */
+
+.plannerButton {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(85, 123, 69, 0.28);
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #3f6034;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 18px rgba(47, 45, 38, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.plannerButton::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.75),
+            transparent);
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.55s ease;
+}
+
+
+.plannerButton:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(85, 123, 69, 0.48);
+
+    background: #fdfefb;
+
+    box-shadow:
+        0 12px 25px rgba(47, 45, 38, 0.1);
+}
+
+
+.plannerButton:hover::before {
+    left: 140%;
+}
+
+
+.plannerButton:active {
+    transform:
+        translateY(0);
+}
+
+
+.plus {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #557b45;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.plannerButton:hover .plus {
+    transform:
+        rotate(90deg) scale(1.08);
+
+    box-shadow:
+        0 4px 10px rgba(85, 123, 69, 0.2);
+}
+
+
+/* =========================================================
+   FULL PAGE OVERLAY
+========================================================= */
+
+/*
+   IMPORTANT:
+   This element is rendered directly into BODY
+   using React Portal.
+
+   So it is independent from the component/card
+   where MealPlannerButton lives.
+*/
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2147483647;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    background:
+        rgba(35, 39, 31, 0.52);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    animation:
+        overlayIn 0.25s ease both;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: relative;
+
+    width: min(480px,
+            calc(100vw - 40px));
+
+    max-height:
+        calc(100vh - 40px);
+
+    max-height:
+        calc(100dvh - 40px);
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 27px;
+
+    border: 1px solid rgba(85, 123, 69, 0.16);
+
+    border-radius: 20px;
+
+    background: #fffdf9;
+
+    box-shadow:
+        0 30px 80px rgba(35, 39, 31, 0.24),
+
+        0 8px 25px rgba(35, 39, 31, 0.08);
+
+    animation:
+        modalIn 0.35s cubic-bezier(0.2,
+            0.8,
+            0.2,
+            1) both;
+}
+
+
+.modal::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.modal::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background:
+        rgba(85, 123, 69, 0.25);
+}
+
+
+.modal {
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(85, 123, 69, 0.25) transparent;
+}
+
+
+/* =========================================================
+   MODAL GLOW
+========================================================= */
+
+.modalGlow {
+    position: absolute;
+
+    top: -90px;
+    right: -70px;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(244, 201, 93, 0.2);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    animation:
+        glowMove 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.modalHeader {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #557b45;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+}
+
+
+.modalHeader h2 {
+    margin: 0;
+
+    color: #2f2d26;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+.modalHeader p {
+    margin: 8px 0 0;
+
+    color: #77746b;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.closeButton {
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 31px;
+    height: 31px;
+
+    padding: 0;
+
+    border: 1px solid rgba(47, 45, 38, 0.1);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #66635b;
+
+    font-size: 21px;
+
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.closeButton:hover:not(:disabled) {
+    transform:
+        rotate(90deg) scale(1.05);
+
+    border-color:
+        rgba(85, 123, 69, 0.25);
+
+    background: #557b45;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 15px rgba(85, 123, 69, 0.18);
+}
+
+
+.closeButton:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MEAL PREVIEW
+========================================================= */
+
+.mealPreview {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 23px;
+
+    padding: 10px;
+
+    border: 1px solid rgba(85, 123, 69, 0.12);
+
+    border-radius: 13px;
+
+    background: #f7f4ed;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.mealPreview:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(85, 123, 69, 0.25);
+
+    box-shadow:
+        0 8px 20px rgba(47, 45, 38, 0.06);
+}
+
+
+.mealPreview img {
+    flex: 0 0 auto;
+
+    width: 56px;
+    height: 56px;
+
+    border-radius: 10px;
+
+    object-fit: cover;
+
+    box-shadow:
+        0 5px 14px rgba(47, 45, 38, 0.1);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.mealPreview:hover img {
+    transform:
+        scale(1.06) rotate(-2deg);
+}
+
+
+.previewInfo {
+    min-width: 0;
+}
+
+
+.previewInfo span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #e58a43;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+
+    text-transform: uppercase;
+}
+
+
+.previewInfo h3 {
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #3f3d35;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+.formGroup {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.formGroup label,
+.formLabel {
+    color: #77746b;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.selectWrapper {
+    position: relative;
+}
+
+
+.select {
+    width: 100%;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    padding: 12px 40px 12px 13px;
+
+    border: 1px solid rgba(85, 123, 69, 0.18);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #3f3d35;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(47, 45, 38, 0.035);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.select:hover:not(:disabled) {
+    border-color:
+        rgba(85, 123, 69, 0.38);
+}
+
+
+.select:focus {
+    border-color:
+        #557b45;
+
+    box-shadow:
+        0 0 0 3px rgba(85, 123, 69, 0.1);
+}
+
+
+.select:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+.selectArrow {
+    position: absolute;
+
+    top: 50%;
+    right: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transform:
+        translateY(-50%);
+
+    color: #557b45;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.selectWrapper:hover .selectArrow {
+    transform:
+        translateY(-50%) translateY(-1px);
+}
+
+
+.selectArrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* =========================================================
+   MEAL OPTIONS
+========================================================= */
+
+.mealOptions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+
+.mealOption {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 43px;
+
+    padding: 0 8px;
+
+    border: 1px solid rgba(85, 123, 69, 0.14);
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+
+.mealOption:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(85, 123, 69, 0.35);
+
+    box-shadow:
+        0 7px 17px rgba(85, 123, 69, 0.08);
+}
+
+
+.mealOption.selected {
+    border-color:
+        rgba(85, 123, 69, 0.55);
+
+    background:
+        rgba(85, 123, 69, 0.07);
+
+    box-shadow:
+        0 6px 16px rgba(85, 123, 69, 0.08);
+}
+
+
+.mealOption input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.radio {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 13px;
+    height: 13px;
+
+    margin-right: 7px;
+
+    border: 1.5px solid #aaa79e;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.mealOption:hover .radio {
+    transform: scale(1.08);
+}
+
+
+.mealOption.selected .radio {
+    border-color:
+        #557b45;
+}
+
+
+.mealOption.selected .radio::after {
+    content: "";
+
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #557b45;
+
+    animation:
+        radioPop 0.25s ease both;
+}
+
+
+.optionText {
+    color: #4c4a43;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   OCCUPIED
+========================================================= */
+
+.mealOption.disabledOption {
+    cursor: not-allowed;
+
+    opacity: 0.62;
+
+    background: #f4f2ec;
+
+    border-color:
+        rgba(47, 45, 38, 0.08);
+}
+
+
+.mealOption.disabledOption:hover {
+    transform: none;
+
+    border-color:
+        rgba(47, 45, 38, 0.08);
+
+    box-shadow: none;
+}
+
+
+.mealOption.disabledOption .radio {
+    border-color:
+        #aaa79e;
+}
+
+
+.mealOption.disabledOption .optionText {
+    color: #77746b;
+}
+
+
+.usedBadge {
+    margin-left: auto;
+
+    padding: 4px 6px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(85, 123, 69, 0.09);
+
+    color: #557b45;
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ALREADY PLANNED
+========================================================= */
+
+.alreadyPlanned {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 11px 12px;
+
+    border: 1px solid rgba(85, 123, 69, 0.16);
+
+    border-radius: 11px;
+
+    background:
+        rgba(85, 123, 69, 0.055);
+
+    animation:
+        infoIn 0.25s ease both;
+}
+
+
+.alreadyIcon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #557b45;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    animation:
+        checkPop 0.4s ease both;
+}
+
+
+.alreadyContent {
+    min-width: 0;
+}
+
+
+.alreadyTitle {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #557b45;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+}
+
+
+.plannedLocations {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+
+.plannedLocation {
+    display: inline-flex;
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #69665e;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.plannedLocation:hover {
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(47, 45, 38, 0.06);
+}
+
+
+/* =========================================================
+   SLOT WARNING
+========================================================= */
+
+.slotWarning {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: -10px;
+
+    padding-left: 2px;
+
+    animation:
+        warningIn 0.25s ease both;
+}
+
+
+.slotWarning>span {
+    color: #e58a43;
+
+    font-size: 13px;
+
+    line-height: 1;
+
+    animation:
+        warningPulse 1.5s ease-in-out infinite;
+}
+
+
+.slotWarning p {
+    margin: 0;
+
+    color: #817d72;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(47, 45, 38, 0.07);
+}
+
+
+.cancelButton,
+.addButton {
+    min-height: 39px;
+
+    padding: 0 17px;
+
+    border-radius: 10px;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.cancelButton {
+    border: 1px solid rgba(47, 45, 38, 0.1);
+
+    background: #ffffff;
+
+    color: #69665e;
+}
+
+
+.cancelButton:hover:not(:disabled) {
+    transform:
+        translateY(-2px);
+
+    background: #f7f5ef;
+
+    box-shadow:
+        0 6px 14px rgba(47, 45, 38, 0.06);
+}
+
+
+.cancelButton:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.addButton {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-width: 105px;
+
+    border: 1px solid #557b45;
+
+    background: #557b45;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(85, 123, 69, 0.2);
+}
+
+
+.addButton>span:not(.spinner) {
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.addButton:hover:not(:disabled) {
+    transform:
+        translateY(-2px);
+
+    background: #3f6034;
+
+    box-shadow:
+        0 11px 24px rgba(85, 123, 69, 0.27);
+}
+
+
+.addButton:active:not(:disabled) {
+    transform:
+        translateY(0);
+}
+
+
+.addButton:disabled {
+    border-color:
+        rgba(85, 123, 69, 0.18);
+
+    background: #d9ddd5;
+
+    color: #747970;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.spinner {
+    width: 12px;
+    height: 12px;
+
+    border:
+        1.5px solid rgba(255, 255, 255, 0.35);
+
+    border-top-color:
+        #ffffff;
+
+    border-radius: 50%;
+
+    animation:
+        spin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   SUCCESS STATE
+========================================================= */
+
+.successState {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 390px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    animation:
+        successIn 0.4s cubic-bezier(0.2,
+            0.8,
+            0.2,
+            1) both;
+}
+
+
+.successState::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50px;
+    left: 50%;
+
+    width: 210px;
+    height: 210px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(85, 123, 69, 0.07);
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    animation:
+        successGlow 2s ease-in-out infinite;
+}
+
+
+.successCircle {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 76px;
+    height: 76px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(85, 123, 69, 0.25);
+
+    border-radius: 50%;
+
+    background: #557b45;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 0 8px rgba(85, 123, 69, 0.07),
+
+        0 15px 35px rgba(85, 123, 69, 0.22);
+
+    animation:
+        successCircleIn 0.55s cubic-bezier(0.2,
+            1.3,
+            0.4,
+            1) both;
+}
+
+
+.successCircle::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -10px;
+
+    border: 1px solid rgba(85, 123, 69, 0.15);
+
+    border-radius: 50%;
+
+    animation:
+        successRing 1s ease-out 0.15s both;
+}
+
+
+.successCircle svg {
+    width: 28px;
+    height: 28px;
+}
+
+
+.successEyebrow {
+    position: relative;
+
+    margin-bottom: 7px;
+
+    color: #557b45;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.successState h2 {
+    position: relative;
+
+    margin: 0;
+
+    color: #2f2d26;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+.successState p {
+    position: relative;
+
+    margin: 10px 0 17px;
+
+    color: #77746b;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.successState p strong {
+    color: #3f6034;
+
+    font-weight: 800;
+}
+
+
+.successLocation {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border: 1px solid rgba(85, 123, 69, 0.13);
+
+    border-radius: 9px;
+
+    background: #f7f4ed;
+
+    color: #557b45;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.3px;
+
+    animation:
+        locationIn 0.35s ease 0.15s both;
+}
+
+
+.successLocation i {
+    color: #aaa79e;
+
+    font-style: normal;
+}
+
+
+.successProgress {
+    position: absolute;
+
+    bottom: 6px;
+    left: 50%;
+
+    width: 100px;
+    height: 2px;
+
+    overflow: hidden;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 10px;
+
+    background:
+        rgba(85, 123, 69, 0.1);
+}
+
+
+.successProgress span {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    transform-origin: left;
+
+    background: #557b45;
+
+    animation:
+        successProgress 1.5s linear both;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes overlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(22px) scale(0.965);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}
+
+
+@keyframes infoIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes warningIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes warningPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform:
+            scale(1.25);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes radioPop {
+    from {
+        transform:
+            scale(0);
+    }
+
+    to {
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes checkPop {
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.5);
+    }
+
+    70% {
+        transform:
+            scale(1.12);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes spin {
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes glowMove {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-15px, 15px) scale(1.08);
+    }
+}
+
+
+@keyframes successIn {
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes successCircleIn {
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.4);
+    }
+
+    70% {
+        transform:
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes successRing {
+    from {
+        opacity: 1;
+
+        transform:
+            scale(0.75);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            scale(1.35);
+    }
+}
+
+
+@keyframes locationIn {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes successProgress {
+    from {
+        transform:
+            scaleX(1);
+    }
+
+    to {
+        transform:
+            scaleX(0);
+    }
+}
+
+
+@keyframes successGlow {
+
+    0%,
+    100% {
+        opacity: 0.7;
+
+        transform:
+            translateX(-50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%) scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .plannerButton {
+        min-height: 38px;
+
+        padding: 0 13px;
+
+        font-size: 9px;
+    }
+
+
+    .overlay {
+        padding: 14px;
+    }
+
+
+    .modal {
+        width:
+            min(480px,
+                calc(100vw - 28px));
+
+        max-height:
+            calc(100vh - 28px);
+
+        max-height:
+            calc(100dvh - 28px);
+
+        padding: 21px;
+
+        border-radius: 17px;
+    }
+
+
+    .modalHeader {
+        gap: 12px;
+    }
+
+
+    .modalHeader h2 {
+        font-size: 23px;
+    }
+
+
+    .modalHeader p {
+        font-size: 9px;
+    }
+
+
+    .mealPreview {
+        margin-bottom: 20px;
+    }
+
+
+    .mealPreview img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .mealOptions {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .mealOption {
+        justify-content: flex-start;
+
+        padding: 0 13px;
+    }
+
+
+    .usedBadge {
+        margin-left: auto;
+    }
+
+
+    .actions {
+        margin-top: 21px;
+    }
+
+
+    .cancelButton,
+    .addButton {
+        flex: 1;
+    }
+
+
+    .successState {
+        min-height: 350px;
+    }
+
+
+    .successState h2 {
+        font-size: 25px;
+    }
+
+
+    .successCircle {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-width: 380px) {
+    .modal {
+        padding: 18px;
+    }
+
+
+    .modalHeader h2 {
+        font-size: 21px;
+    }
+
+
+    .mealPreview {
+        gap: 10px;
+    }
+
+
+    .mealPreview img {
+        width: 46px;
+        height: 46px;
+    }
+
+
+    .previewInfo h3 {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .plannerButton,
+    .plannerButton::before,
+    .plus,
+    .overlay,
+    .modal,
+    .modalGlow,
+    .mealPreview,
+    .mealPreview img,
+    .closeButton,
+    .mealOption,
+    .radio,
+    .alreadyPlanned,
+    .alreadyIcon,
+    .slotWarning,
+    .slotWarning>span,
+    .cancelButton,
+    .addButton,
+    .spinner,
+    .successState,
+    .successState::before,
+    .successCircle,
+    .successCircle::before,
+    .successLocation,
+    .successProgress span {
+        animation: none !important;
+
+        transition: none !important;
+    }
+}

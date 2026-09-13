@@ -1071,3 +1071,425 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================================
+   FILTER + SORT BAR
+   ========================================================= */
+
+.filterSortBar {
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 11px 13px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 7px 20px rgba(44, 43, 36, 0.035);
+
+    animation:
+        filterReveal 0.45s ease both;
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+   ========================================================= */
+
+.categoryFilter {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.filterHeading {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.filterHeading span {
+    margin: 0;
+
+    color: var(--light-muted);
+
+    font-size: 7px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    white-space: nowrap;
+}
+
+.categoryList {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+.categoryList::-webkit-scrollbar {
+    display: none;
+}
+
+.categoryButton {
+    flex: 0 0 auto;
+
+    min-height: 31px;
+
+    padding: 6px 12px;
+
+    border: 1px solid #e3e1d8;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    color: var(--muted);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.22s ease,
+        background 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.categoryButton:hover {
+    color: var(--green);
+
+    background: var(--green-soft);
+
+    border-color: #cfddc8;
+
+    transform: translateY(-1px);
+}
+
+.categoryButton:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.activeCategory {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 13px rgba(85, 123, 69, 0.16);
+}
+
+.activeCategory:hover {
+    background: var(--green-dark);
+
+    border-color: var(--green-dark);
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+.categoryButton:focus-visible {
+    outline: 3px solid rgba(85, 123, 69, 0.16);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SORT
+   ========================================================= */
+
+.sortControl {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.sortLabel {
+    color: var(--light-muted);
+
+    font-size: 7px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    white-space: nowrap;
+}
+
+.sortSelectWrapper {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+.sortSelect {
+    appearance: none;
+
+    min-width: 100px;
+
+    height: 31px;
+
+    padding: 0 28px 0 11px;
+
+    border: 1px solid #e3e1d8;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.sortSelect:hover {
+    border-color: #cfddc8;
+
+    background: var(--green-soft);
+}
+
+.sortSelect:focus {
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 0 3px rgba(85, 123, 69, 0.1);
+}
+
+.sortArrow {
+    position: absolute;
+
+    right: 10px;
+
+    pointer-events: none;
+
+    color: var(--green);
+
+    font-size: 12px;
+
+    line-height: 1;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NO CATEGORY RESULTS
+   ========================================================= */
+
+.noCategoryResults {
+    min-height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 8px;
+
+    border: 1px dashed var(--border);
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    color: var(--muted);
+
+    text-align: center;
+
+    animation:
+        filterReveal 0.4s ease both;
+}
+
+.noCategoryResults span {
+    color: var(--orange);
+
+    font-size: 17px;
+}
+
+.noCategoryResults p {
+    margin: 0;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FILTER ANIMATION
+   ========================================================= */
+
+@keyframes filterReveal {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   FILTER + SORT — TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+    .filterSortBar {
+        gap: 12px;
+    }
+
+    .categoryFilter {
+        gap: 12px;
+    }
+
+    .sortLabel {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   FILTER + SORT — MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+    .filterSortBar {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+
+        padding: 10px;
+    }
+
+    .categoryFilter {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .filterHeading span {
+        font-size: 6px;
+
+        letter-spacing: 1.3px;
+    }
+
+    .categoryList {
+        width: 100%;
+
+        gap: 5px;
+
+        padding-bottom: 2px;
+    }
+
+    .categoryButton {
+        min-height: 29px;
+
+        padding: 6px 10px;
+
+        font-size: 7px;
+    }
+
+    .sortControl {
+        width: 100%;
+
+        justify-content: space-between;
+
+        padding-top: 8px;
+
+        border-top: 1px solid var(--border);
+    }
+
+    .sortLabel {
+        display: block;
+
+        font-size: 6px;
+    }
+
+    .sortSelectWrapper {
+        flex: 1;
+
+        justify-content: flex-end;
+    }
+
+    .sortSelect {
+        min-width: 115px;
+
+        height: 30px;
+
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .filterSortBar,
+    .noCategoryResults {
+        animation: none;
+    }
+
+    .categoryButton,
+    .sortSelect {
+        transition: none;
+    }
+}

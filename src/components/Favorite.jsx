@@ -28,6 +28,17 @@ export default function Favorite({
   });
 
   /* =======================================================
+     FILTER
+     ======================================================= */
+
+  const [filter, setFilter] = useState("all");
+
+  const filteredFavorites =
+    filter === "all"
+      ? favorites
+      : favorites.filter((item) => item.type === filter);
+
+  /* =======================================================
      REALTIME FAVORITES UPDATE
      ======================================================= */
 
@@ -91,6 +102,14 @@ export default function Favorite({
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
+  /* =======================================================
+     FILTER CHANGE
+     ======================================================= */
+
+  const handleFilterChange = (value) => {
+    setFilter(value);
+  };
+
   return (
     <main className={style.favoritePage}>
       {/* ================= BACKGROUND ================= */}
@@ -134,6 +153,62 @@ export default function Favorite({
         </div>
       </section>
 
+      {/* ================= FILTER NAVBAR ================= */}
+
+      {favorites.length > 0 && (
+        <nav className={style.filterNav} aria-label="Favorite filters">
+          <div className={style.filterNavInner}>
+            <button
+              className={`${style.filterButton} ${
+                filter === "all" ? style.activeFilter : ""
+              }`}
+              type="button"
+              onClick={() => handleFilterChange("all")}
+              aria-pressed={filter === "all"}
+            >
+              <span className={style.filterIcon}>✦</span>
+              <span>All</span>
+            </button>
+
+            <button
+              className={`${style.filterButton} ${
+                filter === "recipe" ? style.activeFilter : ""
+              }`}
+              type="button"
+              onClick={() => handleFilterChange("recipe")}
+              aria-pressed={filter === "recipe"}
+            >
+              <span className={style.filterIcon}>🍽️</span>
+              <span>Recipes</span>
+            </button>
+
+            <button
+              className={`${style.filterButton} ${
+                filter === "food" ? style.activeFilter : ""
+              }`}
+              type="button"
+              onClick={() => handleFilterChange("food")}
+              aria-pressed={filter === "food"}
+            >
+              <span className={style.filterIcon}>🍕</span>
+              <span>Food</span>
+            </button>
+
+            <button
+              className={`${style.filterButton} ${
+                filter === "drink" ? style.activeFilter : ""
+              }`}
+              type="button"
+              onClick={() => handleFilterChange("drink")}
+              aria-pressed={filter === "drink"}
+            >
+              <span className={style.filterIcon}>🍷</span>
+              <span>Drinks</span>
+            </button>
+          </div>
+        </nav>
+      )}
+
       {/* ================= FAVORITES ================= */}
 
       {favorites.length === 0 ? (
@@ -170,9 +245,31 @@ export default function Favorite({
             <span className={style.exploreArrow}>→</span>
           </button>
         </section>
+      ) : filteredFavorites.length === 0 ? (
+        <section className={style.emptyState}>
+          <div className={style.emptyDecorOne}></div>
+          <div className={style.emptyDecorTwo}></div>
+
+          <div className={style.emptyIcon}>
+            <span>♡</span>
+          </div>
+
+          <span className={style.emptyEyebrow}>NOTHING IN THIS COLLECTION</span>
+
+          <h2>
+            No {filter === "recipe" ? "recipes" : filter}
+            <span> saved.</span>
+          </h2>
+
+          <p>
+            You haven&apos;t saved any{" "}
+            {filter === "recipe" ? "recipes" : filter} yet. Explore more and add
+            something you love to your favorites.
+          </p>
+        </section>
       ) : (
         <section className={style.favoriteGrid}>
-          {favorites.map((item, index) => (
+          {filteredFavorites.map((item, index) => (
             <FavoriteCard
               key={`${item.type}-${item.id}`}
               item={item}

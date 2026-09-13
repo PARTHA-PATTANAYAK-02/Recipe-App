@@ -5,6 +5,7 @@ import ErrorPage from "../Error";
 import Loading from "../Loading";
 import FavoriteButton from "../FavoriteButton";
 import BackToFavorites from "../BackToFavorites";
+import MealPlannerButton from "../new/MealPlannerButton";
 import {
   RefreshCwIcon,
   CirclePlayIcon,
@@ -222,6 +223,14 @@ export default function Home({ fromFavorites, setFromFavorites, setMenu }) {
                 {fromFavorites && (
                   <BackToFavorites onClick={handleBackToFavorites} />
                 )}
+                <MealPlannerButton
+                  meal={{
+                    type: "recipe",
+                    id: recipe.idMeal,
+                    name: recipe.strMeal,
+                    image: recipe.strMealThumb,
+                  }}
+                />
               </div>
             </header>
 

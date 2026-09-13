@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
 
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 .pageWrapper {
     --background: #f8f6f0;
     --surface: #ffffff;
@@ -27,6 +32,11 @@
     position: relative;
     overflow: hidden;
 }
+
+
+/* =========================================================
+   DECORATION
+========================================================= */
 
 .pageWrapper::before {
     content: "";
@@ -65,7 +75,9 @@
 }
 
 
-/* CONTAINER */
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 .container {
     width: min(1450px, 92%);
@@ -81,7 +93,9 @@
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
     margin-bottom: 65px;
@@ -165,7 +179,7 @@
 
     font-size: clamp(45px, 5vw, 72px);
 
-    line-height: 1.02;
+    line-height: 1;
 
     letter-spacing: -2.5px;
 
@@ -212,7 +226,9 @@
 }
 
 
-/* RESULTS */
+/* =========================================================
+   RESULTS
+========================================================= */
 
 .resultsSection {
     margin-bottom: 75px;
@@ -276,7 +292,132 @@
 }
 
 
-/* GRID */
+/* =========================================================
+   SORT BAR
+========================================================= */
+
+.sortBar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: -8px;
+    margin-bottom: 24px;
+}
+
+.sortLabel {
+    color: var(--muted);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.sortSelectWrapper {
+    position: relative;
+
+    min-width: 135px;
+
+    display: flex;
+    align-items: center;
+}
+
+.sortSelect {
+    width: 100%;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding: 9px 36px 9px 13px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    color: var(--text);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    outline: none;
+
+    box-shadow:
+        0 6px 16px rgba(47, 45, 38, 0.035);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.sortSelect:hover {
+    border-color: rgba(85, 123, 69, 0.38);
+
+    box-shadow:
+        0 9px 22px rgba(47, 45, 38, 0.065);
+
+    transform: translateY(-1px);
+}
+
+.sortSelect:focus {
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 0 3px rgba(85, 123, 69, 0.1),
+        0 8px 20px rgba(47, 45, 38, 0.06);
+}
+
+.sortArrow {
+    position: absolute;
+
+    top: 50%;
+    right: 11px;
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    color: var(--green);
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.sortArrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.sortSelectWrapper:hover .sortArrow {
+    color: var(--green-dark);
+
+    transform: translateY(-50%) scale(1.08);
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
 
 .grid {
     display: grid;
@@ -288,7 +429,9 @@
 }
 
 
-/* CARD */
+/* =========================================================
+   CARD
+========================================================= */
 
 .card {
     background: var(--surface);
@@ -321,7 +464,9 @@
 }
 
 
-/* IMAGE */
+/* =========================================================
+   IMAGE
+========================================================= */
 
 .cardImageWrapper {
     position: relative;
@@ -468,7 +613,9 @@
 }
 
 
-/* CARD BODY */
+/* =========================================================
+   CARD BODY
+========================================================= */
 
 .cardBody {
     padding: 20px 21px 18px;
@@ -566,7 +713,9 @@
 }
 
 
-/* LOAD MORE */
+/* =========================================================
+   LOAD MORE
+========================================================= */
 
 .loadMoreWrapper {
     display: flex;
@@ -657,7 +806,9 @@
 }
 
 
-/* BANNER */
+/* =========================================================
+   BANNER
+========================================================= */
 
 .bottomBanner {
     position: relative;
@@ -740,7 +891,9 @@
 }
 
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer {
     display: flex;
@@ -763,7 +916,9 @@
 }
 
 
-/* ANIMATIONS */
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 @keyframes pageEntrance {
     from {
@@ -830,7 +985,9 @@
 }
 
 
-/* TABLET */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 1150px) {
     .grid {
@@ -842,6 +999,11 @@
         gap: 40px;
     }
 }
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
 
 @media (max-width: 850px) {
     .container {
@@ -867,7 +1029,9 @@
 }
 
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
     .container {
@@ -909,6 +1073,49 @@
     .sectionHeader h2 {
         font-size: 34px;
     }
+
+    /* SORT */
+
+    .sortBar {
+        justify-content: flex-start;
+
+        margin-top: -3px;
+        margin-bottom: 18px;
+
+        gap: 8px;
+    }
+
+    .sortLabel {
+        font-size: 7px;
+
+        letter-spacing: 1.3px;
+    }
+
+    .sortSelectWrapper {
+        min-width: 125px;
+    }
+
+    .sortSelect {
+        padding: 8px 33px 8px 11px;
+
+        border-radius: 10px;
+
+        font-size: 8px;
+    }
+
+    .sortArrow {
+        right: 9px;
+
+        width: 17px;
+        height: 17px;
+    }
+
+    .sortArrow svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    /* GRID */
 
     .grid {
         grid-template-columns:
@@ -977,7 +1184,9 @@
 }
 
 
-/* SMALL MOBILE */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media (max-width: 420px) {
     .grid {
@@ -1011,7 +1220,9 @@
 }
 
 
-/* REDUCE MOTION */
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 

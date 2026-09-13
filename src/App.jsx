@@ -12,7 +12,7 @@ import Drinksdetails from "./components/Drinks/Drinksdetails";
 import RandomPage from "./components/Drinks/RandomPage";
 import RandomRecipea from "./components/Recipes/RandomRecipea";
 import Favorite from "./components/Favorite";
-
+import MealPlanner from "./components/new/MealPlanner";
 export default function App() {
   const [menu, setMenu] = useState(0);
   const [query, setQuery] = useState("");
@@ -104,12 +104,18 @@ export default function App() {
       setFromFavorites={setFromFavorites}
       setModalMeal={setModalMeal}
     />,
+    <MealPlanner
+      setMenu={setMenu}
+      setFoodId={setFoodId}
+      setDrinkId={setDrinkId}
+      setModalMeal={setModalMeal}
+    />,
   ];
   return (
     <div className="main">
       <Navbar setMenu={handleMenuChange} menuId={menu} />
 
-      {menu !== 0 && menu !== 5 && (
+      {menu !== 0 && menu !== 5 && menu !== 6 && (
         <Search
           query={query}
           setQuery={setQuery}

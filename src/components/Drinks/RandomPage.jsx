@@ -5,6 +5,7 @@ import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import BackToFavorites from "../BackToFavorites";
+import MealPlannerButton from "../new/MealPlannerButton";
 import { useEffect, useState } from "react";
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
@@ -240,6 +241,15 @@ export default function RandomPage({
             {fromFavorites && (
               <BackToFavorites onClick={handleBackToFavorites} />
             )}
+            <MealPlannerButton
+              meal={{
+                type: "drink",
+                id: data.idDrink,
+                name: data.strDrink,
+                image: data.strDrinkThumb,
+                data: data,
+              }}
+            />
           </div>
 
           {/* ================= QUICK INFO ================= */}

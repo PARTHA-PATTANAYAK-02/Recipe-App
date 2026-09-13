@@ -21,7 +21,7 @@
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);
 
-    z-index: 999999;
+    z-index: 999998;
 
     animation: backdropIn 0.25s ease both;
 }

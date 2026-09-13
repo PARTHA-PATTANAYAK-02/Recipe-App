@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useState } from "react";
-
 import style from "../../css/Food/food.module.css";
 
 import Loading from "../Loading";
@@ -28,11 +27,31 @@ export default function Food({
   modalMeal,
   setModalMeal,
 }) {
+  /* =======================================================
+     STATES
+     ======================================================= */
+
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
+
+  /* =======================================================
+     CATEGORY FILTER
+     ======================================================= */
+
+  const [filter, setFilter] = useState("all");
+
+  /* =======================================================
+     SORT
+     ======================================================= */
+
+  const [sort, setSort] = useState("default");
+
+  /* =======================================================
+     FETCH FOOD
+     ======================================================= */
 
   useEffect(() => {
     if (!query?.trim()) {
@@ -47,6 +66,10 @@ export default function Food({
         setError("");
         setMeals([]);
         setVisibleCount(12);
+
+        // Every new search starts from the default state.
+        setFilter("all");
+        setSort("default");
 
         const res = await fetch(
           `${URL}/search.php?s=${encodeURIComponent(query)}`,
@@ -81,6 +104,10 @@ export default function Food({
     setSearchQuery(query);
   }, [foodSearchTrigger]);
 
+  /* =======================================================
+     MODAL BODY SCROLL
+     ======================================================= */
+
   useEffect(() => {
     document.body.style.overflow = modalMeal ? "hidden" : "unset";
 
@@ -89,49 +116,120 @@ export default function Food({
     };
   }, [modalMeal]);
 
-  const visibleMeals = meals.slice(0, visibleCount);
+  /* =======================================================
+     AVAILABLE CATEGORIES
+     
+     Categories are generated only from the current
+     search results. Nothing is hard-coded.
+     ======================================================= */
 
-  const hasMore = visibleCount < meals.length;
+  const categories = [
+    "all",
+    ...Array.from(
+      new Set(meals.map((meal) => meal.strCategory?.trim()).filter(Boolean)),
+    ),
+  ];
+
+  /* =======================================================
+     CATEGORY FILTER
+     ======================================================= */
+
+  const filteredMeals =
+    filter === "all"
+      ? meals
+      : meals.filter((meal) => meal.strCategory?.trim() === filter);
+
+  /* =======================================================
+     SORT FILTERED MEALS
+     
+     Important:
+     Sort is applied AFTER category filtering.
+     So if Chicken is selected, A-Z/Z-A only sorts
+     the Chicken recipes.
+     ======================================================= */
+
+  const sortedMeals = [...filteredMeals].sort((a, b) => {
+    if (sort === "az") {
+      return a.strMeal.localeCompare(b.strMeal);
+    }
+
+    if (sort === "za") {
+      return b.strMeal.localeCompare(a.strMeal);
+    }
+
+    return 0;
+  });
+
+  /* =======================================================
+     VISIBLE MEALS
+     ======================================================= */
+
+  const visibleMeals = sortedMeals.slice(0, visibleCount);
+
+  const hasMore = visibleCount < sortedMeals.length;
+
+  /* =======================================================
+     FILTER CHANGE
+     ======================================================= */
+
+  const handleFilterChange = (category) => {
+    setFilter(category);
+    setVisibleCount(12);
+  };
+
+  /* =======================================================
+     SORT CHANGE
+     ======================================================= */
+
+  const handleSortChange = (event) => {
+    setSort(event.target.value);
+    setVisibleCount(12);
+  };
+
+  /* =======================================================
+     LOAD MORE
+     ======================================================= */
 
   const loadMore = () => {
     setVisibleCount((prev) => prev + 12);
   };
 
+  /* =======================================================
+     OPEN MODAL
+     ======================================================= */
+
   const openMeal = (meal) => {
     setModalMeal(meal);
   };
+
+  /* =======================================================
+     CLOSE MODAL
+     ======================================================= */
 
   const closeMeal = () => {
     setModalMeal(null);
   };
 
+  /* =======================================================
+     LOADING
+     ======================================================= */
+
   if (loading) {
     return <Loading />;
   }
+
+  /* =======================================================
+     ERROR
+     ======================================================= */
 
   if (error) {
     return <Error error={error} />;
   }
 
-  // if (!query?.trim() && !meals) {
-  //   return (
-  //     <EmptyMessage
-  //       msg1="Discover something delicious."
-  //       msg2="Search for a food and explore recipes from around the world."
-  //       emoji="🍽️"
-  //     />
-  //   );
-  // }
+  /* =======================================================
+     EMPTY — INITIAL
+     ======================================================= */
 
-  // if (!meals.length) {
-  //   return (
-  //     <EmptyMessage
-  //       msg1="No food found."
-  //       msg2={`We couldn't find any recipe for "${query}". Try another search.`}
-  //       emoji="🥣"
-  //     />
-  //   );
-  // }
   if (!searchQuery && !meals.length && !modalMeal) {
     return (
       <EmptyMessage
@@ -142,6 +240,10 @@ export default function Food({
     );
   }
 
+  /* =======================================================
+     EMPTY — SEARCH RESULT
+     ======================================================= */
+
   if (searchQuery && !meals.length && !modalMeal) {
     return (
       <EmptyMessage
@@ -151,6 +253,10 @@ export default function Food({
       />
     );
   }
+
+  /* =======================================================
+     UI
+     ======================================================= */
 
   return (
     <main className={style.pageWrapper}>
@@ -188,7 +294,7 @@ export default function Food({
         </header>
 
         {/* =================================================
-            SMALL INFO BAR
+            INFO BAR
         ================================================= */}
 
         <div className={style.infoBar}>
@@ -211,7 +317,7 @@ export default function Food({
             <span className={style.infoDivider}>/</span>
 
             <span>
-              <strong>{meals.length}</strong> recipes
+              <strong>{sortedMeals.length}</strong> recipes
             </span>
           </div>
         </div>
@@ -234,110 +340,174 @@ export default function Food({
             <p>Click a card to explore the complete recipe.</p>
           </div>
 
-          <div className={style.foodGrid}>
-            {visibleMeals.map((meal, index) => {
-              const ingredientCount = getIngredients(meal).length;
+          {/* =================================================
+              FILTER + SORT
+          ================================================= */}
 
-              const hasVideo = Boolean(meal.strYoutube?.trim());
+          {categories.length > 1 && (
+            <div className={style.filterSortBar}>
+              {/* ================= CATEGORY FILTER ================= */}
 
-              return (
-                <article
-                  key={meal.idMeal}
-                  className={style.foodCard}
-                  style={{
-                    "--card-delay": `${index * 0.045}s`,
-                  }}
-                  onClick={() => openMeal(meal)}
-                >
-                  {/* IMAGE */}
+              <div className={style.categoryFilter}>
+                <div className={style.filterHeading}>
+                  <span>FILTER BY</span>
+                </div>
 
-                  <div className={style.cardImage}>
-                    {meal.strMealThumb ? (
-                      <img
-                        src={meal.strMealThumb}
-                        alt={meal.strMeal}
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none";
-
-                          if (e.currentTarget.nextElementSibling) {
-                            e.currentTarget.nextElementSibling.style.display =
-                              "flex";
-                          }
-                        }}
-                      />
-                    ) : null}
-
-                    <div
-                      className={style.imageFallback}
-                      style={{
-                        display: meal.strMealThumb ? "none" : "flex",
-                      }}
+                <div className={style.categoryList}>
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      type="button"
+                      className={`${style.categoryButton} ${
+                        filter === category ? style.activeCategory : ""
+                      }`}
+                      onClick={() => handleFilterChange(category)}
+                      aria-pressed={filter === category}
                     >
-                      🍽️
-                    </div>
+                      {category === "all" ? "All" : category}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-                    <div className={style.imageOverlay}></div>
+              {/* ================= SORT ================= */}
 
-                    <span className={style.cardNumber}>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+              <div className={style.sortControl}>
+                <span className={style.sortLabel}>SORT</span>
 
-                    {hasVideo && (
-                      <span className={style.videoBadge}>
-                        <FaPlay />
-                        VIDEO
+                <div className={style.sortSelectWrapper}>
+                  <select
+                    value={sort}
+                    onChange={handleSortChange}
+                    className={style.sortSelect}
+                    aria-label="Sort recipes"
+                  >
+                    <option value="default">Default</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                  </select>
+
+                  <span className={style.sortArrow}>⌄</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* =================================================
+              FILTERED + SORTED FOOD GRID
+          ================================================= */}
+
+          {sortedMeals.length > 0 ? (
+            <div className={style.foodGrid}>
+              {visibleMeals.map((meal, index) => {
+                const ingredientCount = getIngredients(meal).length;
+
+                const hasVideo = Boolean(meal.strYoutube?.trim());
+
+                return (
+                  <article
+                    key={meal.idMeal}
+                    className={style.foodCard}
+                    style={{
+                      "--card-delay": `${index * 0.045}s`,
+                    }}
+                    onClick={() => openMeal(meal)}
+                  >
+                    {/* IMAGE */}
+
+                    <div className={style.cardImage}>
+                      {meal.strMealThumb ? (
+                        <img
+                          src={meal.strMealThumb}
+                          alt={meal.strMeal}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.style.display = "none";
+
+                            if (e.currentTarget.nextElementSibling) {
+                              e.currentTarget.nextElementSibling.style.display =
+                                "flex";
+                            }
+                          }}
+                        />
+                      ) : null}
+
+                      <div
+                        className={style.imageFallback}
+                        style={{
+                          display: meal.strMealThumb ? "none" : "flex",
+                        }}
+                      >
+                        🍽️
+                      </div>
+
+                      <div className={style.imageOverlay}></div>
+
+                      <span className={style.cardNumber}>
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                    )}
 
-                    <span className={style.viewBadge}>
-                      VIEW RECIPE
-                      <FaArrowRight />
-                    </span>
-                  </div>
-
-                  {/* BODY */}
-
-                  <div className={style.cardBody}>
-                    <div className={style.cardMeta}>
-                      {meal.strCategory && <span>{meal.strCategory}</span>}
-
-                      {meal.strArea && (
-                        <span className={style.areaMeta}>
-                          <FaGlobeAmericas />
-                          {meal.strArea}
+                      {hasVideo && (
+                        <span className={style.videoBadge}>
+                          <FaPlay />
+                          VIDEO
                         </span>
                       )}
-                    </div>
 
-                    <h3>{meal.strMeal}</h3>
-
-                    <div className={style.cardDetails}>
-                      <div>
-                        <FaUtensils />
-
-                        <span>{ingredientCount} ingredients</span>
-                      </div>
-
-                      {meal.strCountry && (
-                        <div>
-                          <span>{meal.strCountry}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className={style.cardFooter}>
-                      <span>Explore recipe</span>
-
-                      <div className={style.footerArrow}>
+                      <span className={style.viewBadge}>
+                        VIEW RECIPE
                         <FaArrowRight />
+                      </span>
+                    </div>
+
+                    {/* BODY */}
+
+                    <div className={style.cardBody}>
+                      <div className={style.cardMeta}>
+                        {meal.strCategory && <span>{meal.strCategory}</span>}
+
+                        {meal.strArea && (
+                          <span className={style.areaMeta}>
+                            <FaGlobeAmericas />
+                            {meal.strArea}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3>{meal.strMeal}</h3>
+
+                      <div className={style.cardDetails}>
+                        <div>
+                          <FaUtensils />
+
+                          <span>{ingredientCount} ingredients</span>
+                        </div>
+
+                        {meal.strCountry && (
+                          <div>
+                            <span>{meal.strCountry}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className={style.cardFooter}>
+                        <span>Explore recipe</span>
+
+                        <div className={style.footerArrow}>
+                          <FaArrowRight />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className={style.noCategoryResults}>
+              <span>✦</span>
+              <p>No recipes found in this category.</p>
+            </div>
+          )}
 
           {/* =================================================
               LOAD MORE
@@ -353,7 +523,7 @@ export default function Food({
                 <span>Load More Recipes</span>
 
                 <small>
-                  {visibleMeals.length} / {meals.length}
+                  {visibleMeals.length} / {sortedMeals.length}
                 </small>
 
                 <FaArrowRight />
@@ -387,7 +557,7 @@ export default function Food({
         <footer className={style.footer}>
           <span>FOOD DISCOVERY</span>
 
-          <span>{meals.length} recipes</span>
+          <span>{sortedMeals.length} recipes</span>
 
           <span>Made for food lovers ✦</span>
         </footer>
@@ -412,7 +582,7 @@ export default function Food({
 
 /* =========================================================
    HELPERS
-========================================================= */
+   ========================================================= */
 
 function getIngredients(meal) {
   const ingredients = [];

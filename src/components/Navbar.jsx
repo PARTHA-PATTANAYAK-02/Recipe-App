@@ -1,49 +1,338 @@
+import { useEffect, useRef, useState } from "react";
 import style from "../css/navbar.module.css";
 
+import { ChevronDownIcon, ArrowRightIcon } from "@animateicons/react/lucide";
+
 export default function Navbar({ setMenu, menuId = 0 }) {
-  const menu = ["Home", "Recipes", "Food", "Ingredients", "Drinks", "Favorite"];
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const moreRef = useRef(null);
+  const moreArrowRef = useRef(null);
+
+  const primaryMenu = [
+    { index: 0, label: "Home" },
+    { index: 1, label: "Recipes" },
+    { index: 2, label: "Food" },
+    { index: 4, label: "Drinks" },
+  ];
+
+  const moreMenu = [
+    {
+      index: 3,
+      label: "Ingredients",
+      description: "Explore ingredients",
+      icon: "✦",
+    },
+    {
+      index: 5,
+      label: "Favorite",
+      description: "Your saved recipes",
+      icon: "♡",
+    },
+    {
+      index: 6,
+      label: "Meal Planner",
+      description: "Plan your weekly meals",
+      icon: "◒",
+    },
+  ];
+
+  const isMoreActive = moreMenu.some((item) => item.index === menuId);
+
+  /* ---------------------------------------------
+     CLOSE MORE WHEN CLICKING OUTSIDE
+  --------------------------------------------- */
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (moreRef.current && !moreRef.current.contains(event.target)) {
+        setIsMoreOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  /* ---------------------------------------------
+     ESCAPE KEY
+  --------------------------------------------- */
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key !== "Escape") return;
+
+      setIsMoreOpen(false);
+      setIsMobileOpen(false);
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  /* ---------------------------------------------
+     MENU SELECT
+  --------------------------------------------- */
+
+  const handleMenuSelect = (index) => {
+    setMenu(index);
+    setIsMoreOpen(false);
+    setIsMobileOpen(false);
+  };
+
+  /* ---------------------------------------------
+     MORE ARROW ANIMATION
+  --------------------------------------------- */
+
+  const handleMoreMouseEnter = () => {
+    moreArrowRef.current?.startAnimation();
+  };
+
+  const handleMoreMouseLeave = () => {
+    moreArrowRef.current?.stopAnimation();
+  };
+
+  /* ---------------------------------------------
+     DROPDOWN ARROW ANIMATION
+  --------------------------------------------- */
+
+  const handleArrowMouseEnter = (event) => {
+    const svg = event.currentTarget.querySelector("svg");
+
+    svg?.startAnimation?.();
+  };
+
+  const handleArrowMouseLeave = (event) => {
+    const svg = event.currentTarget.querySelector("svg");
+
+    svg?.stopAnimation?.();
+  };
+
+  /* ---------------------------------------------
+     TOGGLES
+  --------------------------------------------- */
+
+  const handleMoreToggle = () => {
+    setIsMoreOpen((prev) => !prev);
+  };
+
+  const handleMobileToggle = () => {
+    setIsMobileOpen((prev) => !prev);
+    setIsMoreOpen(false);
+  };
 
   return (
-    <nav className={style.navbar}>
-      <div className={style.topShine}></div>
+    <nav
+      className={`${style.navbar} ${isMobileOpen ? style.mobileMenuOpen : ""}`}
+    >
+      {/* -----------------------------------------
+          BRAND
+      ----------------------------------------- */}
 
-      {/* ---------- Brand ---------- */}
-      <div className={style.brand}>
+      <button
+        type="button"
+        className={style.brand}
+        onClick={() => handleMenuSelect(0)}
+        aria-label="Go to Home"
+      >
         <div className={style.logoWrapper}>
-          <span className={style.logoGlow}></span>
           <img className={style.logo} src="./logo.png" alt="Tastora" />
-          <span className={style.logoRing}></span>
         </div>
 
         <div className={style.brandText}>
           <h2 className={style.name}>Tastora</h2>
+
           <span className={style.tagline}>Taste • Discover • Enjoy</span>
         </div>
+      </button>
+
+      {/* -----------------------------------------
+          DESKTOP NAVIGATION
+      ----------------------------------------- */}
+
+      <div className={style.desktopNavigation}>
+        <ul className={style.menu}>
+          {primaryMenu.map((item) => {
+            const isActive = menuId === item.index;
+
+            return (
+              <li key={item.index}>
+                <button
+                  type="button"
+                  className={`${style.menuItem} ${
+                    isActive ? style.active : ""
+                  }`}
+                  onClick={() => handleMenuSelect(item.index)}
+                >
+                  <span>{item.label}</span>
+                </button>
+              </li>
+            );
+          })}
+
+          {/* MORE */}
+
+          <li ref={moreRef} className={style.moreWrapper}>
+            <button
+              type="button"
+              className={`${style.moreButton} ${
+                isMoreActive ? style.moreActive : ""
+              }`}
+              onClick={handleMoreToggle}
+              onMouseEnter={handleMoreMouseEnter}
+              onMouseLeave={handleMoreMouseLeave}
+              aria-expanded={isMoreOpen}
+              aria-haspopup="menu"
+            >
+              <span>More</span>
+
+              <ChevronDownIcon ref={moreArrowRef} size={15} duration={0.7} />
+            </button>
+
+            {/* DROPDOWN */}
+
+            {isMoreOpen && (
+              <div className={style.moreDropdown} role="menu">
+                <div className={style.dropdownHeader}>
+                  <div>
+                    <span>EXPLORE</span>
+                    <strong>More from Tastora</strong>
+                  </div>
+                </div>
+
+                <div className={style.dropdownItems}>
+                  {moreMenu.map((item) => {
+                    const isActive = menuId === item.index;
+
+                    return (
+                      <button
+                        key={item.index}
+                        type="button"
+                        className={`${style.dropdownItem} ${
+                          isActive ? style.dropdownItemActive : ""
+                        }`}
+                        onClick={() => handleMenuSelect(item.index)}
+                        onMouseEnter={handleArrowMouseEnter}
+                        onMouseLeave={handleArrowMouseLeave}
+                        role="menuitem"
+                      >
+                        <span className={style.dropdownIcon}>{item.icon}</span>
+
+                        <span className={style.dropdownContent}>
+                          <strong>{item.label}</strong>
+
+                          <small>{item.description}</small>
+                        </span>
+
+                        <span
+                          className={style.dropdownArrow}
+                          aria-hidden="true"
+                        >
+                          <ArrowRightIcon size={15} duration={0.7} />
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </li>
+        </ul>
       </div>
 
-      {/* ---------- Menu ---------- */}
-      <ul className={style.menu}>
-        <span className={style.menuShine}></span>
+      {/* -----------------------------------------
+          MOBILE BUTTON
+      ----------------------------------------- */}
 
-        {menu.map((val, index) => {
-          // Check korchhi current item-ta active kina
-          const isActive = menuId === index;
+      <button
+        type="button"
+        className={style.mobileToggle}
+        onClick={handleMobileToggle}
+        aria-label={isMobileOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={isMobileOpen}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-          return (
-            <li
-              key={val}
-              onClick={() => setMenu(index)}
-              className={`${style.menuItem} ${isActive ? style.active : ""}`}
-            >
-              {isActive && <span className={style.activePill}></span>}
+      {/* -----------------------------------------
+          MOBILE NAVIGATION
+      ----------------------------------------- */}
 
-              <span className={style.menuText}>{val}</span>
+      {isMobileOpen && (
+        <div className={style.mobileNavigation}>
+          <div className={style.mobileNavIntro}>
+            <span>MENU</span>
 
-              {isActive && <span className={style.activeDot}></span>}
-            </li>
-          );
-        })}
-      </ul>
+            <small>Taste • Discover • Enjoy</small>
+          </div>
+
+          <div className={style.mobilePrimary}>
+            <span className={style.mobileSectionTitle}>MAIN</span>
+
+            {primaryMenu.map((item) => {
+              const isActive = menuId === item.index;
+
+              return (
+                <button
+                  key={item.index}
+                  type="button"
+                  className={`${style.mobileMenuItem} ${
+                    isActive ? style.mobileActive : ""
+                  }`}
+                  onClick={() => handleMenuSelect(item.index)}
+                  onMouseEnter={handleArrowMouseEnter}
+                  onMouseLeave={handleArrowMouseLeave}
+                >
+                  <span>{item.label}</span>
+
+                  <span className={style.mobileArrow} aria-hidden="true">
+                    <ArrowRightIcon size={15} duration={0.7} />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className={style.mobileMore}>
+            <span className={style.mobileSectionTitle}>EXPLORE</span>
+
+            {moreMenu.map((item) => {
+              const isActive = menuId === item.index;
+
+              return (
+                <button
+                  key={item.index}
+                  type="button"
+                  className={`${style.mobileMenuItem} ${
+                    isActive ? style.mobileActive : ""
+                  }`}
+                  onClick={() => handleMenuSelect(item.index)}
+                  onMouseEnter={handleArrowMouseEnter}
+                  onMouseLeave={handleArrowMouseLeave}
+                >
+                  <span className={style.mobileItemLeft}>
+                    <i>{item.icon}</i>
+                    {item.label}
+                  </span>
+
+                  <span className={style.mobileArrow} aria-hidden="true">
+                    <ArrowRightIcon size={15} duration={0.7} />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
