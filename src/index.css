@@ -1,0 +1,26 @@
+/* =========================================================
+   GLOBAL SCROLLBAR
+========================================================= */
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #557b45 #f5f2e9;
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #f5f2e9;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #557b45;
+    border-radius: 999px;
+    border: 2px solid #f5f2e9;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #3f6034;
+}

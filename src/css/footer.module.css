@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -14,6 +15,8 @@
 
     padding: 55px 30px 20px;
 
+    box-sizing: border-box;
+
     overflow: hidden;
 
     background:
@@ -25,7 +28,8 @@
             transparent 30%),
         #f5f2e9;
 
-    border: 1px solid #b489b3;
+    border: 1px solid #ded9cd;
+
     border-radius: 10px;
 
     color: #292a23;
@@ -56,8 +60,7 @@
 .mainContent {
     display: grid;
 
-    grid-template-columns:
-        1fr 1.4fr auto;
+    grid-template-columns: 1fr 1.4fr;
 
     align-items: center;
 
@@ -84,6 +87,7 @@
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -92,8 +96,6 @@
     border-radius: 16px;
 
     color: white;
-
-    font-size: 19px;
 
     box-shadow:
         0 10px 25px rgba(85, 123, 69, 0.18);
@@ -148,7 +150,7 @@
 ========================================================= */
 
 .text {
-    max-width: 390px;
+    max-width: 430px;
 
     margin: 0;
 
@@ -157,59 +159,6 @@
     font-size: 13px;
 
     line-height: 1.7;
-}
-
-
-/* =========================================================
-   NAVIGATION LINKS
-========================================================= */
-
-.links {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.links a {
-    position: relative;
-
-    padding: 9px 13px;
-
-    border: 1px solid #ddd9ce;
-
-    border-radius: 999px;
-
-    background: rgba(255, 255, 255, 0.65);
-
-    color: #5e6257;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.links a:hover {
-    background: #557b45;
-
-    border-color: #557b45;
-
-    color: white;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 18px rgba(85, 123, 69, 0.16);
 }
 
 
@@ -247,12 +196,19 @@
     gap: 20px;
 }
 
-.bottom p {
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.copyright {
     display: flex;
 
     align-items: center;
 
-    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    flex-wrap: nowrap;
 
     gap: 4px;
 
@@ -263,10 +219,17 @@
     font-size: 10px;
 
     font-weight: 600;
+
+    line-height: 1;
+
+    white-space: nowrap;
 }
 
+
+/* Heart */
+
 .heart {
-    margin: 0 2px;
+    flex-shrink: 0;
 
     color: #e58a43;
 
@@ -306,8 +269,11 @@
     height: 34px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    box-sizing: border-box;
 
     border: 1px solid #ddd9ce;
 
@@ -352,10 +318,13 @@
     height: 34px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     flex-shrink: 0;
+
+    box-sizing: border-box;
 
     border: 1px solid #ddd9ce;
 
@@ -399,6 +368,7 @@
     position: absolute;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -469,6 +439,7 @@
     }
 }
 
+
 @keyframes floatLeaf {
 
     0%,
@@ -480,6 +451,7 @@
         transform: rotate(-20deg) translateY(-8px);
     }
 }
+
 
 @keyframes floatLeafReverse {
 
@@ -511,10 +483,6 @@
 
     .text {
         max-width: 100%;
-    }
-
-    .links {
-        justify-content: flex-start;
     }
 }
 
@@ -552,12 +520,6 @@
         font-size: 12px;
     }
 
-    .links {
-        justify-content: center;
-
-        flex-wrap: wrap;
-    }
-
     .bottom {
         flex-direction: column;
 
@@ -566,8 +528,12 @@
         gap: 15px;
     }
 
-    .bottom p {
+    .copyright {
         justify-content: center;
+
+        width: 100%;
+
+        font-size: 10px;
     }
 
     .bottomActions {
@@ -593,12 +559,6 @@
         font-size: 21px;
     }
 
-    .links a {
-        padding: 8px 11px;
-
-        font-size: 10px;
-    }
-
     .text {
         font-size: 11px;
     }
@@ -607,6 +567,10 @@
     .topButton {
         width: 32px;
         height: 32px;
+    }
+
+    .copyright {
+        font-size: 9px;
     }
 }
 
