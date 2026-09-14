@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useParams } from "react-router-dom";
+
 import "./App.css";
 
 import Navbar from "./components/Navbar";
@@ -19,6 +20,44 @@ import Drinksdetails from "./components/Drinks/Drinksdetails";
 import Favorite from "./components/Favorite";
 import MealPlanner from "./components/new/MealPlanner";
 
+import NotFound from "./components/NotFound";
+
+/* =========================================================
+   RECIPE DETAILS ROUTE
+========================================================= */
+
+function RecipeDetailsRoute() {
+  const { id } = useParams();
+
+  const isValidId = /^\d+$/.test(id);
+
+  if (!isValidId) {
+    return <NotFound />;
+  }
+
+  return <RecipeaDetails />;
+}
+
+/* =========================================================
+   DRINK DETAILS ROUTE
+========================================================= */
+
+function DrinkDetailsRoute() {
+  const { id } = useParams();
+
+  const isValidId = /^\d+$/.test(id);
+
+  if (!isValidId) {
+    return <NotFound />;
+  }
+
+  return <Drinksdetails />;
+}
+
+/* =========================================================
+   APP CONTENT
+========================================================= */
+
 function AppContent() {
   const location = useLocation();
 
@@ -28,6 +67,10 @@ function AppContent() {
   const [ingredientSearchTrigger, setIngredientSearchTrigger] = useState(0);
 
   const [modalMeal, setModalMeal] = useState(null);
+
+  /* =======================================================
+     SEARCH MENU
+  ======================================================= */
 
   const getSearchMenu = () => {
     const path = location.pathname;
@@ -55,9 +98,17 @@ function AppContent() {
 
   const showSearch = searchMenu !== 0;
 
+  /* =======================================================
+     RENDER
+  ======================================================= */
+
   return (
     <div className="main">
       <Navbar />
+
+      {/* =================================================
+          SEARCH
+      ================================================= */}
 
       {showSearch && (
         <Search
@@ -69,6 +120,10 @@ function AppContent() {
         />
       )}
 
+      {/* =================================================
+          ROUTES
+      ================================================= */}
+
       <Routes>
         {/* ================= HOME ================= */}
 
@@ -78,7 +133,7 @@ function AppContent() {
 
         <Route path="/recipes" element={<RandomRecipea />} />
 
-        <Route path="/recipes/:id" element={<RecipeaDetails />} />
+        <Route path="/recipes/:id" element={<RecipeDetailsRoute />} />
 
         {/* ================= FOOD ================= */}
 
@@ -110,7 +165,7 @@ function AppContent() {
 
         <Route path="/drinks" element={<RandomPage />} />
 
-        <Route path="/drinks/:id" element={<Drinksdetails />} />
+        <Route path="/drinks/:id" element={<DrinkDetailsRoute />} />
 
         {/* ================= FAVORITES ================= */}
 
@@ -126,15 +181,19 @@ function AppContent() {
           element={<MealPlanner setModalMeal={setModalMeal} />}
         />
 
-        {/* ================= FALLBACK ================= */}
+        {/* ================= INVALID / UNKNOWN URL ================= */}
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
     </div>
   );
 }
+
+/* =========================================================
+   APP
+========================================================= */
 
 export default function App() {
   return <AppContent />;

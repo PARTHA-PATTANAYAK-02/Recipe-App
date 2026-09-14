@@ -1,0 +1,1028 @@
+/* =========================================================
+   NOT FOUND PAGE
+========================================================= */
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 70px 30px;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(circle at 20% 25%,
+            rgba(244, 201, 93, 0.12),
+            transparent 28%),
+        radial-gradient(circle at 82% 70%,
+            rgba(85, 123, 69, 0.08),
+            transparent 30%),
+        #fafbf5;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.glowOne,
+.glowTwo {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+}
+
+.glowOne {
+    width: 300px;
+    height: 300px;
+    top: -130px;
+    left: 8%;
+
+    background: rgba(244, 201, 93, 0.16);
+
+    animation: glowFloatOne 8s ease-in-out infinite;
+}
+
+.glowTwo {
+    width: 360px;
+    height: 360px;
+    right: -160px;
+    bottom: -140px;
+
+    background: rgba(85, 123, 69, 0.12);
+
+    animation: glowFloatTwo 10s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   LARGE BACKGROUND CIRCLES
+========================================================= */
+
+.circleOne,
+.circleTwo {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.circleOne {
+    width: 265px;
+    height: 265px;
+
+    top: 48px;
+    left: 7%;
+
+    border: 1px solid rgba(85, 123, 69, 0.09);
+
+    animation: circleFloatOne 9s ease-in-out infinite;
+}
+
+.circleTwo {
+    width: 320px;
+    height: 320px;
+
+    right: 5%;
+    bottom: -155px;
+
+    border: 1px solid rgba(229, 138, 67, 0.13);
+
+    animation: circleFloatTwo 11s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FLOATING FOOD DECORATIONS
+========================================================= */
+
+.foodFloat {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
+    line-height: 1;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 1;
+
+    filter: drop-shadow(0 8px 12px rgba(63, 96, 52, 0.12));
+
+    animation: foodFloat 5s ease-in-out infinite;
+}
+
+
+/* Lemon */
+
+.foodOne {
+    top: 23%;
+    left: 17%;
+
+    animation-delay: -0.5s;
+    transform: rotate(-8deg);
+}
+
+
+/* Leaf */
+
+.foodTwo {
+    top: 34%;
+    left: 11%;
+
+    font-size: 24px;
+
+    animation-delay: -2s;
+    transform: rotate(10deg);
+}
+
+
+/* Tomato */
+
+.foodThree {
+    right: 15%;
+    top: 28%;
+
+    animation-delay: -3.2s;
+    transform: rotate(7deg);
+}
+
+
+/* Carrot */
+
+.foodFour {
+    right: 10%;
+    bottom: 25%;
+
+    animation-delay: -1.7s;
+    transform: rotate(-12deg);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.content {
+    position: relative;
+    z-index: 5;
+
+    width: min(900px, 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    animation: contentReveal 0.8s ease-out both;
+}
+
+
+/* =========================================================
+   ICON SCENE
+========================================================= */
+
+.iconScene {
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+}
+
+
+/* Glow behind plate */
+
+.iconGlow {
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    border-radius: 50%;
+
+    background: rgba(85, 123, 69, 0.08);
+
+    filter: blur(22px);
+
+    animation: iconGlow 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PLATE
+========================================================= */
+
+.plate {
+    position: relative;
+
+    width: 112px;
+    height: 112px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    border: 2px solid rgba(85, 123, 69, 0.14);
+
+    box-shadow:
+        0 18px 45px rgba(63, 96, 52, 0.09),
+        inset 0 0 0 8px rgba(85, 123, 69, 0.025);
+
+    animation: plateFloat 4.5s ease-in-out infinite;
+}
+
+.plateInner {
+    width: 78px;
+    height: 78px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(85, 123, 69, 0.055);
+
+    border: 1px solid rgba(85, 123, 69, 0.07);
+
+    font-size: 34px;
+
+    animation: plateInnerPulse 4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.sparkle {
+    position: absolute;
+
+    font-family: Arial, sans-serif;
+    line-height: 1;
+
+    pointer-events: none;
+
+    animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.sparkleOne {
+    top: 0;
+    right: 0;
+
+    color: #e58a43;
+    font-size: 23px;
+
+    animation-delay: -0.5s;
+}
+
+.sparkleTwo {
+    left: 0;
+    bottom: 8px;
+
+    color: #557b45;
+    font-size: 18px;
+
+    animation-delay: -1.8s;
+}
+
+.sparkleThree {
+    right: -5px;
+    bottom: 25px;
+
+    color: #f4c95d;
+    font-size: 20px;
+
+    animation-delay: -2.5s;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+    color: #557b45;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.eyebrowDot {
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #e58a43;
+
+    box-shadow:
+        0 0 0 6px rgba(229, 138, 67, 0.10);
+
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   404 NUMBER
+========================================================= */
+
+.errorNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    color: #3f6034;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: clamp(125px, 15vw, 185px);
+    font-weight: 800;
+
+    line-height: 0.82;
+
+    letter-spacing: -10px;
+
+    user-select: none;
+}
+
+.errorNumber>span {
+    display: block;
+
+    animation: numberFloat 4s ease-in-out infinite;
+}
+
+.errorNumber>span:last-child {
+    animation-delay: -1.5s;
+}
+
+
+/* =========================================================
+   404 CENTER PLATE
+========================================================= */
+
+.errorPlate {
+    width: 112px;
+    height: 112px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border: 2px solid rgba(85, 123, 69, 0.14);
+
+    box-shadow:
+        0 18px 40px rgba(63, 96, 52, 0.08),
+        inset 0 0 0 9px rgba(85, 123, 69, 0.025);
+
+    animation: errorPlateFloat 4s ease-in-out infinite;
+}
+
+.errorPlateInner {
+    width: 76px;
+    height: 76px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(85, 123, 69, 0.045);
+
+    font-size: 34px;
+
+    transform: rotate(-8deg);
+
+    animation: forkFloat 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title {
+    margin: 0;
+
+    color: #20221d;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(42px, 5vw, 68px);
+
+    font-weight: 700;
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description {
+    margin: 22px 0 0;
+
+    color: #8d8e84;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+
+/* Common button */
+
+.backButton,
+.homeButton {
+    height: 48px;
+
+    padding: 0 21px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 13px;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Back */
+
+.backButton {
+    color: #3f6034;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border: 1px solid rgba(85, 123, 69, 0.18);
+}
+
+.backButton:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(63, 96, 52, 0.10);
+
+    background: #ffffff;
+}
+
+
+/* Home */
+
+.homeButton {
+    color: #ffffff;
+
+    background: #557b45;
+
+    border: 1px solid #557b45;
+
+    box-shadow:
+        0 8px 22px rgba(85, 123, 69, 0.20);
+}
+
+.homeButton:hover {
+    transform: translateY(-3px);
+
+    background: #3f6034;
+
+    border-color: #3f6034;
+
+    box-shadow:
+        0 12px 28px rgba(63, 96, 52, 0.25);
+}
+
+
+/* Icons */
+
+.backIcon,
+.homeIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.25s ease;
+}
+
+.backButton:hover .backIcon {
+    transform: translateX(-2px);
+}
+
+.homeButton:hover .homeIcon {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HINT
+========================================================= */
+
+.hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 20px;
+
+    color: #aaa99f;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.hintIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes foodFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-16px) rotate(6deg);
+    }
+}
+
+
+@keyframes plateFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(2deg);
+    }
+}
+
+
+@keyframes plateInnerPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+
+@keyframes errorPlateFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+
+@keyframes forkFloat {
+
+    0%,
+    100% {
+        transform: rotate(-8deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(5deg) translateY(-4px);
+    }
+}
+
+
+@keyframes sparkleFloat {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: translateY(0) scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.1);
+    }
+}
+
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 0 6px rgba(229, 138, 67, 0.10);
+    }
+
+    50% {
+        transform: scale(1.12);
+        box-shadow:
+            0 0 0 9px rgba(229, 138, 67, 0.05);
+    }
+}
+
+
+@keyframes numberFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+@keyframes iconGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+    }
+}
+
+
+@keyframes glowFloatOne {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(25px, 18px);
+    }
+}
+
+
+@keyframes glowFloatTwo {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-20px, -15px);
+    }
+}
+
+
+@keyframes circleFloatOne {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10px, -12px);
+    }
+}
+
+
+@keyframes circleFloatTwo {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-12px, -10px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .page {
+        padding: 60px 24px;
+    }
+
+    .circleOne {
+        left: -80px;
+    }
+
+    .circleTwo {
+        right: -100px;
+    }
+
+    .foodOne {
+        left: 8%;
+    }
+
+    .foodTwo {
+        left: 4%;
+    }
+
+    .foodThree {
+        right: 7%;
+    }
+
+    .foodFour {
+        right: 4%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .page {
+        min-height: 100svh;
+
+        padding: 45px 18px;
+    }
+
+    .circleOne {
+        width: 180px;
+        height: 180px;
+
+        top: 20px;
+        left: -90px;
+    }
+
+    .circleTwo {
+        width: 210px;
+        height: 210px;
+
+        right: -105px;
+        bottom: -100px;
+    }
+
+    /* Keep decorations visible but subtle */
+
+    .foodFloat {
+        width: 28px;
+        height: 28px;
+
+        font-size: 18px;
+    }
+
+    .foodOne {
+        top: 19%;
+        left: 5%;
+    }
+
+    .foodTwo {
+        top: 32%;
+        left: 2%;
+    }
+
+    .foodThree {
+        top: 22%;
+        right: 4%;
+    }
+
+    .foodFour {
+        bottom: 23%;
+        right: 2%;
+    }
+
+    .iconScene {
+        width: 125px;
+        height: 125px;
+
+        margin-bottom: 18px;
+    }
+
+    .plate {
+        width: 94px;
+        height: 94px;
+    }
+
+    .plateInner {
+        width: 66px;
+        height: 66px;
+
+        font-size: 29px;
+    }
+
+    .sparkleOne {
+        right: -2px;
+    }
+
+    .sparkleTwo {
+        left: -2px;
+    }
+
+    .errorNumber {
+        gap: 5px;
+
+        font-size: 100px;
+
+        letter-spacing: -7px;
+
+        margin-bottom: 18px;
+    }
+
+    .errorPlate {
+        width: 76px;
+        height: 76px;
+    }
+
+    .errorPlateInner {
+        width: 53px;
+        height: 53px;
+
+        font-size: 25px;
+    }
+
+    .eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .title {
+        font-size: 38px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .description {
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-top: 16px;
+    }
+
+    .desktopBreak {
+        display: none;
+    }
+
+    .actions {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-top: 26px;
+    }
+
+    .backButton,
+    .homeButton {
+        width: min(260px, 100%);
+    }
+
+    .hint {
+        margin-top: 16px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page *,
+    .page *::before,
+    .page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
