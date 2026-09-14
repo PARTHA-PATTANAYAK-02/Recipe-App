@@ -3,20 +3,15 @@
    ========================================================= */
 
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../css/favorite.module.css";
 import { EyeIcon, Trash2Icon } from "@animateicons/react/lucide";
 
-export default function Favorite({
-  setMenu,
-  setFoodId,
-  setDrinkId,
-  setFromFavorites,
-  setModalMeal,
-}) {
+export default function Favorite({ setModalMeal }) {
   /* =======================================================
      LOAD FAVORITES FROM LOCAL STORAGE
      ======================================================= */
-
+  const navigate = useNavigate();
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
 
@@ -68,21 +63,12 @@ export default function Favorite({
 
   const handleOpenFavorite = (item) => {
     if (item.type === "recipe") {
-      setFoodId(item.id);
-      setMenu(1);
-      setFromFavorites(true);
-    }
-
-    if (item.type === "food") {
+      navigate(`/recipes/${item.id}`);
+    } else if (item.type === "food") {
       setModalMeal(item.data);
-      setMenu(2);
-      setFromFavorites(true);
-    }
-
-    if (item.type === "drink") {
-      setDrinkId(item.id);
-      setMenu(4);
-      setFromFavorites(true);
+      navigate("/food");
+    } else if (item.type === "drink") {
+      navigate(`/drinks/${item.id}`);
     }
   };
 
@@ -235,10 +221,7 @@ export default function Favorite({
           <button
             className={style.exploreButton}
             type="button"
-            onClick={() => {
-              setMenu(0);
-              setFromFavorites(false);
-            }}
+            onClick={() => navigate("/")}
           >
             <span className={style.exploreIcon}>✦</span>
             <span>Explore Recipes</span>

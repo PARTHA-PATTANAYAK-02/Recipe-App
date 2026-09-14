@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import style from "../../css/Food/modal.module.css";
 import FavoriteButton from "../FavoriteButton";
-import BackToFavorites from "../BackToFavorites";
 import MealPlannerButton from "../new/MealPlannerButton";
 import {
   FaTimes,
@@ -18,13 +17,7 @@ import {
   FaTag,
 } from "react-icons/fa";
 
-export default function FoodModal({
-  data,
-  onClose,
-  fromFavorites,
-  setFromFavorites,
-  setMenu,
-}) {
+export default function FoodModal({ data, onClose }) {
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -63,11 +56,6 @@ export default function FoodModal({
 
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
-
-  const handleBackToFavorites = () => {
-    setFromFavorites(false);
-    setMenu(5);
   };
 
   useEffect(() => {
@@ -239,10 +227,6 @@ export default function FoodModal({
               active={isFavorite}
               onClick={isFavorite ? removeFavorite : addFavorite}
             />
-
-            {fromFavorites && (
-              <BackToFavorites onClick={handleBackToFavorites} />
-            )}
             <MealPlannerButton
               meal={{
                 type: "food",

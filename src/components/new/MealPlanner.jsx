@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../../css/MealPlanner/mealPlanner.module.css";
 import { EyeIcon, Trash2Icon, CheckIcon } from "@animateicons/react/lucide";
 
@@ -33,12 +34,8 @@ const mealTimes = [
   },
 ];
 
-export default function MealPlanner({
-  setMenu,
-  setFoodId,
-  setDrinkId,
-  setModalMeal,
-}) {
+export default function MealPlanner({ setModalMeal }) {
+  const navigate = useNavigate();
   const [planner, setPlanner] = useState({});
   const [deletingSlot, setDeletingSlot] = useState(null);
   const [deletedSlot, setDeletedSlot] = useState(null);
@@ -90,18 +87,12 @@ export default function MealPlanner({
   };
   const handleOpenMealPlanner = (item) => {
     if (item.type === "recipe") {
-      setFoodId(item.id);
-      setMenu(1);
-    }
-
-    if (item.type === "food") {
+      navigate(`/recipes/${item.id}`);
+    } else if (item.type === "food") {
       setModalMeal(item.data);
-      setMenu(2);
-    }
-
-    if (item.type === "drink") {
-      setDrinkId(item.id);
-      setMenu(4);
+      navigate("/food");
+    } else if (item.type === "drink") {
+      navigate(`/drinks/${item.id}`);
     }
   };
   const handleDelete = (day, mealKey) => {
@@ -340,7 +331,7 @@ export default function MealPlanner({
                                     .querySelector("svg")
                                     ?.stopAnimation?.();
                                 }}
-                                onClick={() => handleOpenMealPlanner(meal)}
+                                onClick={() => handleOpenMealPlanner(item)}
                               >
                                 <EyeIcon size={16} duration={0.7} />
                               </button>

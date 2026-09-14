@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import style from "../../css/Recipe/recipeadetails.module.css";
 
 import Loading from "../Loading";
 import ErrorComp from "../Error";
 import EmptyMessage from "../EmptyMessage";
 import FavoriteButton from "../FavoriteButton";
-import BackToFavorites from "../BackToFavorites";
 import MealPlannerButton from "../new/MealPlannerButton";
 import {
   FaUtensils,
@@ -23,13 +23,9 @@ import {
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function RecipeaDetails({
-  foodId,
-  handleRandomRecipe,
-  fromFavorites,
-  setFromFavorites,
-  setMenu,
-}) {
+export default function RecipeaDetails() {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [meal, setMeal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -40,13 +36,8 @@ export default function RecipeaDetails({
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
-  const handleBackToFavorites = () => {
-    setFromFavorites(false);
-    setMenu(5);
-  };
-
   useEffect(() => {
-    if (!foodId) {
+    if (!id) {
       setMeal(null);
       setError("");
       return;
@@ -58,7 +49,7 @@ export default function RecipeaDetails({
       setMeal(null);
 
       try {
-        const res = await fetch(`${URL}/lookup.php?i=${foodId}`);
+        const res = await fetch(`${URL}/lookup.php?i=${id}`);
 
         if (!res.ok) {
           throw new Error(
@@ -85,7 +76,7 @@ export default function RecipeaDetails({
     }
 
     fetchMealDetails();
-  }, [foodId]);
+  }, [id]);
 
   if (loading) {
     return <Loading />;
@@ -95,7 +86,7 @@ export default function RecipeaDetails({
     return <ErrorComp message={error} />;
   }
 
-  if (!foodId) {
+  if (!id) {
     return (
       <EmptyMessage
         msg1="Choose something delicious."
@@ -194,7 +185,7 @@ export default function RecipeaDetails({
           <button
             type="button"
             className={style.discoverButton}
-            onClick={handleRandomRecipe}
+            onClick={() => navigate("/")}
           >
             <span className={style.discoverIcon}>
               <FaDice />
@@ -263,22 +254,21 @@ export default function RecipeaDetails({
               follow the steps, and make something worth sharing.
             </p>
 
-            <FavoriteButton
-              active={isFavorite}
-              onClick={isFavorite ? removeFavorite : addFavorite}
-            />
+            <div style={{ display: "flex", justifyContent: "start", gap:"10px" }}>
+              <FavoriteButton
+                active={isFavorite}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+              />
 
-            {fromFavorites && (
-              <BackToFavorites onClick={handleBackToFavorites} />
-            )}
-            <MealPlannerButton
-              meal={{
-                type: "recipe",
-                id: idMeal,
-                name: strMeal,
-                image: strMealThumb,
-              }}
-            />
+              <MealPlannerButton
+                meal={{
+                  type: "recipe",
+                  id: idMeal,
+                  name: strMeal,
+                  image: strMealThumb,
+                }}
+              />
+            </div>
 
             <div className={style.heroFacts}>
               {strCategory && (

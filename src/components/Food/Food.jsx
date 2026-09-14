@@ -21,9 +21,6 @@ const URL = import.meta.env.VITE_MEAL_API_URL;
 export default function Food({
   query,
   foodSearchTrigger,
-  fromFavorites,
-  setFromFavorites,
-  setMenu,
   modalMeal,
   setModalMeal,
 }) {
@@ -567,15 +564,7 @@ export default function Food({
           MODAL
       ================================================= */}
 
-      {modalMeal && (
-        <FoodModal
-          data={modalMeal}
-          onClose={closeMeal}
-          fromFavorites={fromFavorites}
-          setFromFavorites={setFromFavorites}
-          setMenu={setMenu}
-        />
-      )}
+      {modalMeal && <FoodModal data={modalMeal} onClose={closeMeal} />}
     </main>
   );
 }

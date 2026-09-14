@@ -4,17 +4,12 @@ import style from "../../css/Drinks/random.module.css";
 import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
-import BackToFavorites from "../BackToFavorites";
 import MealPlannerButton from "../new/MealPlannerButton";
 import { useEffect, useState } from "react";
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
-export default function RandomPage({
-  fromFavorites,
-  setFromFavorites,
-  setMenu,
-}) {
+export default function RandomPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -55,10 +50,6 @@ export default function RandomPage({
 
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
-  const handleBackToFavorites = () => {
-    setFromFavorites(false);
-    setMenu(5);
   };
   useEffect(() => {
     async function fetchRandomDrink() {
@@ -238,9 +229,6 @@ export default function RandomPage({
               onClick={isFavorite ? removeFavorite : addFavorite}
             />
 
-            {fromFavorites && (
-              <BackToFavorites onClick={handleBackToFavorites} />
-            )}
             <MealPlannerButton
               meal={{
                 type: "drink",

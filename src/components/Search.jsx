@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, useRef, useState } from "react";
 import style from "../css/search.module.css";
 import { SearchIcon } from "@animateicons/react/lucide";
+
 import FoodList from "./Recipes/FoodList";
 import DrinkList from "./Drinks/DrinkList";
 
 export default function Search({
   query,
   setQuery,
-  setFoodId,
   menu,
   setFoodSearchTrigger,
   setIngredientSearchTrigger,
-  setDrinkId,
 }) {
   const ref = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
@@ -37,9 +37,21 @@ export default function Search({
     },
   ];
 
+  /*
+   * =========================================================
+   * RESET SEARCH WHEN ROUTE / SEARCH TYPE CHANGES
+   * =========================================================
+   */
+
   useEffect(() => {
     setQuery("");
   }, [menu]);
+
+  /*
+   * =========================================================
+   * SEARCH BUTTON
+   * =========================================================
+   */
 
   const handleSearch = () => {
     if (query.trim() === "") return;
@@ -51,10 +63,36 @@ export default function Search({
     }
   };
 
+  /*
+   * =========================================================
+   * SEARCH BUTTON ONLY FOR FOOD / INGREDIENTS
+   * =========================================================
+   */
+
   const showSearchButton = menu === 2 || menu === 3;
 
+  /*
+   * =========================================================
+   * CLOSE SUGGESTIONS WHEN CLICKING OUTSIDE
+   * =========================================================
+   */
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsFocused(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={style.searchBox}>
+    <div className={style.searchBox} ref={ref}>
       <div className={style.decorCircleOne}></div>
       <div className={style.decorCircleTwo}></div>
 
@@ -71,11 +109,16 @@ export default function Search({
             className={`${style.search} ${
               isFocused ? style.searchFocused : ""
             }`}
-            onMouseEnter={() => ref.current?.startAnimation()}
-            onMouseLeave={() => ref.current?.stopAnimation()}
+            onMouseEnter={() => ref.current?.startAnimation?.()}
+            onMouseLeave={() => ref.current?.stopAnimation?.()}
           >
             <div className={style.iconWrapper}>
-              <SearchIcon ref={ref} size={25} duration={1} color="#557b45" />
+              <SearchIcon
+                ref={ref}
+                size={25}
+                duration={1}
+                color="#557b45"
+              />
             </div>
 
             <div className={style.inputWrapper}>
@@ -147,7 +190,6 @@ export default function Search({
               <FoodList
                 query={query}
                 setQuery={setQuery}
-                setFoodId={setFoodId}
               />
             </div>
           )}
@@ -162,11 +204,11 @@ export default function Search({
               <DrinkList
                 query={query}
                 setQuery={setQuery}
-                setDrinkId={setDrinkId}
               />
             </div>
           )}
         </div>
+
         {menu === 1 || menu === 4 ? (
           <div className={style.searchHint}>
             <span>⌕</span>

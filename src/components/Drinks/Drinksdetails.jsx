@@ -1,21 +1,17 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import style from "../../css/Drinks/drinksDetails.module.css";
 import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
-import BackToFavorites from "../BackToFavorites";
 import MealPlannerButton from "../new/MealPlannerButton";
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
-export default function Drinksdetails({
-  drinkId,
-  handleRandomDrink,
-  fromFavorites,
-  setFromFavorites,
-  setMenu,
-}) {
+export default function Drinksdetails() {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -55,10 +51,6 @@ export default function Drinksdetails({
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
-  const handleBackToFavorites = () => {
-    setFromFavorites(false);
-    setMenu(5);
-  };
   useEffect(() => {
     async function fetchDrinks() {
       setLoading(true);
@@ -66,7 +58,7 @@ export default function Drinksdetails({
       setData(null);
 
       try {
-        const res = await fetch(`${URL}/lookup.php?i=${drinkId}`);
+        const res = await fetch(`${URL}/lookup.php?i=${id}`);
 
         if (!res.ok) {
           throw new Error("Unable to fetch drink details");
@@ -86,10 +78,10 @@ export default function Drinksdetails({
       }
     }
 
-    if (drinkId) {
+    if (id) {
       fetchDrinks();
     }
-  }, [drinkId]);
+  }, [id]);
 
   if (loading) {
     return (
@@ -197,7 +189,7 @@ export default function Drinksdetails({
           <button
             type="button"
             className={style.randomButton}
-            onClick={handleRandomDrink}
+            onClick={() => navigate("/drinks")}
           >
             <span className={style.randomIcon}>🎲</span>
 
@@ -285,9 +277,6 @@ export default function Drinksdetails({
               onClick={isFavorite ? removeFavorite : addFavorite}
             />
 
-            {fromFavorites && (
-              <BackToFavorites onClick={handleBackToFavorites} />
-            )}
             <MealPlannerButton
               meal={{
                 type: "drink",

@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function RandomRecipea({ setFoodId }) {
+export default function RandomRecipea() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchRandomRecipe() {
       try {
@@ -13,11 +16,12 @@ export default function RandomRecipea({ setFoodId }) {
         }
 
         const data = await res.json();
-
         const randomMeal = data.meals?.[0];
 
-        if (randomMeal) {
-          setFoodId(randomMeal.idMeal);
+        if (randomMeal?.idMeal) {
+          navigate(`/recipes/${randomMeal.idMeal}`, {
+            replace: true,
+          });
         }
       } catch (error) {
         console.error(error);
@@ -25,7 +29,7 @@ export default function RandomRecipea({ setFoodId }) {
     }
 
     fetchRandomRecipe();
-  }, [setFoodId]);
+  }, [navigate]);
 
   return null;
 }

@@ -279,6 +279,8 @@ export default function MealPlannerButton({ meal }) {
 
         type:
           meal?.type ?? meal?.strCategory ?? meal?.strDrinkCategory ?? "Recipe",
+        
+        data: meal?.data ?? meal,
       };
 
       /* -----------------------------------------------------

@@ -1,9 +1,15 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import style from "../css/navbar.module.css";
 
 import { ChevronDownIcon, ArrowRightIcon } from "@animateicons/react/lucide";
 
-export default function Navbar({ setMenu, menuId = 0 }) {
+export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -11,10 +17,26 @@ export default function Navbar({ setMenu, menuId = 0 }) {
   const moreArrowRef = useRef(null);
 
   const primaryMenu = [
-    { index: 0, label: "Home" },
-    { index: 1, label: "Recipes" },
-    { index: 2, label: "Food" },
-    { index: 4, label: "Drinks" },
+    {
+      index: 0,
+      label: "Home",
+      path: "/",
+    },
+    {
+      index: 1,
+      label: "Recipes",
+      path: "/recipes",
+    },
+    {
+      index: 2,
+      label: "Food",
+      path: "/food",
+    },
+    {
+      index: 4,
+      label: "Drinks",
+      path: "/drinks",
+    },
   ];
 
   const moreMenu = [
@@ -23,26 +45,47 @@ export default function Navbar({ setMenu, menuId = 0 }) {
       label: "Ingredients",
       description: "Explore ingredients",
       icon: "✦",
+      path: "/ingredients",
     },
     {
       index: 5,
       label: "Favorite",
       description: "Your saved recipes",
       icon: "♡",
+      path: "/favorites",
     },
     {
       index: 6,
       label: "Meal Planner",
       description: "Plan your weekly meals",
       icon: "◒",
+      path: "/meal-planner",
     },
   ];
 
-  const isMoreActive = moreMenu.some((item) => item.index === menuId);
+  /*
+   * =========================================================
+   * ACTIVE ROUTE
+   * =========================================================
+   */
 
-  /* ---------------------------------------------
-     CLOSE MORE WHEN CLICKING OUTSIDE
-  --------------------------------------------- */
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+
+    return (
+      location.pathname === path || location.pathname.startsWith(`${path}/`)
+    );
+  };
+
+  const isMoreActive = moreMenu.some((item) => isActive(item.path));
+
+  /*
+   * =========================================================
+   * CLOSE MORE WHEN CLICKING OUTSIDE
+   * =========================================================
+   */
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -58,9 +101,11 @@ export default function Navbar({ setMenu, menuId = 0 }) {
     };
   }, []);
 
-  /* ---------------------------------------------
-     ESCAPE KEY
-  --------------------------------------------- */
+  /*
+   * =========================================================
+   * ESCAPE KEY
+   * =========================================================
+   */
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -77,31 +122,43 @@ export default function Navbar({ setMenu, menuId = 0 }) {
     };
   }, []);
 
-  /* ---------------------------------------------
-     MENU SELECT
-  --------------------------------------------- */
+  /*
+   * =========================================================
+   * MENU SELECT
+   * =========================================================
+   */
 
-  const handleMenuSelect = (index) => {
-    setMenu(index);
+  const handleMenuSelect = (path) => {
+    navigate(path);
+
     setIsMoreOpen(false);
     setIsMobileOpen(false);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
-  /* ---------------------------------------------
-     MORE ARROW ANIMATION
-  --------------------------------------------- */
+  /*
+   * =========================================================
+   * MORE ARROW ANIMATION
+   * =========================================================
+   */
 
   const handleMoreMouseEnter = () => {
-    moreArrowRef.current?.startAnimation();
+    moreArrowRef.current?.startAnimation?.();
   };
 
   const handleMoreMouseLeave = () => {
-    moreArrowRef.current?.stopAnimation();
+    moreArrowRef.current?.stopAnimation?.();
   };
 
-  /* ---------------------------------------------
-     DROPDOWN ARROW ANIMATION
-  --------------------------------------------- */
+  /*
+   * =========================================================
+   * DROPDOWN ARROW ANIMATION
+   * =========================================================
+   */
 
   const handleArrowMouseEnter = (event) => {
     const svg = event.currentTarget.querySelector("svg");
@@ -115,9 +172,11 @@ export default function Navbar({ setMenu, menuId = 0 }) {
     svg?.stopAnimation?.();
   };
 
-  /* ---------------------------------------------
-     TOGGLES
-  --------------------------------------------- */
+  /*
+   * =========================================================
+   * TOGGLES
+   * =========================================================
+   */
 
   const handleMoreToggle = () => {
     setIsMoreOpen((prev) => !prev);
@@ -139,7 +198,7 @@ export default function Navbar({ setMenu, menuId = 0 }) {
       <button
         type="button"
         className={style.brand}
-        onClick={() => handleMenuSelect(0)}
+        onClick={() => handleMenuSelect("/")}
         aria-label="Go to Home"
       >
         <div className={style.logoWrapper}>
@@ -160,16 +219,14 @@ export default function Navbar({ setMenu, menuId = 0 }) {
       <div className={style.desktopNavigation}>
         <ul className={style.menu}>
           {primaryMenu.map((item) => {
-            const isActive = menuId === item.index;
+            const active = isActive(item.path);
 
             return (
               <li key={item.index}>
                 <button
                   type="button"
-                  className={`${style.menuItem} ${
-                    isActive ? style.active : ""
-                  }`}
-                  onClick={() => handleMenuSelect(item.index)}
+                  className={`${style.menuItem} ${active ? style.active : ""}`}
+                  onClick={() => handleMenuSelect(item.path)}
                 >
                   <span>{item.label}</span>
                 </button>
@@ -209,16 +266,16 @@ export default function Navbar({ setMenu, menuId = 0 }) {
 
                 <div className={style.dropdownItems}>
                   {moreMenu.map((item) => {
-                    const isActive = menuId === item.index;
+                    const active = isActive(item.path);
 
                     return (
                       <button
                         key={item.index}
                         type="button"
                         className={`${style.dropdownItem} ${
-                          isActive ? style.dropdownItemActive : ""
+                          active ? style.dropdownItemActive : ""
                         }`}
-                        onClick={() => handleMenuSelect(item.index)}
+                        onClick={() => handleMenuSelect(item.path)}
                         onMouseEnter={handleArrowMouseEnter}
                         onMouseLeave={handleArrowMouseLeave}
                         role="menuitem"
@@ -279,16 +336,16 @@ export default function Navbar({ setMenu, menuId = 0 }) {
             <span className={style.mobileSectionTitle}>MAIN</span>
 
             {primaryMenu.map((item) => {
-              const isActive = menuId === item.index;
+              const active = isActive(item.path);
 
               return (
                 <button
                   key={item.index}
                   type="button"
                   className={`${style.mobileMenuItem} ${
-                    isActive ? style.mobileActive : ""
+                    active ? style.mobileActive : ""
                   }`}
-                  onClick={() => handleMenuSelect(item.index)}
+                  onClick={() => handleMenuSelect(item.path)}
                   onMouseEnter={handleArrowMouseEnter}
                   onMouseLeave={handleArrowMouseLeave}
                 >
@@ -306,16 +363,16 @@ export default function Navbar({ setMenu, menuId = 0 }) {
             <span className={style.mobileSectionTitle}>EXPLORE</span>
 
             {moreMenu.map((item) => {
-              const isActive = menuId === item.index;
+              const active = isActive(item.path);
 
               return (
                 <button
                   key={item.index}
                   type="button"
                   className={`${style.mobileMenuItem} ${
-                    isActive ? style.mobileActive : ""
+                    active ? style.mobileActive : ""
                   }`}
-                  onClick={() => handleMenuSelect(item.index)}
+                  onClick={() => handleMenuSelect(item.path)}
                   onMouseEnter={handleArrowMouseEnter}
                   onMouseLeave={handleArrowMouseLeave}
                 >

@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../../css/Recipe/foodList.module.css";
 import FoodItem from "./FoodItem";
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function FoodList({ query, setQuery, setFoodId }) {
+export default function FoodList({ query, setQuery }) {
+  const navigate = useNavigate();
+
   const [foodData, setFoodData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -129,8 +132,10 @@ export default function FoodList({ query, setQuery, setFoodId }) {
             key={food.idMeal}
             food={food}
             onSelect={(selectedFood) => {
-              setFoodId(selectedFood.idMeal);
-              setQuery(selectedFood.strMeal);
+              if (!selectedFood?.idMeal) return;
+
+              setQuery("");
+              navigate(`/recipes/${selectedFood.idMeal}`);
             }}
           />
         ))}

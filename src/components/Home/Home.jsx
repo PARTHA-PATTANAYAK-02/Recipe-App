@@ -4,7 +4,6 @@ import style from "../../css/Home/home.module.css";
 import ErrorPage from "../Error";
 import Loading from "../Loading";
 import FavoriteButton from "../FavoriteButton";
-import BackToFavorites from "../BackToFavorites";
 import MealPlannerButton from "../new/MealPlannerButton";
 import {
   RefreshCwIcon,
@@ -15,7 +14,7 @@ import {
 
 const URL = import.meta.env.VITE_MEAL_API_URL;
 
-export default function Home({ fromFavorites, setFromFavorites, setMenu }) {
+export default function Home() {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,10 +25,6 @@ export default function Home({ fromFavorites, setFromFavorites, setMenu }) {
   });
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleBackToFavorites = () => {
-    setFromFavorites(false);
-    setMenu(5);
-  };
   const fetchRandomRecipe = async () => {
     try {
       setError(null);
@@ -220,9 +215,7 @@ export default function Home({ fromFavorites, setFromFavorites, setMenu }) {
                   onClick={isFavorite ? removeFavorite : addFavorite}
                   active={isFavorite}
                 />
-                {fromFavorites && (
-                  <BackToFavorites onClick={handleBackToFavorites} />
-                )}
+
                 <MealPlannerButton
                   meal={{
                     type: "recipe",

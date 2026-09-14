@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../../css/Drinks/drinkList.module.css";
 import DrinkItem from "./DrinkItem";
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
-export default function DrinkList({ query, setQuery, setDrinkId }) {
+export default function DrinkList({ query, setQuery }) {
+  const navigate = useNavigate();
+
   const [drinkData, setDrinkData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -67,7 +70,9 @@ export default function DrinkList({ query, setQuery, setDrinkId }) {
       <div className={style.drinkList}>
         <div className={style.empty}>
           <span className={style.emptyIcon}>🍹</span>
+
           <div className={style.emptyText}>Start discovering</div>
+
           <div className={style.emptySubtext}>
             Your next favorite drink could be here
           </div>
@@ -127,8 +132,10 @@ export default function DrinkList({ query, setQuery, setDrinkId }) {
             key={drink.idDrink}
             drink={drink}
             onSelect={(selectedDrink) => {
-              setDrinkId(selectedDrink.idDrink);
-              setQuery(selectedDrink.strDrink);
+              if (!selectedDrink?.idDrink) return;
+
+              setQuery("");
+              navigate(`/drinks/${selectedDrink.idDrink}`);
             }}
           />
         ))}
