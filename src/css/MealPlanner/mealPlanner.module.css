@@ -6,24 +6,24 @@
 ========================================================= */
 
 .mealPlanner {
-    --background: #f8f6f0;
-    --surface: #ffffff;
-    --surface-soft: #f3f1e9;
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
 
-    --text: #24231f;
-    --muted: #7d7a70;
-    --light-muted: #aaa79c;
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
-    --green-soft: #e9f0e4;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
 
-    --orange: #e58a43;
-    --orange-soft: #fff0e3;
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
 
-    --yellow: #f4c95d;
+    --yellow: #F4C95D;
 
-    --border: #e7e3d8;
+    --border: #E7DED9;
 
     position: relative;
 
@@ -41,6 +41,7 @@
     color: var(--text);
 
     font-family: "DM Sans", sans-serif;
+    border-radius: 20px;
 }
 
 
@@ -61,7 +62,7 @@
 
     background:
         radial-gradient(circle,
-            rgba(85, 123, 69, 0.11),
+            rgba(143, 61, 78, 0.11),
             transparent 68%);
 
     pointer-events: none;
@@ -102,7 +103,7 @@
 
     border-radius: 50%;
 
-    border: 1px solid rgba(85, 123, 69, 0.06);
+    border: 1px solid rgba(143, 61, 78, 0.06);
 
     pointer-events: none;
 
@@ -215,7 +216,7 @@
 }
 
 .heroIntro h1 span {
-    color: var(--green);
+    color: var(--primary);
 }
 
 .heroIntro p {
@@ -268,7 +269,7 @@
     transform: translateY(-4px);
 
     border-color:
-        rgba(85, 123, 69, 0.22);
+        rgba(143, 61, 78, 0.22);
 
     box-shadow:
         0 18px 40px rgba(47, 45, 38, 0.09);
@@ -295,7 +296,7 @@
 
     margin-top: 5px;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-family: "Playfair Display", serif;
 
@@ -351,11 +352,11 @@
 }
 
 .progressBg {
-    stroke: #e5e2d8;
+    stroke: #E7DED9;
 }
 
 .progressValue {
-    stroke: var(--green);
+    stroke: var(--primary);
 
     stroke-linecap: round;
 
@@ -374,7 +375,7 @@
 
     place-items: center;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 10px;
 
@@ -454,14 +455,14 @@
 }
 
 .plannedDot {
-    background: var(--green);
+    background: var(--primary);
 
     box-shadow:
-        0 0 0 3px rgba(85, 123, 69, 0.08);
+        0 0 0 3px rgba(143, 61, 78, 0.08);
 }
 
 .emptyDot {
-    background: #d4d0c4;
+    background: #D8D0D2;
 }
 
 
@@ -555,7 +556,7 @@
 
     background:
         linear-gradient(180deg,
-            var(--green),
+            var(--primary),
             var(--yellow),
             var(--orange));
 
@@ -573,7 +574,7 @@
     transform: translateY(-5px);
 
     border-color:
-        rgba(85, 123, 69, 0.28);
+        rgba(143, 61, 78, 0.28);
 
     box-shadow:
         0 20px 45px rgba(47, 45, 38, 0.1);
@@ -585,7 +586,7 @@
 
 .dayComplete {
     border-color:
-        rgba(85, 123, 69, 0.3);
+        rgba(143, 61, 78, 0.3);
 }
 
 
@@ -611,8 +612,8 @@
 
     background:
         linear-gradient(145deg,
-            #ffffff 0%,
-            #fafbf7 100%);
+            #FFFFFF 0%,
+            #FBF8F6 100%);
 }
 
 .dayNumber {
@@ -627,16 +628,16 @@
 
     border-radius: 13px;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 9px;
 
     font-weight: 900;
 
     box-shadow:
-        inset 0 0 0 1px rgba(85, 123, 69, 0.05);
+        inset 0 0 0 1px rgba(143, 61, 78, 0.05);
 
     transition:
         transform 0.35s ease,
@@ -648,10 +649,10 @@
     transform:
         rotate(-5deg) scale(1.06);
 
-    background: #dfeadb;
+    background: #EBD4D9;
 
     box-shadow:
-        0 8px 18px rgba(85, 123, 69, 0.12);
+        0 8px 18px rgba(143, 61, 78, 0.12);
 }
 
 .dayName {
@@ -738,12 +739,12 @@
 }
 
 .completeCount {
-    background: var(--green);
+    background: var(--primary);
 
-    color: #ffffff;
+    color: #FFFFFF;
 
     box-shadow:
-        0 8px 20px rgba(85, 123, 69, 0.25);
+        0 8px 20px rgba(143, 61, 78, 0.25);
 
     animation:
         completePulse 2.5s ease-in-out infinite;
@@ -762,7 +763,7 @@
 
     min-width: 0;
 
-    background: #ffffff;
+    background: #FFFFFF;
 }
 
 
@@ -779,7 +780,7 @@
 
     overflow: hidden;
 
-    border-right: 1px solid #efede6;
+    border-right: 1px solid #E7DED9;
 
     transition:
         background 0.35s ease,
@@ -805,7 +806,7 @@
 
     background:
         radial-gradient(circle,
-            rgba(85, 123, 69, 0.08),
+            rgba(143, 61, 78, 0.08),
             transparent 68%);
 
     opacity: 0;
@@ -827,12 +828,12 @@
 .plannedSlot:hover {
     background:
         linear-gradient(145deg,
-            #ffffff,
-            #fafcf7);
+            #FFFFFF,
+            #FBF8F6);
 }
 
 .emptySlot:hover {
-    background: #fafbf7;
+    background: #FBF8F6;
 }
 
 
@@ -924,7 +925,7 @@
 
     border-radius: 15px;
 
-    background: #f2f0e8;
+    background: #F3EEE9;
 
     box-shadow:
         0 7px 20px rgba(47, 45, 38, 0.09);
@@ -1098,13 +1099,13 @@
 
     padding: 0;
 
-    border: 1px solid rgba(85, 123, 69, 0.15);
+    border: 1px solid rgba(143, 61, 78, 0.15);
 
     border-radius: 10px;
 
-    background: #ffffff;
+    background: #FFFFFF;
 
-    color: var(--green);
+    color: var(--primary);
 
     cursor: pointer;
 
@@ -1145,12 +1146,12 @@
         translateY(-3px) scale(1.07);
 
     border-color:
-        rgba(85, 123, 69, 0.35);
+        rgba(143, 61, 78, 0.35);
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
     box-shadow:
-        0 8px 18px rgba(85, 123, 69, 0.14);
+        0 8px 18px rgba(143, 61, 78, 0.14);
 }
 
 .iconButton svg {
@@ -1163,7 +1164,7 @@
 }
 
 .deleteButton {
-    color: #c87856;
+    color: #C96D2C;
 
     border-color:
         rgba(200, 120, 86, 0.15);
@@ -1173,7 +1174,7 @@
     border-color:
         rgba(200, 120, 86, 0.35);
 
-    background: #fff3ed;
+    background: #FFF0E3;
 
     box-shadow:
         0 8px 18px rgba(200, 120, 86, 0.14);
@@ -1205,14 +1206,14 @@
 
     padding: 10px;
 
-    border: 1px dashed #ddd9cd;
+    border: 1px dashed #D8CFD2;
 
     border-radius: 14px;
 
     background:
         linear-gradient(135deg,
-            #faf9f5,
-            #f6f4ed);
+            #F8F6F0,
+            #F3EEE9);
 
     transition:
         background 0.3s ease,
@@ -1225,12 +1226,12 @@
     transform: translateY(-3px);
 
     border-color:
-        rgba(85, 123, 69, 0.32);
+        rgba(143, 61, 78, 0.32);
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
     box-shadow:
-        0 9px 22px rgba(85, 123, 69, 0.08);
+        0 9px 22px rgba(143, 61, 78, 0.08);
 }
 
 .emptyPlus {
@@ -1247,9 +1248,9 @@
 
     border-radius: 50%;
 
-    background: #ffffff;
+    background: #FFFFFF;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 19px;
 
@@ -1263,7 +1264,7 @@
         rotate(90deg) scale(1.1);
 
     box-shadow:
-        0 5px 14px rgba(85, 123, 69, 0.12);
+        0 5px 14px rgba(143, 61, 78, 0.12);
 }
 
 .emptyContent strong {
@@ -1330,19 +1331,19 @@
 
     border-radius: 50%;
 
-    background: var(--green);
+    background: var(--primary);
 
-    color: #ffffff;
+    color: #FFFFFF;
 
     box-shadow:
-        0 6px 18px rgba(85, 123, 69, 0.25);
+        0 6px 18px rgba(143, 61, 78, 0.25);
 
     animation:
         successPop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .deletedOverlay span {
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 8px;
 
@@ -1371,17 +1372,17 @@
 
     padding: 28px 32px;
 
-    border: 1px solid #dce5d2;
+    border: 1px solid #D8BCC2;
 
     border-radius: 21px;
 
     background:
         linear-gradient(120deg,
-            #e9efe2,
-            #eef3e8);
+            #F4E5E8,
+            #F3E3E7);
 
     box-shadow:
-        0 12px 32px rgba(85, 123, 69, 0.05);
+        0 12px 32px rgba(143, 61, 78, 0.05);
 }
 
 .bottomBanner::before {
@@ -1454,7 +1455,7 @@
 }
 
 .bannerContent h2 em {
-    color: var(--green);
+    color: var(--primary);
 
     font-style: normal;
 }
@@ -1473,7 +1474,7 @@
     top: 50%;
     right: 40px;
 
-    color: rgba(85, 123, 69, 0.1);
+    color: rgba(143, 61, 78, 0.1);
 
     font-size: 85px;
 
@@ -1686,12 +1687,12 @@
     0%,
     100% {
         box-shadow:
-            0 8px 20px rgba(85, 123, 69, 0.2);
+            0 8px 20px rgba(143, 61, 78, 0.2);
     }
 
     50% {
         box-shadow:
-            0 10px 26px rgba(85, 123, 69, 0.34);
+            0 10px 26px rgba(143, 61, 78, 0.34);
     }
 }
 
@@ -1888,7 +1889,7 @@
     .mealSlot {
         border-right: 0;
 
-        border-bottom: 1px solid #efede6;
+        border-bottom: 1px solid #E7DED9;
 
         padding: 14px;
     }
@@ -1979,4 +1980,347 @@
 
         transition-duration: 0.01ms !important;
     }
+}
+
+/* =========================================================
+   THEME OVERRIDES
+   Original layout, spacing and animations are preserved.
+========================================================= */
+
+.light {
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
+
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
+
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
+
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
+
+    --yellow: #F4C95D;
+
+    --border: #E7DED9;
+
+    --hero-summary-bg: rgba(255, 255, 255, 0.78);
+    --day-header-bg: linear-gradient(145deg, #FFFFFF 0%, #FBF8F6 100%);
+    --meal-area-bg: #FFFFFF;
+    --slot-border: #E7DED9;
+    --slot-hover-bg: #FBF8F6;
+    --empty-hover-bg: #FBF8F6;
+
+    --image-bg: #F3EEE9;
+    --icon-bg: #FFFFFF;
+    --empty-bg: linear-gradient(135deg, #F8F6F0, #F3EEE9);
+
+    --button-bg: #FFFFFF;
+    --button-text: #69665e;
+
+    --delete-bg: #FFF0E3;
+    --delete-text: #C96D2C;
+
+    --deleted-overlay: rgba(248, 246, 240, 0.92);
+
+    --banner-border: #D8BCC2;
+    --banner-bg: linear-gradient(120deg, #F4E5E8, #F3E3E7);
+    --banner-icon-bg: rgba(255, 255, 255, 0.75);
+
+    --progress-bg: #E7DED9;
+}
+
+.dark {
+    --background: #151312;
+    --surface: #211B1D;
+    --surface-soft: #2A2225;
+
+    --text: #F0E8E8;
+    --muted: #B9ACAF;
+    --light-muted: #918487;
+
+    --primary: #D58A9A;
+    --primary-dark: #B96579;
+    --primary-soft: #3A252B;
+
+    --orange: #e8a067;
+    --orange-soft: #3a2c22;
+
+    --yellow: #F4C95D;
+
+    --border: #493A3F;
+
+    --hero-summary-bg: rgba(29, 37, 27, 0.82);
+    --day-header-bg: linear-gradient(145deg, #2A2225 0%, #211B1D 100%);
+    --meal-area-bg: #211B1D;
+    --slot-border: #493A3F;
+    --slot-hover-bg: #2A2225;
+    --empty-hover-bg: #3A252B;
+
+    --image-bg: #2A2225;
+    --icon-bg: #3A252B;
+    --empty-bg: linear-gradient(135deg, #2A2225, #211B1D);
+
+    --button-bg: #2A2225;
+    --button-text: #B9ACAF;
+
+    --delete-bg: #3A2C22;
+    --delete-text: #F0AE78;
+
+    --deleted-overlay: rgba(18, 23, 18, 0.93);
+
+    --banner-border: #493A3F;
+    --banner-bg: linear-gradient(120deg, #3A252B, #493A3F);
+    --banner-icon-bg: rgba(255, 255, 255, 0.07);
+
+    --progress-bg: #493A3F;
+}
+
+/* Root / page */
+.mealPlanner {
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
+}
+
+/* Decorative layers */
+.dark .pageGlow {
+    background:
+        radial-gradient(circle,
+            rgba(185, 101, 121, 0.09),
+            transparent 68%);
+}
+
+.dark .pageGlowTwo {
+    border-color: rgba(229, 138, 67, 0.07);
+}
+
+.dark .mealPlanner::before {
+    border-color: rgba(185, 101, 121, 0.07);
+}
+
+.dark .mealPlanner::after {
+    color: rgba(229, 138, 67, 0.065);
+}
+
+/* Hero */
+.heroSummary {
+    background: var(--hero-summary-bg);
+}
+
+.dark .heroSummary {
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.dark .heroSummary:hover {
+    border-color: rgba(213, 138, 154, 0.28);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.34);
+}
+
+/* Progress */
+.progressBg {
+    stroke: var(--progress-bg);
+}
+
+/* Day cards */
+.dayCard {
+    background: var(--surface);
+}
+
+.dark .dayCard {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+.dark .dayCard:hover {
+    border-color: rgba(213, 138, 154, 0.30);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.36);
+}
+
+.dark .dayCard:hover .dayNumber {
+    background: #33422f;
+}
+
+.dark .dayComplete {
+    border-color: rgba(213, 138, 154, 0.34);
+}
+
+/* Day header */
+.dayHeader {
+    background: var(--day-header-bg);
+}
+
+.dark .dayHeader {
+    border-right-color: var(--border);
+}
+
+/* Meal area */
+.dayMeals {
+    background: var(--meal-area-bg);
+}
+
+.mealSlot {
+    border-right-color: var(--slot-border);
+}
+
+.dark .mealSlot {
+    border-right-color: var(--slot-border);
+}
+
+.plannedSlot:hover {
+    background:
+        linear-gradient(145deg, #2A2225, #2A2225);
+}
+
+.emptySlot:hover {
+    background: var(--empty-hover-bg);
+}
+
+/* Meal image */
+.imageWrapper {
+    background: var(--image-bg);
+}
+
+.dark .imageWrapper {
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.30);
+}
+
+.dark .imageWrapper::before {
+    background:
+        linear-gradient(115deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.12) 50%,
+            transparent 80%);
+}
+
+.dark .imageWrapper::after {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .plannedSlot:hover .imageWrapper {
+    box-shadow:
+        0 13px 28px rgba(0, 0, 0, 0.40);
+}
+
+/* Action buttons */
+.iconButton {
+    background: var(--icon-bg);
+}
+
+.dark .iconButton {
+    border-color: rgba(213, 138, 154, 0.18);
+}
+
+.dark .iconButton::before {
+    background:
+        linear-gradient(120deg,
+            transparent 25%,
+            rgba(255, 255, 255, 0.10) 50%,
+            transparent 75%);
+}
+
+.dark .iconButton:hover {
+    border-color: rgba(213, 138, 154, 0.38);
+    background: var(--primary-soft);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.dark .deleteButton {
+    border-color: rgba(226, 154, 123, 0.20);
+}
+
+.dark .deleteButton:hover {
+    border-color: rgba(226, 154, 123, 0.38);
+    background: var(--delete-bg);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Empty slot */
+.emptyContent {
+    background: var(--empty-bg);
+    border-color: var(--border);
+}
+
+.dark .emptyContent:hover {
+    background: var(--primary-soft);
+    border-color: rgba(213, 138, 154, 0.38);
+    box-shadow:
+        0 9px 22px rgba(0, 0, 0, 0.24);
+}
+
+.emptyPlus {
+    background: var(--icon-bg);
+}
+
+/* Delete success */
+.deletedOverlay {
+    background: var(--deleted-overlay);
+}
+
+.dark .deletedOverlay {
+    box-shadow: inset 0 0 0 1px rgba(213, 138, 154, 0.05);
+}
+
+/* Banner */
+.bottomBanner {
+    border-color: var(--banner-border);
+    background: var(--banner-bg);
+}
+
+.dark .bottomBanner {
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.20);
+}
+
+.dark .bottomBanner::before {
+    background:
+        linear-gradient(100deg,
+            transparent,
+            rgba(255, 255, 255, 0.07),
+            transparent);
+}
+
+.bannerIcon {
+    background: var(--banner-icon-bg);
+}
+
+.dark .bannerIcon {
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Footer */
+.dark .footer {
+    color: var(--muted);
+}
+
+/* Smooth theme transitions */
+.mealPlanner,
+.mealPlanner .heroSummary,
+.mealPlanner .dayCard,
+.mealPlanner .dayHeader,
+.mealPlanner .dayMeals,
+.mealPlanner .mealSlot,
+.mealPlanner .imageWrapper,
+.mealPlanner .iconButton,
+.mealPlanner .emptyContent,
+.mealPlanner .emptyPlus,
+.mealPlanner .bottomBanner,
+.mealPlanner .bannerIcon,
+.mealPlanner .deletedOverlay {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
 }

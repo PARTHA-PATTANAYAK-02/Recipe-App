@@ -1,9 +1,12 @@
 import style from "../../css/Drinks/drinkItem.module.css";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function DrinkItem({ drink, onSelect }) {
+  const { theme } = useTheme();
+
   return (
     <div
-      className={style.item}
+      className={`${style.item} ${theme === "dark" ? style.dark : style.light}`}
       onMouseDown={() => onSelect(drink)}
       role="button"
       tabIndex={0}

@@ -1,20 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 
+
+/* =========================================
+   DETAILS SECTION
+========================================= */
+
 .detailsSection {
-    --background: #f8f6f0;
-    --surface: #ffffff;
-    --surface-soft: #f1efe7;
+    /* ---------- LIGHT (default) ---------- */
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
 
-    --text: #24231f;
-    --muted: #7d7a70;
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
 
-    --orange: #e58a43;
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
     --yellow: #f4c95d;
 
-    --border: #e7e3d8;
+    --border: #E7DED9;
+    --border-soft: #F3EEE9;
+
+    --decor-primary: rgba(143, 61, 78, 0.08);
+    --decor-orange: rgba(229, 138, 67, 0.08);
+    --decor-leaf: rgba(143, 61, 78, 0.12);
+
+    --image-badge-bg: rgba(255, 255, 255, 0.93);
+    --image-bottom-bg: rgba(255, 255, 255, 0.93);
+
+    --tip-bg: #FFF0E3;
+    --tip-border: #E7C9A9;
+    --tip-strong: #6F4A35;
+    --tip-text: #806A5B;
+
+    --banner-bg: #F4E5E8;
+    --banner-border: #E7D1D7;
+    --banner-symbol: rgba(143, 61, 78, 0.08);
+
+    --step-bg: var(--surface-soft);
+    --step-bg-hover: #EDE5E0;
 
     min-height: 100vh;
     width: 100%;
@@ -24,6 +53,100 @@
     position: relative;
     overflow: hidden;
     padding: 30px 0 0;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+.dark {
+    --background: #151312;
+    --surface: #211B1D;
+    --surface-soft: #2A2225;
+
+    --text: #F0E8E8;
+    --muted: #B9ACAF;
+    --light-muted: #918487;
+
+    --primary: #D58A9A;
+    --primary-dark: #E2A8B4;
+    --primary-soft: #3A252B;
+
+    --orange: #E8A067;
+    --orange-soft: #3A2C22;
+    --yellow: #f4c95d;
+
+    --border: #493A3F;
+    --border-soft: #403338;
+
+    --decor-primary: rgba(213, 138, 154, 0.10);
+    --decor-orange: rgba(232, 160, 103, 0.10);
+    --decor-leaf: rgba(213, 138, 154, 0.12);
+
+    --image-badge-bg: rgba(33, 27, 29, 0.92);
+    --image-bottom-bg: rgba(33, 27, 29, 0.92);
+
+    --tip-bg: #3A2C22;
+    --tip-border: #60483A;
+    --tip-strong: #E8A067;
+    --tip-text: #D8A6B0;
+
+    --banner-bg: #3A252B;
+    --banner-border: #493A3F;
+    --banner-symbol: rgba(213, 138, 154, 0.08);
+
+    --step-bg: var(--surface-soft);
+    --step-bg-hover: #32272A;
+}
+
+
+/* =========================================
+   LIGHT THEME (explicit)
+========================================= */
+
+.light {
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
+
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
+
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
+
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
+    --yellow: #f4c95d;
+
+    --border: #E7DED9;
+    --border-soft: #F3EEE9;
+
+    --decor-primary: rgba(143, 61, 78, 0.08);
+    --decor-orange: rgba(229, 138, 67, 0.08);
+    --decor-leaf: rgba(143, 61, 78, 0.12);
+
+    --image-badge-bg: rgba(255, 255, 255, 0.93);
+    --image-bottom-bg: rgba(255, 255, 255, 0.93);
+
+    --tip-bg: #FFF0E3;
+    --tip-border: #E7C9A9;
+    --tip-strong: #6F4A35;
+    --tip-text: #806A5B;
+
+    --banner-bg: #F4E5E8;
+    --banner-border: #E7D1D7;
+    --banner-symbol: rgba(143, 61, 78, 0.08);
+
+    --step-bg: var(--surface-soft);
+    --step-bg-hover: #EDE5E0;
 }
 
 
@@ -42,29 +165,32 @@
 .decorCircleOne {
     width: 260px;
     height: 260px;
-    border: 1px solid rgba(85, 123, 69, 0.08);
+    border: 1px solid var(--decor-primary);
     border-radius: 50%;
     top: 100px;
     left: -130px;
     animation: rotateSlow 18s linear infinite;
+    transition: border-color 0.4s ease;
 }
 
 .decorCircleTwo {
     width: 340px;
     height: 340px;
-    border: 1px solid rgba(229, 138, 67, 0.08);
+    border: 1px solid var(--decor-orange);
     border-radius: 50%;
     right: -180px;
     top: 500px;
     animation: rotateSlowReverse 22s linear infinite;
+    transition: border-color 0.4s ease;
 }
 
 .decorLeaf {
-    color: rgba(85, 123, 69, 0.12);
+    color: var(--decor-leaf);
     font-size: 90px;
     right: 5%;
     top: 220px;
     animation: floatSymbol 5s ease-in-out infinite;
+    transition: color 0.4s ease;
 }
 
 
@@ -101,14 +227,17 @@
     letter-spacing: 1.6px;
     color: var(--muted);
     text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
 .breadcrumb b {
-    color: #c8c3b7;
+    color: var(--light-muted);
+    transition: color 0.3s ease;
 }
 
 .breadcrumb strong {
-    color: var(--green);
+    color: var(--primary);
+    transition: color 0.3s ease;
 }
 
 
@@ -127,17 +256,27 @@
     gap: 12px;
     cursor: pointer;
     color: var(--text);
-    box-shadow: 0 10px 30px rgba(47, 45, 38, 0.06);
+    box-shadow: 0 10px 30px rgba(111, 41, 57, 0.06);
     transition:
-        transform 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .randomButton:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 35px rgba(47, 45, 38, 0.1);
-    border-color: rgba(85, 123, 69, 0.3);
+    box-shadow: 0 18px 35px rgba(111, 41, 57, 0.10);
+    border-color: var(--primary);
+}
+
+.dark .randomButton {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.dark .randomButton:hover {
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.5);
 }
 
 .randomIcon {
@@ -146,8 +285,15 @@
     border-radius: 13px;
     display: grid;
     place-items: center;
-    background: #eef3e9;
+    background: var(--primary-soft);
     font-size: 19px;
+    transition:
+        background 0.3s ease,
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.randomButton:hover .randomIcon {
+    transform: rotate(-8deg) scale(1.06);
 }
 
 .randomText {
@@ -163,6 +309,7 @@
     color: var(--orange);
     font-size: 8px;
     letter-spacing: 1.4px;
+    transition: color 0.3s ease;
 }
 
 .randomArrow {
@@ -171,10 +318,12 @@
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: var(--green);
+    background: var(--primary);
     color: white;
     font-size: 17px;
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.3s ease;
 }
 
 .randomButton:hover .randomArrow {
@@ -208,15 +357,25 @@
     padding: 15px;
     overflow: hidden;
     transform: rotate(-1.5deg);
-    box-shadow: 0 25px 60px rgba(43, 40, 31, 0.1);
+    box-shadow: 0 25px 60px rgba(111, 41, 57, 0.10);
     transition:
         transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
-        box-shadow 0.5s ease;
+        box-shadow 0.5s ease,
+        background 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.dark .imageCard {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
 }
 
 .imageCard:hover {
     transform: rotate(0deg) translateY(-12px) scale(1.015);
-    box-shadow: 0 35px 75px rgba(43, 40, 31, 0.15);
+    box-shadow: 0 35px 75px rgba(111, 41, 57, 0.15);
+}
+
+.dark .imageCard:hover {
+    box-shadow: 0 35px 75px rgba(0, 0, 0, 0.6);
 }
 
 .drinkImage {
@@ -240,22 +399,26 @@
     z-index: 5;
     top: 30px;
     left: 30px;
-    background: rgba(255, 255, 255, 0.93);
+    background: var(--image-badge-bg);
     backdrop-filter: blur(10px);
     padding: 10px 14px;
     border-radius: 999px;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 1.3px;
-    color: var(--green-dark);
+    color: var(--primary-dark);
     display: flex;
     align-items: center;
     gap: 7px;
     animation: badgePop 0.8s 0.4s both;
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
 }
 
 .imageBadge span {
     color: var(--orange);
+    transition: color 0.3s ease;
 }
 
 .imageShine {
@@ -274,6 +437,13 @@
     animation: shine 5s ease-in-out 1.5s infinite;
 }
 
+.dark .imageShine {
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
+}
+
 .imageBottom {
     position: absolute;
     z-index: 5;
@@ -286,13 +456,16 @@
 }
 
 .imageBottom span {
-    background: rgba(255, 255, 255, 0.93);
+    background: var(--image-bottom-bg);
     backdrop-filter: blur(10px);
     border-radius: 999px;
     padding: 10px 14px;
     font-size: 10px;
     font-weight: 700;
     color: var(--text);
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
 }
 
 .imageCaption {
@@ -307,6 +480,7 @@
     width: 35px;
     height: 1px;
     background: var(--orange);
+    transition: background 0.3s ease;
 }
 
 .imageCaption p {
@@ -314,6 +488,7 @@
     color: var(--muted);
     font-family: "Playfair Display", serif;
     font-style: italic;
+    transition: color 0.3s ease;
 }
 
 
@@ -341,21 +516,24 @@
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
 .category {
-    background: #eef3e9;
-    color: var(--green-dark);
+    background: var(--primary-soft);
+    color: var(--primary-dark);
 }
 
 .iba {
-    background: #fff0e4;
-    color: #b8662b;
+    background: var(--orange-soft);
+    color: var(--orange);
 }
 
 .alcohol {
-    background: #f2eee5;
-    color: #777064;
+    background: var(--surface-soft);
+    color: var(--muted);
 }
 
 .title {
@@ -366,10 +544,13 @@
     line-height: 0.98;
     letter-spacing: -3px;
     font-weight: 600;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 .title span {
     color: var(--orange);
+    transition: color 0.3s ease;
 }
 
 .alternate {
@@ -378,6 +559,7 @@
     font-family: "Playfair Display", serif;
     font-style: italic;
     font-size: 17px;
+    transition: color 0.3s ease;
 }
 
 .tags {
@@ -388,9 +570,10 @@
 }
 
 .tags span {
-    color: var(--green);
+    color: var(--primary);
     font-size: 11px;
     font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 .intro {
@@ -399,8 +582,48 @@
     font-size: 15px;
     line-height: 1.8;
     margin: 25px 0 30px;
+    transition: color 0.3s ease;
 }
 
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.actionButtons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    margin: 0 0 30px;
+    flex-wrap: wrap;
+}
+
+/*
+   Keep both action components on the exact same
+   vertical center line, even if their own button
+   heights/padding are slightly different.
+*/
+.actionButtons>* {
+    flex: 0 0 auto;
+    align-self: center;
+    margin: 0 !important;
+    vertical-align: middle;
+}
+
+.actionButtons>*>button {
+    margin: 0 !important;
+}
+
+@media (max-width: 700px) {
+    .actionButtons {
+        gap: 10px;
+        min-height: 42px;
+        margin-bottom: 26px;
+    }
+}
 
 /* =========================================
    INFO GRID
@@ -421,13 +644,19 @@
     border: 1px solid var(--border);
     border-radius: 17px;
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s ease,
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
 
 .infoCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(47, 45, 38, 0.07);
+    box-shadow: 0 15px 30px rgba(111, 41, 57, 0.07);
+}
+
+.dark .infoCard:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .infoIcon {
@@ -436,8 +665,15 @@
     border-radius: 13px;
     display: grid;
     place-items: center;
-    background: #f3f0e7;
+    background: var(--surface-soft);
     font-size: 19px;
+    transition:
+        background 0.3s ease,
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.infoCard:hover .infoIcon {
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .infoCard div:last-child {
@@ -451,19 +687,20 @@
     color: var(--muted);
     font-weight: 800;
     margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
 .infoCard strong {
     display: block;
     font-size: 12px;
     line-height: 1.35;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 
 /* =====================================================
    RECIPE AREA
-   IMPORTANT:
-   INGREDIENTS + PREPARATION ARE NOW VERTICAL
 ===================================================== */
 
 .recipeArea {
@@ -486,7 +723,16 @@
     border-radius: 28px;
     padding: 48px 52px;
     box-sizing: border-box;
-    box-shadow: 0 15px 45px rgba(47, 45, 38, 0.045);
+    box-shadow: 0 15px 45px rgba(111, 41, 57, 0.045);
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.dark .ingredientsCard,
+.dark .preparationCard {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -501,6 +747,7 @@
     gap: 20px;
     padding-bottom: 30px;
     border-bottom: 1px solid var(--border);
+    transition: border-color 0.4s ease;
 }
 
 .sectionEyebrow {
@@ -510,6 +757,7 @@
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
 .sectionHeader h2 {
@@ -518,17 +766,22 @@
     font-size: 45px;
     line-height: 1;
     letter-spacing: -1.5px;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 .itemCount {
     flex-shrink: 0;
-    background: #f0eee6;
+    background: var(--surface-soft);
     color: var(--muted);
     padding: 10px 16px;
     border-radius: 999px;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.8px;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
 .stepIcon {
@@ -537,9 +790,17 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: #fbf1e7;
+    background: var(--orange-soft);
     color: var(--orange);
     font-size: 19px;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.preparationCard:hover .stepIcon {
+    transform: rotate(-8deg) scale(1.06);
 }
 
 
@@ -549,13 +810,7 @@
 
 .ingredientsList {
     display: grid;
-
-    /*
-    Few ingredients -> still looks clean.
-    Many ingredients -> 2 columns.
-  */
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     column-gap: 55px;
     margin-top: 5px;
 }
@@ -568,8 +823,9 @@
     gap: 12px;
     border-bottom: 1px solid var(--border);
     transition:
-        transform 0.3s ease,
-        padding 0.3s ease;
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        padding 0.3s ease,
+        border-color 0.4s ease;
 }
 
 .ingredient:hover {
@@ -577,17 +833,25 @@
 }
 
 .ingredientNumber {
-    color: #b9b5aa;
+    color: var(--light-muted);
     font-size: 11px;
     font-weight: 800;
+    transition: color 0.3s ease;
 }
 
 .ingredientDot {
     width: 11px;
     height: 11px;
     border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 0 5px rgba(85, 123, 69, 0.08);
+    background: var(--primary);
+    box-shadow: 0 0 0 5px rgba(143, 61, 78, 0.08);
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.dark .ingredientDot {
+    box-shadow: 0 0 0 5px rgba(213, 138, 154, 0.12);
 }
 
 .ingredientDetails {
@@ -600,25 +864,19 @@
 .ingredientDetails strong {
     font-size: 15px;
     font-weight: 700;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 .ingredientDetails span {
-    color: var(--muted);
+    color: var(--primary);
     font-size: 11px;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 .ingredient>.ingredientDetails+* {
     justify-self: end;
-}
-
-
-/*
-   Measure is inside ingredientDetails in JSX,
-   so make the measure visually stronger.
-*/
-.ingredientDetails span {
-    color: var(--green);
-    font-weight: 700;
 }
 
 
@@ -644,18 +902,22 @@
     gap: 28px;
     min-height: 105px;
     padding: 15px 28px;
-    background: var(--surface-soft);
+    background: var(--step-bg);
     border-radius: 24px;
     transition:
-        transform 0.35s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         background 0.35s ease,
         box-shadow 0.35s ease;
 }
 
 .instructionStep:hover {
     transform: translateX(6px);
-    background: #eeece4;
-    box-shadow: 0 12px 28px rgba(47, 45, 38, 0.06);
+    background: var(--step-bg-hover);
+    box-shadow: 0 12px 28px rgba(111, 41, 57, 0.06);
+}
+
+.dark .instructionStep:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
 .stepNumber {
@@ -664,19 +926,32 @@
     border-radius: 19px;
     display: grid;
     place-items: center;
-    background: var(--green);
+    background: var(--primary);
     color: white;
     font-size: 12px;
     font-weight: 800;
-    box-shadow: 0 8px 18px rgba(85, 123, 69, 0.18);
+    box-shadow: 0 8px 18px rgba(111, 41, 57, 0.18);
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.instructionStep:hover .stepNumber {
+    transform: scale(1.06) rotate(-4deg);
 }
 
 .instructionStep p {
     margin: 0;
-    color: #747168;
+    color: var(--muted);
     font-size: 15px;
     line-height: 1.7;
     font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.instructionStep:hover p {
+    color: var(--text);
 }
 
 
@@ -690,27 +965,33 @@
     gap: 15px;
     margin-top: 25px;
     padding: 20px 22px;
-    background: #fff7e8;
-    border: 1px solid #f1dfb8;
+    background: var(--tip-bg);
+    border: 1px solid var(--tip-border);
     border-radius: 18px;
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
 
 .tipIcon {
     font-size: 22px;
+    animation: sparkle 2.6s ease-in-out infinite;
 }
 
 .tipBox strong {
     display: block;
-    color: #735b2f;
+    color: var(--tip-strong);
     font-size: 12px;
     margin-bottom: 4px;
+    transition: color 0.3s ease;
 }
 
 .tipBox p {
     margin: 0;
-    color: #887758;
+    color: var(--tip-text);
     font-size: 12px;
     line-height: 1.6;
+    transition: color 0.3s ease;
 }
 
 
@@ -725,7 +1006,16 @@
     border-radius: 28px;
     padding: 48px 52px;
     margin-bottom: 30px;
-    box-shadow: 0 15px 45px rgba(47, 45, 38, 0.045);
+    box-shadow: 0 15px 45px rgba(111, 41, 57, 0.045);
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.dark .extraInfo,
+.dark .languageInfo {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
 .detailGrid {
@@ -740,6 +1030,7 @@
     padding: 24px 22px;
     border-bottom: 1px solid var(--border);
     border-right: 1px solid var(--border);
+    transition: border-color 0.4s ease;
 }
 
 .detailItem:nth-child(4n) {
@@ -754,6 +1045,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 9px;
+    transition: color 0.3s ease;
 }
 
 .detailItem strong {
@@ -762,11 +1054,13 @@
     font-size: 13px;
     line-height: 1.5;
     overflow-wrap: anywhere;
+    transition: color 0.3s ease;
 }
 
 .detailItem a {
-    color: var(--green);
+    color: var(--primary);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .detailItem a:hover {
@@ -790,13 +1084,18 @@
     background: var(--surface-soft);
     border-radius: 19px;
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s ease,
+        background 0.4s ease;
 }
 
 .languageCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(47, 45, 38, 0.06);
+    box-shadow: 0 15px 30px rgba(111, 41, 57, 0.06);
+}
+
+.dark .languageCard:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .languageTop {
@@ -811,7 +1110,7 @@
     height: 35px;
     display: grid;
     place-items: center;
-    background: var(--green);
+    background: var(--primary);
     color: white;
     border-radius: 10px;
     font-size: 9px;
@@ -820,6 +1119,8 @@
 
 .languageTop strong {
     font-size: 13px;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 .languageCard p {
@@ -827,6 +1128,7 @@
     color: var(--muted);
     font-size: 12px;
     line-height: 1.7;
+    transition: color 0.3s ease;
 }
 
 
@@ -840,8 +1142,11 @@
     margin-top: 75px;
     padding: 55px 60px;
     border-radius: 28px;
-    background: #e9efe2;
-    border: 1px solid #dce5d2;
+    background: var(--banner-bg);
+    border: 1px solid var(--banner-border);
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
 
 .bottomBanner::after {
@@ -850,8 +1155,9 @@
     right: 70px;
     top: 30px;
     font-size: 110px;
-    color: rgba(85, 123, 69, 0.08);
+    color: var(--banner-symbol);
     animation: floatSymbol 5s ease-in-out infinite;
+    transition: color 0.4s ease;
 }
 
 .bottomBanner span {
@@ -859,6 +1165,7 @@
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 2px;
+    transition: color 0.3s ease;
 }
 
 .bottomBanner h2 {
@@ -868,10 +1175,13 @@
     font-size: clamp(35px, 4vw, 60px);
     line-height: 1.05;
     letter-spacing: -1.5px;
+    color: var(--text);
+    transition: color 0.3s ease;
 }
 
 .bottomBanner em {
-    color: var(--green);
+    color: var(--primary);
+    transition: color 0.3s ease;
 }
 
 
@@ -890,6 +1200,7 @@
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
 
@@ -1005,6 +1316,20 @@
     }
 }
 
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(20deg) scale(1.15);
+        opacity: 0.75;
+    }
+}
+
 
 /* =========================================
    TABLET
@@ -1105,9 +1430,6 @@
         font-size: 36px;
     }
 
-    /*
-    On mobile, ingredient columns become one column.
-  */
     .ingredientsList {
         grid-template-columns: 1fr;
     }

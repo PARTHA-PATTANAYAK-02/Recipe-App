@@ -7,11 +7,14 @@ import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import { useTheme } from "../../context/ThemeContext"; // ← ADD
+
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
 export default function Drinksdetails() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { theme } = useTheme();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -170,7 +173,11 @@ export default function Drinksdetails() {
     : [];
 
   return (
-    <section className={style.detailsSection}>
+    <section
+      className={`${style.detailsSection} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.decorCircleOne}></div>
       <div className={style.decorCircleTwo}></div>
       <div className={style.decorLeaf}>✦</div>
@@ -272,20 +279,22 @@ export default function Drinksdetails() {
               Discover everything about this drink — its ingredients, serving
               style, category, preparation method, and recipe information.
             </p>
-            <FavoriteButton
-              active={isFavorite}
-              onClick={isFavorite ? removeFavorite : addFavorite}
-            />
+            <div className={style.actionButtons}>
+              <FavoriteButton
+                active={isFavorite}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+              />
 
-            <MealPlannerButton
-              meal={{
-                type: "drink",
-                id: data.idDrink,
-                name: data.strDrink,
-                image: data.strDrinkThumb,
-                data: data,
-              }}
-            />
+              <MealPlannerButton
+                meal={{
+                  type: "drink",
+                  id: data.idDrink,
+                  name: data.strDrink,
+                  image: data.strDrinkThumb,
+                  data: data,
+                }}
+              />
+            </div>
             <div className={style.infoGrid}>
               <div className={style.infoCard}>
                 <div className={style.infoIcon}>🥂</div>

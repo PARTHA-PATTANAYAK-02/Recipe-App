@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/set-state-in-effect */
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useTheme } from "../../context/ThemeContext";
+
 import style from "../../css/Recipe/foodList.module.css";
 import FoodItem from "./FoodItem";
 
@@ -8,6 +12,7 @@ const URL = import.meta.env.VITE_MEAL_API_URL;
 
 export default function FoodList({ query, setQuery }) {
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const [foodData, setFoodData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,7 +72,11 @@ export default function FoodList({ query, setQuery }) {
 
   if (!loading && !error && foodData.length === 0) {
     return (
-      <div className={style.foodList}>
+      <div
+        className={`${style.foodList} ${
+          theme === "dark" ? style.dark : style.light
+        }`}
+      >
         <div className={style.empty}>
           <span className={style.emptyIcon}>🍽️</span>
 
@@ -82,7 +91,11 @@ export default function FoodList({ query, setQuery }) {
   }
 
   return (
-    <div className={style.foodList}>
+    <div
+      className={`${style.foodList} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.listHeader}>
         <span className={style.listTitle}>Recipe suggestions</span>
 

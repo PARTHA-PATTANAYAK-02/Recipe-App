@@ -1,8 +1,15 @@
+import { useTheme } from "../context/ThemeContext";
 import style from "../css/emptymessage.module.css";
 
 export default function EmptyMessage({ msg1, msg2, emoji }) {
+  const { theme } = useTheme();
+
   return (
-    <div className={style.emptyContainer}>
+    <div
+      className={`${style.emptyContainer} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={`${style.decor} ${style.decorOne}`}></div>
       <div className={`${style.decor} ${style.decorTwo}`}></div>
 

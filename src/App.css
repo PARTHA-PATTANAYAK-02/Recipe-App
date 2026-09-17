@@ -1,20 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
 
 * {
   padding: 0;
-  margin: 2px 2px;
+  margin: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  transition: all 0.2s ease;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
-  background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 99%), #e3eeff;
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
 }
 
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+/* =========================================================
+   LIGHT THEME
+   Burgundy + Cream + Orange
+========================================================= */
+
+.main.light {
+  /* Background */
+  --app-bg: #F8F6F0;
+  --app-surface: #FFFFFF;
+  --app-surface-soft: #F3EEE9;
+
+  /* Primary Burgundy */
+  --app-primary: #8F3D4E;
+  --app-primary-dark: #6F2939;
+  --app-primary-light: #B96579;
+  --app-primary-soft: #F4E5E8;
+
+  /* Secondary Orange */
+  --app-orange: #E58A43;
+  --app-orange-dark: #C96D2C;
+  --app-orange-soft: #FFF0E3;
+
+  /* Highlight */
+  --app-yellow: #F4C95D;
+
+  /* Text */
+  --app-text: #292522;
+  --app-text-soft: #746D68;
+  --app-text-muted: #A29A95;
+
+  /* Border */
+  --app-border: #E7DED9;
+
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+/* =========================================================
+   DARK THEME
+   Deep Charcoal + Burgundy + Orange
+========================================================= */
+
+.main.dark {
+  /* Background */
+  --app-bg: #151312;
+  --app-surface: #211B1D;
+  --app-surface-soft: #2A2225;
+
+  /* Primary Burgundy */
+  --app-primary: #D58A9A;
+  --app-primary-dark: #B96579;
+  --app-primary-light: #E2A8B4;
+  --app-primary-soft: #3A252B;
+
+  /* Secondary Orange */
+  --app-orange: #E8A067;
+  --app-orange-dark: #F0AE78;
+  --app-orange-soft: #3A2C22;
+
+  /* Highlight */
+  --app-yellow: #F4C95D;
+
+  /* Text */
+  --app-text: #F0E8E8;
+  --app-text-soft: #B9ACAF;
+  --app-text-muted: #918487;
+
+  /* Border */
+  --app-border: #493A3F;
+
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+/* =========================================================
+   BODY THEME
+========================================================= */
+
+/*
+   CSS variables cannot travel from .main UP to body.
+   So body background is controlled separately by the
+   theme class added to the root element.
+*/
+
+body:has(.main.light) {
+  background: #F8F6F0;
+  color: #292522;
+}
+
+body:has(.main.dark) {
+  background: #151312;
+  color: #F0E8E8;
+}
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
 .main {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+
+  background: var(--app-bg);
+  color: var(--app-text);
+
+  transition:
+    background 0.45s ease,
+    color 0.45s ease;
+}
+
+/* =========================================================
+   SMOOTH THEME TRANSITION
+========================================================= */
+
+.main,
+.main * {
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/*
+   Don't override transform/animation transitions.
+   Those are handled by individual component CSS.
+*/
+
+.main button,
+.main a {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease,
+    opacity 0.25s ease;
+}
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+.dark ::selection {
+  background: #D58A9A;
+  color: #151312;
+}
+
+.light ::selection {
+  background: #8F3D4E;
+  color: #FFFFFF;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 680px) {
+  .main {
+    gap: 2px;
+  }
 }

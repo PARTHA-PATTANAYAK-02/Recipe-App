@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, useLocation, useParams } from "react-router-dom";
-
+import { useTheme } from "./context/ThemeContext";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
@@ -60,7 +60,7 @@ function DrinkDetailsRoute() {
 
 function AppContent() {
   const location = useLocation();
-
+  const { theme } = useTheme();
   const [query, setQuery] = useState("");
 
   const [foodSearchTrigger, setFoodSearchTrigger] = useState(0);
@@ -103,12 +103,8 @@ function AppContent() {
   ======================================================= */
 
   return (
-    <div className="main">
+    <div className={`main ${theme === "dark" ? "dark" : "light"}`}>
       <Navbar />
-
-      {/* =================================================
-          SEARCH
-      ================================================= */}
 
       {showSearch && (
         <Search
@@ -120,22 +116,12 @@ function AppContent() {
         />
       )}
 
-      {/* =================================================
-          ROUTES
-      ================================================= */}
-
       <Routes>
-        {/* ================= HOME ================= */}
-
         <Route path="/" element={<Home />} />
-
-        {/* ================= RECIPES ================= */}
 
         <Route path="/recipes" element={<RandomRecipea />} />
 
         <Route path="/recipes/:id" element={<RecipeDetailsRoute />} />
-
-        {/* ================= FOOD ================= */}
 
         <Route
           path="/food"
@@ -149,8 +135,6 @@ function AppContent() {
           }
         />
 
-        {/* ================= INGREDIENTS ================= */}
-
         <Route
           path="/ingredients"
           element={
@@ -161,27 +145,19 @@ function AppContent() {
           }
         />
 
-        {/* ================= DRINKS ================= */}
-
         <Route path="/drinks" element={<RandomPage />} />
 
         <Route path="/drinks/:id" element={<DrinkDetailsRoute />} />
-
-        {/* ================= FAVORITES ================= */}
 
         <Route
           path="/favorites"
           element={<Favorite setModalMeal={setModalMeal} />}
         />
 
-        {/* ================= MEAL PLANNER ================= */}
-
         <Route
           path="/meal-planner"
           element={<MealPlanner setModalMeal={setModalMeal} />}
         />
-
-        {/* ================= INVALID / UNKNOWN URL ================= */}
 
         <Route path="*" element={<NotFound />} />
       </Routes>

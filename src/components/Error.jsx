@@ -1,10 +1,15 @@
+import { useTheme } from "../context/ThemeContext";
 import style from "../css/error.module.css";
 
 export default function Error({ message }) {
-  console.log(message);
+  const { theme } = useTheme();
 
   return (
-    <div className={style.errorContainer}>
+    <div
+      className={`${style.errorContainer} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.errorCard}>
         <div className={style.cardGlow}></div>
 

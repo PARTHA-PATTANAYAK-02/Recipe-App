@@ -1,19 +1,26 @@
 .item {
+
     width: 100%;
+
     min-height: 62px;
 
     box-sizing: border-box;
 
     display: flex;
+
     align-items: center;
 
     gap: 11px;
+
     padding: 6px 9px;
 
     border: 1px solid transparent;
+
     border-radius: 13px;
 
-    background: #ffffff;
+    background: var(--item-bg);
+
+    color: var(--item-text);
 
     cursor: pointer;
 
@@ -21,105 +28,214 @@
         background 0.22s ease,
         border-color 0.22s ease,
         transform 0.22s ease,
-        box-shadow 0.22s ease;
+        box-shadow 0.22s ease,
+        color 0.22s ease;
 
     animation: itemIn 0.28s ease-out both;
 }
 
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+.light {
+
+    --item-bg: #FFFFFF;
+
+    --item-hover-bg: #F4E5E8;
+
+    --item-border-hover: #D8BCC2;
+
+    --item-shadow: rgba(111, 41, 57, 0.07);
+
+    --image-bg: #F3EEE9;
+
+    --category-color: #8F3D4E;
+
+    --title-color: #292522;
+
+    --arrow-bg: #F4E5E8;
+
+    --arrow-hover-bg: #EBD4D9;
+
+    --arrow-color: #8F3D4E;
+
+    --focus-color: #8F3D4E;
+}
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+.dark {
+
+    --item-bg: #211B1D;
+
+    --item-hover-bg: #3A252B;
+
+    --item-border-hover: #694A52;
+
+    --item-shadow: rgba(0, 0, 0, 0.25);
+
+    --image-bg: #2A2225;
+
+    --category-color: #D58A9A;
+
+    --title-color: #F0E8E8;
+
+    --arrow-bg: #3A252B;
+
+    --arrow-hover-bg: #493038;
+
+    --arrow-color: #D58A9A;
+
+    --focus-color: #D58A9A;
+}
+
+
+/* =========================================================
+   HOVER / FOCUS
+   ========================================================= */
+
 .item:hover {
-    background: #f7f9f4;
-    border-color: #dce5d7;
+
+    background: var(--item-hover-bg);
+
+    border-color:
+        var(--item-border-hover);
 
     transform: translateX(3px);
 
-    box-shadow: 0 4px 12px rgba(63, 96, 52, 0.07);
+    box-shadow:
+        0 4px 12px var(--item-shadow);
 }
 
 .item:focus-visible {
-    outline: 2px solid #557b45;
+
+    outline: 2px solid var(--focus-color);
+
     outline-offset: 1px;
 }
 
-/* ===== IMAGE ===== */
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
 
 .imageWrapper {
+
     width: 48px;
+
     height: 48px;
+
     min-width: 48px;
 
     overflow: hidden;
+
     border-radius: 11px;
 
-    background: #f1efe8;
+    background: var(--image-bg);
 }
 
 .img {
+
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
     display: block;
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 .item:hover .img {
+
     transform: scale(1.07);
 }
 
-/* ===== INFO ===== */
+
+/* =========================================================
+   INFO
+   ========================================================= */
 
 .info {
+
     min-width: 0;
+
     flex: 1;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 }
 
 .category {
+
     margin-bottom: 2px;
 
-    color: #7d9671;
+    color: var(--category-color);
 
     font-family: "DM Sans", sans-serif;
+
     font-size: 8px;
+
     font-weight: 700;
+
     letter-spacing: 1.1px;
 }
 
 .title {
+
     display: block;
 
-    color: #2d2c28;
+    color: var(--title-color);
 
     font-family: "DM Sans", sans-serif;
+
     font-size: 13px;
+
     font-weight: 600;
+
     line-height: 1.25;
 
     white-space: nowrap;
+
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
-/* ===== ARROW ===== */
+
+/* =========================================================
+   ARROW
+   ========================================================= */
 
 .arrow {
+
     width: 28px;
+
     height: 28px;
+
     min-width: 28px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
 
-    background: #f3f5ef;
-    color: #557b45;
+    background: var(--arrow-bg);
+
+    color: var(--arrow-color);
 
     font-size: 15px;
 
@@ -130,66 +246,102 @@
     transition:
         opacity 0.22s ease,
         transform 0.22s ease,
-        background 0.22s ease;
+        background 0.22s ease,
+        color 0.22s ease;
 }
 
 .item:hover .arrow {
+
     opacity: 1;
+
     transform: translateX(0);
+
+    background: var(--arrow-hover-bg);
 }
 
-.item:hover .arrow {
-    background: #e7efe2;
-}
 
-/* ===== ANIMATION ===== */
+/* =========================================================
+   ANIMATION
+   ========================================================= */
 
 @keyframes itemIn {
+
     from {
+
         opacity: 0;
+
         transform: translateY(-5px);
     }
 
     to {
+
         opacity: 1;
+
         transform: translateY(0);
     }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 520px) {
+
     .item {
+
         min-height: 58px;
+
         gap: 9px;
+
         padding: 5px 7px;
+
         border-radius: 11px;
     }
 
     .imageWrapper {
+
         width: 44px;
+
         height: 44px;
+
         min-width: 44px;
     }
 
     .title {
+
         font-size: 12px;
     }
 
     .arrow {
+
         opacity: 1;
+
         transform: none;
+
         width: 25px;
+
         height: 25px;
+
         min-width: 25px;
+
         font-size: 13px;
     }
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     .item,
     .img,
     .arrow {
+
         animation: none;
+
         transition: none;
     }
 }

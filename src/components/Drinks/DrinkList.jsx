@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 import style from "../../css/Drinks/drinkList.module.css";
 import DrinkItem from "./DrinkItem";
 
@@ -8,6 +9,7 @@ const URL = import.meta.env.VITE_DRINK_API_URL;
 
 export default function DrinkList({ query, setQuery }) {
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const [drinkData, setDrinkData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,7 +69,11 @@ export default function DrinkList({ query, setQuery }) {
 
   if (!loading && !error && drinkData.length === 0) {
     return (
-      <div className={style.drinkList}>
+      <div
+        className={`${style.drinkList} ${
+          theme === "dark" ? style.dark : style.light
+        }`}
+      >
         <div className={style.empty}>
           <span className={style.emptyIcon}>🍹</span>
 
@@ -82,7 +88,11 @@ export default function DrinkList({ query, setQuery }) {
   }
 
   return (
-    <div className={style.drinkList}>
+    <div
+      className={`${style.drinkList} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.listHeader}>
         <span className={style.listTitle}>Drink suggestions</span>
 

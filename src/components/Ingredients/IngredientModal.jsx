@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import style from "../../css/Ingredients/modal.module.css";
+import { useTheme } from "../../context/ThemeContext";
+
 const IMAGE_URL = import.meta.env.VITE_MEAL_IMAGE_URL;
+
 export default function IngredientModal({ ingredient, onClose }) {
+  const { theme } = useTheme();
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -31,7 +36,12 @@ export default function IngredientModal({ ingredient, onClose }) {
   };
 
   return (
-    <div className={style.backdrop} onMouseDown={handleBackdropClick}>
+    <div
+      className={`${style.backdrop} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+      onMouseDown={handleBackdropClick}
+    >
       <div className={style.modalWindow}>
         {/* CLOSE */}
         <button

@@ -19,13 +19,13 @@
 
     padding: 0 16px;
 
-    border: 1px solid rgba(85, 123, 69, 0.28);
+    border: 1px solid rgba(143, 61, 78, 0.28);
 
     border-radius: 11px;
 
     background: #ffffff;
 
-    color: #3f6034;
+    color: #6F2939;
 
     font-family: "DM Sans", sans-serif;
 
@@ -79,9 +79,9 @@
         translateY(-2px);
 
     border-color:
-        rgba(85, 123, 69, 0.48);
+        rgba(143, 61, 78, 0.48);
 
-    background: #fdfefb;
+    background: #FCF8F9;
 
     box-shadow:
         0 12px 25px rgba(47, 45, 38, 0.1);
@@ -110,7 +110,7 @@
 
     border-radius: 50%;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     color: #ffffff;
 
@@ -209,11 +209,11 @@
 
     padding: 27px;
 
-    border: 1px solid rgba(85, 123, 69, 0.16);
+    border: 1px solid rgba(143, 61, 78, 0.16);
 
     border-radius: 20px;
 
-    background: #fffdf9;
+    background: #FFFFFF;
 
     box-shadow:
         0 30px 80px rgba(35, 39, 31, 0.24),
@@ -242,7 +242,7 @@
     border-radius: 10px;
 
     background:
-        rgba(85, 123, 69, 0.25);
+        rgba(143, 61, 78, 0.25);
 }
 
 
@@ -250,7 +250,7 @@
     scrollbar-width: thin;
 
     scrollbar-color:
-        rgba(85, 123, 69, 0.25) transparent;
+        rgba(143, 61, 78, 0.25) transparent;
 }
 
 
@@ -305,7 +305,7 @@
 
     margin-bottom: 7px;
 
-    color: #557b45;
+    color: #8F3D4E;
 
     font-size: 8px;
 
@@ -318,7 +318,7 @@
 .modalHeader h2 {
     margin: 0;
 
-    color: #2f2d26;
+    color: #292522;
 
     font-family:
         "Playfair Display",
@@ -335,7 +335,7 @@
 .modalHeader p {
     margin: 8px 0 0;
 
-    color: #77746b;
+    color: #746D68;
 
     font-family:
         "DM Sans",
@@ -395,14 +395,14 @@
         rotate(90deg) scale(1.05);
 
     border-color:
-        rgba(85, 123, 69, 0.25);
+        rgba(143, 61, 78, 0.25);
 
-    background: #557b45;
+    background: #8F3D4E;
 
     color: #ffffff;
 
     box-shadow:
-        0 7px 15px rgba(85, 123, 69, 0.18);
+        0 7px 15px rgba(143, 61, 78, 0.18);
 }
 
 
@@ -428,11 +428,11 @@
 
     padding: 10px;
 
-    border: 1px solid rgba(85, 123, 69, 0.12);
+    border: 1px solid rgba(143, 61, 78, 0.12);
 
     border-radius: 13px;
 
-    background: #f7f4ed;
+    background: #F3EEE9;
 
     transition:
         transform 0.3s ease,
@@ -446,7 +446,7 @@
         translateY(-2px);
 
     border-color:
-        rgba(85, 123, 69, 0.25);
+        rgba(143, 61, 78, 0.25);
 
     box-shadow:
         0 8px 20px rgba(47, 45, 38, 0.06);
@@ -504,7 +504,7 @@
 
     overflow: hidden;
 
-    color: #3f3d35;
+    color: #292522;
 
     font-family:
         "Playfair Display",
@@ -546,7 +546,7 @@
 
 .formGroup label,
 .formLabel {
-    color: #77746b;
+    color: #746D68;
 
     font-size: 8px;
 
@@ -574,7 +574,7 @@
 
     padding: 12px 40px 12px 13px;
 
-    border: 1px solid rgba(85, 123, 69, 0.18);
+    border: 1px solid rgba(143, 61, 78, 0.18);
 
     border-radius: 11px;
 
@@ -582,7 +582,7 @@
 
     background: #ffffff;
 
-    color: #3f3d35;
+    color: #292522;
 
     font-family:
         "DM Sans",
@@ -611,7 +611,7 @@
 
 .select:focus {
     border-color:
-        #557b45;
+        #8F3D4E;
 
     box-shadow:
         0 0 0 3px rgba(85, 123, 69, 0.1);
@@ -640,7 +640,7 @@
     transform:
         translateY(-50%);
 
-    color: #557b45;
+    color: #8F3D4E;
 
     pointer-events: none;
 
@@ -688,7 +688,7 @@
 
     padding: 0 8px;
 
-    border: 1px solid rgba(85, 123, 69, 0.14);
+    border: 1px solid rgba(143, 61, 78, 0.14);
 
     border-radius: 11px;
 
@@ -712,7 +712,7 @@
         rgba(85, 123, 69, 0.35);
 
     box-shadow:
-        0 7px 17px rgba(85, 123, 69, 0.08);
+        0 7px 17px rgba(143, 61, 78, 0.08);
 }
 
 
@@ -721,10 +721,10 @@
         rgba(85, 123, 69, 0.55);
 
     background:
-        rgba(85, 123, 69, 0.07);
+        rgba(143, 61, 78, 0.07);
 
     box-shadow:
-        0 6px 16px rgba(85, 123, 69, 0.08);
+        0 6px 16px rgba(143, 61, 78, 0.08);
 }
 
 
@@ -766,7 +766,7 @@
 
 .mealOption.selected .radio {
     border-color:
-        #557b45;
+        #8F3D4E;
 }
 
 
@@ -783,7 +783,7 @@
 
     border-radius: 50%;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     animation:
         radioPop 0.25s ease both;
@@ -791,7 +791,7 @@
 
 
 .optionText {
-    color: #4c4a43;
+    color: #292522;
 
     font-size: 9px;
 
@@ -808,7 +808,7 @@
 
     opacity: 0.62;
 
-    background: #f4f2ec;
+    background: #F3EEE9;
 
     border-color:
         rgba(47, 45, 38, 0.08);
@@ -832,7 +832,7 @@
 
 
 .mealOption.disabledOption .optionText {
-    color: #77746b;
+    color: #746D68;
 }
 
 
@@ -844,9 +844,9 @@
     border-radius: 6px;
 
     background:
-        rgba(85, 123, 69, 0.09);
+        rgba(143, 61, 78, 0.09);
 
-    color: #557b45;
+    color: #8F3D4E;
 
     font-size: 6px;
 
@@ -871,7 +871,7 @@
 
     padding: 11px 12px;
 
-    border: 1px solid rgba(85, 123, 69, 0.16);
+    border: 1px solid rgba(143, 61, 78, 0.16);
 
     border-radius: 11px;
 
@@ -897,7 +897,7 @@
 
     border-radius: 50%;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     color: #ffffff;
 
@@ -920,7 +920,7 @@
 
     margin-bottom: 4px;
 
-    color: #557b45;
+    color: #8F3D4E;
 
     font-size: 8px;
 
@@ -948,7 +948,7 @@
 
     background: #ffffff;
 
-    color: #69665e;
+    color: #746D68;
 
     font-size: 7px;
 
@@ -1004,7 +1004,7 @@
 .slotWarning p {
     margin: 0;
 
-    color: #817d72;
+    color: #746D68;
 
     font-size: 8px;
 
@@ -1064,7 +1064,7 @@
 
     background: #ffffff;
 
-    color: #69665e;
+    color: #746D68;
 }
 
 
@@ -1072,7 +1072,7 @@
     transform:
         translateY(-2px);
 
-    background: #f7f5ef;
+    background: #F3EEE9;
 
     box-shadow:
         0 6px 14px rgba(47, 45, 38, 0.06);
@@ -1097,9 +1097,9 @@
 
     min-width: 105px;
 
-    border: 1px solid #557b45;
+    border: 1px solid #8F3D4E;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     color: #ffffff;
 
@@ -1121,7 +1121,7 @@
     transform:
         translateY(-2px);
 
-    background: #3f6034;
+    background: #6F2939;
 
     box-shadow:
         0 11px 24px rgba(85, 123, 69, 0.27);
@@ -1136,11 +1136,11 @@
 
 .addButton:disabled {
     border-color:
-        rgba(85, 123, 69, 0.18);
+        rgba(143, 61, 78, 0.18);
 
-    background: #d9ddd5;
+    background: #D8C9CD;
 
-    color: #747970;
+    color: #746D68;
 
     cursor: not-allowed;
 
@@ -1215,7 +1215,7 @@
     border-radius: 50%;
 
     background:
-        rgba(85, 123, 69, 0.07);
+        rgba(143, 61, 78, 0.07);
 
     filter: blur(25px);
 
@@ -1240,16 +1240,16 @@
 
     margin-bottom: 22px;
 
-    border: 1px solid rgba(85, 123, 69, 0.25);
+    border: 1px solid rgba(143, 61, 78, 0.25);
 
     border-radius: 50%;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     color: #ffffff;
 
     box-shadow:
-        0 0 0 8px rgba(85, 123, 69, 0.07),
+        0 0 0 8px rgba(143, 61, 78, 0.07),
 
         0 15px 35px rgba(85, 123, 69, 0.22);
 
@@ -1288,7 +1288,7 @@
 
     margin-bottom: 7px;
 
-    color: #557b45;
+    color: #8F3D4E;
 
     font-size: 8px;
 
@@ -1303,7 +1303,7 @@
 
     margin: 0;
 
-    color: #2f2d26;
+    color: #292522;
 
     font-family:
         "Playfair Display",
@@ -1322,7 +1322,7 @@
 
     margin: 10px 0 17px;
 
-    color: #77746b;
+    color: #746D68;
 
     font-family:
         "DM Sans",
@@ -1335,7 +1335,7 @@
 
 
 .successState p strong {
-    color: #3f6034;
+    color: #6F2939;
 
     font-weight: 800;
 }
@@ -1352,13 +1352,13 @@
 
     padding: 8px 12px;
 
-    border: 1px solid rgba(85, 123, 69, 0.13);
+    border: 1px solid rgba(143, 61, 78, 0.13);
 
     border-radius: 9px;
 
-    background: #f7f4ed;
+    background: #F3EEE9;
 
-    color: #557b45;
+    color: #8F3D4E;
 
     font-size: 8px;
 
@@ -1407,7 +1407,7 @@
 
     transform-origin: left;
 
-    background: #557b45;
+    background: #8F3D4E;
 
     animation:
         successProgress 1.5s linear both;
@@ -1836,4 +1836,373 @@
 
         transition: none !important;
     }
+}
+
+/* =========================================================
+   THEME SYSTEM
+   Original layout, spacing and animations are preserved.
+========================================================= */
+
+.light {
+    --planner-surface: #ffffff;
+    --planner-surface-soft: #FFFFFF;
+    --planner-preview: #F3EEE9;
+    --planner-text: #292522;
+    --planner-text-soft: #746D68;
+    --planner-text-muted: #746D68;
+    --planner-border: rgba(143, 61, 78, 0.16);
+    --planner-border-soft: rgba(47, 45, 38, 0.10);
+    --planner-primary: #8F3D4E;
+    --planner-primary-dark: #6F2939;
+    --planner-primary-soft: rgba(143, 61, 78, 0.07);
+    --planner-orange: #e58a43;
+    --planner-disabled: #D8C9CD;
+    --planner-disabled-text: #746D68;
+    --planner-overlay: rgba(35, 39, 31, 0.52);
+    --planner-option-disabled: #F3EEE9;
+    --planner-white: #ffffff;
+}
+
+.dark {
+    --planner-surface: #211B1D;
+    --planner-surface-soft: #211B1D;
+    --planner-preview: #2A2225;
+    --planner-text: #F0E8E8;
+    --planner-text-soft: #B9ACAF;
+    --planner-text-muted: #918487;
+    --planner-border: rgba(213, 138, 154, 0.22);
+    --planner-border-soft: rgba(220, 230, 216, 0.12);
+    --planner-primary: #D58A9A;
+    --planner-primary-dark: #B96579;
+    --planner-primary-soft: rgba(213, 138, 154, 0.10);
+    --planner-orange: #e8a067;
+    --planner-disabled: #493A3F;
+    --planner-disabled-text: #918487;
+    --planner-overlay: rgba(7, 10, 7, 0.68);
+    --planner-option-disabled: #2A2225;
+    --planner-white: #2A2225;
+}
+
+/* Button */
+
+.plannerButton.light {
+    background: var(--planner-surface);
+    color: var(--planner-primary-dark);
+    border-color: rgba(143, 61, 78, 0.28);
+    box-shadow: 0 7px 18px rgba(47, 45, 38, 0.06);
+}
+
+.plannerButton.dark {
+    background: var(--planner-surface);
+    color: var(--planner-text);
+    border-color: rgba(213, 138, 154, 0.28);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.24);
+}
+
+.plannerButton.dark::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.plannerButton.dark:hover {
+    background: #3A252B;
+    border-color: rgba(213, 138, 154, 0.48);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.30);
+}
+
+.plannerButton.dark .plus {
+    background: var(--planner-primary);
+    color: #211B1D;
+}
+
+.plannerButton.dark:hover .plus {
+    box-shadow: 0 4px 10px rgba(213, 138, 154, 0.22);
+}
+
+/* Modal / overlay */
+
+.overlay.light {
+    background: rgba(35, 39, 31, 0.52);
+}
+
+.overlay.dark {
+    background: var(--planner-overlay);
+}
+
+.modal {
+    background: var(--planner-surface-soft);
+    color: var(--planner-text);
+    border-color: var(--planner-border);
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.28),
+        0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+.modalGlow {
+    background: rgba(244, 201, 93, 0.14);
+}
+
+.modalHeader h2,
+.successState h2 {
+    color: var(--planner-text);
+}
+
+.modalHeader p,
+.successState p {
+    color: var(--planner-text-soft);
+}
+
+.eyebrow,
+.successEyebrow {
+    color: var(--planner-primary);
+}
+
+.closeButton {
+    background: var(--planner-surface);
+    color: var(--planner-text-soft);
+    border-color: var(--planner-border-soft);
+}
+
+.closeButton:hover:not(:disabled) {
+    background: var(--planner-primary);
+    color: #ffffff;
+    border-color: var(--planner-primary);
+}
+
+.mealPreview {
+    background: var(--planner-preview);
+    border-color: var(--planner-border);
+    box-shadow: none;
+}
+
+.previewInfo span {
+    color: var(--planner-orange);
+}
+
+.previewInfo h3 {
+    color: var(--planner-text);
+}
+
+.formGroup label,
+.formLabel {
+    color: var(--planner-text-soft);
+}
+
+.select {
+    background: var(--planner-surface);
+    color: var(--planner-text);
+    border-color: var(--planner-border);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+}
+
+.select:hover:not(:disabled) {
+    border-color: rgba(213, 138, 154, 0.42);
+}
+
+.select:focus {
+    border-color: var(--planner-primary);
+    box-shadow: 0 0 0 3px rgba(213, 138, 154, 0.12);
+}
+
+.selectArrow {
+    color: var(--planner-primary);
+}
+
+.mealOption {
+    background: var(--planner-surface);
+    border-color: var(--planner-border);
+}
+
+.mealOption:hover {
+    border-color: rgba(213, 138, 154, 0.42);
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.10);
+}
+
+.mealOption.selected {
+    border-color: rgba(213, 138, 154, 0.62);
+    background: var(--planner-primary-soft);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.radio {
+    background: var(--planner-surface);
+    border-color: #918487;
+}
+
+.mealOption.selected .radio {
+    border-color: var(--planner-primary);
+}
+
+.mealOption.selected .radio::after {
+    background: var(--planner-primary);
+}
+
+.optionText {
+    color: var(--planner-text);
+}
+
+.mealOption.disabledOption {
+    background: var(--planner-option-disabled);
+    border-color: var(--planner-border-soft);
+}
+
+.mealOption.disabledOption .optionText {
+    color: var(--planner-text-soft);
+}
+
+.usedBadge {
+    background: rgba(213, 138, 154, 0.12);
+    color: var(--planner-primary);
+}
+
+.alreadyPlanned {
+    background: var(--planner-primary-soft);
+    border-color: var(--planner-border);
+}
+
+.alreadyIcon {
+    background: var(--planner-primary);
+    color: #ffffff;
+}
+
+.alreadyTitle {
+    color: var(--planner-primary);
+}
+
+.plannedLocation {
+    background: var(--planner-surface);
+    color: var(--planner-text-soft);
+}
+
+.plannedLocation:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+.slotWarning p {
+    color: var(--planner-text-muted);
+}
+
+.slotWarning>span {
+    color: var(--planner-orange);
+}
+
+.actions {
+    border-top-color: var(--planner-border-soft);
+}
+
+.cancelButton {
+    background: var(--planner-surface);
+    color: var(--planner-text-soft);
+    border-color: var(--planner-border-soft);
+}
+
+.cancelButton:hover:not(:disabled) {
+    background: var(--planner-preview);
+}
+
+.addButton {
+    background: var(--planner-primary);
+    border-color: var(--planner-primary);
+    color: #ffffff;
+    box-shadow: 0 7px 18px rgba(143, 61, 78, 0.20);
+}
+
+.dark .addButton {
+    background: var(--planner-primary);
+    border-color: var(--planner-primary);
+    color: #211B1D;
+    box-shadow: 0 7px 18px rgba(213, 138, 154, 0.18);
+}
+
+.addButton:hover:not(:disabled) {
+    background: var(--planner-primary-dark);
+}
+
+.dark .addButton:hover:not(:disabled) {
+    color: #ffffff;
+}
+
+.addButton:disabled {
+    background: var(--planner-disabled);
+    color: var(--planner-disabled-text);
+    border-color: rgba(213, 138, 154, 0.16);
+}
+
+.successState::before {
+    background: rgba(213, 138, 154, 0.08);
+}
+
+.successCircle {
+    background: var(--planner-primary);
+    border-color: rgba(145, 183, 125, 0.30);
+    box-shadow:
+        0 0 0 8px rgba(213, 138, 154, 0.08),
+        0 15px 35px rgba(213, 138, 154, 0.20);
+}
+
+.successState p strong {
+    color: var(--planner-primary);
+}
+
+.successLocation {
+    background: var(--planner-preview);
+    border-color: var(--planner-border);
+    color: var(--planner-primary);
+}
+
+.successLocation i {
+    color: var(--planner-text-muted);
+}
+
+.successProgress {
+    background: rgba(213, 138, 154, 0.12);
+}
+
+.successProgress span {
+    background: var(--planner-primary);
+}
+
+/* Theme transitions */
+
+.plannerButton,
+.overlay,
+.modal,
+.modalHeader h2,
+.modalHeader p,
+.closeButton,
+.mealPreview,
+.previewInfo h3,
+.formGroup label,
+.formLabel,
+.select,
+.selectArrow,
+.mealOption,
+.radio,
+.optionText,
+.usedBadge,
+.alreadyPlanned,
+.alreadyTitle,
+.plannedLocation,
+.slotWarning p,
+.actions,
+.cancelButton,
+.addButton,
+.successState h2,
+.successState p,
+.successLocation {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Modal scrollbar */
+
+.dark .modal {
+    scrollbar-color: rgba(145, 183, 125, 0.32) transparent;
+}
+
+.dark .modal::-webkit-scrollbar-thumb {
+    background: rgba(145, 183, 125, 0.32);
 }

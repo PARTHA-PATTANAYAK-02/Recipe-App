@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
+import { ChevronDownIcon } from "@animateicons/react/lucide";
 import style from "../../css/Food/food.module.css";
 
 import Loading from "../Loading";
@@ -24,6 +26,8 @@ export default function Food({
   modalMeal,
   setModalMeal,
 }) {
+  const { theme } = useTheme();
+
   /* =======================================================
      STATES
      ======================================================= */
@@ -256,7 +260,11 @@ export default function Food({
      ======================================================= */
 
   return (
-    <main className={style.pageWrapper}>
+    <main
+      className={`${style.pageWrapper} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.foodContainer}>
         {/* =================================================
             HEADER
@@ -384,7 +392,13 @@ export default function Food({
                     <option value="za">Z → A</option>
                   </select>
 
-                  <span className={style.sortArrow}>⌄</span>
+                  <span className={style.sortArrow} aria-hidden="true">
+                    <ChevronDownIcon
+                      size={16}
+                      duration={1}
+                      color="currentColor"
+                    />
+                  </span>
                 </div>
               </div>
             </div>

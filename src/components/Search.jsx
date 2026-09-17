@@ -7,6 +7,8 @@ import { SearchIcon } from "@animateicons/react/lucide";
 import FoodList from "./Recipes/FoodList";
 import DrinkList from "./Drinks/DrinkList";
 
+import { useTheme } from "../context/ThemeContext";
+
 export default function Search({
   query,
   setQuery,
@@ -15,7 +17,13 @@ export default function Search({
   setIngredientSearchTrigger,
 }) {
   const ref = useRef(null);
+  const iconRef = useRef(null);
+
   const [isFocused, setIsFocused] = useState(false);
+
+  const { theme } = useTheme();
+
+  const isDark = theme === "dark";
 
   const placeHolder = [
     {},
@@ -91,14 +99,32 @@ export default function Search({
     };
   }, []);
 
+  /*
+   * =========================================================
+   * SEARCH ICON ANIMATION
+   * =========================================================
+   */
+
+  const handleSearchMouseEnter = () => {
+    iconRef.current?.startAnimation?.();
+  };
+
+  const handleSearchMouseLeave = () => {
+    iconRef.current?.stopAnimation?.();
+  };
+
   return (
-    <div className={style.searchBox} ref={ref}>
+    <div
+      className={`${style.searchBox} ${isDark ? style.dark : style.light}`}
+      ref={ref}
+    >
       <div className={style.decorCircleOne}></div>
       <div className={style.decorCircleTwo}></div>
 
       <div className={style.content}>
         <div className={style.eyebrow}>
           <span className={style.eyebrowDot}></span>
+
           {menu === 4 ? "DRINK DISCOVERY" : "FOOD DISCOVERY"}
         </div>
 
@@ -109,15 +135,15 @@ export default function Search({
             className={`${style.search} ${
               isFocused ? style.searchFocused : ""
             }`}
-            onMouseEnter={() => ref.current?.startAnimation?.()}
-            onMouseLeave={() => ref.current?.stopAnimation?.()}
+            onMouseEnter={handleSearchMouseEnter}
+            onMouseLeave={handleSearchMouseLeave}
           >
             <div className={style.iconWrapper}>
               <SearchIcon
-                ref={ref}
+                ref={iconRef}
                 size={25}
                 duration={1}
-                color="#557b45"
+                color={isDark ? "#91b77d" : "#557b45"}
               />
             </div>
 
@@ -175,6 +201,7 @@ export default function Search({
                 disabled={query.trim() === ""}
               >
                 <span>Search</span>
+
                 <span className={style.arrow}>→</span>
               </button>
             )}
@@ -187,10 +214,7 @@ export default function Search({
                 display: isFocused ? "block" : "none",
               }}
             >
-              <FoodList
-                query={query}
-                setQuery={setQuery}
-              />
+              <FoodList query={query} setQuery={setQuery} />
             </div>
           )}
 
@@ -201,10 +225,7 @@ export default function Search({
                 display: isFocused ? "block" : "none",
               }}
             >
-              <DrinkList
-                query={query}
-                setQuery={setQuery}
-              />
+              <DrinkList query={query} setQuery={setQuery} />
             </div>
           )}
         </div>

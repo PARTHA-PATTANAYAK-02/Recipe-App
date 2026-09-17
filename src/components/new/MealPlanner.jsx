@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 import style from "../../css/MealPlanner/mealPlanner.module.css";
 import { EyeIcon, Trash2Icon, CheckIcon } from "@animateicons/react/lucide";
 
@@ -36,6 +37,7 @@ const mealTimes = [
 
 export default function MealPlanner({ setModalMeal }) {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const [planner, setPlanner] = useState({});
   const [deletingSlot, setDeletingSlot] = useState(null);
   const [deletedSlot, setDeletedSlot] = useState(null);
@@ -139,7 +141,9 @@ export default function MealPlanner({ setModalMeal }) {
   };
 
   return (
-    <main className={style.mealPlanner}>
+    <main
+      className={`${style.mealPlanner} ${theme === "dark" ? style.dark : style.light}`}
+    >
       <div className={style.pageGlow}></div>
       <div className={style.pageGlowTwo}></div>
 

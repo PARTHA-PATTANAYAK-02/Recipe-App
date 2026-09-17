@@ -6,24 +6,24 @@
    ========================================================= */
 
 .recipePage {
-    --cream: #f8f6ef;
-    --white: #ffffff;
+    --cream: #F8F6F0;
+    --white: #FFFFFF;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
-    --green-soft: #e9f0e3;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
 
-    --orange: #e58a43;
-    --orange-dark: #c96d2c;
-    --orange-soft: #fff0e3;
+    --orange: #E58A43;
+    --orange-dark: #C96D2C;
+    --orange-soft: #FFF0E3;
 
-    --yellow-soft: #fff7d9;
+    --yellow-soft: #FFF0D0;
 
-    --text: #24261f;
-    --text-soft: #666960;
-    --muted: #999b93;
+    --text: #292522;
+    --text-soft: #746D68;
+    --muted: #A29A95;
 
-    --border: #e2e0d7;
+    --border: #E7DED9;
 
     width: 100%;
     min-height: 100vh;
@@ -33,7 +33,7 @@
 
     background:
         radial-gradient(circle at 5% 8%,
-            rgba(85, 123, 69, 0.055),
+            rgba(143, 61, 78, 0.055),
             transparent 22%),
         radial-gradient(circle at 96% 45%,
             rgba(229, 138, 67, 0.045),
@@ -43,6 +43,7 @@
     color: var(--text);
 
     font-family: "DM Sans", sans-serif;
+    border-radius: 15px;
 }
 
 
@@ -67,9 +68,9 @@
     top: 80px;
     left: -220px;
 
-    background: rgba(85, 123, 69, 0.035);
+    background: rgba(143, 61, 78, 0.035);
 
-    border: 1px solid rgba(85, 123, 69, 0.05);
+    border: 1px solid rgba(143, 61, 78, 0.05);
 }
 
 .backgroundShapeTwo {
@@ -119,12 +120,12 @@
 
     padding: 9px 13px 9px 9px;
 
-    border: 1px solid #d9ded2;
+    border: 1px solid #E7DED9;
     border-radius: 999px;
 
     background: rgba(255, 255, 255, 0.78);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-family: "DM Sans", sans-serif;
     font-size: 10px;
@@ -146,7 +147,7 @@
 
     background: var(--white);
 
-    border-color: rgba(85, 123, 69, 0.3);
+    border-color: rgba(143, 61, 78, 0.3);
 
     box-shadow: 0 9px 20px rgba(45, 50, 40, 0.07);
 }
@@ -165,9 +166,9 @@
 
     border-radius: 50%;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 10px;
 }
@@ -175,7 +176,7 @@
 .discoverArrow {
     margin-left: 2px;
 
-    color: #9ca397;
+    color: #A29A95;
 
     font-size: 8px;
 
@@ -185,7 +186,7 @@
 .discoverButton:hover .discoverArrow {
     transform: translateX(3px);
 
-    color: var(--green);
+    color: var(--primary);
 }
 
 
@@ -292,7 +293,7 @@
     align-items: center;
     justify-content: center;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
     font-size: 60px;
 }
@@ -319,7 +320,7 @@
 
     background: rgba(255, 255, 255, 0.94);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     border: 1px solid rgba(255, 255, 255, 0.8);
 
@@ -444,9 +445,9 @@
 }
 
 .categoryTag {
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 }
 
 .areaTag {
@@ -519,9 +520,9 @@
 }
 
 .greenFact {
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 }
 
 .orangeFact {
@@ -533,7 +534,7 @@
 .yellowFact {
     background: var(--yellow-soft);
 
-    color: #aa851b;
+    color: #A47A16;
 }
 
 .heroFact span {
@@ -577,7 +578,7 @@
 
     border-radius: 11px;
 
-    background: var(--green);
+    background: var(--primary);
 
     color: white;
 
@@ -593,11 +594,11 @@
 }
 
 .sourceButton:hover {
-    background: var(--green-dark);
+    background: var(--primary-dark);
 
     transform: translateY(-2px);
 
-    box-shadow: 0 8px 17px rgba(63, 96, 52, 0.16);
+    box-shadow: 0 8px 17px rgba(111, 41, 57, 0.16);
 }
 
 .sourceButton svg {
@@ -628,9 +629,9 @@
 
     border-radius: 13px;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-family: "Playfair Display", serif;
 
@@ -733,9 +734,9 @@
 }
 
 .greenOverview {
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 }
 
 .orangeOverview {
@@ -747,7 +748,7 @@
 .yellowOverview {
     background: var(--yellow-soft);
 
-    color: #ae881b;
+    color: #A47A16;
 }
 
 .overviewCard span {
@@ -800,7 +801,7 @@
 
     gap: 7px;
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 8px;
     font-weight: 700;
@@ -905,7 +906,7 @@
 .ingredientCard:hover {
     transform: translateX(3px);
 
-    border-color: rgba(85, 123, 69, 0.25);
+    border-color: rgba(143, 61, 78, 0.25);
 
     box-shadow: 0 7px 18px rgba(45, 50, 40, 0.045);
 }
@@ -929,7 +930,7 @@
 
     flex-shrink: 0;
 
-    color: #aaaca4;
+    color: #A29A95;
 
     font-family: "Playfair Display", serif;
 
@@ -952,9 +953,9 @@
 
     border-radius: 9px;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 9px;
 }
@@ -988,7 +989,7 @@
 }
 
 .ingredientArrow {
-    color: #c3c5bc;
+    color: #A29A95;
 
     font-size: 8px;
 
@@ -998,7 +999,7 @@
 }
 
 .ingredientCard:hover .ingredientArrow {
-    color: var(--green);
+    color: var(--primary);
 
     transform: translateX(3px);
 }
@@ -1073,7 +1074,7 @@
 }
 
 .instructionsMeta strong {
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 11px;
 }
@@ -1135,7 +1136,7 @@
 .newStepCard:hover {
     transform: translateY(-3px);
 
-    border-color: rgba(85, 123, 69, 0.23);
+    border-color: rgba(143, 61, 78, 0.23);
 
     box-shadow: 0 12px 25px rgba(45, 50, 40, 0.06);
 }
@@ -1160,10 +1161,10 @@
 .featuredStep {
     background:
         linear-gradient(135deg,
-            #edf4e8 0%,
-            #ffffff 75%);
+            #F4E5E8 0%,
+            #FFFFFF 75%);
 
-    border-color: #d8e4d1;
+    border-color: #D8BCC2;
 }
 
 .featuredStep::after {
@@ -1179,7 +1180,7 @@
 
     border-radius: 50%;
 
-    background: rgba(85, 123, 69, 0.045);
+    background: rgba(143, 61, 78, 0.045);
 
     pointer-events: none;
 }
@@ -1198,7 +1199,7 @@
 }
 
 .bigStepNumber {
-    color: var(--green);
+    color: var(--primary);
 
     font-family: "Playfair Display", serif;
 
@@ -1245,7 +1246,7 @@
 .newStepText {
     margin: 0;
 
-    color: #595c54;
+    color: #746D68;
 
     font-size: 12px;
 
@@ -1266,7 +1267,7 @@
 
     justify-content: space-between;
 
-    color: #a1a39b;
+    color: #A29A95;
 
     font-size: 7px;
 
@@ -1276,7 +1277,7 @@
 }
 
 .stepBottom svg {
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 9px;
 
@@ -1309,7 +1310,7 @@
 
     overflow: hidden;
 
-    background: var(--green-dark);
+    background: var(--primary-dark);
 
     border-radius: 17px;
 
@@ -1423,7 +1424,7 @@
 
     background: white;
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     text-decoration: none;
 
@@ -1523,10 +1524,10 @@
 
     background:
         linear-gradient(135deg,
-            #f0f4e9 0%,
-            #f8f4e8 100%);
+            #F4E5E8 0%,
+            #F8F6F0 100%);
 
-    border: 1px solid #dfe4d6;
+    border: 1px solid #E7DED9;
 }
 
 .finalDecorOne,
@@ -1620,7 +1621,7 @@
 }
 
 .finalContent h2 em {
-    color: var(--green);
+    color: var(--primary);
 
     font-style: italic;
 
@@ -1644,7 +1645,7 @@
 
     margin-top: 15px;
 
-    color: #9b9d95;
+    color: #A29A95;
 
     font-size: 8px;
 }
@@ -2202,4 +2203,392 @@
     .newStepCard {
         animation: none;
     }
+}
+
+/* =========================================================
+   THEME SYSTEM
+   Original layout, sizing, spacing, responsive rules and
+   animations are preserved. Only colors/backgrounds/shadows
+   are adapted for light and dark mode.
+   ========================================================= */
+
+.light {
+    --cream: #F8F6F0;
+    --white: #FFFFFF;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
+    --orange: #E58A43;
+    --orange-dark: #C96D2C;
+    --orange-soft: #FFF0E3;
+    --yellow-soft: #FFF0D0;
+    --text: #292522;
+    --text-soft: #746D68;
+    --muted: #A29A95;
+    --border: #E7DED9;
+}
+
+.dark {
+    --cream: #151312;
+    --white: #211B1D;
+    --primary: #D58A9A;
+    --primary-dark: #B96579;
+    --primary-soft: #3A252B;
+    --orange: #E8A067;
+    --orange-dark: #F0AE78;
+    --orange-soft: #3A2C22;
+    --yellow-soft: #383323;
+    --text: #F0E8E8;
+    --text-soft: #B9ACAF;
+    --muted: #918487;
+    --border: #493A3F;
+}
+
+.recipePage.light {
+    background:
+        radial-gradient(circle at 5% 8%, rgba(143, 61, 78, 0.055), transparent 22%),
+        radial-gradient(circle at 96% 45%, rgba(229, 138, 67, 0.045), transparent 23%),
+        var(--cream);
+    color: var(--text);
+}
+
+.recipePage.dark {
+    background:
+        radial-gradient(circle at 5% 8%, rgba(213, 138, 154, 0.075), transparent 22%),
+        radial-gradient(circle at 96% 45%, rgba(229, 138, 67, 0.055), transparent 23%),
+        var(--cream);
+    color: var(--text);
+}
+
+.dark .backgroundShapeOne {
+    background: rgba(213, 138, 154, 0.055);
+    border-color: rgba(213, 138, 154, 0.09);
+}
+
+.dark .backgroundShapeTwo {
+    background: rgba(229, 138, 67, 0.045);
+    border-color: rgba(229, 138, 67, 0.075);
+}
+
+.dark .discoverButton {
+    border-color: #493A3F;
+    background: rgba(31, 39, 29, 0.88);
+    color: #E2A8B4;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.22);
+}
+
+.dark .discoverButton:hover {
+    background: #3A252B;
+    border-color: #69434D;
+    box-shadow: 0 9px 20px rgba(0, 0, 0, 0.28);
+}
+
+.dark .discoverIcon {
+    background: #3A252B;
+    color: #E2A8B4;
+}
+
+.dark .discoverArrow {
+    color: #918487;
+}
+
+.dark .discoverButton:hover .discoverArrow {
+    color: #E2A8B4;
+}
+
+.dark .heroImageFrame {
+    background: #211B1D;
+    border-color: #493A3F;
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.34),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark .heroImageFrame:hover {
+    box-shadow:
+        0 28px 55px rgba(0, 0, 0, 0.42),
+        0 7px 18px rgba(0, 0, 0, 0.25);
+}
+
+.dark .imageGlow {
+    background: rgba(244, 201, 93, 0.18);
+}
+
+.dark .imageFallback {
+    background: #3A252B;
+}
+
+.dark .recipeBadge {
+    background: rgba(28, 35, 26, 0.9);
+    color: #a7c797;
+    border-color: rgba(220, 235, 214, 0.12);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.22);
+}
+
+.dark .imageNumber {
+    background: rgba(8, 12, 8, 0.72);
+}
+
+.dark .heroEyebrow,
+.dark .sectionEyebrow,
+.dark .finalEyebrow {
+    color: #E8A067;
+}
+
+.dark .recipeTitle,
+.dark .sectionHeading h2,
+.dark .finalContent h2 {
+    color: #edf3e9;
+}
+
+.dark .heroIntro,
+.dark .finalContent p,
+.dark .emptyInstructions p,
+.dark .emptyIngredients p {
+    color: #a7b1a2;
+}
+
+.dark .categoryTag {
+    background: #3A252B;
+    color: #E2A8B4;
+}
+
+.dark .areaTag {
+    background: #3A2C22;
+    color: #F0AE78;
+}
+
+.dark .heroFact {
+    background: rgba(31, 39, 29, 0.86);
+    border-color: #493A3F;
+}
+
+.dark .heroFact span,
+.dark .overviewCard span {
+    color: #918487;
+}
+
+.dark .heroFact strong,
+.dark .overviewCard strong {
+    color: #F0E8E8;
+}
+
+.dark .greenFact,
+.dark .greenOverview {
+    background: #3A252B;
+    color: #E2A8B4;
+}
+
+.dark .orangeFact,
+.dark .orangeOverview {
+    background: #3A2C22;
+    color: #E8A067;
+}
+
+.dark .yellowFact,
+.dark .yellowOverview {
+    background: #3A2C22;
+    color: #F4C95D;
+}
+
+.dark .sourceButton {
+    color: #211B1D;
+}
+
+.dark .sourceButton:hover {
+    color: #211B1D;
+    background: #B96579;
+}
+
+.dark .sectionNumber {
+    background: #3A252B;
+    color: #E2A8B4;
+}
+
+.dark .overviewSection,
+.dark .instructionsSection {
+    border-top-color: #493A3F;
+}
+
+.dark .overviewCard,
+.dark .tagsBox,
+.dark .ingredientCard,
+.dark .newStepCard,
+.dark .emptyIngredients,
+.dark .emptyInstructions {
+    background: #211B1D;
+    border-color: #493A3F;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.dark .overviewCard:hover,
+.dark .ingredientCard:hover,
+.dark .newStepCard:hover {
+    border-color: #59744f;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark .tagsHeading {
+    color: #E2A8B4;
+}
+
+.dark .recipeTag {
+    background: #293127;
+    color: #aeb8a8;
+}
+
+.dark .itemCount {
+    background: #293127;
+    border-color: #3d4939;
+    color: #B9ACAF;
+}
+
+.dark .ingredientIndex {
+    color: #879283;
+}
+
+.dark .ingredientVisual {
+    background: #3A252B;
+    color: #E2A8B4;
+}
+
+.dark .ingredientContent strong {
+    color: #e1e8dd;
+}
+
+.dark .ingredientContent span {
+    color: #9da899;
+}
+
+.dark .ingredientArrow {
+    color: #918487;
+}
+
+.dark .ingredientCard:hover .ingredientArrow {
+    color: #E2A8B4;
+}
+
+.dark .instructionsMeta {
+    color: #9da899;
+}
+
+.dark .instructionsMeta strong {
+    color: #E2A8B4;
+}
+
+.dark .newStepCard {
+    background: #211B1D;
+}
+
+.dark .featuredStep {
+    background: linear-gradient(135deg, #293829 0%, #211B1D 75%);
+    border-color: #69434D;
+}
+
+.dark .featuredStep::after {
+    background: rgba(213, 138, 154, 0.06);
+}
+
+.dark .bigStepNumber {
+    color: #D58A9A;
+}
+
+.dark .stepLabel {
+    background: #3A2C22;
+    color: #e3a16e;
+}
+
+.dark .stepDivider {
+    background: #384334;
+}
+
+.dark .newStepText {
+    color: #CFC2C5;
+}
+
+.dark .stepBottom {
+    color: #8f998a;
+}
+
+.dark .stepBottom svg {
+    color: #E2A8B4;
+}
+
+.dark .watchRecipeBox {
+    background: #3A252B;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark .watchRecipeInfo span {
+    color: #E2A8B4;
+}
+
+.dark .watchRecipeInfo h3 {
+    color: #F0E8E8;
+}
+
+.dark .watchButton {
+    background: #F8F6F0;
+    color: #6F2939;
+}
+
+.dark .watchButton:hover {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .emptyIngredients,
+.dark .emptyInstructions {
+    border-style: dashed;
+}
+
+.dark .finalSection {
+    background: linear-gradient(135deg, #263225 0%, #20291f 100%);
+    border-color: #3c4a38;
+}
+
+.dark .finalDecorOne {
+    border-color: rgba(145, 183, 125, 0.13);
+}
+
+.dark .finalDecorTwo {
+    border-color: rgba(232, 154, 91, 0.12);
+}
+
+.dark .finalEmoji {
+    background: #2b3529;
+    box-shadow: 0 7px 17px rgba(0, 0, 0, 0.25);
+}
+
+.dark .finalContent h2 em {
+    color: #E2A8B4;
+}
+
+.dark .updatedText {
+    color: #7f8b7b;
+}
+
+/* Smooth theme transitions only; layout is untouched. */
+.recipePage,
+.recipePage .discoverButton,
+.recipePage .heroImageFrame,
+.recipePage .recipeBadge,
+.recipePage .heroFact,
+.recipePage .overviewCard,
+.recipePage .tagsBox,
+.recipePage .recipeTag,
+.recipePage .itemCount,
+.recipePage .ingredientCard,
+.recipePage .ingredientVisual,
+.recipePage .newStepCard,
+.recipePage .stepLabel,
+.recipePage .emptyIngredients,
+.recipePage .emptyInstructions,
+.recipePage .finalSection,
+.recipePage .finalEmoji {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
 }

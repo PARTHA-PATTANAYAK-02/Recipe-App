@@ -5,6 +5,101 @@
 ========================= */
 
 .randomPage {
+    /* ---------- LIGHT (default) ---------- */
+    --page-bg:
+        radial-gradient(circle at 8% 15%,
+            rgba(213, 138, 154, 0.12),
+            transparent 28%),
+        radial-gradient(circle at 92% 75%,
+            rgba(232, 160, 103, 0.08),
+            transparent 30%),
+        #F8F6F0;
+
+    --page-text: #292522;
+    --page-border: rgba(143, 61, 78, 0.24);
+
+    --glow-one: #D8A6B0;
+    --glow-two: #E2B5BE;
+
+    --eyebrow: #8F3D4E;
+    --heading: #292522;
+    --heading-gradient:
+        linear-gradient(110deg, #E58A43, #B96579, #8F3D4E);
+    --heading-p: #746D68;
+
+    --button-bg: rgba(255, 255, 255, 0.72);
+    --button-bg-hover: #ffffff;
+    --button-border: rgba(111, 41, 57, 0.10);
+    --button-border-hover: rgba(143, 61, 78, 0.35);
+    --button-text: #292522;
+    --button-shadow-hover: 0 15px 35px rgba(111, 41, 57, 0.12);
+    --button-icon: #8F3D4E;
+
+    --card-bg: rgba(255, 255, 255, 0.82);
+    --card-border: rgba(111, 41, 57, 0.08);
+    --card-shadow:
+        0 30px 80px rgba(78, 60, 42, 0.1),
+        0 4px 15px rgba(78, 60, 42, 0.04);
+
+    --image-section-bg:
+        radial-gradient(circle at center,
+            rgba(143, 61, 78, 0.12),
+            transparent 52%),
+        linear-gradient(145deg, #F3EEE9, #EDE5E0);
+    --image-glow: rgba(143, 61, 78, 0.16);
+    --image-ring-border: rgba(143, 61, 78, 0.16);
+    --image-ring-dot: #8F3D4E;
+
+    --image-wrapper-bg:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.5));
+    --image-wrapper-shadow:
+        0 35px 75px rgba(111, 41, 57, 0.18),
+        0 0 80px rgba(143, 61, 78, 0.10);
+
+    --badge-bg: rgba(255, 255, 255, 0.78);
+    --badge-border: rgba(111, 41, 57, 0.08);
+    --badge-text: #746D68;
+    --badge-icon: #8F3D4E;
+
+    --meta-bg: #F3EEE9;
+    --meta-border: rgba(111, 41, 57, 0.08);
+    --meta-text: #81776d;
+    --meta-icon: #8F3D4E;
+
+    --label: #a1876d;
+    --title: #292521;
+    --alternate: #A29A95;
+
+    --info-bg: #FFFFFF;
+    --info-border: rgba(111, 41, 57, 0.07);
+    --info-shadow-hover: 0 10px 25px rgba(111, 41, 57, 0.08);
+    --info-icon-bg: #F4E5E8;
+    --info-icon-color: #8F3D4E;
+    --info-label: #A29A95;
+    --info-value: #292522;
+
+    --divider: linear-gradient(90deg,
+            rgba(111, 41, 57, 0.14),
+            transparent);
+
+    --section-title: #292522;
+    --count: #A29A95;
+    --ingredient-border: rgba(111, 41, 57, 0.07);
+    --ingredient-number: #b7a89a;
+    --ingredient-name: #746D68;
+    --measure: #8F3D4E;
+
+    --instructions-bg:
+        linear-gradient(90deg,
+            rgba(247, 239, 228, 0.7),
+            rgba(255, 255, 255, 0.35));
+    --instructions-border: rgba(111, 41, 57, 0.08);
+    --instructions-accent: linear-gradient(90deg, #bd8550, transparent);
+    --quote: #D8A6B0;
+    --instructions-p: #746D68;
+
     position: relative;
     min-height: calc(100vh - 80px);
 
@@ -12,21 +107,222 @@
 
     overflow: hidden;
 
-    background:
-        radial-gradient(circle at 8% 15%,
-            rgba(220, 165, 91, 0.12),
-            transparent 28%),
-        radial-gradient(circle at 92% 75%,
-            rgba(239, 182, 115, 0.1),
-            transparent 30%),
-        #faf9f6;
+    background: var(--page-bg);
 
-    color: #25221f;
+    color: var(--page-text);
     border-radius: 10px;
-    border: 0.5px solid rgba(255, 217, 0, 0.436);
+    border: 0.5px solid var(--page-border);
 
     font-family: "DM Sans", sans-serif;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
 }
+
+
+/* =========================
+   DARK THEME
+========================= */
+
+.dark {
+    --page-bg:
+        radial-gradient(circle at 8% 15%,
+            rgba(213, 138, 154, 0.08),
+            transparent 28%),
+        radial-gradient(circle at 92% 75%,
+            rgba(232, 160, 103, 0.06),
+            transparent 30%),
+        #151312;
+
+    --page-text: #F0E8E8;
+    --page-border: rgba(213, 138, 154, 0.20);
+
+    --glow-one: #8F3D4E;
+    --glow-two: #B96579;
+
+    --eyebrow: #D58A9A;
+    --heading: #F0E8E8;
+    --heading-gradient:
+        linear-gradient(110deg, #E58A43, #D58A9A, #B96579);
+    --heading-p: #B9ACAF;
+
+    --button-bg: rgba(33, 27, 29, 0.78);
+    --button-bg-hover: #2A2225;
+    --button-border: rgba(213, 138, 154, 0.20);
+    --button-border-hover: rgba(232, 160, 103, 0.50);
+    --button-text: #F0E8E8;
+    --button-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.45);
+    --button-icon: #E8A067;
+
+    --card-bg: rgba(33, 27, 29, 0.85);
+    --card-border: rgba(213, 138, 154, 0.15);
+    --card-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 4px 15px rgba(0, 0, 0, 0.3);
+
+    --image-section-bg:
+        radial-gradient(circle at center,
+            rgba(213, 138, 154, 0.10),
+            transparent 52%),
+        linear-gradient(145deg, #211B1D, #151312);
+    --image-glow: rgba(213, 138, 154, 0.14);
+    --image-ring-border: rgba(213, 138, 154, 0.18);
+    --image-ring-dot: #E8A067;
+
+    --image-wrapper-bg:
+        linear-gradient(145deg,
+            rgba(42, 34, 37, 0.95),
+            rgba(33, 27, 29, 0.50));
+    --image-wrapper-shadow:
+        0 35px 75px rgba(0, 0, 0, 0.55),
+        0 0 80px rgba(232, 160, 103, 0.10);
+
+    --badge-bg: rgba(33, 27, 29, 0.90);
+    --badge-border: rgba(213, 138, 154, 0.20);
+    --badge-text: #F0E8E8;
+    --badge-icon: #E8A067;
+
+    --meta-bg: #211B1D;
+    --meta-border: rgba(213, 138, 154, 0.14);
+    --meta-text: #B9ACAF;
+    --meta-icon: #E8A067;
+
+    --label: #a1876d;
+    --title: #F0E8E8;
+    --alternate: #918487;
+
+    --info-bg: #211B1D;
+    --info-border: rgba(213, 138, 154, 0.12);
+    --info-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.4);
+    --info-icon-bg: #3A252B;
+    --info-icon-color: #E8A067;
+    --info-label: #918487;
+    --info-value: #F0E8E8;
+
+    --divider: linear-gradient(90deg,
+            rgba(213, 138, 154, 0.20),
+            transparent);
+
+    --section-title: #F0E8E8;
+    --count: #918487;
+    --ingredient-border: rgba(213, 138, 154, 0.10);
+    --ingredient-number: #918487;
+    --ingredient-name: #F0E8E8;
+    --measure: #E8A067;
+
+    --instructions-bg:
+        linear-gradient(90deg,
+            rgba(58, 37, 43, 0.80),
+            rgba(33, 27, 29, 0.40));
+    --instructions-border: rgba(213, 138, 154, 0.15);
+    --instructions-accent: linear-gradient(90deg, #E8A067, transparent);
+    --quote: #D8A6B0;
+    --instructions-p: #B9ACAF;
+}
+
+
+/* =========================
+   LIGHT THEME (explicit)
+========================= */
+
+.light {
+    --page-bg:
+        radial-gradient(circle at 8% 15%,
+            rgba(213, 138, 154, 0.12),
+            transparent 28%),
+        radial-gradient(circle at 92% 75%,
+            rgba(232, 160, 103, 0.08),
+            transparent 30%),
+        #F8F6F0;
+
+    --page-text: #292522;
+    --page-border: rgba(143, 61, 78, 0.24);
+
+    --glow-one: #D8A6B0;
+    --glow-two: #E2B5BE;
+
+    --eyebrow: #8F3D4E;
+    --heading: #292522;
+    --heading-gradient:
+        linear-gradient(110deg, #E58A43, #B96579, #8F3D4E);
+    --heading-p: #746D68;
+
+    --button-bg: rgba(255, 255, 255, 0.72);
+    --button-bg-hover: #ffffff;
+    --button-border: rgba(111, 41, 57, 0.10);
+    --button-border-hover: rgba(143, 61, 78, 0.35);
+    --button-text: #292522;
+    --button-shadow-hover: 0 15px 35px rgba(111, 41, 57, 0.12);
+    --button-icon: #8F3D4E;
+
+    --card-bg: rgba(255, 255, 255, 0.82);
+    --card-border: rgba(111, 41, 57, 0.08);
+    --card-shadow:
+        0 30px 80px rgba(78, 60, 42, 0.1),
+        0 4px 15px rgba(78, 60, 42, 0.04);
+
+    --image-section-bg:
+        radial-gradient(circle at center,
+            rgba(143, 61, 78, 0.12),
+            transparent 52%),
+        linear-gradient(145deg, #F3EEE9, #EDE5E0);
+    --image-glow: rgba(143, 61, 78, 0.16);
+    --image-ring-border: rgba(143, 61, 78, 0.16);
+    --image-ring-dot: #8F3D4E;
+
+    --image-wrapper-bg:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.5));
+    --image-wrapper-shadow:
+        0 35px 75px rgba(111, 41, 57, 0.18),
+        0 0 80px rgba(143, 61, 78, 0.10);
+
+    --badge-bg: rgba(255, 255, 255, 0.78);
+    --badge-border: rgba(111, 41, 57, 0.08);
+    --badge-text: #746D68;
+    --badge-icon: #8F3D4E;
+
+    --meta-bg: #F3EEE9;
+    --meta-border: rgba(111, 41, 57, 0.08);
+    --meta-text: #81776d;
+    --meta-icon: #8F3D4E;
+
+    --label: #a1876d;
+    --title: #292521;
+    --alternate: #A29A95;
+
+    --info-bg: #FFFFFF;
+    --info-border: rgba(111, 41, 57, 0.07);
+    --info-shadow-hover: 0 10px 25px rgba(111, 41, 57, 0.08);
+    --info-icon-bg: #F4E5E8;
+    --info-icon-color: #8F3D4E;
+    --info-label: #A29A95;
+    --info-value: #292522;
+
+    --divider: linear-gradient(90deg,
+            rgba(111, 41, 57, 0.14),
+            transparent);
+
+    --section-title: #292522;
+    --count: #A29A95;
+    --ingredient-border: rgba(111, 41, 57, 0.07);
+    --ingredient-number: #b7a89a;
+    --ingredient-name: #746D68;
+    --measure: #8F3D4E;
+
+    --instructions-bg:
+        linear-gradient(90deg,
+            rgba(247, 239, 228, 0.7),
+            rgba(255, 255, 255, 0.35));
+    --instructions-border: rgba(111, 41, 57, 0.08);
+    --instructions-accent: linear-gradient(90deg, #bd8550, transparent);
+    --quote: #D8A6B0;
+    --instructions-p: #746D68;
+}
+
 
 /* =========================
    BACKGROUND
@@ -46,13 +342,15 @@
     filter: blur(100px);
 
     opacity: 0.22;
+
+    transition: background 0.4s ease;
 }
 
 .backgroundGlow {
     top: 0;
     left: -230px;
 
-    background: #e7c28e;
+    background: var(--glow-one);
 
     animation: floatGlow 9s ease-in-out infinite;
 }
@@ -61,7 +359,7 @@
     right: -230px;
     bottom: 0;
 
-    background: #edc99e;
+    background: var(--glow-two);
 
     animation: floatGlow 11s ease-in-out infinite reverse;
 }
@@ -77,6 +375,7 @@
         transform: translateY(-35px) scale(1.08);
     }
 }
+
 
 /* =========================
    HERO
@@ -122,12 +421,14 @@
 
     margin-bottom: 17px;
 
-    color: #b17b42;
+    color: var(--eyebrow);
 
     font-size: 11px;
     font-weight: 700;
 
     letter-spacing: 3px;
+
+    transition: color 0.3s ease;
 }
 
 .heading h1 {
@@ -143,16 +444,15 @@
 
     font-weight: 600;
 
-    color: #282522;
+    color: var(--heading);
+
+    transition: color 0.3s ease;
 }
 
 .heading h1 span {
     display: block;
 
-    background: linear-gradient(110deg,
-            #f4a051,
-            #d39a5c,
-            #9d6635);
+    background: var(--heading-gradient);
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -165,12 +465,15 @@
 
     margin: 23px 0 0;
 
-    color: #817b75;
+    color: var(--heading-p);
 
     font-size: 15px;
 
     line-height: 1.85;
+
+    transition: color 0.3s ease;
 }
+
 
 /* =========================
    BUTTON
@@ -186,15 +489,15 @@
 
     gap: 11px;
 
-    border: 1px solid rgba(72, 58, 44, 0.12);
+    border: 1px solid var(--button-border);
 
     border-radius: 14px;
 
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--button-bg);
 
     backdrop-filter: blur(14px);
 
-    color: #39332d;
+    color: var(--button-text);
 
     font-family: "DM Sans", sans-serif;
 
@@ -204,9 +507,10 @@
     cursor: pointer;
 
     transition:
-        transform 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
         border-color 0.3s ease,
         background 0.3s ease,
+        color 0.3s ease,
         box-shadow 0.3s ease;
 }
 
@@ -220,12 +524,11 @@
 .bottomRefresh:hover {
     transform: translateY(-3px);
 
-    border-color: rgba(181, 126, 66, 0.35);
+    border-color: var(--button-border-hover);
 
-    background: #fff;
+    background: var(--button-bg-hover);
 
-    box-shadow:
-        0 15px 35px rgba(80, 59, 37, 0.12);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .refreshButton:active,
@@ -236,18 +539,21 @@
 .refreshIcon {
     display: inline-block;
 
-    color: #b77c42;
+    color: var(--button-icon);
 
     font-size: 20px;
 
     line-height: 1;
 
-    transition: transform 0.6s ease;
+    transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.3s ease;
 }
 
 .refreshButton:hover .refreshIcon {
     transform: rotate(180deg);
 }
+
 
 /* =========================
    MAIN CARD
@@ -269,19 +575,22 @@
 
     overflow: hidden;
 
-    border: 1px solid rgba(66, 53, 41, 0.1);
+    border: 1px solid var(--card-border);
 
     border-radius: 32px;
 
-    background: rgba(255, 255, 255, 0.82);
+    background: var(--card-bg);
 
     backdrop-filter: blur(25px);
 
-    box-shadow:
-        0 30px 80px rgba(78, 60, 42, 0.1),
-        0 4px 15px rgba(78, 60, 42, 0.04);
+    box-shadow: var(--card-shadow);
 
     animation: cardReveal 0.9s 0.15s ease both;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 @keyframes cardReveal {
@@ -295,6 +604,7 @@
         transform: translateY(0) scale(1);
     }
 }
+
 
 /* =========================
    IMAGE SECTION
@@ -311,13 +621,9 @@
 
     overflow: hidden;
 
-    background:
-        radial-gradient(circle at center,
-            rgba(218, 165, 96, 0.17),
-            transparent 52%),
-        linear-gradient(145deg,
-            #f7f2e9,
-            #eee8dc);
+    background: var(--image-section-bg);
+
+    transition: background 0.4s ease;
 }
 
 .imageGlow {
@@ -328,11 +634,13 @@
 
     border-radius: 50%;
 
-    background: rgba(207, 145, 72, 0.18);
+    background: var(--image-glow);
 
     filter: blur(65px);
 
     animation: imageGlow 4s ease-in-out infinite;
+
+    transition: background 0.4s ease;
 }
 
 @keyframes imageGlow {
@@ -355,11 +663,13 @@
     width: 570px;
     height: 570px;
 
-    border: 1px solid rgba(164, 119, 73, 0.16);
+    border: 1px solid var(--image-ring-border);
 
     border-radius: 50%;
 
     animation: spin 20s linear infinite;
+
+    transition: border-color 0.4s ease;
 }
 
 .imageRing::before,
@@ -373,9 +683,11 @@
 
     border-radius: 50%;
 
-    background: #bd8650;
+    background: var(--image-ring-dot);
 
-    box-shadow: 0 0 16px rgba(189, 134, 80, 0.55);
+    box-shadow: 0 0 16px rgba(143, 61, 78, 0.42);
+
+    transition: background 0.4s ease;
 }
 
 .imageRing::before {
@@ -394,6 +706,7 @@
     }
 }
 
+
 /* =========================
    BIG IMAGE
 ========================= */
@@ -410,15 +723,15 @@
 
     border-radius: 50%;
 
-    background: linear-gradient(145deg,
-            rgba(255, 255, 255, 0.95),
-            rgba(255, 255, 255, 0.5));
+    background: var(--image-wrapper-bg);
 
-    box-shadow:
-        0 35px 75px rgba(80, 57, 34, 0.2),
-        0 0 80px rgba(211, 157, 91, 0.13);
+    box-shadow: var(--image-wrapper-shadow);
 
     animation: imageReveal 1s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 @keyframes imageReveal {
@@ -446,7 +759,7 @@
     filter: saturate(0.96) contrast(1.02);
 
     transition:
-        transform 0.7s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
         filter 0.7s ease;
 }
 
@@ -455,6 +768,7 @@
 
     filter: saturate(1.08) contrast(1.04);
 }
+
 
 /* =========================
    FLOATING BADGE
@@ -475,27 +789,34 @@
 
     padding: 10px 15px;
 
-    border: 1px solid rgba(72, 54, 37, 0.1);
+    border: 1px solid var(--badge-border);
 
     border-radius: 30px;
 
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--badge-bg);
 
     backdrop-filter: blur(15px);
 
-    color: #62594f;
+    color: var(--badge-text);
 
     font-size: 11px;
     font-weight: 600;
 
     box-shadow:
-        0 12px 28px rgba(72, 54, 37, 0.12);
+        0 12px 28px rgba(111, 41, 57, 0.10);
 
     animation: badgeFloat 4s ease-in-out infinite;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        color 0.4s ease;
 }
 
 .floatingBadge span {
-    color: #bb8148;
+    color: var(--badge-icon);
+
+    transition: color 0.3s ease;
 }
 
 @keyframes badgeFloat {
@@ -510,8 +831,8 @@
     }
 }
 
-/* =========================
-   CONTENT
+
+/* =========================   CONTENT
 ========================= */
 
 .contentSection {
@@ -538,36 +859,45 @@
 
     padding: 7px 11px;
 
-    border: 1px solid rgba(70, 55, 40, 0.1);
+    border: 1px solid var(--meta-border);
 
     border-radius: 8px;
 
-    background: #faf8f4;
+    background: var(--meta-bg);
 
-    color: #81776d;
+    color: var(--meta-text);
 
     font-size: 10px;
 
     font-weight: 600;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .metaPill span {
-    color: #b57c43;
+    color: var(--meta-icon);
 
     font-size: 8px;
+
+    transition: color 0.3s ease;
 }
 
 .smallLabel,
 .sectionLabel {
     display: block;
 
-    color: #a1876d;
+    color: var(--label);
 
     font-size: 9px;
 
     font-weight: 700;
 
     letter-spacing: 2.5px;
+
+    transition: color 0.3s ease;
 }
 
 .titleBlock h2 {
@@ -583,18 +913,62 @@
 
     font-weight: 600;
 
-    color: #292521;
+    color: var(--title);
+
+    transition: color 0.3s ease;
 }
 
 .alternateName {
     margin: 12px 0 0;
 
-    color: #9a9189;
+    color: var(--alternate);
 
     font-size: 13px;
 
     font-style: italic;
+
+    transition: color 0.3s ease;
 }
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actionButtons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: 22px;
+
+    min-height: 40px;
+
+    flex-wrap: wrap;
+}
+
+.actionButtons>* {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+
+    align-items: center;
+}
+
+.actionButtons button {
+    margin: 0;
+}
+
+@media (max-width: 650px) {
+    .actionButtons {
+        gap: 9px;
+
+        margin-top: 20px;
+    }
+}
+
+
 
 /* =========================
    QUICK INFO
@@ -621,22 +995,23 @@
 
     padding: 14px;
 
-    border: 1px solid rgba(70, 55, 40, 0.08);
+    border: 1px solid var(--info-border);
 
     border-radius: 13px;
 
-    background: #fcfbf8;
+    background: var(--info-bg);
 
     transition:
-        transform 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.3s ease,
+        border-color 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 .infoCard:hover {
     transform: translateY(-3px);
 
-    box-shadow:
-        0 10px 25px rgba(79, 59, 38, 0.08);
+    box-shadow: var(--info-shadow-hover);
 }
 
 .infoIcon {
@@ -650,11 +1025,20 @@
 
     border-radius: 10px;
 
-    background: #f3e7d8;
+    background: var(--info-icon-bg);
 
-    color: #ae7540;
+    color: var(--info-icon-color);
 
     font-size: 11px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.infoCard:hover .infoIcon {
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .infoCard div:last-child {
@@ -666,13 +1050,15 @@
 
     margin-bottom: 4px;
 
-    color: #a49b92;
+    color: var(--info-label);
 
     font-size: 8px;
 
     text-transform: uppercase;
 
     letter-spacing: 1px;
+
+    transition: color 0.3s ease;
 }
 
 .infoCard strong {
@@ -684,12 +1070,15 @@
 
     white-space: nowrap;
 
-    color: #504940;
+    color: var(--info-value);
 
     font-size: 10px;
 
     font-weight: 600;
+
+    transition: color 0.3s ease;
 }
+
 
 /* =========================
    DIVIDER
@@ -700,10 +1089,11 @@
 
     margin: 31px 0;
 
-    background: linear-gradient(90deg,
-            rgba(90, 68, 46, 0.14),
-            transparent);
+    background: var(--divider);
+
+    transition: background 0.3s ease;
 }
+
 
 /* =========================
    INGREDIENTS
@@ -723,19 +1113,23 @@
 .instructionsHeader h3 {
     margin: 5px 0 0;
 
-    color: #403a34;
+    color: var(--section-title);
 
     font-family: "Playfair Display", serif;
 
     font-size: 22px;
 
     font-weight: 600;
+
+    transition: color 0.3s ease;
 }
 
 .ingredientCount {
-    color: #a49b92;
+    color: var(--count);
 
     font-size: 10px;
+
+    transition: color 0.3s ease;
 }
 
 .ingredientsList {
@@ -761,9 +1155,28 @@
 
     padding: 11px 0;
 
-    border-bottom: 1px solid rgba(74, 57, 41, 0.07);
+    border-bottom: 1px solid var(--ingredient-border);
 
-    transition: padding-left 0.25s ease;
+    opacity: 0;
+
+    animation:
+        ingredientIn 0.4s calc(var(--ingredient-index, 0) * 0.04s + 0.4s) both cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition:
+        padding-left 0.25s ease,
+        border-color 0.3s ease;
+}
+
+@keyframes ingredientIn {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .ingredient:hover {
@@ -771,11 +1184,13 @@
 }
 
 .ingredientNumber {
-    color: #b7a89a;
+    color: var(--ingredient-number);
 
     font-size: 9px;
 
     font-weight: 600;
+
+    transition: color 0.3s ease;
 }
 
 .ingredientName {
@@ -785,22 +1200,27 @@
 
     white-space: nowrap;
 
-    color: #615950;
+    color: var(--ingredient-name);
 
     font-size: 12px;
 
     font-weight: 500;
+
+    transition: color 0.3s ease;
 }
 
 .measure {
-    color: #b37a45;
+    color: var(--measure);
 
     font-size: 10px;
 
     white-space: nowrap;
 
     font-weight: 600;
+
+    transition: color 0.3s ease;
 }
+
 
 /* =========================
    INSTRUCTIONS
@@ -820,11 +1240,12 @@
     gap: 45px;
 
     padding: 35px 55px;
-    border-top: 1px solid rgba(70, 55, 40, 0.09);
-    background:
-        linear-gradient(90deg,
-            rgba(247, 239, 228, 0.7),
-            rgba(255, 255, 255, 0.35));
+    border-top: 1px solid var(--instructions-border);
+    background: var(--instructions-bg);
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
 
 .instructionsSection::before {
@@ -838,9 +1259,9 @@
     width: 180px;
     height: 1px;
 
-    background: linear-gradient(90deg,
-            #bd8550,
-            transparent);
+    background: var(--instructions-accent);
+
+    transition: background 0.3s ease;
 }
 
 .instructionContent {
@@ -858,23 +1279,27 @@
 
     margin-top: -7px;
 
-    color: #d8b184;
+    color: var(--quote);
 
     font-family: "Playfair Display", serif;
 
     font-size: 48px;
 
     line-height: 1;
+
+    transition: color 0.3s ease;
 }
 
 .instructionsSection p {
     margin: 0;
 
-    color: #756d65;
+    color: var(--instructions-p);
 
     font-size: 12px;
 
     line-height: 1.9;
+
+    transition: color 0.3s ease;
 }
 
 .bottomRefresh {
@@ -886,16 +1311,19 @@
 .bottomRefresh span {
     display: inline-block;
 
-    color: #b77c42;
+    color: var(--button-icon);
 
     font-size: 18px;
 
-    transition: transform 0.5s ease;
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.3s ease;
 }
 
 .bottomRefresh:hover span {
     transform: rotate(180deg);
 }
+
 
 /* =========================
    ERROR
@@ -915,6 +1343,7 @@
     gap: 10px;
     background-color: transparent;
 }
+
 
 /* =========================
    TABLET
@@ -959,6 +1388,7 @@
         justify-self: start;
     }
 }
+
 
 /* =========================
    MOBILE
@@ -1048,6 +1478,7 @@
     }
 }
 
+
 /* =========================
    SMALL MOBILE
 ========================= */
@@ -1071,6 +1502,7 @@
     }
 }
 
+
 /* =========================
    REDUCED MOTION
 ========================= */
@@ -1084,7 +1516,8 @@
     .imageWrapper,
     .floatingBadge,
     .hero,
-    .drinkCard {
+    .drinkCard,
+    .ingredient {
         animation: none;
     }
 
@@ -1092,6 +1525,7 @@
     .bottomRefresh,
     .drinkImage,
     .infoCard,
+    .infoIcon,
     .ingredient {
         transition: none;
     }

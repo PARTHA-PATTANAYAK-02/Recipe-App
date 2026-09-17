@@ -5,6 +5,7 @@ import ErrorPage from "../Error";
 import Loading from "../Loading";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import { useTheme } from "../../context/ThemeContext";
 import {
   RefreshCwIcon,
   CirclePlayIcon,
@@ -24,6 +25,8 @@ export default function Home() {
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const { theme } = useTheme();
 
   const fetchRandomRecipe = async () => {
     try {
@@ -65,6 +68,7 @@ export default function Home() {
 
     setIsFavorite(exists);
   }, [recipe, favorites]);
+
   const addFavorite = () => {
     const newData = {
       type: "recipe",
@@ -77,6 +81,7 @@ export default function Home() {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setIsFavorite(true);
   };
+
   const removeFavorite = () => {
     const updatedFavorites = favorites.filter(
       (item) => !(item.type === "recipe" && item.id === recipe.idMeal),
@@ -86,6 +91,7 @@ export default function Home() {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setIsFavorite(false);
   };
+
   const handleRefresh = () => {
     if (!isRefreshing) {
       fetchRandomRecipe();
@@ -115,7 +121,9 @@ export default function Home() {
     : [];
 
   return (
-    <div className={style.home}>
+    <div
+      className={`${style.home} ${theme === "dark" ? style.dark : style.light}`}
+    >
       <div className={style.backgroundOrb}></div>
       <div className={style.backgroundOrbTwo}></div>
 

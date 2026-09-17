@@ -6,6 +6,48 @@
    ========================================================= */
 
 .errorContainer {
+    /* =====================================================
+       THEME VARIABLES
+       ===================================================== */
+
+    --container-glow: rgba(229, 138, 67, 0.06);
+
+    --card-bg-start: #ffffff;
+    --card-bg-end: #F3EEE9;
+
+    --card-border: #E7DED9;
+
+    --card-shadow-main: rgba(65, 48, 52, 0.08);
+    --card-shadow-secondary: rgba(65, 48, 52, 0.04);
+
+    --card-highlight: rgba(255, 255, 255, 1);
+
+    --error-icon-color: #C96D2C;
+
+    --icon-bg-start: #FFF0E3;
+    --icon-bg-end: #FFF0E3;
+
+    --icon-border: #E7DED9;
+
+    --icon-shadow: rgba(201, 109, 44, 0.08);
+
+    --error-label-color: #C96D2C;
+
+    --error-title-color: #292522;
+
+    --error-text-color: #746D68;
+
+    --accent-line: #E7DED9;
+
+    --accent-orange: #E58A43;
+    --accent-yellow: #F4C95D;
+
+    --accent-glow: rgba(229, 138, 67, 0.25);
+
+    /* =====================================================
+       BASE
+       ===================================================== */
+
     width: 100%;
     min-height: 300px;
 
@@ -22,8 +64,90 @@
 
     background:
         radial-gradient(circle at 50% 45%,
-            rgba(229, 138, 67, 0.06),
+            var(--container-glow),
             transparent 30%);
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+.light {
+    --container-glow: rgba(229, 138, 67, 0.06);
+
+    --card-bg-start: #ffffff;
+    --card-bg-end: #F3EEE9;
+
+    --card-border: #E7DED9;
+
+    --card-shadow-main: rgba(65, 48, 52, 0.08);
+    --card-shadow-secondary: rgba(65, 48, 52, 0.04);
+
+    --card-highlight: rgba(255, 255, 255, 1);
+
+    --error-icon-color: #C96D2C;
+
+    --icon-bg-start: #FFF0E3;
+    --icon-bg-end: #FFF0E3;
+
+    --icon-border: #E7DED9;
+
+    --icon-shadow: rgba(201, 109, 44, 0.08);
+
+    --error-label-color: #C96D2C;
+
+    --error-title-color: #292522;
+
+    --error-text-color: #746D68;
+
+    --accent-line: #E7DED9;
+
+    --accent-orange: #E58A43;
+    --accent-yellow: #F4C95D;
+
+    --accent-glow: rgba(229, 138, 67, 0.25);
+}
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+.dark {
+    --container-glow: rgba(229, 138, 67, 0.08);
+
+    --card-bg-start: #211B1D;
+    --card-bg-end: #151312;
+
+    --card-border: #493A3F;
+
+    --card-shadow-main: rgba(0, 0, 0, 0.35);
+    --card-shadow-secondary: rgba(0, 0, 0, 0.2);
+
+    --card-highlight: rgba(255, 255, 255, 0.06);
+
+    --error-icon-color: #E8A067;
+
+    --icon-bg-start: #3A2C22;
+    --icon-bg-end: #3A2C22;
+
+    --icon-border: #493A3F;
+
+    --icon-shadow: rgba(229, 138, 67, 0.14);
+
+    --error-label-color: #E8A067;
+
+    --error-title-color: #F0E8E8;
+
+    --error-text-color: #B9ACAF;
+
+    --accent-line: #493A3F;
+
+    --accent-orange: #E58A43;
+    --accent-yellow: #F4C95D;
+
+    --accent-glow: rgba(232, 160, 103, 0.32);
 }
 
 
@@ -52,17 +176,17 @@
 
     background:
         linear-gradient(145deg,
-            #ffffff,
-            #fdfbf7);
+            var(--card-bg-start),
+            var(--card-bg-end));
 
-    border: 1px solid #eadfd5;
+    border: 1px solid var(--card-border);
 
     border-radius: 24px;
 
     box-shadow:
-        0 20px 45px rgba(67, 55, 43, 0.08),
-        0 5px 15px rgba(67, 55, 43, 0.04),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 20px 45px var(--card-shadow-main),
+        0 5px 15px var(--card-shadow-secondary),
+        inset 0 1px 0 var(--card-highlight);
 
     overflow: hidden;
 
@@ -120,18 +244,18 @@
 
     border-radius: 21px;
 
-    color: #c97743;
+    color: var(--error-icon-color);
 
     background:
         linear-gradient(145deg,
-            #fff8ed,
-            #fdf2e7);
+            var(--icon-bg-start),
+            var(--icon-bg-end));
 
-    border: 1px solid #f0dfcf;
+    border: 1px solid var(--icon-border);
 
     box-shadow:
-        0 8px 20px rgba(201, 119, 67, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 8px 20px var(--icon-shadow),
+        inset 0 1px 0 var(--card-highlight);
 
     animation:
         iconAppear 0.5s ease 0.15s both;
@@ -167,7 +291,7 @@
    ========================================================= */
 
 .errorLabel {
-    color: #c57b4b;
+    color: var(--error-label-color);
 
     font-family: "DM Sans", sans-serif;
 
@@ -186,7 +310,7 @@
 .errorTitle {
     margin: 0;
 
-    color: #2d2b26;
+    color: var(--error-title-color);
 
     font-family:
         "Playfair Display",
@@ -212,7 +336,7 @@
 
     padding: 0;
 
-    color: #89847a;
+    color: var(--error-text-color);
 
     background: transparent;
 
@@ -255,13 +379,13 @@
     background:
         linear-gradient(90deg,
             transparent,
-            #ddd3c7);
+            var(--accent-line));
 }
 
 .errorAccent span:last-child {
     background:
         linear-gradient(90deg,
-            #ddd3c7,
+            var(--accent-line),
             transparent);
 }
 
@@ -273,11 +397,11 @@
 
     background:
         linear-gradient(135deg,
-            #e58a43,
-            #f4c95d);
+            var(--accent-orange),
+            var(--accent-yellow));
 
     box-shadow:
-        0 0 9px rgba(229, 138, 67, 0.25);
+        0 0 9px var(--accent-glow);
 
     animation:
         accentPulse 2s ease-in-out infinite;
@@ -389,9 +513,9 @@
 
 .errorCard:hover {
     box-shadow:
-        0 24px 55px rgba(67, 55, 43, 0.1),
+        0 24px 55px var(--card-shadow-main),
         0 8px 20px rgba(229, 138, 67, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        inset 0 1px 0 var(--card-highlight);
 }
 
 

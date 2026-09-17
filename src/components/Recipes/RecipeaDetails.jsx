@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "../../css/Recipe/recipeadetails.module.css";
+import { useTheme } from "../../context/ThemeContext";
 
 import Loading from "../Loading";
 import ErrorComp from "../Error";
@@ -25,6 +26,7 @@ const URL = import.meta.env.VITE_MEAL_API_URL;
 
 export default function RecipeaDetails() {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -174,7 +176,11 @@ export default function RecipeaDetails() {
   const youtubeId = getYoutubeId(strYoutube);
 
   return (
-    <main className={style.recipePage}>
+    <main
+      className={`${style.recipePage} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.backgroundShapeOne}></div>
       <div className={style.backgroundShapeTwo}></div>
 
@@ -254,7 +260,9 @@ export default function RecipeaDetails() {
               follow the steps, and make something worth sharing.
             </p>
 
-            <div style={{ display: "flex", justifyContent: "start", gap:"10px" }}>
+            <div
+              style={{ display: "flex", justifyContent: "start", gap: "10px" }}
+            >
               <FavoriteButton
                 active={isFavorite}
                 onClick={isFavorite ? removeFavorite : addFavorite}

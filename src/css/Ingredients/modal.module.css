@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap");
 
 
-/* BACKDROP */
+/* =========================================================
+   BACKDROP
+========================================================= */
 
 .backdrop {
+    --backdrop-bg: rgba(36, 35, 31, 0.52);
+
     position: fixed;
 
     inset: 0;
@@ -15,7 +19,7 @@
 
     padding: 25px;
 
-    background: rgba(36, 35, 31, 0.52);
+    background: var(--backdrop-bg);
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -24,24 +28,57 @@
 
     animation:
         backdropEnter 0.35s ease both;
+
+    transition: background 0.35s ease;
+}
+
+.light {
+    --backdrop-bg: rgba(36, 35, 31, 0.52);
+}
+
+.dark {
+    --backdrop-bg: rgba(0, 0, 0, 0.72);
 }
 
 
-/* MODAL */
+/* =========================================================
+   MODAL WINDOW
+========================================================= */
 
 .modalWindow {
-    --surface: #ffffff;
-    --surface-soft: #f1efe7;
+    /* ---------- LIGHT (default) ---------- */
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
+    --surface-elevated: #FFFFFF;
 
-    --text: #24231f;
-    --muted: #7d7a70;
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
 
-    --orange: #e58a43;
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
 
-    --border: #e7e3d8;
+    --border: #E7DED9;
+    --border-strong: #E1D6D4;
+
+    --decoration-border: rgba(143, 61, 78, 0.1);
+    --decoration-dash: rgba(229, 138, 67, 0.13);
+
+    --image-bg:
+        radial-gradient(circle at center,
+            #FFFFFF 0%,
+            #F3EEE9 58%,
+            #E7DED9 100%);
+
+    --scroll-thumb: #D8C2C8;
+    --scroll-thumb-hover: #8F3D4E;
+
+    --shadow:
+        0 40px 90px rgba(36, 35, 31, 0.22);
 
     width: min(760px, 100%);
 
@@ -58,13 +95,56 @@
 
     position: relative;
 
-    box-shadow:
-        0 40px 90px rgba(36, 35, 31, 0.22);
+    box-shadow: var(--shadow);
 
     font-family: "DM Sans", sans-serif;
 
     animation:
         modalEnter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* ---------- DARK THEME ---------- */
+
+.dark .modalWindow {
+    --surface: #151312;
+    --surface-soft: #211B1D;
+    --surface-elevated: #2A2225;
+
+    --text: #F0E8E8;
+    --muted: #B9ACAF;
+    --light-muted: #918487;
+
+    --primary: #D58A9A;
+    --primary-dark: #E2A8B4;
+    --primary-soft: #3A252B;
+
+    --orange: #E8A067;
+    --orange-soft: #3A2C22;
+
+    --border: #493A3F;
+    --border-strong: #493A3F;
+
+    --decoration-border: rgba(213, 138, 154, 0.14);
+    --decoration-dash: rgba(240, 167, 101, 0.16);
+
+    --image-bg:
+        radial-gradient(circle at center,
+            #2A2225 0%,
+            #211B1D 58%,
+            #151312 100%);
+
+    --scroll-thumb: #493A3F;
+    --scroll-thumb-hover: #D58A9A;
+
+    --shadow:
+        0 40px 100px rgba(0, 0, 0, 0.65),
+        0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -79,20 +159,28 @@
 }
 
 .modalWindow::-webkit-scrollbar-thumb {
-    background: #d5d1c6;
+    background: var(--scroll-thumb);
 
     border-radius: 999px;
+
+    transition: background 0.25s ease;
+}
+
+.modalWindow::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
 }
 
 .modalWindow {
     scrollbar-width: thin;
 
     scrollbar-color:
-        #d5d1c6 transparent;
+        var(--scroll-thumb) transparent;
 }
 
 
-/* CLOSE */
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
 .dismissBtn {
     position: absolute;
@@ -100,8 +188,8 @@
     top: 18px;
     right: 18px;
 
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     display: grid;
 
@@ -115,32 +203,68 @@
 
     backdrop-filter: blur(8px);
 
-    color: var(--text);
+    color: #292522;
+
+    font-size: 14px;
+    font-weight: 700;
 
     cursor: pointer;
 
     z-index: 20;
 
     box-shadow:
-        0 8px 20px rgba(36, 35, 31, 0.08);
+        0 8px 20px rgba(36, 35, 31, 0.12);
 
     transition:
-        transform 0.3s ease,
+        transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
         background 0.3s ease,
-        color 0.3s ease;
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .dismissBtn:hover {
     transform:
-        rotate(90deg) scale(1.06);
+        rotate(90deg) scale(1.08);
 
-    background: var(--green);
+    background: #8F3D4E;
 
-    color: white;
+    border-color: #8F3D4E;
+
+    color: #FFFFFF;
+
+    box-shadow:
+        0 12px 26px rgba(143, 61, 78, 0.35);
+}
+
+.dismissBtn:active {
+    transform:
+        rotate(90deg) scale(0.95);
+}
+
+.dark .dismissBtn {
+    background: rgba(35, 40, 32, 0.9);
+
+    border-color: rgba(213, 138, 154, 0.2);
+
+    color: #F0E8E8;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.dark .dismissBtn:hover {
+    background: #D58A9A;
+
+    border-color: #D58A9A;
+
+    color: #151312;
 }
 
 
-/* IMAGE AREA */
+/* =========================================================
+   IMAGE AREA
+========================================================= */
 
 .mediaImageWrapper {
     position: relative;
@@ -149,11 +273,7 @@
 
     height: 330px;
 
-    background:
-        radial-gradient(circle at center,
-            #ffffff 0%,
-            #f4f2e9 58%,
-            #ece9df 100%);
+    background: var(--image-bg);
 
     display: flex;
 
@@ -161,6 +281,8 @@
     justify-content: center;
 
     overflow: hidden;
+
+    transition: background 0.4s ease;
 }
 
 .imageDecoration {
@@ -170,12 +292,14 @@
     height: 300px;
 
     border:
-        1px solid rgba(85, 123, 69, 0.1);
+        1px solid var(--decoration-border);
 
     border-radius: 50%;
 
     animation:
         rotateImageDecoration 18s linear infinite;
+
+    transition: border-color 0.4s ease;
 }
 
 .imageDecoration::before {
@@ -186,9 +310,11 @@
     inset: 25px;
 
     border:
-        1px dashed rgba(229, 138, 67, 0.13);
+        1px dashed var(--decoration-dash);
 
     border-radius: 50%;
+
+    transition: border-color 0.4s ease;
 }
 
 .imageLabel {
@@ -214,7 +340,7 @@
 
     border: 1px solid var(--border);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 8px;
     font-weight: 800;
@@ -222,10 +348,24 @@
     letter-spacing: 1.2px;
 
     z-index: 5;
+
+    animation: fadeSlideDown 0.55s 0.15s both cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
 }
 
 .imageLabel span {
     color: var(--orange);
+}
+
+.dark .imageLabel {
+    background:
+        rgba(35, 40, 32, 0.9);
+
+    border-color: rgba(213, 138, 154, 0.15);
 }
 
 .modalImage {
@@ -250,11 +390,21 @@
         filter 0.5s ease;
 }
 
+.dark .modalImage {
+    filter:
+        drop-shadow(0 25px 20px rgba(0, 0, 0, 0.5));
+}
+
 .mediaImageWrapper:hover .modalImage {
     transform: scale(1.06);
 
     filter:
         drop-shadow(0 30px 25px rgba(36, 35, 31, 0.16)) saturate(1.08);
+}
+
+.dark .mediaImageWrapper:hover .modalImage {
+    filter:
+        drop-shadow(0 30px 25px rgba(0, 0, 0, 0.55)) saturate(1.08);
 }
 
 .modalFallback {
@@ -267,12 +417,14 @@
 
     font-size: 70px;
 
-    background: #f1efe7;
+    background: var(--surface-soft);
 
     z-index: 2;
 
     animation:
         fallbackFloat 4s ease-in-out infinite;
+
+    transition: background 0.4s ease;
 }
 
 .imageBottomLine {
@@ -309,15 +461,35 @@
     font-weight: 800;
 
     letter-spacing: 0.8px;
+
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+}
+
+.dark .imageBottomLine span {
+    background:
+        rgba(35, 40, 32, 0.9);
+
+    border-color: rgba(213, 138, 154, 0.15);
+
+    color: #B9ACAF;
 }
 
 
-/* CONTENT */
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .modalTextContent {
     padding: 34px 38px 32px;
 
     overflow-wrap: anywhere;
+
+    color: var(--text);
+
+    transition: color 0.4s ease;
 }
 
 .modalHeaderMeta {
@@ -328,6 +500,8 @@
     gap: 8px;
 
     margin-bottom: 15px;
+
+    animation: fadeSlideUp 0.5s 0.2s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .categoryTag,
@@ -340,25 +514,33 @@
     font-weight: 800;
 
     letter-spacing: 0.8px;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
 }
 
 .categoryTag {
-    background: #eef3e9;
+    background: var(--primary-soft);
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 }
 
 .idTag {
-    background: #f3f0e7;
+    background: var(--surface-soft);
 
     color: var(--muted);
 }
 
 
-/* TITLE */
+/* =========================================================
+   TITLE
+========================================================= */
 
 .titleArea {
     margin-bottom: 27px;
+
+    animation: fadeSlideUp 0.5s 0.25s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .titleEyebrow {
@@ -404,7 +586,9 @@
 }
 
 
-/* INFO CARD */
+/* =========================================================
+   INFO CARD
+========================================================= */
 
 .infoCard {
     padding: 23px;
@@ -416,6 +600,12 @@
     border-radius: 21px;
 
     margin-bottom: 24px;
+
+    animation: fadeSlideUp 0.5s 0.3s both cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
 }
 
 .infoCardHeader {
@@ -430,7 +620,9 @@
     padding-bottom: 18px;
 
     border-bottom:
-        1px solid #e3dfd3;
+        1px solid var(--border-strong);
+
+    transition: border-color 0.4s ease;
 }
 
 .infoEyebrow {
@@ -456,23 +648,34 @@
     font-size: 24px;
 
     font-weight: 600;
+
+    color: var(--text);
 }
 
 .infoIcon {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
     display: grid;
 
     place-items: center;
 
-    background: white;
+    background: var(--surface-elevated);
 
     border: 1px solid var(--border);
 
     border-radius: 13px;
 
     font-size: 19px;
+
+    transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.infoCard:hover .infoIcon {
+    transform: rotate(-8deg) scale(1.06);
 }
 
 .infoGrid {
@@ -488,13 +691,41 @@
     padding: 18px 15px 5px 0;
 
     min-width: 0;
+
+    animation: fadeSlideUp 0.4s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.infoItem:nth-child(1) {
+    animation-delay: 0.35s;
+}
+
+.infoItem:nth-child(2) {
+    animation-delay: 0.40s;
+}
+
+.infoItem:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.infoItem:nth-child(4) {
+    animation-delay: 0.50s;
+}
+
+.infoItem:nth-child(5) {
+    animation-delay: 0.55s;
+}
+
+.infoItem:nth-child(6) {
+    animation-delay: 0.60s;
 }
 
 .infoItem:nth-child(2n) {
     padding-left: 15px;
 
     border-left:
-        1px solid #e3dfd3;
+        1px solid var(--border-strong);
+
+    transition: border-color 0.4s ease;
 }
 
 .infoLabel {
@@ -526,11 +757,13 @@
 }
 
 .imageFile {
-    color: var(--green) !important;
+    color: var(--primary) !important;
 }
 
 
-/* ACTION */
+/* =========================================================
+   ACTION
+========================================================= */
 
 .modalFooterActions {
     display: flex;
@@ -540,12 +773,14 @@
     gap: 10px;
 
     padding-top: 2px;
+
+    animation: fadeSlideUp 0.5s 0.65s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .closeActionBtn {
     width: 100%;
 
-    min-height: 50px;
+    min-height: 52px;
 
     padding: 0 21px;
 
@@ -554,7 +789,7 @@
 
     border-radius: 15px;
 
-    background: white;
+    background: var(--surface-elevated);
 
     color: var(--text);
 
@@ -562,27 +797,75 @@
         "DM Sans",
         sans-serif;
 
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
+
+    letter-spacing: 0.3px;
 
     cursor: pointer;
 
+    position: relative;
+
+    overflow: hidden;
+
     transition:
-        transform 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
         background 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.closeActionBtn::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(135deg,
+            var(--primary) 0%,
+            var(--primary-dark) 100%);
+
+    transform: translateY(100%);
+
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: -1;
 }
 
 .closeActionBtn:hover {
     transform: translateY(-3px);
 
-    background: var(--surface-soft);
+    border-color: var(--primary);
 
-    border-color: #d8d3c5;
+    color: #FFFFFF;
+
+    box-shadow:
+        0 12px 26px rgba(143, 61, 78, 0.28);
+}
+
+.closeActionBtn:hover::before {
+    transform: translateY(0);
+}
+
+.closeActionBtn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* dark e hover color adjust */
+.dark .closeActionBtn:hover {
+    color: #151312;
+
+    box-shadow:
+        0 12px 26px rgba(213, 138, 154, 0.3);
 }
 
 
-/* NOTE */
+/* =========================================================
+   NOTE
+========================================================= */
 
 .modalNote {
     display: flex;
@@ -597,12 +880,18 @@
 
     border-top:
         1px solid var(--border);
+
+    animation: fadeSlideUp 0.5s 0.7s both cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition: border-color 0.4s ease;
 }
 
 .modalNote span {
     color: var(--orange);
 
     font-size: 13px;
+
+    animation: sparkle 2.4s ease-in-out infinite;
 }
 
 .modalNote p {
@@ -622,7 +911,9 @@
 }
 
 
-/* ANIMATIONS */
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 @keyframes backdropEnter {
     from {
@@ -702,8 +993,54 @@
     }
 }
 
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
 
-/* TABLET */
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(20deg) scale(1.15);
+
+        opacity: 0.75;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 640px) {
     .backdrop {
@@ -744,7 +1081,9 @@
 }
 
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 480px) {
     .mediaImageWrapper {
@@ -811,18 +1150,20 @@
 
     .infoItem+.infoItem {
         border-top:
-            1px solid #e3dfd3;
+            1px solid var(--border-strong);
 
         padding-top: 14px;
     }
 
     .closeActionBtn {
-        min-height: 46px;
+        min-height: 48px;
     }
 }
 
 
-/* REDUCE MOTION */
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 

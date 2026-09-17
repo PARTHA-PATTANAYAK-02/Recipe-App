@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import style from "../../css/Food/modal.module.css";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import { useTheme } from "../../context/ThemeContext";
 import {
   FaTimes,
   FaPlay,
@@ -18,6 +19,8 @@ import {
 } from "react-icons/fa";
 
 export default function FoodModal({ data, onClose }) {
+  const { theme } = useTheme();
+
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -49,6 +52,7 @@ export default function FoodModal({ data, onClose }) {
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
+
   const removeFavorite = () => {
     const updatedFavorites = favorites.filter(
       (item) => !(item.type === "food" && item.id === data.idMeal),
@@ -79,7 +83,6 @@ export default function FoodModal({ data, onClose }) {
   };
 
   const ingredients = getIngredients(data);
-
   const instructions = getInstructions(data.strInstructions);
 
   const tags = data.strTags
@@ -92,12 +95,14 @@ export default function FoodModal({ data, onClose }) {
   const youtubeId = getYoutubeId(data.strYoutube);
 
   return (
-    <div className={style.backdrop} onClick={handleBackdropClick}>
+    <div
+      className={`${style.backdrop} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+      onClick={handleBackdropClick}
+    >
       <div className={style.modalWindow}>
-        {/* =================================================
-            CLOSE
-        ================================================= */}
-
+        {/* CLOSE */}
         <button
           type="button"
           className={style.closeButton}
@@ -107,10 +112,7 @@ export default function FoodModal({ data, onClose }) {
           <FaTimes />
         </button>
 
-        {/* =================================================
-            HERO IMAGE
-        ================================================= */}
-
+        {/* HERO IMAGE */}
         <div className={style.modalHero}>
           {data.strMealThumb ? (
             <img
@@ -158,21 +160,14 @@ export default function FoodModal({ data, onClose }) {
           </div>
         </div>
 
-        {/* =================================================
-            CONTENT
-        ================================================= */}
-
+        {/* CONTENT */}
         <div className={style.modalContent}>
-          {/* =================================================
-              QUICK FACTS
-          ================================================= */}
-
+          {/* QUICK FACTS */}
           <div className={style.quickFacts}>
             <div className={style.fact}>
               <div className={style.factIcon}>
                 <FaUtensils />
               </div>
-
               <div>
                 <span>INGREDIENTS</span>
                 <strong>{ingredients.length}</strong>
@@ -183,7 +178,6 @@ export default function FoodModal({ data, onClose }) {
               <div className={style.factIcon}>
                 <FaGlobeAmericas />
               </div>
-
               <div>
                 <span>AREA</span>
                 <strong>{data.strArea || "Unknown"}</strong>
@@ -194,7 +188,6 @@ export default function FoodModal({ data, onClose }) {
               <div className={style.factIcon}>
                 <FaLeaf />
               </div>
-
               <div>
                 <span>CATEGORY</span>
                 <strong>{data.strCategory || "Food"}</strong>
@@ -202,14 +195,10 @@ export default function FoodModal({ data, onClose }) {
             </div>
           </div>
 
-          {/* =================================================
-              INTRO
-          ================================================= */}
-
+          {/* INTRO */}
           <div className={style.introSection}>
             <div className={style.introHeading}>
               <span>ABOUT THIS RECIPE</span>
-
               <h3>
                 Something worth
                 <em> cooking.</em>
@@ -238,20 +227,14 @@ export default function FoodModal({ data, onClose }) {
             />
           </div>
 
-          {/* =================================================
-              INGREDIENTS
-          ================================================= */}
-
+          {/* INGREDIENTS */}
           <section className={style.ingredientsSection}>
             <div className={style.sectionTitle}>
               <div className={style.sectionNumber}>01</div>
-
               <div>
                 <span>GATHER FIRST</span>
-
                 <h3>Ingredients</h3>
               </div>
-
               <small>{ingredients.length} items</small>
             </div>
 
@@ -261,6 +244,7 @@ export default function FoodModal({ data, onClose }) {
                   <div
                     className={style.ingredient}
                     key={`${item.ingredient}-${index}`}
+                    style={{ "--ingredient-index": index }}
                   >
                     <span className={style.ingredientNumber}>
                       {String(index + 1).padStart(2, "0")}
@@ -272,7 +256,6 @@ export default function FoodModal({ data, onClose }) {
 
                     <div className={style.ingredientText}>
                       <strong>{item.ingredient}</strong>
-
                       <span>{item.measure || "As needed"}</span>
                     </div>
                   </div>
@@ -281,26 +264,19 @@ export default function FoodModal({ data, onClose }) {
             ) : (
               <div className={style.emptyBox}>
                 <span>🥣</span>
-
                 <p>Ingredient information is not available for this recipe.</p>
               </div>
             )}
           </section>
 
-          {/* =================================================
-              INSTRUCTIONS
-          ================================================= */}
-
+          {/* INSTRUCTIONS */}
           <section className={style.instructionsSection}>
             <div className={style.sectionTitle}>
               <div className={style.sectionNumber}>02</div>
-
               <div>
                 <span>LET'S COOK</span>
-
                 <h3>How to make it</h3>
               </div>
-
               <small>
                 {instructions.length}{" "}
                 {instructions.length === 1 ? "step" : "steps"}
@@ -313,6 +289,7 @@ export default function FoodModal({ data, onClose }) {
                   <article
                     className={style.instruction}
                     key={`${instruction}-${index}`}
+                    style={{ "--step-index": index }}
                   >
                     <div className={style.stepNumber}>
                       {String(index + 1).padStart(2, "0")}
@@ -320,7 +297,6 @@ export default function FoodModal({ data, onClose }) {
 
                     <div className={style.instructionContent}>
                       <span>STEP {String(index + 1).padStart(2, "0")}</span>
-
                       <p>{instruction}</p>
                     </div>
                   </article>
@@ -329,21 +305,16 @@ export default function FoodModal({ data, onClose }) {
             ) : (
               <div className={style.emptyBox}>
                 <span>👨‍🍳</span>
-
                 <p>Cooking instructions are not available for this recipe.</p>
               </div>
             )}
           </section>
 
-          {/* =================================================
-              TAGS
-          ================================================= */}
-
+          {/* TAGS */}
           {tags.length > 0 && (
             <div className={style.tagsSection}>
               <div className={style.tagsHeading}>
                 <FaTag />
-
                 <span>RECIPE TAGS</span>
               </div>
 
@@ -355,10 +326,7 @@ export default function FoodModal({ data, onClose }) {
             </div>
           )}
 
-          {/* =================================================
-              ACTIONS
-          ================================================= */}
-
+          {/* ACTIONS */}
           {(youtubeId || data.strSource) && (
             <div className={style.actions}>
               {youtubeId && (
@@ -390,15 +358,10 @@ export default function FoodModal({ data, onClose }) {
             </div>
           )}
 
-          {/* =================================================
-              FOOTER
-          ================================================= */}
-
+          {/* FOOTER */}
           <div className={style.modalFooter}>
             <span>FOOD DISCOVERY</span>
-
             <span>Recipe #{data.idMeal}</span>
-
             {data.dateModified && (
               <span>Updated {formatDate(data.dateModified)}</span>
             )}
@@ -409,23 +372,16 @@ export default function FoodModal({ data, onClose }) {
   );
 }
 
-/* =========================================================
-   HELPERS
-========================================================= */
-
+/* HELPERS */
 function getIngredients(meal) {
   const ingredients = [];
 
   for (let i = 1; i <= 20; i++) {
     const ingredient = meal[`strIngredient${i}`]?.trim();
-
     const measure = meal[`strMeasure${i}`]?.trim();
 
     if (ingredient) {
-      ingredients.push({
-        ingredient,
-        measure,
-      });
+      ingredients.push({ ingredient, measure });
     }
   }
 
@@ -433,9 +389,7 @@ function getIngredients(meal) {
 }
 
 function getInstructions(text) {
-  if (!text) {
-    return [];
-  }
+  if (!text) return [];
 
   return text
     .replace(/\r\n/g, "\n")
@@ -446,9 +400,7 @@ function getInstructions(text) {
 }
 
 function getYoutubeId(url) {
-  if (!url) {
-    return null;
-  }
+  if (!url) return null;
 
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/);
 
@@ -456,15 +408,11 @@ function getYoutubeId(url) {
 }
 
 function formatDate(dateString) {
-  if (!dateString) {
-    return "";
-  }
+  if (!dateString) return "";
 
   const date = new Date(dateString.replace(" ", "T"));
 
-  if (Number.isNaN(date.getTime())) {
-    return dateString;
-  }
+  if (Number.isNaN(date.getTime())) return dateString;
 
   return date.toLocaleDateString("en-US", {
     month: "short",

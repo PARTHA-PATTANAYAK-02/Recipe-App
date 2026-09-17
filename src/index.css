@@ -4,23 +4,47 @@
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: #557b45 #f5f2e9;
+    scrollbar-color: #8F3D4E #F8F6F0;
 }
+
+/* Chrome / Edge / Safari */
 
 html::-webkit-scrollbar {
     width: 8px;
 }
 
 html::-webkit-scrollbar-track {
-    background: #f5f2e9;
+    background: #F8F6F0;
 }
 
 html::-webkit-scrollbar-thumb {
-    background: #557b45;
+    background: #8F3D4E;
     border-radius: 999px;
-    border: 2px solid #f5f2e9;
+    border: 2px solid #F8F6F0;
+    transition: background 0.25s ease;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-    background: #3f6034;
+    background: #6F2939;
+}
+
+/* =========================================================
+   DARK MODE SCROLLBAR
+========================================================= */
+
+html.dark-scrollbar {
+    scrollbar-color: #D58A9A #151312;
+}
+
+html.dark-scrollbar::-webkit-scrollbar-track {
+    background: #151312;
+}
+
+html.dark-scrollbar::-webkit-scrollbar-thumb {
+    background: #B96579;
+    border-color: #151312;
+}
+
+html.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #E8A067;
 }

@@ -4,28 +4,303 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 .home {
+    /* ---------- LIGHT (default) ---------- */
+    --home-bg:
+        radial-gradient(circle at 8% 15%,
+            rgba(143, 61, 78, 0.10),
+            transparent 27%),
+        radial-gradient(circle at 92% 45%,
+            rgba(111, 41, 57, 0.055),
+            transparent 28%),
+        #F8F6F0;
+
+    --home-text: #292522;
+    --home-border: #E7DED9;
+
+    --orb-one: radial-gradient(circle,
+            rgba(213, 138, 154, 0.12),
+            transparent 68%);
+    --orb-two: radial-gradient(circle,
+            rgba(111, 41, 57, 0.08),
+            transparent 70%);
+
+    --hero-divider: rgba(41, 37, 34, 0.347);
+    --hero-kicker: #8F3D4E;
+    --hero-dot: #8F3D4E;
+    --hero-dot-glow: rgba(143, 61, 78, 0.11);
+    --hero-index: #918487;
+
+    --title-color: #292522;
+    --title-something:
+        linear-gradient(110deg, #292522 10%, #746D68 52%, #8F3D4E 100%);
+    --title-delicious:
+        linear-gradient(100deg, #6F2939 0%, #8F3D4E 48%, #E2A8B4 100%);
+    --title-dot: #8F3D4E;
+
+    --hero-side-text: #746D68;
+
+    --refresh-bg: linear-gradient(135deg, #292522, #3B3330);
+    --refresh-bg-hover: linear-gradient(135deg, #8F3D4E, #8F3D4E);
+    --refresh-text: #FFFFFF;
+    --refresh-shadow: 0 12px 25px rgba(41, 37, 34, 0.14);
+    --refresh-shadow-hover: 0 18px 32px rgba(111, 41, 57, 0.20);
+
+    --hero-line-text: #292522;
+    --hero-line-divider: linear-gradient(90deg,
+            transparent,
+            rgba(41, 37, 34, 0.15),
+            transparent);
+
+    --card-bg: #FFFFFF;
+    --card-border: rgba(24, 24, 27, 0.10);
+    --card-shadow:
+        0 35px 85px rgba(41, 37, 34, 0.09),
+        0 10px 30px rgba(41, 37, 34, 0.04);
+
+    --image-bg: #F0E8E8;
+    --image-overlay: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.27),
+            transparent 35%,
+            rgba(0, 0, 0, 0.70));
+    --image-top-text: rgba(255, 255, 255, 0.82);
+    --image-top-bg: rgba(255, 255, 255, 0.14);
+    --image-top-border: rgba(255, 255, 255, 0.2);
+    --image-meta-text: rgba(255, 255, 255, 0.75);
+    --image-meta-dot: #E2A8B4;
+    --image-meta-chip-bg: rgba(111, 41, 57, 0.285);
+    --image-meta-chip-border: #D8C2C8;
+    --image-name: #FFFFFF;
+
+    --details-bg:
+        linear-gradient(145deg, #FFFFFF 0%, #FFFFFF 65%, #F4E5E8 100%);
+    --details-number: rgba(143, 61, 78, 0.14);
+
+    --header-divider: #E7DED9;
+    --category-bg: linear-gradient(135deg, #F4E5E8, #FFF0E3);
+    --category-text: #8F3D4E;
+    --recipe-title:
+        linear-gradient(100deg, #292522 10%, #746D68 52%, #8F3D4E 100%);
+    --recipe-sub: #918487;
+    --recipe-sub-strong: #746D68;
+
+    --section-number: #8F3D4E;
+    --heading-mini: #99999f;
+    --heading-text: #3B3330;
+    --count-bg: #F3EEE9;
+    --count-text: #746D68;
+
+    --scroll-thumb: #D8BCC2;
+
+    --ingredient-bg: rgba(255, 255, 255, 0.80);
+    --ingredient-border: #E7DED9;
+    --ingredient-border-hover: #E2A8B4;
+    --ingredient-bg-hover: #FFF0E3;
+    --ingredient-shadow-hover: 0 8px 18px rgba(143, 61, 78, 0.09);
+    --ingredient-dot: #D58A9A;
+    --ingredient-name: #292522;
+    --ingredient-measure: #A29A95;
+
+    --instructions-bg:
+        radial-gradient(circle at 90% 10%,
+            rgba(143, 61, 78, 0.10),
+            transparent 25%),
+        #FFFFFF;
+    --instructions-border: rgba(41, 37, 34, 0.09);
+    --instructions-shadow: 0 30px 80px rgba(41, 37, 34, 0.065);
+
+    --instructions-top-divider: #E7DED9;
+    --instructions-number: #8F3D4E;
+    --instructions-title: #292522;
+    --instructions-title-span: #8F3D4E;
+    --instructions-p: #918487;
+
+    --step-divider: #E7DED9;
+    --step-number: #8F3D4E;
+    --step-label: #918487;
+    --step-text: #746D68;
+    --step-text-hover: #292522;
+
+    --step-arrow-bg: #F3EEE9;
+    --step-arrow-border: #E7DED9;
+    --step-arrow-border-hover: #E2A8B4;
+    --step-arrow-bg-hover: #FFF0E3;
+    --step-arrow-shadow-hover: 0 7px 18px rgba(143, 61, 78, 0.12);
+
+    --actions-divider: #E7DED9;
+
+    --youtube-bg: #292522;
+    --youtube-text: #FFFFFF;
+    --youtube-shadow: 0 8px 20px rgba(24, 24, 27, 0.12);
+    --youtube-bg-hover: linear-gradient(135deg, #8F3D4E, #8F3D4E);
+    --youtube-shadow-hover: 0 12px 25px rgba(22, 163, 74, 0.18);
+
+    --source-bg: #FFFFFF;
+    --source-border: #E7DED9;
+    --source-text: #746D68;
+    --source-border-hover: #E2A8B4;
+    --source-text-hover: #8F3D4E;
+    --source-bg-hover: #FFF0E3;
+
     min-height: 100vh;
     width: 100%;
     position: relative;
 
     padding: 0 20px 20px 20px;
     border-radius: 10px;
-    border: 0.5px solid rgb(170, 192, 177);
+    border: 0.5px solid var(--home-border);
 
     overflow: hidden;
 
-    background:
-        radial-gradient(circle at 8% 15%,
-            rgba(34, 197, 94, 0.10),
-            transparent 27%),
-        radial-gradient(circle at 92% 45%,
-            rgba(22, 163, 74, 0.055),
-            transparent 28%),
-        #f8f7f2;
+    background: var(--home-bg);
+    color: var(--home-text);
 
-    color: #18181b;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
 }
 
+/* =========================================
+   DARK THEME
+========================================= */
+
+.dark {
+    --home-bg:
+        radial-gradient(circle at 8% 15%,
+            rgba(213, 138, 154, 0.09),
+            transparent 27%),
+        radial-gradient(circle at 92% 45%,
+            rgba(185, 101, 121, 0.05),
+            transparent 28%),
+        #151312;
+
+    --home-text: #F0E8E8;
+    --home-border: #493A3F;
+
+    --orb-one: radial-gradient(circle,
+            rgba(213, 138, 154, 0.09),
+            transparent 68%);
+    --orb-two: radial-gradient(circle,
+            rgba(185, 101, 121, 0.06),
+            transparent 70%);
+
+    --hero-divider: rgba(255, 255, 255, 0.12);
+    --hero-kicker: #E2A8B4;
+    --hero-dot: #D58A9A;
+    --hero-dot-glow: rgba(213, 138, 154, 0.18);
+    --hero-index: #746D68;
+
+    --title-color: #F0E8E8;
+    --title-something:
+        linear-gradient(110deg, #F0E8E8 10%, #B9ACAF 52%, #E2A8B4 100%);
+    --title-delicious:
+        linear-gradient(100deg, #E2A8B4 0%, #D58A9A 48%, #E2A8B4 100%);
+    --title-dot: #D58A9A;
+
+    --hero-side-text: #918487;
+
+    --refresh-bg: linear-gradient(135deg, #8F3D4E, #8F3D4E);
+    --refresh-bg-hover: linear-gradient(135deg, #8F3D4E, #D58A9A);
+    --refresh-text: #FFFFFF;
+    --refresh-shadow: 0 12px 25px rgba(0, 0, 0, 0.40);
+    --refresh-shadow-hover: 0 18px 32px rgba(22, 163, 74, 0.32);
+
+    --hero-line-text: #F0E8E8;
+    --hero-line-divider: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.14),
+            transparent);
+
+    --card-bg: #211B1D;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow:
+        0 35px 85px rgba(0, 0, 0, 0.50),
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --image-bg: #2A2225;
+    --image-overlay: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.40),
+            transparent 35%,
+            rgba(0, 0, 0, 0.85));
+    --image-top-text: rgba(255, 255, 255, 0.85);
+    --image-top-bg: rgba(255, 255, 255, 0.10);
+    --image-top-border: rgba(255, 255, 255, 0.15);
+    --image-meta-text: rgba(255, 255, 255, 0.80);
+    --image-meta-dot: #E2A8B4;
+    --image-meta-chip-bg: rgba(0, 0, 0, 0.45);
+    --image-meta-chip-border: rgba(255, 255, 255, 0.2);
+    --image-name: #FFFFFF;
+
+    --details-bg:
+        linear-gradient(145deg, #211B1D 0%, #211B1D 65%, #2A2225 100%);
+    --details-number: rgba(213, 138, 154, 0.16);
+
+    --header-divider: rgba(255, 255, 255, 0.08);
+    --category-bg: linear-gradient(135deg, #3A252B, #493038);
+    --category-text: #E2A8B4;
+    --recipe-title:
+        linear-gradient(100deg, #F0E8E8 10%, #B9ACAF 52%, #E2A8B4 100%);
+    --recipe-sub: #918487;
+    --recipe-sub-strong: #F0E8E8;
+
+    --section-number: #E2A8B4;
+    --heading-mini: #918487;
+    --heading-text: #F0E8E8;
+    --count-bg: #2A2225;
+    --count-text: #918487;
+
+    --scroll-thumb: #B96579;
+
+    --ingredient-bg: rgba(42, 34, 37, 0.60);
+    --ingredient-border: #493A3F;
+    --ingredient-border-hover: #E2A8B4;
+    --ingredient-bg-hover: #3A252B;
+    --ingredient-shadow-hover: 0 8px 18px rgba(213, 138, 154, 0.15);
+    --ingredient-dot: #E2A8B4;
+    --ingredient-name: #F0E8E8;
+    --ingredient-measure: #918487;
+
+    --instructions-bg:
+        radial-gradient(circle at 90% 10%,
+            rgba(213, 138, 154, 0.08),
+            transparent 25%),
+        #211B1D;
+    --instructions-border: rgba(255, 255, 255, 0.08);
+    --instructions-shadow: 0 30px 80px rgba(0, 0, 0, 0.40);
+
+    --instructions-top-divider: rgba(255, 255, 255, 0.08);
+    --instructions-number: #E2A8B4;
+    --instructions-title: #F0E8E8;
+    --instructions-title-span: #E2A8B4;
+    --instructions-p: #918487;
+
+    --step-divider: rgba(255, 255, 255, 0.06);
+    --step-number: #E2A8B4;
+    --step-label: #918487;
+    --step-text: #B9ACAF;
+    --step-text-hover: #F0E8E8;
+
+    --step-arrow-bg: #2A2225;
+    --step-arrow-border: #493A3F;
+    --step-arrow-border-hover: #E2A8B4;
+    --step-arrow-bg-hover: #3A252B;
+    --step-arrow-shadow-hover: 0 7px 18px rgba(213, 138, 154, 0.18);
+
+    --actions-divider: rgba(255, 255, 255, 0.08);
+
+    --youtube-bg: #D58A9A;
+    --youtube-text: #151312;
+    --youtube-shadow: 0 8px 20px rgba(213, 138, 154, 0.22);
+    --youtube-bg-hover: linear-gradient(135deg, #8F3D4E, #D58A9A);
+    --youtube-shadow-hover: 0 12px 25px rgba(213, 138, 154, 0.32);
+
+    --source-bg: #2A2225;
+    --source-border: #493A3F;
+    --source-text: #F0E8E8;
+    --source-border-hover: #E2A8B4;
+    --source-text-hover: #E2A8B4;
+    --source-bg-hover: #3A252B;
+}
 
 /* =========================================
    BACKGROUND
@@ -42,10 +317,7 @@
 
     border-radius: 50%;
 
-    background:
-        radial-gradient(circle,
-            rgba(74, 222, 128, 0.12),
-            transparent 68%);
+    background: var(--orb-one);
 
     filter: blur(15px);
 
@@ -63,16 +335,12 @@
 
     border-radius: 50%;
 
-    background:
-        radial-gradient(circle,
-            rgba(22, 163, 74, 0.08),
-            transparent 70%);
+    background: var(--orb-two);
 
     filter: blur(20px);
 
     pointer-events: none;
 }
-
 
 /* =========================================
    HERO
@@ -89,8 +357,7 @@
 
     padding: 20px 0;
 
-    animation:
-        heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: heroIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes heroIn {
@@ -114,7 +381,7 @@
 
     padding-bottom: 8px;
 
-    border-bottom: 1px solid rgba(29, 29, 36, 0.347);
+    border-bottom: 1px solid var(--hero-divider);
 }
 
 .heroKicker {
@@ -122,7 +389,7 @@
 
     align-items: center;
 
-    color: #15803d;
+    color: var(--hero-kicker);
 
     font-size: 0.60rem;
 
@@ -137,14 +404,13 @@
 
     border-radius: 50%;
 
-    background: #16a34a;
+    background: var(--hero-dot);
 
-    box-shadow:
-        0 0 0 5px rgba(34, 197, 94, 0.11);
+    box-shadow: 0 0 0 5px var(--hero-dot-glow);
 }
 
 .heroIndex {
-    color: #a1a1aa;
+    color: var(--hero-index);
 
     font-size: 0.56rem;
 
@@ -153,7 +419,6 @@
     letter-spacing: 1.4px;
 }
 
-
 /* =========================================
    HERO MAIN
 ========================================= */
@@ -161,14 +426,12 @@
 .heroMain {
     display: grid;
 
-    grid-template-columns:
-        minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
 
     align-items: end;
 
     gap: 28px;
 }
-
 
 /* =========================================
    HERO TITLE
@@ -195,7 +458,7 @@
 
     font-weight: 750;
 
-    color: #171719;
+    color: var(--title-color);
 }
 
 .heroTitle .something {
@@ -217,11 +480,7 @@
 
     letter-spacing: -6px;
 
-    background:
-        linear-gradient(110deg,
-            #171719 10%,
-            #303934 52%,
-            #15803d 100%);
+    background: var(--title-something);
 
     -webkit-background-clip: text;
 
@@ -247,11 +506,7 @@
     letter-spacing: -5px;
     padding-bottom: 20px;
 
-    background:
-        linear-gradient(100deg,
-            #166534 0%,
-            #16a34a 48%,
-            #4ade80 100%);
+    background: var(--title-delicious);
 
     -webkit-background-clip: text;
 
@@ -263,7 +518,7 @@
 }
 
 .heroTitle i {
-    color: #16a34a;
+    color: var(--title-dot);
 
     font-family: Georgia, serif;
 
@@ -271,7 +526,6 @@
 
     letter-spacing: -3px;
 }
-
 
 /* =========================================
    HERO SIDE
@@ -286,7 +540,7 @@
 .heroSide p {
     margin: 0 0 20px;
 
-    color: #71717a;
+    color: var(--hero-side-text);
 
     font-size: 0.88rem;
 
@@ -295,7 +549,6 @@
     font-weight: 400;
     font-style: normal;
 }
-
 
 /* =========================================
    REFRESH BUTTON
@@ -318,12 +571,9 @@
 
     border-radius: 11px;
 
-    background:
-        linear-gradient(135deg,
-            #18181b,
-            #27272a);
+    background: var(--refresh-bg);
 
-    color: #ffffff;
+    color: var(--refresh-text);
 
     font-size: 0.74rem;
 
@@ -331,8 +581,7 @@
 
     cursor: pointer;
 
-    box-shadow:
-        0 12px 25px rgba(24, 24, 27, 0.14);
+    box-shadow: var(--refresh-shadow);
 
     transition:
         transform 0.3s ease,
@@ -343,13 +592,9 @@
 .refreshButton:hover {
     transform: translateY(-4px);
 
-    background:
-        linear-gradient(135deg,
-            #15803d,
-            #16a34a);
+    background: var(--refresh-bg-hover);
 
-    box-shadow:
-        0 18px 32px rgba(22, 163, 74, 0.2);
+    box-shadow: var(--refresh-shadow-hover);
 }
 
 .refreshButton:active {
@@ -364,7 +609,6 @@
     transform: none;
 }
 
-
 /* =========================================
    HERO LINE
 ========================================= */
@@ -376,7 +620,7 @@
 
     gap: 15px;
 
-    color: #262629;
+    color: var(--hero-line-text);
 
     font-size: 0.54rem;
 
@@ -390,13 +634,8 @@
 
     flex: 1;
 
-    background:
-        linear-gradient(90deg,
-            transparent,
-            rgba(24, 24, 27, 0.15),
-            transparent);
+    background: var(--hero-line-divider);
 }
-
 
 /* =========================================
    RECIPE CARD
@@ -413,7 +652,6 @@
 
     display: grid;
 
-    /* Image slightly smaller, details wider */
     grid-template-columns: 0.9fr 1.1fr;
 
     position: relative;
@@ -424,34 +662,28 @@
 
     border-radius: 32px;
 
-    background: #ffffff;
+    background: var(--card-bg);
 
-    border: 1px solid rgba(24, 24, 27, 0.10);
+    border: 1px solid var(--card-border);
 
-    box-shadow:
-        0 35px 85px rgba(24, 24, 27, 0.09),
-        0 10px 30px rgba(24, 24, 27, 0.04);
+    box-shadow: var(--card-shadow);
 
-    animation:
-        recipeIn 0.9s 0.1s both cubic-bezier(0.22, 1, 0.36, 1);
+    animation: recipeIn 0.9s 0.1s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes recipeIn {
     from {
         opacity: 0;
 
-        transform:
-            translateY(35px) scale(0.985);
+        transform: translateY(35px) scale(0.985);
     }
 
     to {
         opacity: 1;
 
-        transform:
-            translateY(0) scale(1);
+        transform: translateY(0) scale(1);
     }
 }
-
 
 /* =========================================
    IMAGE
@@ -466,7 +698,7 @@
 
     border-radius: 32px;
 
-    background: #d4d4d8;
+    background: var(--image-bg);
 }
 
 .recipeImage {
@@ -478,10 +710,9 @@
 
     object-fit: cover;
 
-    /* transform: scale(1.015);
+    transform: scale(1);
 
-    transition:
-        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); */
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .recipeCard:hover .recipeImage {
@@ -494,11 +725,7 @@
     inset: 0;
     scale: 1.2;
 
-    background:
-        linear-gradient(180deg,
-            rgba(0, 0, 0, 0.27),
-            transparent 35%,
-            rgba(0, 0, 0, 0.70));
+    background: var(--image-overlay);
 }
 
 .imageTop {
@@ -514,7 +741,7 @@
 
     justify-content: space-between;
 
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--image-top-text);
 
     font-size: 0.57rem;
 
@@ -528,11 +755,11 @@
 
     border-radius: 100px;
 
-    background: rgba(255, 255, 255, 0.14);
+    background: var(--image-top-bg);
 
     backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--image-top-border);
 }
 
 .imageBottom {
@@ -554,7 +781,7 @@
 
     margin-bottom: 11px;
 
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--image-meta-text);
 
     font-size: 0.61rem;
 
@@ -566,22 +793,22 @@
 }
 
 .imageRecipeMeta b {
-    color: #4ade80;
+    color: var(--image-meta-dot);
     font-size: 20px;
 }
 
 .imageRecipeMeta span {
     padding: 10px;
     border-radius: 20px;
-    border: 0.5px solid rgb(175, 173, 173);
+    border: 0.5px solid var(--image-meta-chip-border);
     backdrop-filter: blur(15px);
-    background-color: rgba(90, 90, 90, 0.285);
+    background-color: var(--image-meta-chip-bg);
 }
 
 .imageRecipeName {
     max-width: 650px;
 
-    color: #ffffff;
+    color: var(--image-name);
 
     font-family:
         Georgia,
@@ -599,7 +826,6 @@
     letter-spacing: -1.8px;
 }
 
-
 /* =========================================
    RECIPE DETAILS
 ========================================= */
@@ -609,11 +835,7 @@
 
     padding: 45px 46px 42px;
 
-    background:
-        linear-gradient(145deg,
-            #ffffff 0%,
-            #fbfffb 65%,
-            #f1faf3 100%);
+    background: var(--details-bg);
 
     border-radius: 0 32px 32px 0;
 }
@@ -625,7 +847,7 @@
 
     right: 31px;
 
-    color: rgba(22, 163, 74, 0.14);
+    color: var(--details-number);
 
     font-size: 4.3rem;
 
@@ -636,7 +858,6 @@
     letter-spacing: -5px;
 }
 
-
 /* =========================================
    RECIPE HEADER
 ========================================= */
@@ -644,7 +865,7 @@
 .recipeHeader {
     padding-bottom: 27px;
 
-    border-bottom: 1px solid #e8ebe8;
+    border-bottom: 1px solid var(--header-divider);
 }
 
 .categoryLabel {
@@ -654,12 +875,9 @@
 
     border-radius: 100px;
 
-    background:
-        linear-gradient(135deg,
-            #dcfce7,
-            #f0fdf4);
+    background: var(--category-bg);
 
-    color: #15803d;
+    color: var(--category-text);
 
     font-size: 0.59rem;
 
@@ -692,11 +910,7 @@
     font-weight: 900;
     padding-bottom: 10px;
 
-    background:
-        linear-gradient(100deg,
-            #333358 10%,
-            #303934 52%,
-            #15803d 100%);
+    background: var(--recipe-title);
 
     -webkit-background-clip: text;
 
@@ -710,15 +924,14 @@
 .recipeHeader p {
     margin: 0;
 
-    color: #9a9a9f;
+    color: var(--recipe-sub);
 
     font-size: 0.76rem;
 }
 
 .recipeHeader p strong {
-    color: #52525b;
+    color: var(--recipe-sub-strong);
 }
-
 
 /* =========================================
    INGREDIENTS
@@ -747,7 +960,7 @@
 }
 
 .sectionNumber {
-    color: #16a34a;
+    color: var(--section-number);
 
     font-size: 0.66rem;
 
@@ -761,7 +974,7 @@
 
     margin-bottom: 4px;
 
-    color: #99999f;
+    color: var(--heading-mini);
 
     font-size: 0.53rem;
 
@@ -773,7 +986,7 @@
 .headingLeft h3 {
     margin: 0;
 
-    color: #27272a;
+    color: var(--heading-text);
 
     font-size: 1.12rem;
 
@@ -789,9 +1002,9 @@
 
     border-radius: 100px;
 
-    background: #f4f4f5;
+    background: var(--count-bg);
 
-    color: #71717a;
+    color: var(--count-text);
 
     font-size: 0.58rem;
 
@@ -821,7 +1034,7 @@
 }
 
 .ingredientsGrid::-webkit-scrollbar-thumb {
-    background: #bbf7d0;
+    background: var(--scroll-thumb);
 
     border-radius: 20px;
 }
@@ -837,11 +1050,11 @@
 
     padding: 11px 12px;
 
-    border: 1px solid #e5e9e5;
+    border: 1px solid var(--ingredient-border);
 
     border-radius: 10px;
 
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--ingredient-bg);
 
     opacity: 0;
 
@@ -872,12 +1085,11 @@
 .ingredient:hover {
     transform: translateY(-2px);
 
-    border-color: #86efac;
+    border-color: var(--ingredient-border-hover);
 
-    background: #f0fdf4;
+    background: var(--ingredient-bg-hover);
 
-    box-shadow:
-        0 8px 18px rgba(22, 163, 74, 0.09);
+    box-shadow: var(--ingredient-shadow-hover);
 }
 
 .ingredientDot {
@@ -889,7 +1101,7 @@
 
     border-radius: 50%;
 
-    background: #22c55e;
+    background: var(--ingredient-dot);
 }
 
 .ingredientName {
@@ -897,7 +1109,7 @@
 
     flex: 1;
 
-    color: #36363c;
+    color: var(--ingredient-name);
 
     font-size: 0.77rem;
 
@@ -917,7 +1129,7 @@
 
     max-width: 48%;
 
-    color: #8f8f96;
+    color: var(--ingredient-measure);
 
     font-size: 0.66rem;
 
@@ -929,7 +1141,6 @@
 
     line-height: 1.25;
 }
-
 
 /* =========================================
    INSTRUCTIONS
@@ -950,18 +1161,13 @@
 
     overflow: hidden;
 
-    border: 1px solid rgba(24, 24, 27, 0.09);
+    border: 1px solid var(--instructions-border);
 
     border-radius: 32px;
 
-    background:
-        radial-gradient(circle at 90% 10%,
-            rgba(34, 197, 94, 0.10),
-            transparent 25%),
-        #ffffff;
+    background: var(--instructions-bg);
 
-    box-shadow:
-        0 30px 80px rgba(24, 24, 27, 0.065);
+    box-shadow: var(--instructions-shadow);
 
     animation:
         instructionsIn 0.8s 0.25s both cubic-bezier(0.22, 1, 0.36, 1);
@@ -981,7 +1187,6 @@
     }
 }
 
-
 /* =========================================
    INSTRUCTION HEADER
 ========================================= */
@@ -989,7 +1194,7 @@
 .instructionsTop {
     padding-bottom: 28px;
 
-    border-bottom: 1px solid #e9e9ea;
+    border-bottom: 1px solid var(--instructions-top-divider);
 }
 
 .instructionsTitle {
@@ -1001,7 +1206,7 @@
 }
 
 .bigNumber {
-    color: #16a34a;
+    color: var(--instructions-number);
 
     font-size: 0.67rem;
 
@@ -1013,7 +1218,7 @@
 .instructionsTitle h3 {
     margin: 0;
 
-    color: #18181b;
+    color: var(--instructions-title);
 
     font-family:
         Inter,
@@ -1039,7 +1244,7 @@
 
     font-weight: 500;
 
-    color: #16a34a;
+    color: var(--instructions-title-span);
 }
 
 .instructionsTitle p {
@@ -1047,13 +1252,12 @@
 
     margin: 13px 0 0;
 
-    color: #a1a1aa;
+    color: var(--instructions-p);
 
     font-size: 0.76rem;
 
     line-height: 1.8;
 }
-
 
 /* =========================================
    STEPS
@@ -1078,7 +1282,7 @@
 
     padding: 22px 0;
 
-    border-bottom: 1px solid #eeeeef;
+    border-bottom: 1px solid var(--step-divider);
 
     opacity: 0;
 
@@ -1101,7 +1305,7 @@
 }
 
 .stepNumber {
-    color: #16a34a;
+    color: var(--step-number);
 
     font-size: 0.67rem;
 
@@ -1121,7 +1325,7 @@
 
     margin-bottom: 6px;
 
-    color: #a1a1aa;
+    color: var(--step-label);
 
     font-size: 0.51rem;
 
@@ -1133,7 +1337,7 @@
 .stepContent p {
     margin: 0;
 
-    color: #52525b;
+    color: var(--step-text);
 
     font-size: 0.81rem;
 
@@ -1159,11 +1363,11 @@
 
     justify-content: center;
 
-    border: 1px solid #e4e7e4;
+    border: 1px solid var(--step-arrow-border);
 
     border-radius: 10px;
 
-    background: #fafafa;
+    background: var(--step-arrow-bg);
 
     transform: translateY(-50%);
 
@@ -1178,18 +1382,16 @@
     transform:
         translateY(-50%) translateX(5px);
 
-    border-color: #86efac;
+    border-color: var(--step-arrow-border-hover);
 
-    background: #f0fdf4;
+    background: var(--step-arrow-bg-hover);
 
-    box-shadow:
-        0 7px 18px rgba(22, 163, 74, 0.12);
+    box-shadow: var(--step-arrow-shadow-hover);
 }
 
 .step:hover .stepContent p {
-    color: #18181b;
+    color: var(--step-text-hover);
 }
-
 
 /* =========================================
    VIDEO / SOURCE
@@ -1206,7 +1408,7 @@
 
     padding-top: 25px;
 
-    border-top: 1px solid #e9e9ea;
+    border-top: 1px solid var(--actions-divider);
 }
 
 .youtubeButton,
@@ -1237,44 +1439,38 @@
 }
 
 .youtubeButton {
-    background: #18181b;
+    background: var(--youtube-bg);
 
-    color: #ffffff;
+    color: var(--youtube-text);
 
-    box-shadow:
-        0 8px 20px rgba(24, 24, 27, 0.12);
+    box-shadow: var(--youtube-shadow);
 }
 
 .youtubeButton:hover {
     transform: translateY(-3px);
 
-    background:
-        linear-gradient(135deg,
-            #15803d,
-            #16a34a);
+    background: var(--youtube-bg-hover);
 
-    box-shadow:
-        0 12px 25px rgba(22, 163, 74, 0.18);
+    box-shadow: var(--youtube-shadow-hover);
 }
 
 .sourceButton {
-    border: 1px solid #e2e4e2;
+    border: 1px solid var(--source-border);
 
-    background: #ffffff;
+    background: var(--source-bg);
 
-    color: #52525b;
+    color: var(--source-text);
 }
 
 .sourceButton:hover {
     transform: translateY(-3px);
 
-    border-color: #86efac;
+    border-color: var(--source-border-hover);
 
-    color: #15803d;
+    color: var(--source-text-hover);
 
-    background: #f0fdf4;
+    background: var(--source-bg-hover);
 }
-
 
 /* =========================================
    TABLET
@@ -1323,7 +1519,6 @@
         max-width: 700px;
     }
 }
-
 
 /* =========================================
    MOBILE
@@ -1503,7 +1698,6 @@
     }
 }
 
-
 /* =========================================
    SMALL MOBILE
 ========================================= */
@@ -1544,7 +1738,6 @@
         max-width: 45%;
     }
 }
-
 
 /* =========================================
    REDUCED MOTION

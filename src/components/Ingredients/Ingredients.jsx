@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import EmptyMessage from "../EmptyMessage";
 import Loading from "../Loading";
 import Error from "../Error";
@@ -11,6 +12,7 @@ const URL = import.meta.env.VITE_MEAL_API_URL;
 const IMAGE_URL = import.meta.env.VITE_MEAL_IMAGE_URL;
 
 export default function Ingredients({ query, ingredientSearchTrigger }) {
+  const { theme } = useTheme();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -159,7 +161,11 @@ export default function Ingredients({ query, ingredientSearchTrigger }) {
   const hasMore = visibleCount < sortedData.length;
 
   return (
-    <div className={style.pageWrapper}>
+    <div
+      className={`${style.pageWrapper} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.container}>
         {/* HEADER */}
         <header className={style.header}>

@@ -1,11 +1,16 @@
 /* eslint-disable react-hooks/set-state-in-effect */
+
 import { useEffect, useRef, useState } from "react";
-import style from "../css/favoriteButton.module.css";
 import { HeartIcon } from "@animateicons/react/lucide";
+
+import { useTheme } from "../context/ThemeContext";
+import style from "../css/favoriteButton.module.css";
 
 export default function FavoriteButton({ onClick, active = false }) {
   const heartRef = useRef(null);
   const [showAdded, setShowAdded] = useState(false);
+
+  const { theme } = useTheme();
 
   /* =========================================================
      ADDED ANIMATION
@@ -52,9 +57,9 @@ export default function FavoriteButton({ onClick, active = false }) {
 
   return (
     <button
-      className={`${style.button} ${active ? style.active : ""} ${
-        showAdded ? style.adding : ""
-      }`}
+      className={`${style.button} ${
+        theme === "dark" ? style.dark : style.light
+      } ${active ? style.active : ""} ${showAdded ? style.adding : ""}`}
       type="button"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}

@@ -1,15 +1,20 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   ArrowLeftIcon,
   HouseIcon,
   SearchIcon,
 } from "@animateicons/react/lucide";
 
+import { useTheme } from "../context/ThemeContext";
+
 import style from "../css/notFound.module.css";
 
 export default function NotFound() {
   const navigate = useNavigate();
+
+  const { theme } = useTheme();
 
   const arrowRef = useRef(null);
   const homeRef = useRef(null);
@@ -48,13 +53,17 @@ export default function NotFound() {
   };
 
   return (
-    <main className={style.page}>
+    <main
+      className={`${style.page} ${theme === "dark" ? style.dark : style.light}`}
+    >
       {/* BACKGROUND DECORATIONS */}
 
       <div className={style.glowOne}></div>
+
       <div className={style.glowTwo}></div>
 
       <div className={style.circleOne}></div>
+
       <div className={style.circleTwo}></div>
 
       {/* FLOATING FOOD DECORATIONS */}

@@ -6,20 +6,20 @@
 ========================================================= */
 
 .pageWrapper {
-    --background: #f8f6f0;
-    --surface: #ffffff;
-    --surface-soft: #f1efe7;
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
 
-    --text: #24231f;
-    --muted: #7d7a70;
+    --text: #292522;
+    --muted: #746D68;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
 
-    --orange: #e58a43;
-    --yellow: #f4c95d;
+    --orange: #E58A43;
+    --yellow: #F4C95D;
 
-    --border: #e7e3d8;
+    --border: #E7DED9;
 
     width: 100%;
     min-height: 100vh;
@@ -46,7 +46,7 @@
     width: 420px;
     height: 420px;
 
-    border: 1px solid rgba(85, 123, 69, 0.07);
+    border: 1px solid rgba(143, 61, 78, 0.07);
     border-radius: 50%;
 
     top: 100px;
@@ -187,7 +187,7 @@
 }
 
 .queryHighlight {
-    color: var(--green);
+    color: var(--primary);
 
     position: relative;
 
@@ -288,7 +288,7 @@
 }
 
 .showingCount strong {
-    color: var(--green);
+    color: var(--primary);
 }
 
 
@@ -361,7 +361,7 @@
 }
 
 .sortSelect:hover {
-    border-color: rgba(85, 123, 69, 0.38);
+    border-color: rgba(143, 61, 78, 0.38);
 
     box-shadow:
         0 9px 22px rgba(47, 45, 38, 0.065);
@@ -370,10 +370,10 @@
 }
 
 .sortSelect:focus {
-    border-color: var(--green);
+    border-color: var(--primary);
 
     box-shadow:
-        0 0 0 3px rgba(85, 123, 69, 0.1),
+        0 0 0 3px rgba(143, 61, 78, 0.1),
         0 8px 20px rgba(47, 45, 38, 0.06);
 }
 
@@ -392,7 +392,7 @@
 
     transform: translateY(-50%);
 
-    color: var(--green);
+    color: var(--primary);
 
     pointer-events: none;
 
@@ -409,7 +409,7 @@
 }
 
 .sortSelectWrapper:hover .sortArrow {
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     transform: translateY(-50%) scale(1.08);
 }
@@ -457,7 +457,7 @@
 .card:hover {
     transform: translateY(-9px);
 
-    border-color: rgba(85, 123, 69, 0.28);
+    border-color: rgba(143, 61, 78, 0.28);
 
     box-shadow:
         0 24px 50px rgba(47, 45, 38, 0.1);
@@ -475,7 +475,7 @@
 
     aspect-ratio: 1 / 0.88;
 
-    background: #f2f0e8;
+    background: #F3EEE9;
 
     overflow: hidden;
 }
@@ -488,7 +488,7 @@
 
     border-radius: 50%;
 
-    background: rgba(85, 123, 69, 0.08);
+    background: rgba(143, 61, 78, 0.08);
 
     filter: blur(35px);
 
@@ -535,7 +535,7 @@
 
     font-size: 60px;
 
-    background: #f2f0e8;
+    background: #F3EEE9;
 
     z-index: 2;
 
@@ -566,7 +566,7 @@
 
     border-radius: 999px;
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 9px;
     font-weight: 800;
@@ -584,7 +584,7 @@
 
     padding: 8px 11px;
 
-    background: var(--green);
+    background: var(--primary);
 
     color: white;
 
@@ -665,7 +665,7 @@
 
     border-radius: 50%;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 14px;
 
@@ -678,7 +678,7 @@
 .card:hover .cardArrow {
     transform: rotate(45deg);
 
-    background: var(--green);
+    background: var(--primary);
 
     color: white;
 }
@@ -706,7 +706,7 @@
 }
 
 .cardIdNumber {
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 9px;
     font-weight: 700;
@@ -764,7 +764,7 @@
 .loadMoreBtn:hover {
     transform: translateY(-4px);
 
-    border-color: rgba(85, 123, 69, 0.35);
+    border-color: rgba(143, 61, 78, 0.35);
 
     box-shadow:
         0 16px 35px rgba(47, 45, 38, 0.09);
@@ -792,7 +792,7 @@
 
     border-radius: 50%;
 
-    background: var(--green);
+    background: var(--primary);
 
     color: white;
 
@@ -823,9 +823,9 @@
 
     padding: 38px 45px;
 
-    background: #e9efe2;
+    background: #F4E5E8;
 
-    border: 1px solid #dce5d2;
+    border: 1px solid #D8BCC2;
 
     border-radius: 27px;
 
@@ -871,7 +871,7 @@
 }
 
 .bannerText em {
-    color: var(--green);
+    color: var(--primary);
 }
 
 .bannerDecoration {
@@ -882,7 +882,7 @@
 
     transform: translateY(-50%);
 
-    color: rgba(85, 123, 69, 0.1);
+    color: rgba(143, 61, 78, 0.1);
 
     font-size: 100px;
 
@@ -1235,4 +1235,309 @@
 
         transition-duration: 0.01ms !important;
     }
+}
+
+
+/* =========================================================
+   THEME SYSTEM
+   Original layout, spacing, responsive rules and animations
+   are preserved. Theme classes only control colors/surfaces.
+   ========================================================= */
+
+.light {
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
+
+    --text: #292522;
+    --muted: #746D68;
+
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
+
+    --orange: #E58A43;
+    --yellow: #F4C95D;
+
+    --border: #E7DED9;
+
+    --image-bg: #F3EEE9;
+    --banner-bg: #F4E5E8;
+    --banner-border: #D8BCC2;
+    --banner-icon-bg: rgba(255, 255, 255, 0.7);
+    --number-bg: rgba(255, 255, 255, 0.9);
+    --number-border: rgba(231, 227, 216, 0.8);
+    --soft-shadow: rgba(47, 45, 38, 0.05);
+}
+
+.dark {
+    --background: #151312;
+    --surface: #211B1D;
+    --surface-soft: #2A2225;
+
+    --text: #F0E8E8;
+    --muted: #B9ACAF;
+
+    --primary: #D58A9A;
+    --primary-dark: #B96579;
+    --primary-soft: #3A252B;
+
+    --orange: #e8a067;
+    --yellow: #F4C95D;
+
+    --border: #394535;
+
+    --image-bg: #2A2225;
+    --banner-bg: #3A252B;
+    --banner-border: #493A3F;
+    --banner-icon-bg: rgba(42, 52, 39, 0.9);
+    --number-bg: rgba(31, 39, 29, 0.94);
+    --number-border: rgba(213, 138, 154, 0.22);
+    --soft-shadow: rgba(0, 0, 0, 0.24);
+}
+
+.dark.pageWrapper {
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(143, 61, 78, 0.075),
+            transparent 28%),
+        radial-gradient(circle at 92% 55%,
+            rgba(229, 138, 67, 0.045),
+            transparent 26%),
+        var(--background);
+    color: var(--text);
+}
+
+/* Decorative background */
+.dark.pageWrapper::before {
+    border-color: rgba(213, 138, 154, 0.09);
+}
+
+.dark.pageWrapper::after {
+    color: rgba(232, 160, 103, 0.065);
+}
+
+/* Header */
+.dark .headerContent {
+    border-bottom-color: var(--border);
+}
+
+.dark .headerLabel {
+    color: var(--orange);
+}
+
+.dark .resultPill {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.dark .headerEyebrow,
+.dark .headerDescription {
+    color: var(--muted);
+}
+
+.dark .headerTitle {
+    color: var(--text);
+}
+
+.dark .queryHighlight {
+    color: var(--primary);
+}
+
+.dark .queryHighlight::after {
+    background: rgba(244, 201, 93, 0.22);
+}
+
+/* Results */
+.dark .sectionEyebrow {
+    color: var(--orange);
+}
+
+.dark .sectionHeader h2 {
+    color: var(--text);
+}
+
+.dark .showingCount {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.dark .showingCount strong {
+    color: var(--primary);
+}
+
+/* Sort */
+.dark .sortLabel {
+    color: var(--muted);
+}
+
+.dark .sortSelect {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.16);
+}
+
+.dark .sortSelect:hover {
+    border-color: rgba(213, 138, 154, 0.42);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dark .sortSelect:focus {
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 3px rgba(213, 138, 154, 0.13),
+        0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark .sortArrow {
+    color: var(--primary);
+}
+
+.dark .sortSelectWrapper:hover .sortArrow {
+    color: var(--primary-dark);
+}
+
+/* Cards */
+.dark .card {
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.dark .card:hover {
+    border-color: rgba(213, 138, 154, 0.38);
+    box-shadow:
+        0 25px 52px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(111, 41, 57, 0.08);
+}
+
+/* Ingredient image */
+.dark .cardImageWrapper {
+    background: var(--image-bg);
+}
+
+.dark .imageGlow {
+    background: rgba(213, 138, 154, 0.095);
+}
+
+.dark .cardNumber {
+    background: var(--number-bg);
+    border-color: var(--number-border);
+    color: var(--primary);
+}
+
+.dark .imageHint {
+    background: var(--primary);
+    color: #211B1D;
+}
+
+.dark .fallbackIcon {
+    background: var(--image-bg);
+}
+
+/* Card body */
+.dark .cardTitle {
+    color: var(--text);
+}
+
+.dark .cardArrow {
+    border-color: var(--border);
+    color: var(--primary);
+}
+
+.dark .card:hover .cardArrow {
+    background: var(--primary);
+    color: #211B1D;
+}
+
+.dark .cardFooter {
+    border-top-color: var(--border);
+}
+
+.dark .cardId {
+    color: var(--muted);
+}
+
+.dark .cardIdNumber {
+    color: var(--primary);
+}
+
+/* Load more */
+.dark .loadMoreBtn {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dark .loadMoreBtn:hover {
+    border-color: rgba(213, 138, 154, 0.42);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.28);
+}
+
+.dark .loadMoreBtn small {
+    background: var(--surface-soft);
+    color: var(--muted);
+}
+
+.dark .loadMoreBtn b {
+    background: var(--primary);
+    color: #211B1D;
+}
+
+/* Bottom banner */
+.dark .bottomBanner {
+    background: var(--banner-bg);
+    border-color: var(--banner-border);
+}
+
+.dark .bannerIcon {
+    background: var(--banner-icon-bg);
+}
+
+.dark .bannerText span {
+    color: var(--orange);
+}
+
+.dark .bannerText h2 {
+    color: var(--text);
+}
+
+.dark .bannerText em {
+    color: var(--primary);
+}
+
+.dark .bannerDecoration {
+    color: rgba(213, 138, 154, 0.12);
+}
+
+/* Footer */
+.dark .footer {
+    color: var(--muted);
+}
+
+/* Smooth theme transition without touching geometry */
+.pageWrapper,
+.pageWrapper .resultPill,
+.pageWrapper .showingCount,
+.pageWrapper .sortSelect,
+.pageWrapper .card,
+.pageWrapper .cardImageWrapper,
+.pageWrapper .fallbackIcon,
+.pageWrapper .cardNumber,
+.pageWrapper .cardArrow,
+.pageWrapper .cardFooter,
+.pageWrapper .loadMoreBtn,
+.pageWrapper .loadMoreBtn small,
+.pageWrapper .bottomBanner,
+.pageWrapper .bannerIcon {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
 }

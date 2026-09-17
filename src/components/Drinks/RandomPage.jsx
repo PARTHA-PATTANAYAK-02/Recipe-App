@@ -6,10 +6,13 @@ import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
 
 export default function RandomPage() {
+  const { theme } = useTheme();
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,6 +23,7 @@ export default function RandomPage() {
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
   const [isFavorite, setIsFavorite] = useState(false);
+
   useEffect(() => {
     if (!data) return;
 
@@ -29,6 +33,7 @@ export default function RandomPage() {
 
     setIsFavorite(exists);
   }, [data, favorites]);
+
   const addFavorite = () => {
     const newFavorite = {
       type: "drink",
@@ -43,6 +48,7 @@ export default function RandomPage() {
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
+
   const removeFavorite = () => {
     const updatedFavorites = favorites.filter(
       (item) => !(item.type === "drink" && item.id === data.idDrink),
@@ -51,6 +57,7 @@ export default function RandomPage() {
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
+
   useEffect(() => {
     async function fetchRandomDrink() {
       setLoading(true);
@@ -96,7 +103,11 @@ export default function RandomPage() {
 
   if (error) {
     return (
-      <section className={style.randomPage}>
+      <section
+        className={`${style.randomPage} ${
+          theme === "dark" ? style.dark : style.light
+        }`}
+      >
         <div className={style.errorWrapper}>
           <ErrorPage message={error} />
 
@@ -132,7 +143,11 @@ export default function RandomPage() {
   }
 
   return (
-    <main className={style.randomPage}>
+    <main
+      className={`${style.randomPage} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       <div className={style.backgroundGlow}></div>
       <div className={style.backgroundGlowTwo}></div>
 
@@ -224,20 +239,22 @@ export default function RandomPage() {
               </p>
             )}
 
-            <FavoriteButton
-              active={isFavorite}
-              onClick={isFavorite ? removeFavorite : addFavorite}
-            />
+            <div className={style.actionButtons}>
+              <FavoriteButton
+                active={isFavorite}
+                onClick={isFavorite ? removeFavorite : addFavorite}
+              />
 
-            <MealPlannerButton
-              meal={{
-                type: "drink",
-                id: data.idDrink,
-                name: data.strDrink,
-                image: data.strDrinkThumb,
-                data: data,
-              }}
-            />
+              <MealPlannerButton
+                meal={{
+                  type: "drink",
+                  id: data.idDrink,
+                  name: data.strDrink,
+                  image: data.strDrinkThumb,
+                  data: data,
+                }}
+              />
+            </div>
           </div>
 
           {/* ================= QUICK INFO ================= */}
@@ -294,6 +311,7 @@ export default function RandomPage() {
                 <div
                   className={style.ingredient}
                   key={`${item.ingredient}-${index}`}
+                  style={{ "--ingredient-index": index }}
                 >
                   <span className={style.ingredientNumber}>
                     {String(index + 1).padStart(2, "0")}

@@ -6,37 +6,27 @@ import style from "../css/navbar.module.css";
 
 import { ChevronDownIcon, ArrowRightIcon } from "@animateicons/react/lucide";
 
+import { useTheme } from "../context/ThemeContext";
+
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { theme, toggleTheme } = useTheme();
+
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isToggling, setIsToggling] = useState(false);
 
   const moreRef = useRef(null);
   const moreArrowRef = useRef(null);
+  const toggleTimerRef = useRef(null);
 
   const primaryMenu = [
-    {
-      index: 0,
-      label: "Home",
-      path: "/",
-    },
-    {
-      index: 1,
-      label: "Recipes",
-      path: "/recipes",
-    },
-    {
-      index: 2,
-      label: "Food",
-      path: "/food",
-    },
-    {
-      index: 4,
-      label: "Drinks",
-      path: "/drinks",
-    },
+    { index: 0, label: "Home", path: "/" },
+    { index: 1, label: "Recipes", path: "/recipes" },
+    { index: 2, label: "Food", path: "/food" },
+    { index: 4, label: "Drinks", path: "/drinks" },
   ];
 
   const moreMenu = [
@@ -124,6 +114,20 @@ export default function Navbar() {
 
   /*
    * =========================================================
+   * CLEANUP TOGGLE TIMER
+   * =========================================================
+   */
+
+  useEffect(() => {
+    return () => {
+      if (toggleTimerRef.current) {
+        clearTimeout(toggleTimerRef.current);
+      }
+    };
+  }, []);
+
+  /*
+   * =========================================================
    * MENU SELECT
    * =========================================================
    */
@@ -187,9 +191,35 @@ export default function Navbar() {
     setIsMoreOpen(false);
   };
 
+  /*
+   * =========================================================
+   * THEME TOGGLE
+   * =========================================================
+   */
+
+  const isDark = theme === "dark";
+
+  const handleThemeToggle = () => {
+    if (isToggling) return;
+
+    setIsToggling(true);
+
+    toggleTheme();
+
+    if (toggleTimerRef.current) {
+      clearTimeout(toggleTimerRef.current);
+    }
+
+    toggleTimerRef.current = setTimeout(() => {
+      setIsToggling(false);
+    }, 900);
+  };
+
   return (
     <nav
-      className={`${style.navbar} ${isMobileOpen ? style.mobileMenuOpen : ""}`}
+      className={`${style.navbar} ${
+        isDark ? style.dark : style.light
+      } ${isMobileOpen ? style.mobileMenuOpen : ""}`}
     >
       {/* -----------------------------------------
           BRAND
@@ -303,6 +333,57 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
+
+      {/* -----------------------------------------
+          THEME TOGGLE — CELESTIAL SWITCH
+      ----------------------------------------- */}
+
+      <button
+        type="button"
+        className={`${style.themeToggle} ${
+          isDark ? style.themeToggleDark : ""
+        } ${isToggling ? style.themeToggleActive : ""}`}
+        onClick={handleThemeToggle}
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={isDark}
+      >
+        {/* Animated sky background */}
+        <span className={style.skyLayer}>
+          <span className={style.skySun}></span>
+          <span className={style.skyMoon}></span>
+          <span className={style.skyStar1}></span>
+          <span className={style.skyStar2}></span>
+          <span className={style.skyStar3}></span>
+          <span className={style.skyCloud1}></span>
+          <span className={style.skyCloud2}></span>
+        </span>
+
+        {/* The travelling orb */}
+        <span className={style.orbWrap}>
+          <span className={style.orbRays}></span>
+          <span className={style.orbBody}>
+            <span className={style.orbSunFace}></span>
+            <span className={style.orbMoonFace}></span>
+            <span className={style.orbCrater1}></span>
+            <span className={style.orbCrater2}></span>
+            <span className={style.orbCrater3}></span>
+          </span>
+          <span className={style.orbTrail}></span>
+        </span>
+
+        {/* Burst on click */}
+        <span className={style.burstRing}></span>
+
+        {/* Floating particles */}
+        <span className={style.particles}>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </button>
 
       {/* -----------------------------------------
           MOBILE BUTTON

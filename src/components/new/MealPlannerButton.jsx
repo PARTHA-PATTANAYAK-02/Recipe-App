@@ -2,6 +2,7 @@
 /* eslint-disable no-useless-assignment */
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 import style from "../../css/MealPlanner/mealPlannerButton.module.css";
 
@@ -54,6 +55,7 @@ const mealTimes = [
 ];
 
 export default function MealPlannerButton({ meal }) {
+  const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   const [day, setDay] = useState("monday");
@@ -279,7 +281,7 @@ export default function MealPlannerButton({ meal }) {
 
         type:
           meal?.type ?? meal?.strCategory ?? meal?.strDrinkCategory ?? "Recipe",
-        
+
         data: meal?.data ?? meal,
       };
 
@@ -367,7 +369,10 @@ export default function MealPlannerButton({ meal }) {
   ========================================================= */
 
   const modal = isOpen ? (
-    <div className={style.overlay} onClick={handleClose}>
+    <div
+      className={`${style.overlay} ${theme === "dark" ? style.dark : style.light}`}
+      onClick={handleClose}
+    >
       <div className={style.modal} onClick={(event) => event.stopPropagation()}>
         <div className={style.modalGlow}></div>
 
@@ -625,7 +630,7 @@ export default function MealPlannerButton({ meal }) {
     <>
       <button
         type="button"
-        className={style.plannerButton}
+        className={`${style.plannerButton} ${theme === "dark" ? style.dark : style.light}`}
         onClick={() => {
           loadPlanner();
 

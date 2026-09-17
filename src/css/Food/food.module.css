@@ -6,22 +6,22 @@
 ========================================================= */
 
 .pageWrapper {
-    --background: #f8f6f0;
-    --surface: #ffffff;
-    --surface-soft: #f0eee6;
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
 
-    --text: #25251f;
-    --muted: #77776d;
-    --light-muted: #a2a298;
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
 
-    --green: #557b45;
-    --green-dark: #3f6034;
-    --green-soft: #e9f0e4;
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
 
-    --orange: #e58a43;
-    --orange-soft: #fff0e3;
+    --orange: #E58A43;
+    --orange-soft: #FFF0E3;
 
-    --border: #e5e1d7;
+    --border: #E7DED9;
 
     width: 100%;
     min-height: 100vh;
@@ -140,7 +140,7 @@
 }
 
 .titleBlock h1 span {
-    color: var(--green);
+    color: var(--primary);
 
     font-style: italic;
 }
@@ -199,9 +199,9 @@
 
     border-radius: 10px;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 10px;
 }
@@ -240,7 +240,7 @@
 }
 
 .infoRight strong {
-    color: var(--green);
+    color: var(--primary);
 
     font-weight: 800;
 }
@@ -353,10 +353,10 @@
 .foodCard:hover {
     transform: translateY(-6px);
 
-    border-color: rgba(85, 123, 69, 0.3);
+    border-color: rgba(143, 61, 78, 0.30);
 
     box-shadow:
-        0 18px 35px rgba(44, 43, 36, 0.09);
+        0 18px 35px rgba(41, 37, 34, 0.09);
 }
 
 @keyframes cardEntrance {
@@ -407,8 +407,7 @@
 }
 
 .foodCard:hover .cardImage img {
-    transform: scale(1.06);
-
+    transform: none;
     filter: saturate(1.07);
 }
 
@@ -430,7 +429,7 @@
 
     background:
         linear-gradient(to top,
-            rgba(20, 24, 18, 0.35),
+            rgba(0, 0, 0, 0.35),
             transparent 45%);
 
     pointer-events: none;
@@ -460,7 +459,7 @@
 
     border-radius: 999px;
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 8px;
     font-weight: 800;
@@ -515,7 +514,7 @@
 
     padding: 7px 10px;
 
-    background: var(--green);
+    background: var(--primary);
 
     border-radius: 999px;
 
@@ -595,7 +594,7 @@
 .areaMeta svg {
     font-size: 7px;
 
-    color: var(--green);
+    color: var(--primary);
 }
 
 .cardBody h3 {
@@ -655,7 +654,7 @@
 }
 
 .cardDetails svg {
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 8px;
 }
@@ -674,7 +673,7 @@
 }
 
 .cardFooter>span {
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 8px;
     font-weight: 800;
@@ -696,7 +695,7 @@
 
     border-radius: 50%;
 
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 8px;
 
@@ -707,7 +706,7 @@
 }
 
 .foodCard:hover .footerArrow {
-    background: var(--green);
+    background: var(--primary);
 
     color: white;
 
@@ -762,10 +761,10 @@
 .loadMoreButton:hover {
     transform: translateY(-2px);
 
-    border-color: rgba(85, 123, 69, 0.3);
+    border-color: rgba(143, 61, 78, 0.30);
 
     box-shadow:
-        0 8px 20px rgba(40, 40, 30, 0.06);
+        0 8px 20px rgba(41, 37, 34, 0.06);
 }
 
 .loadMoreButton small {
@@ -781,7 +780,7 @@
 }
 
 .loadMoreButton svg {
-    color: var(--green);
+    color: var(--primary);
 
     font-size: 8px;
 }
@@ -807,9 +806,9 @@
 
     overflow: hidden;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    border: 1px solid #dce7d5;
+    border: 1px solid #D8BCC2;
 
     border-radius: 16px;
 }
@@ -847,7 +846,7 @@
 .bottomNote p {
     margin: 0;
 
-    color: var(--green-dark);
+    color: var(--primary-dark);
 
     font-size: 9px;
 }
@@ -855,7 +854,7 @@
 .bottomStar {
     margin-left: auto;
 
-    color: rgba(85, 123, 69, 0.16);
+    color: rgba(143, 61, 78, 0.16);
 
     font-size: 65px;
 
@@ -1160,11 +1159,11 @@
 
     padding: 6px 12px;
 
-    border: 1px solid #e3e1d8;
+    border: 1px solid #E7DED9;
 
     border-radius: 999px;
 
-    background: #ffffff;
+    background: #FFFFFF;
 
     color: var(--muted);
 
@@ -1188,42 +1187,42 @@
 }
 
 .categoryButton:hover {
-    color: var(--green);
+    color: var(--primary);
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 
-    border-color: #cfddc8;
+    border-color: #D8BCC2;
 
-    transform: translateY(-1px);
+    transform: none;
 }
 
 .categoryButton:active {
-    transform: translateY(0) scale(0.97);
+    transform: scale(0.97);
 }
 
 .activeCategory {
-    background: var(--green);
+    background: var(--primary);
 
-    border-color: var(--green);
+    border-color: var(--primary);
 
-    color: #ffffff;
+    color: #FFFFFF;
 
     box-shadow:
-        0 5px 13px rgba(85, 123, 69, 0.16);
+        0 5px 13px rgba(143, 61, 78, 0.16);
 }
 
 .activeCategory:hover {
-    background: var(--green-dark);
+    background: var(--primary-dark);
 
-    border-color: var(--green-dark);
+    border-color: var(--primary-dark);
 
-    color: #ffffff;
+    color: #FFFFFF;
 
-    transform: translateY(-1px);
+    transform: none;
 }
 
 .categoryButton:focus-visible {
-    outline: 3px solid rgba(85, 123, 69, 0.16);
+    outline: 3px solid rgba(143, 61, 78, 0.16);
     outline-offset: 2px;
 }
 
@@ -1268,11 +1267,11 @@
 
     padding: 0 28px 0 11px;
 
-    border: 1px solid #e3e1d8;
+    border: 1px solid #E7DED9;
 
     border-radius: 9px;
 
-    background: #ffffff;
+    background: #FFFFFF;
 
     color: var(--text);
 
@@ -1292,32 +1291,43 @@
 }
 
 .sortSelect:hover {
-    border-color: #cfddc8;
+    border-color: #D8BCC2;
 
-    background: var(--green-soft);
+    background: var(--primary-soft);
 }
 
 .sortSelect:focus {
-    border-color: var(--green);
+    border-color: var(--primary);
 
     box-shadow:
-        0 0 0 3px rgba(85, 123, 69, 0.1);
+        0 0 0 3px rgba(143, 61, 78, 0.10);
 }
 
 .sortArrow {
     position: absolute;
 
-    right: 10px;
+    right: 9px;
+
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     pointer-events: none;
 
-    color: var(--green);
+    color: var(--primary);
 
-    font-size: 12px;
+    line-height: 0;
 
-    line-height: 1;
+    transform: translateY(0);
+}
 
-    transform: translateY(-1px);
+.sortArrow svg {
+    width: 16px;
+    height: 16px;
+    display: block;
 }
 
 
@@ -1491,5 +1501,437 @@
     .categoryButton,
     .sortSelect {
         transition: none;
+    }
+}
+
+
+/* =========================================================
+   THEME SYSTEM
+   Original layout, spacing, responsive rules and animations
+   are intentionally preserved. Only colors/surfaces change.
+   ========================================================= */
+
+.light {
+    --background: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-soft: #F3EEE9;
+
+    --text: #292522;
+    --muted: #746D68;
+    --light-muted: #A29A95;
+
+    --primary: #8F3D4E;
+    --primary-dark: #6F2939;
+    --primary-soft: #F4E5E8;
+
+    --orange: #E58A43;
+    --orange-dark: #c96d2c;
+    --orange-soft: #FFF0E3;
+
+    --border: #E7DED9;
+
+    --hover-surface: #F3EEE9;
+    --control-border: #E7DED9;
+    --control-bg: #FFFFFF;
+    --bottom-border: #D8BCC2;
+    --bottom-icon-bg: #FFFFFF;
+    --image-badge-bg: rgba(255, 255, 255, 0.93);
+    --overlay: rgba(0, 0, 0, 0.35);
+}
+
+.dark {
+    --background: #151312;
+    --surface: #211B1D;
+    --surface-soft: #2A2225;
+
+    --text: #F0E8E8;
+    --muted: #B9ACAF;
+    --light-muted: #918487;
+
+    --primary: #D58A9A;
+    --primary-dark: #B96579;
+    --primary-soft: #3A252B;
+
+    --orange: #E8A067;
+    --orange-dark: #F0AE78;
+    --orange-soft: #3A2C22;
+
+    --border: #493A3F;
+
+    --hover-surface: #2A2225;
+    --control-border: #493A3F;
+    --control-bg: #211B1D;
+    --bottom-border: #493A3F;
+    --bottom-icon-bg: #2A2225;
+    --image-badge-bg: rgba(42, 34, 37, 0.94);
+    --overlay: rgba(0, 0, 0, 0.48);
+}
+
+.pageWrapper {
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+}
+
+/* Page */
+.dark.pageWrapper {
+    background:
+        radial-gradient(circle at 8% 12%,
+            rgba(213, 138, 154, 0.075),
+            transparent 28%),
+        radial-gradient(circle at 92% 58%,
+            rgba(232, 160, 103, 0.045),
+            transparent 25%),
+        var(--background);
+    color: var(--text);
+}
+
+/* Header */
+.dark .foodHeader {
+    border-bottom-color: var(--border);
+}
+
+.dark .foodLabel {
+    color: var(--orange);
+}
+
+.dark .resultCount {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.dark .headerEyebrow,
+.dark .headerDescription {
+    color: var(--muted);
+}
+
+.dark .titleBlock h1 {
+    color: var(--text);
+}
+
+.dark .titleBlock h1 span {
+    color: var(--primary);
+}
+
+/* Info bar */
+.dark .infoBar {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+.dark .infoIcon {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.dark .infoLeft span,
+.dark .infoRight {
+    color: var(--light-muted);
+}
+
+.dark .infoLeft strong {
+    color: var(--text);
+}
+
+.dark .infoRight strong {
+    color: var(--primary);
+}
+
+.dark .infoDivider {
+    color: var(--border);
+}
+
+/* Section */
+.dark .sectionHeader span,
+.dark .sectionHeader h2 em {
+    color: var(--orange);
+}
+
+.dark .sectionHeader h2 {
+    color: var(--text);
+}
+
+.dark .sectionHeader p {
+    color: var(--muted);
+}
+
+/* Cards */
+.dark .foodCard {
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.dark .foodCard:hover {
+    border-color: rgba(213, 138, 154, 0.42);
+    box-shadow:
+        0 20px 38px rgba(0, 0, 0, 0.28),
+        0 4px 12px rgba(185, 101, 121, 0.08);
+}
+
+.dark .cardImage,
+.dark .imageFallback {
+    background: var(--surface-soft);
+}
+
+.dark .imageOverlay {
+    background:
+        linear-gradient(to top,
+            rgba(0, 0, 0, 0.62),
+            transparent 48%);
+}
+
+.dark .cardNumber,
+.dark .videoBadge {
+    background: var(--image-badge-bg);
+}
+
+.dark .cardNumber {
+    color: var(--primary-dark);
+}
+
+.dark .videoBadge {
+    color: var(--orange);
+}
+
+.dark .viewBadge {
+    background: var(--primary);
+    color: #151312;
+}
+
+.dark .cardMeta>span:first-child {
+    color: var(--orange);
+}
+
+.dark .areaMeta {
+    color: var(--muted) !important;
+}
+
+.dark .areaMeta svg {
+    color: var(--primary);
+}
+
+.dark .cardBody h3 {
+    color: var(--text);
+}
+
+.dark .cardDetails {
+    border-top-color: var(--border);
+    color: var(--muted);
+}
+
+.dark .cardDetails svg {
+    color: var(--primary);
+}
+
+.dark .cardFooter>span,
+.dark .footerArrow {
+    color: var(--primary);
+}
+
+.dark .footerArrow {
+    border-color: var(--border);
+}
+
+.dark .foodCard:hover .footerArrow {
+    background: var(--primary);
+    color: #151312;
+}
+
+/* Load more */
+.dark .loadMoreButton {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.14);
+}
+
+.dark .loadMoreButton:hover {
+    border-color: rgba(213, 138, 154, 0.42);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.dark .loadMoreButton small {
+    background: var(--surface-soft);
+    color: var(--muted);
+}
+
+.dark .loadMoreButton svg {
+    color: var(--primary);
+}
+
+/* Bottom note */
+.dark .bottomNote {
+    background: var(--primary-soft);
+    border-color: var(--bottom-border);
+}
+
+.dark .bottomIcon {
+    background: var(--bottom-icon-bg);
+}
+
+.dark .bottomNote span {
+    color: var(--orange);
+}
+
+.dark .bottomNote p {
+    color: #B9ACAF;
+}
+
+.dark .bottomStar {
+    color: rgba(213, 138, 154, 0.13);
+}
+
+.dark .footer {
+    color: var(--light-muted);
+}
+
+/* Filter + sort */
+.dark .filterSortBar {
+    background: rgba(33, 27, 29, 0.82);
+    border-color: var(--border);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.dark .filterHeading span,
+.dark .sortLabel {
+    color: var(--light-muted);
+}
+
+.dark .categoryButton {
+    background: var(--control-bg);
+    border-color: var(--control-border);
+    color: var(--muted);
+}
+
+.dark .categoryButton:hover {
+    background: var(--primary-soft);
+    border-color: #694A52;
+    color: var(--primary);
+}
+
+.dark .activeCategory {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #151312;
+    box-shadow: 0 5px 13px rgba(185, 101, 121, 0.22);
+}
+
+.dark .activeCategory:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #F0E8E8;
+}
+
+.dark .categoryButton:focus-visible {
+    outline-color: rgba(213, 138, 154, 0.22);
+}
+
+.dark .sortSelect {
+    background: var(--control-bg);
+    border-color: var(--control-border);
+    color: var(--text);
+}
+
+.dark .sortSelect:hover {
+    border-color: #694A52;
+    background: var(--primary-soft);
+}
+
+.dark .sortSelect:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(213, 138, 154, 0.12);
+}
+
+.dark .sortArrow {
+    color: var(--primary);
+}
+
+/* No category results */
+.dark .noCategoryResults {
+    background: rgba(33, 27, 29, 0.55);
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.dark .noCategoryResults span {
+    color: var(--orange);
+}
+
+/* Theme transitions */
+.pageWrapper,
+.pageWrapper .foodHeader,
+.pageWrapper .resultCount,
+.pageWrapper .infoBar,
+.pageWrapper .infoIcon,
+.pageWrapper .foodCard,
+.pageWrapper .cardNumber,
+.pageWrapper .videoBadge,
+.pageWrapper .cardBody,
+.pageWrapper .cardDetails,
+.pageWrapper .footerArrow,
+.pageWrapper .loadMoreButton,
+.pageWrapper .loadMoreButton small,
+.pageWrapper .bottomNote,
+.pageWrapper .bottomIcon,
+.pageWrapper .filterSortBar,
+.pageWrapper .categoryButton,
+.pageWrapper .sortSelect,
+.pageWrapper .noCategoryResults {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* =========================================================
+   FINAL HOVER POLISH
+   Keep the food image fully contained while preserving
+   a subtle hover zoom.
+========================================================= */
+
+.foodCard:hover .cardImage img {
+    transform: none;
+}
+
+/* =========================================================
+   ANIMATED SORT CHEVRON
+========================================================= */
+
+.sortArrow {
+    color: var(--primary);
+}
+
+.sortArrow svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    transform-origin: center;
+}
+
+/* Animate the AnimateIcon when the sort control is hovered.
+   The icon remains pointer-transparent so the native select keeps working. */
+.sortSelectWrapper:hover .sortArrow svg {
+    animation: sortChevronHover 0.55s ease both;
+}
+
+@keyframes sortChevronHover {
+    0% {
+        transform: translateY(-1px);
+    }
+
+    45% {
+        transform: translateY(3px);
+    }
+
+    75% {
+        transform: translateY(-1px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

@@ -14,9 +14,13 @@ import {
 
 import { FaLeaf } from "react-icons/fa";
 
+import { useTheme } from "../context/ThemeContext";
+
 import style from "../css/footer.module.css";
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   const heartRef = useRef(null);
   const topRef = useRef(null);
 
@@ -43,7 +47,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className={style.footer}>
+    <footer
+      className={`${style.footer} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       {/* =====================================================
           DECORATIONS
       ====================================================== */}

@@ -1,17 +1,14 @@
-/* =========================================================
-   FAVORITE PAGE
-   ========================================================= */
-
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "../css/favorite.module.css";
 import { EyeIcon, Trash2Icon } from "@animateicons/react/lucide";
 
+import { useTheme } from "../context/ThemeContext";
+import style from "../css/favorite.module.css";
+
 export default function Favorite({ setModalMeal }) {
-  /* =======================================================
-     LOAD FAVORITES FROM LOCAL STORAGE
-     ======================================================= */
   const navigate = useNavigate();
+  const { theme } = useTheme();
+
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
 
@@ -21,10 +18,6 @@ export default function Favorite({ setModalMeal }) {
       return [];
     }
   });
-
-  /* =======================================================
-     FILTER
-     ======================================================= */
 
   const [filter, setFilter] = useState("all");
 
@@ -97,7 +90,11 @@ export default function Favorite({ setModalMeal }) {
   };
 
   return (
-    <main className={style.favoritePage}>
+    <main
+      className={`${style.favoritePage} ${
+        theme === "dark" ? style.dark : style.light
+      }`}
+    >
       {/* ================= BACKGROUND ================= */}
 
       <div className={style.backgroundGlowOne}></div>
@@ -294,7 +291,7 @@ function FavoriteCard({ item, index, onView, onRemove }) {
         </div>
 
         <div className={style.imageBottom}>
-          <span>FAVORITE #{String(index + 1).padStart(2, "0")}</span>
+          FAVORITE #{String(index + 1).padStart(2, "0")}
         </div>
       </div>
 

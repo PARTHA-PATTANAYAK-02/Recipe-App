@@ -2,23 +2,19 @@
     position: absolute;
     top: calc(100% + 9px);
     left: 0;
-
     width: 100%;
     max-height: 310px;
-
     box-sizing: border-box;
 
-    background: rgba(255, 255, 255, 0.98);
-
-    border: 1px solid #e5e1d7;
+    background: var(--drink-bg);
+    border: 1px solid var(--drink-border);
     border-radius: 18px;
 
     box-shadow:
-        0 18px 45px rgba(52, 49, 41, 0.12),
-        0 5px 14px rgba(52, 49, 41, 0.06);
+        0 18px 45px var(--drink-shadow-strong),
+        0 5px 14px var(--drink-shadow-soft);
 
     padding: 9px;
-
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -27,9 +23,68 @@
     gap: 4px;
 
     z-index: 9999;
-
     animation: dropdownIn 0.22s ease-out;
+
+    color: var(--drink-text);
 }
+
+/* ===== THEME ===== */
+
+.light {
+    --drink-bg: rgba(255, 255, 255, 0.98);
+    --drink-border: #E7DED9;
+
+    --drink-shadow-strong: rgba(111, 41, 57, 0.12);
+    --drink-shadow-soft: rgba(111, 41, 57, 0.06);
+
+    --scrollbar: #D8BCC2;
+    --scrollbar-hover: #8F3D4E;
+
+    --title: #746D68;
+
+    --count-bg: #F4E5E8;
+    --count-text: #8F3D4E;
+
+    --loader-track: #F3EEE9;
+    --accent: #E58A43;
+
+    --loading-text: #292522;
+    --muted: #A29A95;
+
+    --error: #BD554B;
+    --empty-text: #5E5B53;
+
+    --drink-text: #292522;
+}
+
+.dark {
+    --drink-bg: rgba(33, 27, 29, 0.98);
+    --drink-border: #493A3F;
+
+    --drink-shadow-strong: rgba(0, 0, 0, 0.36);
+    --drink-shadow-soft: rgba(0, 0, 0, 0.22);
+
+    --scrollbar: #B96579;
+    --scrollbar-hover: #D58A9A;
+
+    --title: #B9ACAF;
+
+    --count-bg: #3A252B;
+    --count-text: #D58A9A;
+
+    --loader-track: #493A3F;
+    --accent: #E8A067;
+
+    --loading-text: #F0E8E8;
+    --muted: #918487;
+
+    --error: #E09A91;
+    --empty-text: #F0E8E8;
+
+    --drink-text: #F0E8E8;
+}
+
+/* ===== SCROLLBAR ===== */
 
 .drinkList::-webkit-scrollbar {
     width: 5px;
@@ -41,12 +96,12 @@
 }
 
 .drinkList::-webkit-scrollbar-thumb {
-    background: #ead5c5;
+    background: var(--scrollbar);
     border-radius: 20px;
 }
 
 .drinkList::-webkit-scrollbar-thumb:hover {
-    background: #d68a50;
+    background: var(--scrollbar-hover);
 }
 
 /* ===== HEADER ===== */
@@ -68,16 +123,15 @@
     letter-spacing: 1px;
     text-transform: uppercase;
 
-    color: #8b877c;
+    color: var(--title);
 }
 
 .resultCount {
     padding: 4px 8px;
-
     border-radius: 20px;
-    background: #fbf0e7;
 
-    color: #c16f37;
+    background: var(--count-bg);
+    color: var(--count-text);
 
     font-family: "DM Sans", sans-serif;
     font-size: 10px;
@@ -100,8 +154,8 @@
     width: 30px;
     height: 30px;
 
-    border: 3px solid #f4e9df;
-    border-top-color: #e58a43;
+    border: 3px solid var(--loader-track);
+    border-top-color: var(--accent);
 
     border-radius: 50%;
 
@@ -115,15 +169,14 @@
 }
 
 .loadingText {
-    color: #45433e;
+    color: var(--loading-text);
     font-size: 13px;
     font-weight: 600;
 }
 
 .loadingSubtext {
     margin-top: 2px;
-
-    color: #aaa69c;
+    color: var(--muted);
     font-size: 10px;
 }
 
@@ -146,7 +199,7 @@
 }
 
 .errorText {
-    color: #bd554b;
+    color: var(--error);
 
     font-family: "DM Sans", sans-serif;
     font-size: 13px;
@@ -155,8 +208,7 @@
 
 .errorSubtext {
     margin-top: 3px;
-
-    color: #aaa69c;
+    color: var(--muted);
 
     font-family: "DM Sans", sans-serif;
     font-size: 10px;
@@ -179,7 +231,7 @@
 }
 
 .emptyText {
-    color: #5e5b53;
+    color: var(--empty-text);
 
     font-family: "DM Sans", sans-serif;
     font-size: 13px;
@@ -188,8 +240,7 @@
 
 .emptySubtext {
     margin-top: 2px;
-
-    color: #aaa69c;
+    color: var(--muted);
 
     font-family: "DM Sans", sans-serif;
     font-size: 10px;
@@ -250,4 +301,23 @@
     .errorIcon {
         animation: none;
     }
+}
+
+/* ===== THEME TRANSITION ===== */
+
+.drinkList,
+.drinkList .resultCount,
+.drinkList .loader,
+.drinkList .loadingText,
+.drinkList .loadingSubtext,
+.drinkList .errorText,
+.drinkList .errorSubtext,
+.drinkList .emptyText,
+.drinkList .emptySubtext {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
 }

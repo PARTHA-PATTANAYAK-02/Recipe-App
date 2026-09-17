@@ -1,9 +1,12 @@
+import { useTheme } from "../../context/ThemeContext";
 import style from "../../css/Recipe/foodItem.module.css";
 
 export default function FoodItem({ food, onSelect }) {
+  const { theme } = useTheme();
+
   return (
     <div
-      className={style.item}
+      className={`${style.item} ${theme === "dark" ? style.dark : style.light}`}
       onMouseDown={() => onSelect(food)}
       role="button"
       tabIndex={0}
