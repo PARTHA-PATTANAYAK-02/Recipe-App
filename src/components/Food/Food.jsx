@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useState } from "react";
@@ -55,8 +56,13 @@ export default function Food({
      ======================================================= */
 
   useEffect(() => {
+    if (foodSearchTrigger === 0) {
+      setSearchQuery("");
+      setError("");
+      return;
+    }
+
     if (!query?.trim()) {
-      // setMeals([]);
       setError("");
       return;
     }

@@ -5,6 +5,7 @@ import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import ShareButton from "../ShareButton";
 import { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -253,6 +254,10 @@ export default function RandomPage() {
                   image: data.strDrinkThumb,
                   data: data,
                 }}
+              />
+              <ShareButton
+                title={data.strDrink}
+                url={`${window.location.origin}/drinks/${data.idDrink}`}
               />
             </div>
           </div>

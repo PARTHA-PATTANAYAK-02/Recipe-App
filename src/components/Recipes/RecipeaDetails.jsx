@@ -9,6 +9,7 @@ import ErrorComp from "../Error";
 import EmptyMessage from "../EmptyMessage";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import ShareButton from "../ShareButton";
 import {
   FaUtensils,
   FaGlobeAmericas,
@@ -275,6 +276,10 @@ export default function RecipeaDetails() {
                   name: strMeal,
                   image: strMealThumb,
                 }}
+              />
+              <ShareButton
+                title={strMeal}
+                url={`${window.location.origin}/recipes/${idMeal}`}
               />
             </div>
 

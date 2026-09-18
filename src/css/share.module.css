@@ -1,0 +1,592 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap");
+
+
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+.light {
+    --share-surface: #ffffff;
+    --share-surface-soft: #F3EEE9;
+    --share-border: rgba(143, 61, 78, 0.18);
+    --share-border-hover: rgba(143, 61, 78, 0.42);
+
+    --share-text: #292522;
+    --share-text-soft: #746D68;
+
+    --share-primary: #8F3D4E;
+    --share-primary-dark: #6F2939;
+    --share-primary-glow: rgba(143, 61, 78, 0.28);
+    --share-primary-soft: rgba(143, 61, 78, 0.08);
+
+    --share-orange: #e58a43;
+
+    --share-shadow:
+        0 6px 16px rgba(47, 45, 38, 0.06);
+
+    --share-shadow-hover:
+        0 14px 28px rgba(143, 61, 78, 0.18),
+        0 4px 10px rgba(47, 45, 38, 0.08);
+}
+
+.dark {
+    --share-surface: #2A2225;
+    --share-surface-soft: #211B1D;
+    --share-border: rgba(213, 138, 154, 0.24);
+    --share-border-hover: rgba(213, 138, 154, 0.52);
+
+    --share-text: #F0E8E8;
+    --share-text-soft: #B9ACAF;
+
+    --share-primary: #D58A9A;
+    --share-primary-dark: #B96579;
+    --share-primary-glow: rgba(213, 138, 154, 0.35);
+    --share-primary-soft: rgba(213, 138, 154, 0.12);
+
+    --share-orange: #e8a067;
+
+    --share-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.32);
+
+    --share-shadow-hover:
+        0 14px 28px rgba(213, 138, 154, 0.20),
+        0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   WRAPPER
+========================================================= */
+
+.shareWrap {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-family: "DM Sans", sans-serif;
+
+    transition:
+        color 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* =========================================================
+   BASE BUTTON
+========================================================= */
+
+.shareBtn,
+.copyBtn {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--share-border);
+
+    border-radius: 11px;
+
+    background: var(--share-surface);
+
+    color: var(--share-text);
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    box-shadow: var(--share-shadow);
+
+    transition:
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+.shareBtn:hover,
+.copyBtn:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--share-border-hover);
+
+    box-shadow: var(--share-shadow-hover);
+}
+
+.shareBtn:active,
+.copyBtn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.shareBtn:focus-visible,
+.copyBtn:focus-visible {
+    outline: 3px solid var(--share-primary-glow);
+    outline-offset: 3px;
+}
+
+
+/* Shimmer sweep */
+.shareBtn::before,
+.copyBtn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.55),
+            transparent);
+
+    transform: skewX(-20deg);
+
+    pointer-events: none;
+
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: 1;
+}
+
+.dark .shareBtn::before,
+.dark .copyBtn::before {
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.14),
+            transparent);
+}
+
+.shareBtn:hover::before,
+.copyBtn:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================================
+   SHARE BUTTON SPECIFIC
+========================================================= */
+
+.shareBtn {
+    background: linear-gradient(135deg,
+            var(--share-surface) 0%,
+            var(--share-surface) 100%);
+
+    color: var(--share-primary-dark);
+}
+
+.dark .shareBtn {
+    color: var(--share-text);
+}
+
+.shareBtn:hover {
+    background: linear-gradient(135deg,
+            var(--share-primary-soft) 0%,
+            var(--share-surface) 100%);
+
+    color: var(--share-primary-dark);
+}
+
+.dark .shareBtn:hover {
+    background: linear-gradient(135deg,
+            rgba(213, 138, 154, 0.18) 0%,
+            var(--share-surface) 100%);
+
+    color: var(--share-text);
+}
+
+
+/* =========================================================
+   SHARE ICON WRAP
+========================================================= */
+
+.shareIconWrap {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    color: currentColor;
+
+    z-index: 2;
+}
+
+.shareIcon {
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shareBtn:hover .shareIcon {
+    transform: rotate(-12deg) scale(1.15);
+}
+
+.shareBtn:hover .shareIcon circle {
+    animation: nodePulse 1.4s ease-in-out infinite;
+}
+
+.shareBtn:hover .shareIcon circle:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.shareBtn:hover .shareIcon circle:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.shareBtn:hover .shareIcon circle:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+
+/* =========================================================
+   COPY BUTTON SPECIFIC
+========================================================= */
+
+.copyBtn {
+    background: var(--share-primary);
+
+    border-color: var(--share-primary);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px var(--share-primary-glow);
+}
+
+.dark .copyBtn {
+    color: #211B1D;
+}
+
+.copyBtn:hover {
+    background: var(--share-primary-dark);
+
+    border-color: var(--share-primary-dark);
+
+    box-shadow:
+        0 12px 26px var(--share-primary-glow);
+}
+
+.dark .copyBtn:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   COPY ICON WRAP
+========================================================= */
+
+.copyIconWrap {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    color: currentColor;
+
+    z-index: 2;
+}
+
+.linkIcon,
+.checkIcon {
+    position: absolute;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.linkIcon {
+    opacity: 1;
+
+    transform: scale(1) rotate(0deg);
+}
+
+.checkIcon {
+    opacity: 0;
+
+    transform: scale(0.4) rotate(-90deg);
+}
+
+.copyBtn:hover .linkIcon {
+    transform: scale(1.1) rotate(-8deg);
+}
+
+.copyBtn.copied .linkIcon {
+    opacity: 0;
+
+    transform: scale(0.4) rotate(90deg);
+}
+
+.copyBtn.copied .checkIcon {
+    opacity: 1;
+
+    transform: scale(1) rotate(0deg);
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.btnLabel {
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        letter-spacing 0.35s ease;
+}
+
+.shareBtn:hover .btnLabel,
+.copyBtn:hover .btnLabel {
+    transform: translateY(-1px);
+
+    letter-spacing: 0.6px;
+}
+
+
+/* =========================================================
+   RIPPLE (position-aware)
+========================================================= */
+
+.ripple {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    margin-left: -5px;
+    margin-top: -5px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.85) 0%,
+            transparent 70%);
+
+    pointer-events: none;
+
+    animation: rippleExpand 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: 3;
+}
+
+.dark .ripple {
+    background: radial-gradient(circle,
+            rgba(213, 138, 154, 0.55) 0%,
+            transparent 70%);
+}
+
+
+/* =========================================================
+   BURST RING (copy success)
+========================================================= */
+
+.burstRing {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    border: 1.5px solid currentColor;
+
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%) scale(0.6);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.copyBtn.copied .burstRing {
+    animation: burstRing 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   SPARKLES (copy success)
+========================================================= */
+
+.sparkles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.sparkles i {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+    opacity: 0;
+
+    transform: translate(-50%, -50%);
+}
+
+.copyBtn.copied .sparkles i {
+    animation: sparkleFly 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sparkles i:nth-child(1) {
+    --tx: -12px;
+    --ty: -10px;
+    animation-delay: 0s;
+}
+
+.sparkles i:nth-child(2) {
+    --tx: 12px;
+    --ty: -10px;
+    animation-delay: 0.05s;
+}
+
+.sparkles i:nth-child(3) {
+    --tx: -12px;
+    --ty: 10px;
+    animation-delay: 0.1s;
+}
+
+.sparkles i:nth-child(4) {
+    --tx: 12px;
+    --ty: 10px;
+    animation-delay: 0.15s;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes rippleExpand {
+    0% {
+        transform: scale(0);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(22);
+
+        opacity: 0;
+    }
+}
+
+@keyframes nodePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.35);
+
+        opacity: 0.65;
+    }
+}
+
+@keyframes burstRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2.4);
+
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleFly {
+    0% {
+        transform: translate(-50%, -50%) scale(0.4);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(calc(-50% + var(--tx)),
+                calc(-50% + var(--ty))) scale(0);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .shareBtn,
+    .copyBtn,
+    .shareBtn::before,
+    .copyBtn::before,
+    .shareIcon,
+    .shareIconWrap,
+    .linkIcon,
+    .checkIcon,
+    .btnLabel,
+    .ripple,
+    .burstRing,
+    .sparkles i,
+    .shareIcon circle {
+        animation: none !important;
+
+        transition: none !important;
+    }
+}

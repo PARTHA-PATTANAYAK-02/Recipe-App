@@ -5,6 +5,7 @@ import ErrorPage from "../Error";
 import Loading from "../Loading";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import ShareButton from "../ShareButton";
 import { useTheme } from "../../context/ThemeContext";
 import {
   RefreshCwIcon,
@@ -231,6 +232,11 @@ export default function Home() {
                     name: recipe.strMeal,
                     image: recipe.strMealThumb,
                   }}
+                />
+
+                <ShareButton
+                  title={recipe.strMeal}
+                  url={`${window.location.origin}/recipes/${recipe.idMeal}`}
                 />
               </div>
             </header>

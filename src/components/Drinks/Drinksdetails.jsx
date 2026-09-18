@@ -7,6 +7,7 @@ import Loading from "../Loading";
 import ErrorPage from "../Error";
 import FavoriteButton from "../FavoriteButton";
 import MealPlannerButton from "../new/MealPlannerButton";
+import ShareButton from "../ShareButton";
 import { useTheme } from "../../context/ThemeContext"; // ← ADD
 
 const URL = import.meta.env.VITE_DRINK_API_URL;
@@ -293,6 +294,10 @@ export default function Drinksdetails() {
                   image: data.strDrinkThumb,
                   data: data,
                 }}
+              />
+              <ShareButton
+                title={data.strDrink}
+                url={`${window.location.origin}/drinks/${data.idDrink}`}
               />
             </div>
             <div className={style.infoGrid}>
