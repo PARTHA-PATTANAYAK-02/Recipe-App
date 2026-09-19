@@ -2592,3 +2592,150 @@
         color 0.35s ease,
         box-shadow 0.35s ease;
 }
+
+/* =========================================================
+   FINAL MOBILE ACTION-BUTTON FIX
+   JSX unchanged — controls the existing Favorite,
+   Meal Planner and Share/Copy actions.
+   ========================================================= */
+
+/* The action row is an inline-styled div in RecipeaDetails.jsx.
+   Override only its layout; no JSX change is required. */
+.heroContent>div[style*="display: flex"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    align-items: stretch !important;
+    justify-content: stretch !important;
+
+    gap: 8px !important;
+    margin-top: 18px !important;
+
+    overflow: visible !important;
+}
+
+/* Do not let the individual component wrappers/buttons become
+   tiny or force the whole row wider than the phone. */
+.heroContent>div[style*="display: flex"]>* {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+
+    flex: none !important;
+}
+
+/* Generic controls inside Favorite / Meal Planner / Share components. */
+.heroContent>div[style*="display: flex"] button,
+.heroContent>div[style*="display: flex"] a {
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    flex-shrink: 1 !important;
+}
+
+/* Prevent the Share component's internal buttons from getting
+   squeezed into tiny widths. */
+.heroContent>div[style*="display: flex"]>*>button,
+.heroContent>div[style*="display: flex"]>*>a {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Icons must stay visible and never shrink into the text. */
+.heroContent>div[style*="display: flex"] svg {
+    flex-shrink: 0 !important;
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 520px) {
+    .heroContent>div[style*="display: flex"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        margin-top: 16px !important;
+    }
+
+    .heroContent>div[style*="display: flex"]>* {
+        min-width: 0 !important;
+    }
+
+    .heroContent>div[style*="display: flex"] button,
+    .heroContent>div[style*="display: flex"] a {
+        min-height: 38px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+    }
+}
+
+/* ---------- Small phones ----------
+   One full-width control per row is cleaner than crushing
+   labels such as "Add to Meal Planner" / "Copy Link". */
+@media (max-width: 380px) {
+    .heroContent>div[style*="display: flex"] {
+        grid-template-columns: 1fr !important;
+        gap: 7px !important;
+    }
+
+    .heroContent>div[style*="display: flex"] button,
+    .heroContent>div[style*="display: flex"] a {
+        min-height: 40px !important;
+        width: 100% !important;
+
+        justify-content: center !important;
+
+        font-size: 10px !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* ---------- Very narrow phones ---------- */
+@media (max-width: 340px) {
+    .heroContent>div[style*="display: flex"] {
+        gap: 6px !important;
+        margin-top: 14px !important;
+    }
+
+    .heroContent>div[style*="display: flex"] button,
+    .heroContent>div[style*="display: flex"] a {
+        min-height: 38px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+
+        font-size: 9px !important;
+    }
+}
+
+/* Never allow any descendant of the recipe page to create
+   horizontal scrolling on small screens. */
+@media (max-width: 760px) {
+
+    .recipePage,
+    .recipeContainer,
+    .heroContent,
+    .heroContent>div[style*="display: flex"] {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .recipePage {
+        overflow-x: hidden;
+    }
+
+    .heroContent * {
+        box-sizing: border-box;
+    }
+}
